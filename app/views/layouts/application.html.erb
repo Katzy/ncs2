@@ -1,14 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ncs2</title>
+  <title>NCS Wrestling Championships</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
+
+  <%= render partial: "shared/header", locals: { user: @user } %>
+
+
+  <% if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <p class="alert"><%= flash[:alert] %></p>
+  <% end %>
+
 
 <%= yield %>
 
+<%= render partial: "shared/footer", locals: { user: @user } %>
+
+<script>
+$('.ui.dropdown')
+  .dropdown({
+
+  })
+;
+
+$('ui.accordion')
+  .accordion({
+    selector: {
+      trigger: '.title .icon'
+    }
+  })
+;
+
+$('.ui.modal')
+  .modal('setting', 'transition', 'vertical flip')
+  .modal('show')
+;
+
+$('.ui.sidebar').first()
+  .sidebar('attach events', '.toggle.item')
+;
+$('.toggle.item')
+  .removeClass('disabled')
+;
+
+
+$('.ui.info.sidebar').first()
+  .sidebar('attach events', '.toggle2.item')
+;
+$('.toggle2.item')
+  .removeClass('disabled')
+;
+
+
+$('.images .image')
+  .transition({
+    animation : 'vertical flip',
+    interval  : 200
+  })
+
+
+ // .transition({
+ //    animation : 'vertical flip',
+
+ //    interval  : 200
+ //  })
+
+.transition({
+    animation : 'vertical flip',
+    interval  : 200
+  })
+
+// .transition({
+//     animation : 'vertical flip',
+
+//     interval  : 200
+//   })
+;
+
+$('.ui.segment .title b i')
+ .transition('fly right', '2500ms', 'onCall')
+    .transition('fly right', '2500ms', 'onHide', 'disable')
+
+;
+// $(document).ready(function(){
+//   $('.images .image').hover(function(){
+//     $(this).transition('vertical flip');
+//     $(this).src='d2dlogo.png';
+
+//   }, function(){});
+//   })
+// ;
+
+</script>
 </body>
+
 </html>

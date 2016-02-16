@@ -1,0 +1,214 @@
+
+
+
+  <div class="ui inverted brackets sidebar vertical menu">
+  <a class="item"><%= link_to "Team Scores", "https://dl.dropboxusercontent.com/u/61981544/team.pdf" %></a>
+        <a class="item"><%= link_to "106", "https://dl.dropboxusercontent.com/u/61981544/106.pdf" %></a>
+        <a class="item"><%= link_to "113", "https://dl.dropboxusercontent.com/u/61981544/113.pdf" %></a>
+        <a class="item"><%= link_to "120", "https://dl.dropboxusercontent.com/u/61981544/120.pdf" %></a>
+        <a class="item"><%= link_to "126", "https://dl.dropboxusercontent.com/u/61981544/126.pdf" %></a>
+        <a class="item"><%= link_to "132", "https://dl.dropboxusercontent.com/u/61981544/132.pdf" %></a>
+        <a class="item"><%= link_to "138", "https://dl.dropboxusercontent.com/u/61981544/138.pdf" %></a>
+        <a class="item"><%= link_to "145", "https://dl.dropboxusercontent.com/u/61981544/145.pdf" %></a>
+        <a class="item"><%= link_to "152", "https://dl.dropboxusercontent.com/u/61981544/152.pdf" %></a>
+        <a class="item"><%= link_to "160", "https://dl.dropboxusercontent.com/u/61981544/160.pdf" %></a>
+        <a class="item"><%= link_to "170", "https://dl.dropboxusercontent.com/u/61981544/170.pdf" %></a>
+        <a class="item"><%= link_to "182", "https://dl.dropboxusercontent.com/u/61981544/182.pdf" %></a>
+        <a class="item"><%= link_to "195", "https://dl.dropboxusercontent.com/u/61981544/195.pdf" %></a>
+        <a class="item"><%= link_to "220", "https://dl.dropboxusercontent.com/u/61981544/220.pdf" %></a>
+        <a class="item"><%= link_to "285", "https://dl.dropboxusercontent.com/u/61981544/285.pdf" %></a>
+
+
+  </div>
+  <div class="ui inverted info sidebar vertical menu">
+   <a class="item">
+        About
+      </a>
+      <a class="item">
+        Alerts
+      </a>
+      <a class="item">
+        Schedule
+      </a>
+  </div>
+
+  <div class="ui center aligned top attached header">
+  <b>NCS / Les Schwab Tires Wrestling Championships</b><br><br>Feb 26-27, 2016
+  </div>
+
+  <div class="ui attached secondary main stackable menu">
+    <div class="item">
+      <a href="http://www.cifncs.org"><img class="ui avatar image" src="/images/ncslogo.jpg"></a>
+    </div>
+    <div class="item">
+      <%= link_to "Home", root_path %>
+    </div>
+    <div class="ui toggle item"><i class="sidebar icon"></i>BRACKETS
+
+    </div>
+     <div class="ui toggle2 item"><i class="sidebar icon"></i>INFO
+
+    </div>
+    <div class="item">
+      <div class="ui inline scrollable dropdown">
+        <div class="text">
+          Tourney Info
+        </div><i class="dropdown icon"></i>
+        <div class="menu">
+          <div class="item"><%= link_to "About" %></div>
+          <div class="item"><%= link_to "Alerts" %></div>
+          <div class="item"><%= link_to "Schedule" %></div>
+         <!--  <li class="item">Map to Marin Catholic<i class="map icon"></i></li> -->
+          <div class="item">
+            <span class="text">Past Results</span><i class="dropdown icon"></i>
+            <div class="menu" id="dd" style="overflow:auto;max-height:300px;">
+              <li class="item"><%= link_to "2015" %></li>
+              <li class="item"><%= link_to "2014" %></li>
+              <li class="item"><%= link_to "2013" %></li>
+              <li class="item"><%= link_to "2012" %></li>
+              <li class="item"><%= link_to "2011" %></li>
+              <li class="item"><%= link_to "2010" %></li>
+              <li class="item"><%= link_to "2009" %></li>
+              <li class="item"><%= link_to "2008" %></li>
+              <li class="item"><%= link_to "2007" %></li>
+              <li class="item"><%= link_to "2006" %></li>
+              <li class="item"><%= link_to "2005" %></li>
+              <li class="item"><%= link_to "2004" %></li>
+              <li class="item"><%= link_to "2003" %></li>
+              <li class="item"><%= link_to "2002" %></li>
+              <li class="item"><%= link_to "2001" %></li>
+              <li class="item"><%= link_to "2000" %></li>
+              <li class="item"><%= link_to "1999" %></li>
+              <li class="item"><%= link_to "1998" %></li>
+              <li class="item"><%= link_to "1997" %></li>
+              <li class="item"><%= link_to "1996" %></li>
+              <li class="item"><%= link_to "1995" %></li>
+              <li class="item"><%= link_to "1994" %></li>
+              <li class="item"><%= link_to "1993" %></li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% if !user_signed_in? || user_signed_in? && !current_user.admin? %>
+    <div class="ui scrolling dropdown item">Teams <i class="dropdown icon"></i>
+      <div class="menu" >
+        <% if user_signed_in? && (@user.school != nil && @user.school != "") %>
+          <li class="item"><%= link_to "ENTER MY TEAM" %></li>
+        <% end %>
+        <li class="item"><%= link_to "VIEW ALL TEAMS" %></li>
+
+        <div class="divider"></div>
+
+        <% @users.each do |user| %>
+          <% if user_signed_in? && (user.school != nil && user.school != "") %>
+
+            <li class="item"><%= link_to "#{user.school}" %>
+          <% elsif (user.school != nil && user.school != "") %>
+            <li class="item"><%= link_to "#{user.school}" %>
+
+            </li>
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
+    <div class="ui compact scrolling dropdown item">Wrestlers<i class="dropdown icon"></i>
+      <div class="menu">
+        <li class="item"><%= link_to "ALL"%></li>
+
+        <div class="divider"></div>
+        <li class="item">VIEW BY WEIGHT</li>
+        <li class="item"><%= link_to "106" %></li>
+        <li class="item"><%= link_to "113" %></li>
+        <li class="item"><%= link_to "120" %></li>
+        <li class="item"><%= link_to "126" %></li>
+        <li class="item"><%= link_to "132" %></li>
+        <li class="item"><%= link_to "138" %></li>
+        <li class="item"><%= link_to "145" %></li>
+        <li class="item"><%= link_to "152" %></li>
+        <li class="item"><%= link_to "160" %></li>
+        <li class="item"><%= link_to "170" %></li>
+        <li class="item"><%= link_to "182" %></li>
+        <li class="item"><%= link_to "195" %></li>
+        <li class="item"><%= link_to "220" %></li>
+        <li class="item"><%= link_to "285" %></li>
+      </div>
+    </div>
+    <% else %>
+        <div class="ui compact scrolling dropdown item">Wrestlers<i class="dropdown icon"></i>
+      <div class="menu" >
+        <li class="item"><%= link_to "VIEW ALL WRESTLERS" %></li>
+
+        <div class="divider"></div>
+        <li class="item">VIEW BY WEIGHT</li>
+        <li class="item"><%= link_to "106" %></li>
+        <li class="item"><%= link_to "113" %></li>
+        <li class="item"><%= link_to "120" %></li>
+        <li class="item"><%= link_to "126" %></li>
+        <li class="item"><%= link_to "132" %></li>
+        <li class="item"><%= link_to "138" %></li>
+        <li class="item"><%= link_to "145" %></li>
+        <li class="item"><%= link_to "152" %></li>
+        <li class="item"><%= link_to "160" %></li>
+        <li class="item"><%= link_to "170" %></li>
+        <li class="item"><%= link_to "182" %></li>
+        <li class="item"><%= link_to "195" %></li>
+        <li class="item"><%= link_to "220" %></li>
+        <li class="item"><%= link_to "285" %></li>
+      </div></li>
+    </div>
+    <% end %>
+    <div class="right stackable menu">
+
+
+      <% if user_signed_in? %>
+
+          <% if current_user.admin? %>
+            <div class="ui dropdown item"> ADMIN <i class="dropdown icon"></i>
+              <div class="menu" style="overflow:auto;max-height:300px;">
+              <li class="item"><%= link_to "Add Team (user)" %></li>
+                <li class="item"><%= link_to "ALL TEAMS" %></li>
+                <li class="item"><%= link_to "ALL WRESTLERS" %></li>
+                <li class="item"><%= link_to "Send SMS Alerts" %><i class="mobile icon"></i></li>
+                <li class="item" id="wrestlers"><%= link_to "Toggle Settings" %><i class="setting icon"></i></li>
+<!--
+                , destroy_all_wrestlers_path, :method => :delete, :data => { :confirm => 'Are you 100% sure?' }
+ -->
+              <div class="divider"></div>
+        <% @users.each do |user| %>
+          <% if user_signed_in? && (user.school != nil && user.school != "") %>
+
+            <li class="item"><%= link_to "#{user.school}" %></li>
+          <% elsif (user.school != nil && user.school != "") %>
+            <li class="item"><%= link_to "#{user.school}" %>
+
+            </li>
+          <% end %>
+        <% end %>
+              </div>
+            </div>
+          <% end %>
+          <div class="ui item">
+          Welcome <%= (current_user.name).split(" ").first %>
+        </div>
+        <div class="ui item">
+         <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+         </div>
+      <% else %>
+      <div class="ui item">
+        <%= link_to "Sign in (Coaches)", new_user_session_path %>
+        </div>
+      <% end %>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  </div>
+
+
+

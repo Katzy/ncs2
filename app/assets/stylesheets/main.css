@@ -1,0 +1,25 @@
+.ui.sidebar {
+
+  font-size: 20px;
+
+}
+
+.ui.info.sidebar {
+
+  font-size: 40px;
+
+}
+.ui.sidebar .item {
+
+  display: block;
+}
+
+.ui.header b{
+
+  font-size: 30px;
+}
+
+.ui.main.menu {
+
+  font-size: 22px;
+}
