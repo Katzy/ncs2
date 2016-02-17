@@ -72,11 +72,18 @@
 
   </div>
 
-  <div class="ui inverted wrestler wide sidebar vertical menu">
-  <a class="item"><%= link_to "VIEW ALL"%></a><br><br>
+  <div class="ui inverted wrestler wide sidebar vertical menu grid">
+      <div class="mobile only tablet only row">
+        <div class="iten">VIEW BY LEAGUE</div>
+        <% @users.each do |user| %>
+
+            <a class="item"><%= link_to "#{user.league}" %></a>
+          <% end %>
+      </div>
 
 
-        <a class="item">BY WEIGHT</a>
+
+        <div class="weight item">BY WEIGHT</div>
         <a class="item"><%= link_to "106" %></a>
         <a class="item"><%= link_to "113" %></a>
         <a class="item"><%= link_to "120" %></a>
@@ -91,6 +98,7 @@
         <a class="item"><%= link_to "195" %></a>
         <a class="item"><%= link_to "220" %></a>
         <a class="item"><%= link_to "285" %></a>
+        <a class="item"><%= link_to "VIEW ALL"%></a>
   </div>
 
   <div class="ui inverted admin wide right sidebar vertical menu">
@@ -172,9 +180,7 @@
     </div>
 
 
-    <div class="ui toggle3 item"></i>LEAGUES
 
-    </div>
 
     <div class="ui toggle4 item"></i>WRESTLERS
 

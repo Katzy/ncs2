@@ -6,10 +6,13 @@
 
 }
 
-.ui.brackets.sidebar a {
+.ui.sidebar .weight.item {
+
+  font-size: 25px;
+}
+.ui.brackets.sidebar .item {
 
 
-  padding-left: 1em;
 
 }
 
