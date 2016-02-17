@@ -1,13 +1,19 @@
 .ui.sidebar {
+  padding: 1em;
+  font-size: 28px;
 
+}
+
+.ui.brackets.sidebar {
+  padding: 1em;
   font-size: 20px;
 
 }
 
-.ui.info.sidebar {
 
-  font-size: 40px;
+.ui.info.sidebar .results {
 
+  font-size: 15px;
 }
 .ui.sidebar .item {
 
