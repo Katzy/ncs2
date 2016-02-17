@@ -72,9 +72,10 @@
 
   </div>
 
-  <div class="ui inverted wrestler wide sidebar vertical menu grid">
+  <div class="ui inverted wrestler wide sidebar vertical menu">
+    <div class="ui grid">
       <div class="mobile only tablet only row">
-        <div class="iten">VIEW BY LEAGUE</div>
+        <a class="iten">VIEW BY LEAGUE</a>
         <% @users.each do |user| %>
 
             <a class="item"><%= link_to "#{user.league}" %></a>
@@ -99,6 +100,7 @@
         <a class="item"><%= link_to "220" %></a>
         <a class="item"><%= link_to "285" %></a>
         <a class="item"><%= link_to "VIEW ALL"%></a>
+      </div>
   </div>
 
   <div class="ui inverted admin wide right sidebar vertical menu">
