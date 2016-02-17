@@ -130,7 +130,7 @@
 
       </div>
 
-      <div class="right stackable menu">
+      <div class="right menu">
 
 
       <% if user_signed_in? %>
@@ -180,7 +180,7 @@
 
     </div>
 
-
+     <div class="right menu">
       <% if user_signed_in? %>
         <% if current_user.admin? %>
           <div class="ui toggle5 item">ADMIN
@@ -195,6 +195,7 @@
         <%= link_to "SIGN IN", new_user_session_path %>
       </div>
       <% end %>
+      </div>
 
 
   </div>
