@@ -25,6 +25,7 @@
     <a class="item"><%= link_to "About" %></a>
     <a class="item"><%= link_to "Alerts" %></a>
     <a class="item"><%= link_to "Schedule" %></a>
+    <a class="item"><%= link_to "Help" %></a>
     <br><br><br><br>
     <a class="item">PAST RESULTS</a>
      <div class="results">
@@ -75,7 +76,7 @@
   <div class="ui inverted wrestler wide sidebar vertical menu">
     <div class="ui grid">
       <div class="mobile only tablet only row">
-        <a class="iten">VIEW BY LEAGUE</a>
+        <div class="iten">VIEW BY LEAGUE</div>
         <% @users.each do |user| %>
 
             <a class="item"><%= link_to "#{user.league}" %></a>
@@ -108,7 +109,7 @@
     <a class="item"><%= link_to "VIEW LEAGUES" %></a>
     <a class="item"><%= link_to "VIEW WRESTLERS" %></a>
     <a class="item"><%= link_to "SEND SMS ALERTS" %><i class="mobile icon"></i></a>
-    <a class="item" id="wrestlers"><%= link_to "Toggle Settings" %><i class="setting icon"></i></a>
+    <a class="item" id="wrestlers"><%= link_to "TOGGLE SETTINGS" %><i class="setting icon"></i></a>
   </div>
 
   <div class="ui center aligned top attached header">
