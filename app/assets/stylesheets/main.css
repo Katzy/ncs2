@@ -1,24 +1,24 @@
-.ui.sidebar {
-  padding: 1em;
-  font-size: 28px;
+.ui.sidebar a{
+
+  font-size: 25px;
+  display: inline-block;
+  width: 100%;
 
 }
 
-.ui.brackets.sidebar {
-  padding: 1em;
-  font-size: 20px;
+.ui.brackets.sidebar a {
+
+
+  padding-left: 1em;
 
 }
 
 
-.ui.info.sidebar .results {
+.ui.info.sidebar a {
 
   font-size: 15px;
 }
-.ui.sidebar .item {
 
-  display: block;
-}
 
 .ui.header b{
 

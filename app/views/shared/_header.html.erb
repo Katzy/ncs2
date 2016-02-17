@@ -136,7 +136,7 @@
       <% if user_signed_in? %>
 
         <% if current_user.admin? %>
-          <div class="ui toggle5 item"></i>ADMIN
+          <div class="ui toggle5 item">ADMIN
           </div>
 
         <% end %>
@@ -153,42 +153,38 @@
       <% end %>
 
     </div>
+  </div>
+
+  <div class="mobile only tablet only row">
+    <div class="item">
+      <a href="http://www.cifncs.org"><img class="ui avatar image" src="/images/ncslogo.jpg"></a>
+    </div>
+    <div class="item">
+      <%= link_to "Home", root_path %>
     </div>
 
-    <div class="mobile only tablet only row">
-      <div class="item">
-        <a href="http://www.cifncs.org"><img class="ui avatar image" src="/images/ncslogo.jpg"></a>
-      </div>
-      <div class="item">
-        <%= link_to "Home", root_path %>
-      </div>
+    <div class="ui toggle item"><i class="sidebar icon"></i>BRACKETS
 
-      <div class="ui toggle item"><i class="sidebar icon"></i>BRACKETS
+    </div>
 
-      </div>
+    <div class="ui toggle2 item"></i>TOURNEY INFO
 
-      <div class="ui toggle2 item"></i>TOURNEY INFO
-
-      </div>
+    </div>
 
 
-      <div class="ui toggle3 item"></i>LEAGUES
+    <div class="ui toggle3 item"></i>LEAGUES
 
-      </div>
+    </div>
 
-      <div class="ui toggle4 item"></i>WRESTLERS
+    <div class="ui toggle4 item"></i>WRESTLERS
 
-      </div>
-
-    <div class="right stackable menu">
+    </div>
 
 
       <% if user_signed_in? %>
-
         <% if current_user.admin? %>
-          <div class="ui toggle5 item"></i>ADMIN
+          <div class="ui toggle5 item">ADMIN
           </div>
-
         <% end %>
 
         <div class="ui item">
@@ -200,9 +196,9 @@
       </div>
       <% end %>
 
-    </div>
-    </div>
+
   </div>
+</div>
 
 
 
