@@ -1,0 +1,69 @@
+<div class="ui raised segment">
+  <div class="ui center aligned raised segment">
+  <h2>Create User</h2>
+  </div>
+    <div class="ui form">
+    <%= form_for User.new, url: create_user_path  do |f| %>
+      <% if user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+          <ul>
+            <% user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="fields">
+        <div class="eight wide field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+
+        <div class="six wide field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+        </div>
+
+
+        <div class="field">
+          <%= f.label :cell, "Phone #" %><br>
+          <%= f.text_field :cell %>
+        </div>
+      </div>
+
+      <div class="fields">
+        <div class="four wide field">
+          <%= f.label :league %><br>
+          <%= f.collection_select :league, ['BAC', 'BVAL', 'CMC', 'DFAL', 'DVAL', 'EBAL', 'HDNL', 'MCAL', 'MVAL', 'NBL', 'SCL', 'WACC'], :to_s, :to_s, :include_blank => true %>
+        </div>
+
+        <div class="eight wide field">
+          <%= f.label :school %><br>
+          <%= f.text_field :school %>
+        </div>
+
+      </div>
+
+
+      <div class="eight wide field">
+        <%= f.label :password %>
+        <% if @validatable %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="eight wide field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+
+      <div class="actions">
+        <%= f.submit "Create" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -94,9 +94,9 @@
   </div>
 
   <div class="ui inverted admin wide right sidebar vertical menu">
-    <a class="item"><%= link_to "ADD USER (League / Team)" %></a>
-    <a class="item"><%= link_to "ALL LEAGUES" %></a>
-    <a class="item"><%= link_to "ALL WRESTLERS" %></a>
+    <a class="item"><%= link_to "ADD USER", new_user_path %></a>
+    <a class="item"><%= link_to "VIEW LEAGUES" %></a>
+    <a class="item"><%= link_to "VIEW WRESTLERS" %></a>
     <a class="item"><%= link_to "SEND SMS ALERTS" %><i class="mobile icon"></i></a>
     <a class="item" id="wrestlers"><%= link_to "Toggle Settings" %><i class="setting icon"></i></a>
   </div>
@@ -116,16 +116,16 @@
 
     </div>
 
-    <div class="ui toggle2 item"><i class="sidebar icon"></i>TOURNEY INFO
+    <div class="ui toggle2 item"></i>TOURNEY INFO
 
     </div>
 
 
-    <div class="ui toggle3 item"><i class="sidebar icon"></i>LEAGUES
+    <div class="ui toggle3 item"></i>LEAGUES
 
     </div>
 
-    <div class="ui toggle4 item"><i class="sidebar icon"></i>WRESTLERS
+    <div class="ui toggle4 item"></i>WRESTLERS
 
     </div>
 
@@ -136,7 +136,7 @@
       <% if user_signed_in? %>
 
           <% if current_user.admin? %>
-            <div class="ui toggle5 item"><i class="sidebar icon"></i>ADMIN
+            <div class="ui toggle5 item"></i>ADMIN
             </div>
 
 
