@@ -24,8 +24,14 @@ class ApplicationController < ActionController::Base
   def initialize_users_for_header
     # @users = User.order('school ASC')
     @leagues = League.all
+
     # @users = User.where.not(league: nil)
     @user = current_user
+
+    if @user != nil && @user.league_rep == true
+      id = @user.league_id
+        @league = League.find(@user.league_id)
+    end
     # @user_name = current_user.name
     # @user_name = @user_name.split(" ").first
   end

@@ -62,7 +62,7 @@
     <% if user_signed_in? && (@user.league_rep == true) %>
 
       <div class="bold">
-      <a class="main item"><%= link_to "ENTER MY LEAGUE" %></a>
+      <a class="main item"><%= link_to "ENTER MY LEAGUE", league_path(@league) %></a>
       </div>
       <div class="divider"></div>
     <% end %>
@@ -70,9 +70,9 @@
 
 
 
-        <% @leagues.each do |league| %>
+        <% @leagues.each do |l| %>
 
-            <a class="item"><%= link_to "#{league.name}" %></a>
+            <a class="item"><%= link_to "#{l.name}", league_path(l) %></a>
           <% end %>
       <% if user_signed_in? && (@user.league_rep == true) %>
       <div class="league"><br><br>
@@ -108,9 +108,9 @@
     <div class="ui grid">
       <div class="mobile only tablet only row">
         <div class="item">VIEW BY LEAGUE</div>
-        <% @leagues.each do |league| %>
+        <% @leagues.each do |l| %>
 
-            <a class="item"><%= link_to "#{league.name}" %></a>
+            <a class="item"><%= link_to "#{l.name}", league_path(l) %></a>
           <% end %>
       </div>
 

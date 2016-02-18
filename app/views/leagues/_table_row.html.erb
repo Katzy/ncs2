@@ -1,0 +1,18 @@
+<tr>
+  <td><%= league.name %></td>
+  <td><%= league.schools.count %></td>
+  <td><%= league.name %></td>
+
+
+    <td><%= link_to "Wrestlers " %></td>
+    <% if user_signed_in? && current_user.admin? %>
+    <td><%=  %></td>
+    <td><%=  %></td>
+    <td><%= link_to 'Edit' %></td>
+
+    <td><%= link_to 'Delete', league, method: "delete", :data => {:confirm => 'Are you sure?'} %>
+
+    <% end %>
+
+  </td>
+</tr>

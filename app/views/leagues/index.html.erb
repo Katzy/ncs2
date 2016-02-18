@@ -1,0 +1,51 @@
+
+
+<div class="ui league grid">
+  <div class="five column row">
+    <div class="center aligned column"><h1>LEAGUES</h1></div>
+    <div class="column"></div>
+    <div class="center aligned column">
+
+
+
+
+        <p>
+      <% if user_signed_in? && current_user.admin? %>
+
+
+
+
+
+        <% end %>
+        </p>
+
+    </div>
+
+    <div class="column"></div>
+    <div class="column"></div>
+  </div>
+</div>
+
+<table class="ui celled structured scrollable table">
+  <thead>
+    <tr>
+      <th rowspan="2">League Name</th>
+      <th rowspan="2">Section</th>
+      <th rowspan="2">Coach</th>
+      <th rowspan="2">Wrestlers</th>
+      <% if user_signed_in? && current_user.admin? %>
+        <th rowspan="2">Cell</th>
+        <th rowspan="2">Email</th>
+        <th rowspan="2">Edit Team Info</th>
+        <th rowspan="2">Delete</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @leagues.each do |league| %>
+      <% unless league.name == "" || league.name == nil %>
+        <%= render partial: 'leagues/table_row', locals: { league: league } %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

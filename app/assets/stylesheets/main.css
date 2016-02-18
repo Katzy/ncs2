@@ -44,3 +44,21 @@
   height: 350px;
 
 }
+
+.ui.segment .grid {
+  border-left: 25px;
+  border-right: 25px;
+  padding: 3em;
+
+}
+
+.ui.grid .column b {
+
+
+  font-size: 40px;
+}
+
+.ui.grid .column .segment b {
+
+  font-size: 14px;
+}

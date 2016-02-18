@@ -9,6 +9,12 @@ class LeaguesController < ApplicationController
         @league = League.new
       end
 
+      def show
+        @lg = League.find(params[:id])
+        @schools = School.where("league_id = #{params[:id]}")
+        @school_ids = @schools.map { |school| school.id }
+      end
+
       def create
         @user = current_user
         @league = League.new(league_params)
