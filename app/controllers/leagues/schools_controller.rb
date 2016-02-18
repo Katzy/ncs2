@@ -60,7 +60,7 @@ module Leagues
     private
 
     def school_params
-      params.require(:school).permit(:name, :auth_users, :abbreviation, :head_coach, :address, :league_id, :)
+      params.require(:school).permit(:name, :auth_users, :abbreviation, :head_coach, :address, :league_id)
     end
   end
 end
