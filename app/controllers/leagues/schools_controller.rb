@@ -37,18 +37,18 @@ module Leagues
     def update
       @school = School.find(params[:id])
       @league = League.find(@school.league_id)
-    if @school.update(school_params)
-      if current_user.admin?
-        redirect_to league_path(@league)
+      if @school.update(school_params)
+        if current_user.admin?
+          redirect_to league_path(@league)
+        else
+          redirect_to root_path
+        end
       else
-        redirect_to root_path
+        render :edit
       end
-    else
-      render :edit
     end
-  end
 
-    end
+
 
     def destroy
       @user = current_user
