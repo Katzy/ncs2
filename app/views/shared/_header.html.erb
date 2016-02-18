@@ -59,13 +59,7 @@
 
   <div class="ui inverted league wide sidebar vertical menu">
      <a class="item">LEAGUES</a>
-    <% if user_signed_in? && (@user.league_rep == true) %>
 
-      <div class="bold">
-      <a class="main item"><%= link_to "ENTER MY LEAGUE", league_path(@league) %></a>
-      </div>
-      <div class="divider"></div>
-    <% end %>
 
 
 
@@ -213,6 +207,11 @@
       <%= link_to "Home", root_path %>
     </div>
 
+      <% if user_signed_in? && (@user.league_rep == true) %>
+      <div class="ui toggle3 item"><i class="sidebar icon"></i>LEAGUE ENTRY MENU
+
+      </div>
+      <% else %>
     <div class="ui toggle item"><i class="sidebar icon"></i>BRACKETS
 
     </div>
@@ -244,7 +243,7 @@
       </div>
       <% end %>
       </div>
-
+      <% end %>
 
   </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="segment">
+<div class="ui segment">
   <table class="ui celled center aligned structured stackable table">
     <thead>
       <tr>
@@ -45,21 +45,24 @@
             <td><%= wrestler.section_place %></td>
             <td><%= wrestler.state_place %></td>
 
-            <td><%= wrestler.t1_name %>-<%= wrestler.t1_place %><br>
-            <%= wrestler.t2_name %>-<%=  wrestler.t2_place %><br>
-            <%= wrestler.t3_name %>-<%= wrestler.t3_place %><br>
-            <%= wrestler.t4_name %>-<%= wrestler.t4_place %><br>
-            <%= wrestler.t5_name %>-<%=  wrestler.t5_place %></td>
-            <td><%= wrestler.h2h_1 %>-<%= wrestler.h2h_r1 %><br>
-            <%= wrestler.h2h_2 %>-<%= wrestler.h2h_r2 %><br>
-            <%= wrestler.h2h_3 %>-<%= wrestler.h2h_r3%><br>
-            <%= wrestler.h2h_4 %>-<%= wrestler.h2h_r4 %><br>
-            <%= wrestler.h2h_5 %>-<%= wrestler.h2h_r5 %></td>
+            <td><%= wrestler.t1_name %>&emsp;<%= wrestler.t1_place %><br>
+            <%= wrestler.t2_name %>&emsp;<%=  wrestler.t2_place %><br>
+            <%= wrestler.t3_name %>&emsp;<%= wrestler.t3_place %><br>
+            <%= wrestler.t4_name %>&emsp;<%= wrestler.t4_place %><br>
+            <%= wrestler.t5_name %>&emsp;<%=  wrestler.t5_place %></td>
+            <td><%= wrestler.h2h_1 %>&emsp;<%= wrestler.h2h_r1 %><br>
+            <%= wrestler.h2h_2 %>&emsp;<%= wrestler.h2h_r2 %><br>
+            <%= wrestler.h2h_3 %>&emsp;<%= wrestler.h2h_r3 %><br>
+            <%= wrestler.h2h_4 %>&emsp;<%= wrestler.h2h_r4 %><br>
+            <%= wrestler.h2h_5 %>&emsp;<%= wrestler.h2h_r5 %></td>
 
             <% if user_signed_in? && (current_user.admin? || current_user.school_id == wrestler.school_id) %>
               <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
 
             <% end %>
+            <% if (current_user.admin? || current_user.league_id == @lg.id) %>
+          <td><%= link_to 'Delete', wrestler, method: "delete", :data => {:confirm => 'Are you sure?'} %> </td>
+          <% end %>
           </tr>
       <% end %>
     </tbody>

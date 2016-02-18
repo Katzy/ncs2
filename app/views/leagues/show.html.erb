@@ -23,16 +23,16 @@
       <th rowspan="2">SEC Pl</th>
       <th rowspan="2">ST Pl</th>
 
-      <th colspan="1">Tournament Places</th>
-      <th colspan="1">H2H</th>
+      <th colspan="1">TOURNAMENT PLACES</th>
+      <th colspan="1">HEAD 2 HEAD</th>
 
 
 
       <% if user_signed_in? && (current_user.admin? || @school_ids.include?(current_user.school_id)) %>
-      <th rowspan="2">Edit</th>
+      <th rowspan="2">EDIT</th>
       <% end %>
       <% if user_signed_in? && (current_user.admin? || current_user.id == @user.id) %>
-      <th rowspan="2">Delete</th>
+      <th rowspan="2">DELETE</th>
       <% end %>
     </tr>
 

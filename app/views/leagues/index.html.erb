@@ -25,12 +25,12 @@
     <div class="column"></div>
   </div>
 </div>
-
+<div class="ui center aligned segment">
 <table class="ui celled structured scrollable table">
   <thead>
     <tr>
       <th rowspan="2">League Name</th>
-      <th rowspan="2">Section</th>
+      <th rowspan="2"># of Teams</th>
       <th rowspan="2">League Rep</th>
       <th rowspan="2">Wrestlers</th>
       <% if user_signed_in? && current_user.admin? %>
@@ -49,3 +49,4 @@
     <% end %>
   </tbody>
 </table>
+</div>

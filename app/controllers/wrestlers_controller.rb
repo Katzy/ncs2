@@ -1,5 +1,5 @@
 class WrestlersController < ApplicationController
-  before_action :new, :load_league
+
   def index
 
     @wrestlers = Wrestler.order('weight ASC, seed ASC, wins DESC')
@@ -51,8 +51,8 @@ class WrestlersController < ApplicationController
   def edit
     @wrestler = Wrestler.find(params[:id])
     uid = @wrestler.school_id
-    @user = User.find(@wrestler.school_id)
-
+    @school = School.find(@wrestler.school_id)
+    @league = League.find(@school.league_id)
   end
 
   def weight_106
@@ -121,7 +121,8 @@ class WrestlersController < ApplicationController
     weight = @wrestler.weight
     user = current_user
     wrestler = @wrestler
-    path = "wrestlers_weight_" + "#{weight}_path"
+    @school = School.find(@wrestler.school_id)
+    @league = @school.league_id
     wrestler_array = [user, wrestler]
     if @wrestler.update(wrestler_params)
       #  UserMailer.wrestler_updated(wrestler_array).deliver
@@ -156,7 +157,7 @@ class WrestlersController < ApplicationController
           redirect_to wrestlers_weight_285_path
         end
       else
-        redirect_to user_wrestlers_path(user)
+        redirect_to league_path(@league)
       end
     else
       render :edit
@@ -184,16 +185,7 @@ class WrestlersController < ApplicationController
 
   private
 
-  def load_league
-    #get product_type from session if it is blank
-    params[:id] ||= session[:id]
-    #save product_type to session for future requests
-    session[:id] = params[:id]
-    if params[:id]
-      @league = League.find(params[:id])
 
-    end
-  end
 
   def select_wrestlers(wt)
       @wrestlers = Wrestler.where("weight = #{wt}").order('seed ASC, wins DESC')
@@ -209,7 +201,7 @@ class WrestlersController < ApplicationController
   end
 
   def wrestler_params
-    params.require(:wrestler).permit(:first_name, :abbreviation, :school, :league, :last_name, :weight, :grade, :wins, :losses, :tourney_wins, :league_place, :section_place, :state_place, :seed, :comments, :school_id, :t1_name, :t1_place, :t2_name, :t2_place, :t3_name, :t3_place, :t4_name, :t4_place, :t5_name, :t5_place, :h2h_1, :h2h_1r, :h2h_2, :h2h_2r, :h2h_3, :h2h_3r, :h2h_4, :h2h_4r, :h2h_5, :h2h_5r)
+    params.require(:wrestler).permit(:first_name, :abbreviation, :school, :league, :last_name, :weight, :grade, :wins, :losses, :tourney_wins, :league_place, :section_place, :state_place, :seed, :comments, :school_id, :t1_name, :t1_place, :t2_name, :t2_place, :t3_name, :t3_place, :t4_name, :t4_place, :t5_name, :t5_place, :h2h_1, :h2h_r1, :h2h_2, :h2h_r2, :h2h_3, :h2h_r3, :h2h_4, :h2hr4r, :h2h_5, :h2h_r5)
   end
 
 end
