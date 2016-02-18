@@ -49,13 +49,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # def edit_tourneys
-  #   @user = User.find(params[:id])
-  #   @user_tournaments = @user.tournaments.all
-  #   @all_tournaments = Tournament.all - @user_tournaments   #  ensures user can't
-  #   @user_tournament = @user.usertournaments.build          #  select same tourney
-  # end
-
   def update
     @users = User.order('name ASC')
     @user = User.find_by_id(params[:id])

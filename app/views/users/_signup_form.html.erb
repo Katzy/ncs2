@@ -35,8 +35,8 @@
 
       <div class="fields">
         <div class="four wide field">
-          <%= f.label :league %><br>
-          <%= f.collection_select :league, lgs, :to_s, :to_s, :include_blank => true %>
+          <%= f.label :league_id %><br>
+          <%= f.collection_select :league_id, League.order(:name), :id, :name, :include_blank => true %>
         </div>
 
         <div class="eight wide field">
