@@ -36,7 +36,7 @@
       <div class="fields">
         <div class="four wide field">
           <%= f.label :league %><br>
-          <%= f.collection_select :league, ['BAC', 'BVAL', 'CMC', 'DFAL', 'DVAL', 'EBAL', 'HDNL', 'MCAL', 'MVAL', 'NBL', 'SCL', 'WACC'], :to_s, :to_s, :include_blank => true %>
+          <%= f.collection_select :league, lgs, :to_s, :to_s, :include_blank => true %>
         </div>
 
         <div class="eight wide field">

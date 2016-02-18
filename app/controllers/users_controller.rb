@@ -36,6 +36,11 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @lgs = []
+    @l = League.all
+    @l.each do |league|
+      @lgs << league.name
+    end
     # @teams = Team.all
   end
 
@@ -168,7 +173,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :name, :password, :password_confirmation, :school, :abbreviation, :cell, :league, :admin, :league_rep )
+    params.require(:user).permit(:email, :name, :password, :password_confirmation, :abbreviation, :cell, :league_id, :school_id, :admin, :league_rep )
   end
 
 

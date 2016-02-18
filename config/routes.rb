@@ -4,7 +4,27 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {registrations: 'registrations'}
 
-  resources :users, except: :create do
+  resources :users, except: :create
+
+  resources :leagues do
+    resources :schools, controller: "leagues/schools"
+      member do
+        delete :delete_school
+      end
+  end
+
+  resources :schools do
+    resources :wrestlers, controller: "schools/wrestlers"
+  end
+
+
+  # resources :alerts
+
+
+  resources :wrestlers, only: [:index, :edit, :show, :update, :destroy] do
+    collection do
+      delete 'destroy_all'
+    end
   end
 
   root 'welcome#index'

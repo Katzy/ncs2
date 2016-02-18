@@ -60,15 +60,17 @@
   <div class="ui inverted league wide sidebar vertical menu">
     <% if user_signed_in? && (@user.league_rep == true) %>
     <a class="item">LEAGUE ENTRY</a>
-      <a class="item"><%= link_to "ENTER MY LEAGUE" %></a>
+      <div class="bold">
+      <a class="main item"><%= link_to "ENTER MY LEAGUE" %></a>
+      </div>
     <% end %>
-    <a class="item"><%= link_to "VIEW ALL LEAGUES" %></a>
+
 
         <div class="divider"></div>
 
-        <% @users.each do |user| %>
+        <% @leagues.each do |league| %>
 
-            <a class="item"><%= link_to "#{user.league}" %></a>
+            <a class="item"><%= link_to "#{league.name}" %></a>
           <% end %>
       <% if user_signed_in? && (@user.league_rep == true) %>
       <div class="league"><br><br>
@@ -104,9 +106,9 @@
     <div class="ui grid">
       <div class="mobile only tablet only row">
         <div class="item">VIEW BY LEAGUE</div>
-        <% @users.each do |user| %>
+        <% @leagues.each do |league| %>
 
-            <a class="item"><%= link_to "#{user.league}" %></a>
+            <a class="item"><%= link_to "#{league.name}" %></a>
           <% end %>
       </div>
 
