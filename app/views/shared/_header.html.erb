@@ -58,15 +58,17 @@
   </div>
 
   <div class="ui inverted league wide sidebar vertical menu">
+     <a class="item">LEAGUES</a>
     <% if user_signed_in? && (@user.league_rep == true) %>
-    <a class="item">LEAGUE ENTRY</a>
+
       <div class="bold">
       <a class="main item"><%= link_to "ENTER MY LEAGUE" %></a>
       </div>
+      <div class="divider"></div>
     <% end %>
 
 
-        <div class="divider"></div>
+
 
         <% @leagues.each do |league| %>
 

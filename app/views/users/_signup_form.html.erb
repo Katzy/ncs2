@@ -40,8 +40,8 @@
         </div>
 
         <div class="eight wide field">
-          <%= f.label :school %><br>
-          <%= f.text_field :school %>
+          <%= f.label :school_id %><br>
+          <%= f.collection_select :school_id, School.order(:name), :id, :name, :include_blank => true %>
         </div>
       </div>
 
