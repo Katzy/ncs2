@@ -2,6 +2,11 @@ class LeaguesController < ApplicationController
 
       def index
         @leagues = League.all
+        @u_hash = {}
+        @users = User.where('league_id IS NOT NULL')
+        @users.each do |user|
+          @u_hash[user.league_id.to_s] = user.name
+        end
       end
 
       def new
@@ -10,6 +15,7 @@ class LeaguesController < ApplicationController
       end
 
       def show
+        @count = 0
         @lg = League.find(params[:id])
         @schools = School.where("league_id = #{params[:id]}")
         @school_ids = @schools.map { |school| school.id }

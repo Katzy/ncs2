@@ -31,7 +31,7 @@
     <tr>
       <th rowspan="2">League Name</th>
       <th rowspan="2">Section</th>
-      <th rowspan="2">Coach</th>
+      <th rowspan="2">League Rep</th>
       <th rowspan="2">Wrestlers</th>
       <% if user_signed_in? && current_user.admin? %>
         <th rowspan="2">Cell</th>
@@ -42,10 +42,10 @@
     </tr>
   </thead>
   <tbody>
-    <% @leagues.each do |league| %>
-      <% unless league.name == "" || league.name == nil %>
-        <%= render partial: 'leagues/table_row', locals: { league: league } %>
-      <% end %>
+    <% @leagues.each do |lg| %>
+
+        <%= render partial: 'leagues/table_row', locals: { lg: lg, u_hash: @u_hash } %>
+
     <% end %>
   </tbody>
 </table>
