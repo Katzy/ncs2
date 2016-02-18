@@ -3,14 +3,14 @@
   <div class="sixteen wide column">
     <b><%= @lg.name %></b>
   </div>
-   <div class="segment">
+   <div class="ui center aligned segment">
     <% if user_signed_in? && (current_user.admin? || ((@user.league_id == @lg.id) && @user.league_rep == true)) %>
-        <i class="add user icon"></i><%= link_to 'ADD WRESTLER' %>
+        <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_wrestler_path %>
         <% end %>
 <table class="ui celled center aligned structured stackable table">
   <thead>
     <tr>
-
+      <th rowspan="2">SEED</th>
       <th rowspan="2">WT</th>
       <th rowspan="2">SCHOOL</th>
       <th rowspan="2">FIRST</th>
@@ -18,16 +18,16 @@
       <th rowspan="2">YR</th>
       <th rowspan="2">W</th>
       <th rowspan="2">L</th>
-      <th rowspan="2">SEED</th>
+
 
       <th rowspan="2">SEC Pl</th>
       <th rowspan="2">ST Pl</th>
 
-      <th colspan="5">Tournament Places</th>
-      <th colspan="5">H2H</th>
+      <th colspan="1">Tournament Places</th>
+      <th colspan="1">H2H</th>
 
 
-      <th rowspan="2">Comments</th>
+
       <% if user_signed_in? && (current_user.admin? || @school_ids.include?(current_user.school_id)) %>
       <th rowspan="2">Edit</th>
       <% end %>
@@ -38,8 +38,9 @@
 
   </thead>
   <tbody>
-
-
+    <% @wrestlers.each do |wrestler| %>
+       <%= render partial: 'wrestlers/table_row', locals: { wrestler: wrestler } %>
+      <% end %>
 
   </tbody>
 </table>
@@ -78,7 +79,7 @@
 <div class="ui center aligned grid">
   <div class="center aligned three column row">
     <div class="column">
-      <u>ABOUT</u>
+
     </div>
     <div class="column">
     <u>SCHOOLS</u><br>
@@ -89,7 +90,7 @@
 
     </div>
     <div class="column">
-      <u>IMAGES</u>
+
     </div>
   </div>
 </div>

@@ -1,0 +1,67 @@
+<div class="segment">
+  <table class="ui celled center aligned structured stackable table">
+    <thead>
+      <tr>
+
+        <th rowspan="1">SEED</th>
+        <th rowspan="1">SCHOOL</th>
+        <th rowspan="1">NAME </th>
+
+
+        <th rowspan="1">W/L</th>
+
+        <th rowspan="1">LEAGUE PL</th>
+        <th rowspan="1">SEC Pl</th>
+        <th rowspan="1">ST Pl</th>
+
+        <th colspan="1">Tournament Places</th>
+        <th colspan="1">H2H</th>
+
+
+
+        <% if user_signed_in? && (current_user.admin?) %>
+        <th rowspan="1">Edit</th>
+        <th rowspan="1">Delete</th>
+        <% end %>
+      </tr>
+      <tr>
+
+    </thead>
+    <tbody>
+      <% @wrestlers.each do |wrestler, user| %>
+      <% @tourneys = [] %>
+        <% team_id = wrestler.school_id %>
+        <% team = User.find(team_id) %>
+
+          <tr>
+             <td><%= wrestler.seed %></td>
+            <td><%= wrestler.school.name %></td>
+            <td><%= wrestler.first_name + " " + wrestler.last_name %></td>
+
+            <td><%= wrestler.wins %>-<%= wrestler.losses %></td>
+
+
+            <td><%= wrestler.league_place %></td>
+            <td><%= wrestler.section_place %></td>
+            <td><%= wrestler.state_place %></td>
+
+            <td><%= wrestler.t1_name %>-<%= wrestler.t1_place %><br>
+            <%= wrestler.t2_name %>-<%=  wrestler.t2_place %><br>
+            <%= wrestler.t3_name %>-<%= wrestler.t3_place %><br>
+            <%= wrestler.t4_name %>-<%= wrestler.t4_place %><br>
+            <%= wrestler.t5_name %>-<%=  wrestler.t5_place %></td>
+            <td><%= wrestler.h2h_1 %>-<%= wrestler.h2h_r1 %><br>
+            <%= wrestler.h2h_2 %>-<%= wrestler.h2h_r2 %><br>
+            <%= wrestler.h2h_3 %>-<%= wrestler.h2h_r3%><br>
+            <%= wrestler.h2h_4 %>-<%= wrestler.h2h_r4 %><br>
+            <%= wrestler.h2h_5 %>-<%= wrestler.h2h_r5 %></td>
+
+            <% if user_signed_in? && (current_user.admin? || current_user.school_id == wrestler.school_id) %>
+              <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
+
+            <% end %>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

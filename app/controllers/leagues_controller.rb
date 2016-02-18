@@ -19,6 +19,8 @@ class LeaguesController < ApplicationController
         @lg = League.find(params[:id])
         @schools = School.where("league_id = #{params[:id]}")
         @school_ids = @schools.map { |school| school.id }
+        @wrestlers = Wrestler.where("league = '#{@lg.name}'")
+        load_league
       end
 
       def create
@@ -56,6 +58,17 @@ class LeaguesController < ApplicationController
       end
 
       private
+
+      def load_league
+    #get product_type from session if it is blank
+    params[:id] ||= session[:id]
+    #save product_type to session for future requests
+    session[:id] = params[:id]
+    if params[:id]
+      @league = League.find(params[:id])
+
+    end
+  end
 
       def league_params
         params.require(:league).permit(:name)
