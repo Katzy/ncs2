@@ -58,7 +58,8 @@
   </div>
 
   <div class="ui inverted league wide sidebar vertical menu">
-    <% if user_signed_in? && (@user.school != nil && @user.school != "") %>
+    <% if user_signed_in? && (@user.league_rep == true) %>
+    <a class="item">LEAGUE ENTRY</a>
       <a class="item"><%= link_to "ENTER MY LEAGUE" %></a>
     <% end %>
     <a class="item"><%= link_to "VIEW ALL LEAGUES" %></a>
@@ -69,14 +70,40 @@
 
             <a class="item"><%= link_to "#{user.league}" %></a>
           <% end %>
+      <% if user_signed_in? && (@user.league_rep == true) %>
+      <div class="league"><br><br>
+      <a class="item">TOURNEY INFO</a>
+    <a class="item"><%= link_to "About" %></a>
+    <a class="item"><%= link_to "Alerts" %></a>
+    <a class="item"><%= link_to "Schedule" %></a>
+    <a class="item"><%= link_to "Help" %></a>
+    </div><br><br>
 
-
+    <div class="league">
+    <a class="item">BRACKETS</a>
+    <a class="item"><%= link_to "Team Scores", "https://dl.dropboxusercontent.com/u/61981544/team.pdf" %></a>
+        <a class="item"><%= link_to "106", "https://dl.dropboxusercontent.com/u/61981544/106.pdf" %></a>
+        <a class="item"><%= link_to "113", "https://dl.dropboxusercontent.com/u/61981544/113.pdf" %></a>
+        <a class="item"><%= link_to "120", "https://dl.dropboxusercontent.com/u/61981544/120.pdf" %></a>
+        <a class="item"><%= link_to "126", "https://dl.dropboxusercontent.com/u/61981544/126.pdf" %></a>
+        <a class="item"><%= link_to "132", "https://dl.dropboxusercontent.com/u/61981544/132.pdf" %></a>
+        <a class="item"><%= link_to "138", "https://dl.dropboxusercontent.com/u/61981544/138.pdf" %></a>
+        <a class="item"><%= link_to "145", "https://dl.dropboxusercontent.com/u/61981544/145.pdf" %></a>
+        <a class="item"><%= link_to "152", "https://dl.dropboxusercontent.com/u/61981544/152.pdf" %></a>
+        <a class="item"><%= link_to "160", "https://dl.dropboxusercontent.com/u/61981544/160.pdf" %></a>
+        <a class="item"><%= link_to "170", "https://dl.dropboxusercontent.com/u/61981544/170.pdf" %></a>
+        <a class="item"><%= link_to "182", "https://dl.dropboxusercontent.com/u/61981544/182.pdf" %></a>
+        <a class="item"><%= link_to "195", "https://dl.dropboxusercontent.com/u/61981544/195.pdf" %></a>
+        <a class="item"><%= link_to "220", "https://dl.dropboxusercontent.com/u/61981544/220.pdf" %></a>
+        <a class="item"><%= link_to "285", "https://dl.dropboxusercontent.com/u/61981544/285.pdf" %></a>
+        </div>
+    <% end %>
   </div>
 
   <div class="ui inverted wrestler wide sidebar vertical menu">
     <div class="ui grid">
       <div class="mobile only tablet only row">
-        <div class="iten">VIEW BY LEAGUE</div>
+        <div class="item">VIEW BY LEAGUE</div>
         <% @users.each do |user| %>
 
             <a class="item"><%= link_to "#{user.league}" %></a>
@@ -124,22 +151,30 @@
       <div class="item">
         <%= link_to "Home", root_path %>
       </div>
-      <div class="ui toggle item"><i class="sidebar icon"></i>BRACKETS
+
+
+      <% if user_signed_in? && (@user.league_rep == true) %>
+       <div class="ui toggle3 item"><i class="sidebar icon"></i>LEAGUE ENTRY MENU
+
+      </div>
+      <% else %>
+       <div class="ui toggle item"><i class="sidebar icon"></i>BRACKETS
 
       </div>
 
-      <div class="ui toggle2 item"></i>TOURNEY INFO
+      <div class="ui toggle2 item"><i class="sidebar icon"></i>TOURNEY INFO
+
+      </div>
+      <div class="ui toggle3 item"><i class="sidebar icon"></i>LEAGUES
 
       </div>
 
 
-      <div class="ui toggle3 item"></i>LEAGUES
+      <% end %>
+      <div class="ui toggle4 item"><i class="sidebar icon"></i>WRESTLERS
 
       </div>
 
-      <div class="ui toggle4 item"></i>WRESTLERS
-
-      </div>
 
       <div class="right menu">
 
@@ -147,7 +182,7 @@
       <% if user_signed_in? %>
 
         <% if current_user.admin? %>
-          <div class="ui toggle5 item">ADMIN
+          <div class="ui toggle5 item"><i class="sidebar icon"></i>ADMIN
           </div>
 
         <% end %>
@@ -178,14 +213,14 @@
 
     </div>
 
-    <div class="ui toggle2 item"></i>TOURNEY INFO
+    <div class="ui toggle2 item"><i class="sidebar icon"></i>TOURNEY INFO
 
     </div>
 
 
 
 
-    <div class="ui toggle4 item"></i>WRESTLERS
+    <div class="ui toggle4 item"><i class="sidebar icon"></i>WRESTLERS
 
     </div>
 

@@ -1,6 +1,6 @@
 .ui.sidebar a {
   padding-left: 2em;
-  font-size: 25px;
+  font-size: 20px;
   display: inline-block;
   width: 100%;
 
@@ -10,9 +10,14 @@
 
   font-size: 25px;
 }
-.ui.brackets.sidebar .item {
 
+.ui.league.sidebar a {
 
+  font-size: 20px;
+}
+.ui.league.sidebar .league a {
+
+  font-size: 15px;
 
 }
 
@@ -31,4 +36,10 @@
 .ui.main.menu {
 
   font-size: 18px;
+}
+
+.images .image {
+
+  height: 350px;
+
 }
