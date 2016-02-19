@@ -95,7 +95,7 @@
 
           <div class="field">
           <%= f.label :t1_name %><br>
-          <%= collection_select(:t1_name, :id, @tournaments, :id, :name, {:include_blank => true}) %>
+          <%= f.collection_select :t1_name, @tournaments, :name, :name, {:include_blank => true} %>
           </div>
 
           <div class="field">
@@ -105,7 +105,7 @@
 
            <div class="field">
           <%= f.label :t2_name %><br>
-          <%= collection_select(:t2_name, :id, @tournaments, :id, :name, {:include_blank => true}) %>
+          <%= f.collection_select :t2_name, @tournaments, :name, :name, {:include_blank => true} %>
           </div>
 
           <div class="field">
@@ -116,7 +116,7 @@
 
            <div class="field">
           <%= f.label :t3_name %><br>
-          <%= collection_select(:t3_name, :id, @tournaments, :id, :name, {:include_blank => true}) %>
+          <%= f.collection_select :t3_name, @tournaments, :name, :name, {:include_blank => true} %>
           </div>
           <div class="field">
             <%= f.label :t3_place %><br>
@@ -126,7 +126,7 @@
           <div class="fields">
            <div class="field">
           <%= f.label :t4_name %><br>
-          <%= collection_select(:t4_name, :id, @tournaments, :id, :name, {:include_blank => true}) %>
+          <%= f.collection_select :t4_name, @tournaments, :name, :name, {:include_blank => true} %>
 
           </div>
              <div class="field">
@@ -136,7 +136,7 @@
           </div>
            <div class="field">
           <%= f.label :t5_name %><br>
-          <%= collection_select(:t5_name, :id, @tournaments, :id, :name, {:include_blank => true}) %>
+          <%= f.collection_select :t5_name, @tournaments, :name, :name, {:include_blank => true} %>
 
           </div>
              <div class="field">
