@@ -27,6 +27,12 @@ Rails.application.routes.draw do
 
   get 'wrestlers/weight_285' => 'wrestlers#weight_285'
 
+  get 'information/alerts' => 'information#alerts'
+
+  get 'information/schedule' => 'information#schedule'
+
+  get 'information/help' => 'information#help'
+
   post 'create_user' => 'users#create', as: :create_user
 
   devise_for :users, controllers: {registrations: 'registrations'}

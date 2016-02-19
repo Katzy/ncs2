@@ -4,13 +4,14 @@
       <tr>
 
         <th rowspan="1">SEED</th>
+         <th rowspan="1">LEAGUE PL</th>
         <th rowspan="1">SCHOOL</th>
         <th rowspan="1">NAME </th>
 
 
         <th rowspan="1">W/L</th>
 
-        <th rowspan="1">LEAGUE PL</th>
+
         <th rowspan="1">SEC Pl</th>
         <th rowspan="1">ST Pl</th>
 
@@ -31,14 +32,15 @@
       <% @wrestlers.each do |wrestler, user| %>
 
           <tr>
-             <td><%= wrestler.seed %></td>
+            <td><%= wrestler.seed %></td>
+            <td><%= wrestler.league_place %></td>
             <td><%= wrestler.school.name %></td>
             <td><%= wrestler.first_name + " " + wrestler.last_name %></td>
 
             <td><%= wrestler.wins %>-<%= wrestler.losses %></td>
 
 
-            <td><%= wrestler.league_place %></td>
+
             <td><%= wrestler.section_place %></td>
             <td><%= wrestler.state_place %></td>
 

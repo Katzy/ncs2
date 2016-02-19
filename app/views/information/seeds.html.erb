@@ -1,0 +1,9 @@
+
+<% if @wrestlers.count > 0 %>
+  <%= render 'wrestlers/shared/index', { :wrestlers => @wrestlers } %>
+<% else %>
+<br><br><br><br><br><br><br><br><br><br>
+  <div class="ncs-brackets">
+  NO WRESTLERS HAVE BEEN SEEDED YET
+  </div>
+<% end %>
