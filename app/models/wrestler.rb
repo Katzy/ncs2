@@ -6,8 +6,8 @@ class Wrestler < ActiveRecord::Base
   validates :last_name, presence: true, null: false
   validates :weight, presence: true, null: false
   validates :school_id, presence: true, null: false
-  # validates :losses, presence: true, null: false
-  # validates :grade, presence: true, null: false
+  validates :losses, presence: true, null: false
+  validates :wins, presence: true, null: false
   validates_uniqueness_of :weight, scope: :school_id
 
   def self.to_csv(options = {})
