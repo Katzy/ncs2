@@ -29,9 +29,6 @@
     </thead>
     <tbody>
       <% @wrestlers.each do |wrestler, user| %>
-      <% @tourneys = [] %>
-        <% team_id = wrestler.school_id %>
-        <% team = User.find(team_id) %>
 
           <tr>
              <td><%= wrestler.seed %></td>
@@ -60,7 +57,7 @@
               <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
 
             <% end %>
-            <% if (current_user.admin? || current_user.league_id == @lg.id) %>
+            <% if user_signed_in? && (current_user.admin? || current_user.league_id == @lg.id) %>
           <td><%= link_to 'Delete', wrestler, method: "delete", :data => {:confirm => 'Are you sure?'} %> </td>
           <% end %>
           </tr>

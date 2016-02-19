@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
 
   # resources :alerts
-
+  resources :tournaments
 
   resources :wrestlers do
     collection do

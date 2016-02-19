@@ -1,5 +1,5 @@
 class WrestlersController < ApplicationController
-
+  before_action :new, :load_league
   def index
 
     @wrestlers = Wrestler.order('weight ASC, seed ASC, wins DESC')
@@ -19,14 +19,14 @@ class WrestlersController < ApplicationController
   def new
 
     @wrestler = Wrestler.new
-
+    @tournaments = Tournament.order('name ASC')
   end
+
+
 
   def create
     @wrestler = Wrestler.new(wrestler_params)
-    @school = School.find_by_id(@wrestler.school_id)
 
-    @league = League.find(@school.league_id)
 
     @wrestler.league = @league.name
     user = current_user
@@ -36,6 +36,9 @@ class WrestlersController < ApplicationController
       if @wrestler.save
       # UserMailer.wrestler_added(wrestler_array).deliver
         format.html { redirect_to league_path(@league), notice: 'wrestler was successfully created.' }
+         format.json { render json: @wrestler.errors, status: :unprocessable_entity }
+        # added:
+        format.js   { render json: @wrestler.errors, status: :unprocessable_entity }
       else
 
         format.html { render action: 'new' }
@@ -185,6 +188,16 @@ class WrestlersController < ApplicationController
 
   private
 
+   def load_league
+      #get product_type from session if it is blank
+      params[:id] ||= session[:id]
+      #save product_type to session for future requests
+      session[:id] = params[:id]
+      if params[:id]
+        @league = League.find(params[:id])
+
+      end
+    end
 
 
   def select_wrestlers(wt)

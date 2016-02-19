@@ -90,13 +90,12 @@
         </div>
 
       </div>
-      <h4 class="ui center aligned dividing header">TOURNAMENT PLACES</h4>
+      <h3 class="ui center aligned dividing header">TOURNAMENT PLACES</h3>
       <div class="fields">
 
           <div class="field">
           <%= f.label :t1_name %><br>
-          <%= f.collection_select :t1_name, ['TOURNAMENT ONE', 'TOURNAMENT TWO', 'TOURNAMENT THREE', 'TOURNAMENT FOUR', 'TOURNAMENT FIVE'],  :to_s, :to_s, :include_blank => true %>
-
+          <%= collection_select(:t1_name, :id, @tournaments, :id, :name, {:include_blank => true}) %>
           </div>
 
           <div class="field">
@@ -106,8 +105,7 @@
 
            <div class="field">
           <%= f.label :t2_name %><br>
-          <%= f.collection_select :t2_name, ['TOURNAMENT ONE', 'TOURNAMENT TWO', 'TOURNAMENT THREE', 'TOURNAMENT FOUR', 'TOURNAMENT FIVE'],  :to_s, :to_s, :include_blank => true %>
-
+          <%= collection_select(:t2_name, :id, @tournaments, :id, :name, {:include_blank => true}) %>
           </div>
 
           <div class="field">
@@ -118,8 +116,7 @@
 
            <div class="field">
           <%= f.label :t3_name %><br>
-          <%= f.collection_select :t3_name, ['TOURNAMENT ONE', 'TOURNAMENT TWO', 'TOURNAMENT THREE', 'TOURNAMENT FOUR', 'TOURNAMENT FIVE'],  :to_s, :to_s, :include_blank => true %>
-
+          <%= collection_select(:t3_name, :id, @tournaments, :id, :name, {:include_blank => true}) %>
           </div>
           <div class="field">
             <%= f.label :t3_place %><br>
@@ -129,7 +126,7 @@
           <div class="fields">
            <div class="field">
           <%= f.label :t4_name %><br>
-          <%= f.collection_select :t4_name, ['TOURNAMENT ONE', 'TOURNAMENT TWO', 'TOURNAMENT THREE', 'TOURNAMENT FOUR', 'TOURNAMENT FIVE'],  :to_s, :to_s, :include_blank => true %>
+          <%= collection_select(:t4_name, :id, @tournaments, :id, :name, {:include_blank => true}) %>
 
           </div>
              <div class="field">
@@ -139,7 +136,7 @@
           </div>
            <div class="field">
           <%= f.label :t5_name %><br>
-          <%= f.collection_select :t5_name, ['TOURNAMENT ONE', 'TOURNAMENT TWO', 'TOURNAMENT THREE', 'TOURNAMENT FOUR', 'TOURNAMENT FIVE'],  :to_s, :to_s, :include_blank => true %>
+          <%= collection_select(:t5_name, :id, @tournaments, :id, :name, {:include_blank => true}) %>
 
           </div>
              <div class="field">
@@ -149,8 +146,9 @@
           </div>
 
       </div>
-      <h4 class="ui center aligned dividing header">HEAD TO HEAD RESULTS</h4>
-      <h5 class="ui center aligned header">SEEDING INFORMATION</h5>
+      <h3 class="ui center aligned dividing header">HEAD TO HEAD RESULTS</h3>
+      <h5 class="ui center aligned header">SEEDING INFORMATION: &emsp;&emsp;EXAMPLE:  Bob Williams  W 9-2</h5>
+      <h4 class="ui center aligned header"></h4>
       <div class="fields">
          <div class="field">
           <%= f.label :h2h_1, "OPPONENT 1" %><br>
