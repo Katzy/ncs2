@@ -44,7 +44,7 @@
   <tbody>
     <% @leagues.each do |lg| %>
 
-        <%= render partial: 'leagues/table_row', locals: { lg: lg, u_hash: @u_hash } %>
+        <%= render partial: 'leagues/table_row', locals: { lg: lg, u_hash: @u_hash, wrestlers: @wrestlers } %>
 
     <% end %>
   </tbody>

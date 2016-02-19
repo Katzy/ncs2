@@ -3,10 +3,13 @@ class LeaguesController < ApplicationController
       def index
         @leagues = League.all
         @u_hash = {}
+        @wrestler_count_hash = {}
+
         @users = User.where('league_id IS NOT NULL')
         @users.each do |user|
           @u_hash[user.league_id.to_s] = user.name
         end
+        @wrestlers = Wrestler.all
       end
 
       def new
@@ -58,6 +61,7 @@ class LeaguesController < ApplicationController
       end
 
       private
+
 
       def load_league
     #get product_type from session if it is blank

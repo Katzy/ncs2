@@ -62,7 +62,7 @@
               <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
 
             <% end %>
-            <% if user_signed_in? && (current_user.admin? || current_user.league_id == @lg.id) %>
+            <% if user_signed_in? && (current_user.admin? || (current_user.league && current_user.league.name == wrestler.league)) %>
           <td><%= link_to 'Delete', wrestler, method: "delete", :data => {:confirm => 'Are you sure?'} %> </td>
           <% end %>
           </tr>
