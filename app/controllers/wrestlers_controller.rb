@@ -2,7 +2,7 @@ class WrestlersController < ApplicationController
   before_action :load_league, only: [:new, :create]
   def index
 
-    @wrestlers = Wrestler.order('weight ASC, wins ASC')
+    @wrestlers = Wrestler.order('weight ASC, seed ASC, wins DESC')
     wrestlers = Wrestler.order('weight ASC, seed ASC, wins DESC')  # for csv format
 
     @user = current_user
@@ -205,8 +205,8 @@ class WrestlersController < ApplicationController
 
 
   def select_wrestlers(wt)
-      @wrestlers = Wrestler.where("weight = #{wt}").order('weight ASC, wins DESC')
-      wrestlers = Wrestler.where("weight = #{wt}").order('seed ASC, wins DESC')  # for csv format
+      @wrestlers = Wrestler.where("weight = #{wt}").order('weight ASC, seed ASC, wins DESC')
+      wrestlers = Wrestler.where("weight = #{wt}").order('weight ASC, seed ASC, wins DESC')  # for csv format
 
       @count2 = @wrestlers.count
 
