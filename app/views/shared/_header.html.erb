@@ -2,24 +2,9 @@
 
 
   <div class="ui inverted brackets sidebar vertical menu">
-  <a class="item"><%= link_to "Team Scores" %></a>
-        <a class="item"><%= link_to "106" %></a>
-        <a class="item"><%= link_to "113" %></a>
-        <a class="item"><%= link_to "120" %></a>
-        <a class="item"><%= link_to "126" %></a>
-        <a class="item"><%= link_to "132" %></a>
-        <a class="item"><%= link_to "138" %></a>
-        <a class="item"><%= link_to "145" %></a>
-        <a class="item"><%= link_to "152" %></a>
-        <a class="item"><%= link_to "160" %></a>
-        <a class="item"><%= link_to "170" %></a>
-        <a class="item"><%= link_to "182" %></a>
-        <a class="item"><%= link_to "195" %></a>
-        <a class="item"><%= link_to "220" %></a>
-        <a class="item"><%= link_to "285" %></a>
-
-
+   <%= render partial: 'shared/result_links' %>
   </div>
+
   <div class="ui inverted info wide sidebar vertical menu">
     <a class="item">TOURNEY INFO</a>
     <a class="item"><%= link_to "Schedule", information_schedule_path %></a>
@@ -48,10 +33,6 @@
   <div class="ui inverted league wide sidebar vertical menu">
      <a class="item">LEAGUES</a>
 
-
-
-
-
         <% @leagues.each do |l| %>
 
             <a class="item"><%= link_to "#{l.name}", league_path(l) %></a>
@@ -66,22 +47,8 @@
     </div><br><br>
 
     <div class="league">
-    <a class="item">BRACKETS</a>
-    <a class="item"><%= link_to "Team Scores"%></a>
-        <a class="item"><%= link_to "106"%></a>
-        <a class="item"><%= link_to "113"%></a>
-        <a class="item"><%= link_to "120"%></a>
-        <a class="item"><%= link_to "126"%></a>
-        <a class="item"><%= link_to "132"%></a>
-        <a class="item"><%= link_to "138"%></a>
-        <a class="item"><%= link_to "145"%></a>
-        <a class="item"><%= link_to "152"%></a>
-        <a class="item"><%= link_to "160"%></a>
-        <a class="item"><%= link_to "170"%></a>
-        <a class="item"><%= link_to "182"%></a>
-        <a class="item"><%= link_to "195"%></a>
-        <a class="item"><%= link_to "220"%></a>
-        <a class="item"><%= link_to "285"%></a>
+
+    <%= render partial: 'shared/result_links' %>
         </div>
     <% end %>
   </div>
@@ -95,8 +62,6 @@
             <a class="item"><%= link_to "#{l.name}", league_path(l) %></a>
           <% end %>
       </div>
-
-
 
         <div class="weight item">BY WEIGHT</div>
         <a class="item"><%= link_to "106", wrestlers_weight_106_path %></a>
@@ -165,7 +130,6 @@
 
       <div class="right menu">
 
-
       <% if user_signed_in? %>
 
         <% if current_user.admin? %>
@@ -211,9 +175,6 @@
     <div class="ui toggle2 item"><i class="sidebar icon"></i>TOURNEY INFO
 
     </div>
-
-
-
 
     <div class="ui toggle4 item"><i class="sidebar icon"></i>WRESTLERS
 
