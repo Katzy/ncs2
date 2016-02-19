@@ -27,10 +27,10 @@
 
 
 
-      <% if user_signed_in? && (current_user.admin? || @school_ids.include?(current_user.school_id)) %>
+      <% if user_signed_in? && (current_user.admin? || current_user.league || current_user.school) %>
       <th rowspan="2">EDIT</th>
       <% end %>
-      <% if user_signed_in? && (current_user.admin? || current_user.id == @user.id) %>
+      <% if user_signed_in? && (current_user.admin? || current_user.league || current_user.school) %>
       <th rowspan="2">DELETE</th>
       <% end %>
     </tr>
