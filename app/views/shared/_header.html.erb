@@ -22,7 +22,8 @@
   </div>
   <div class="ui inverted info wide sidebar vertical menu">
     <a class="item">TOURNEY INFO</a>
-    <a class="item"><%= link_to "Schedule" %></a>
+    <a class="item"><%= link_to "Schedule", information_schedule_path %></a>
+    <a class="item"><%= link_to "Seeds", information_seeds_path %></a>
     <a class="item"><%= link_to "Alerts", information_alerts_path %></a>
     <a class="item"><%= link_to "Help", information_help_path %></a>
     <br><br><br><br>
@@ -70,10 +71,10 @@
       <% if user_signed_in? && (@user.league_rep == true) %>
       <div class="league"><br><br>
       <a class="item">TOURNEY INFO</a>
-    <a class="item"><%= link_to "About" %></a>
-    <a class="item"><%= link_to "Alerts" %></a>
-    <a class="item"><%= link_to "Schedule" %></a>
-    <a class="item"><%= link_to "Help" %></a>
+    <a class="item"><%= link_to "Schedule", information_schedule_path %></a>
+    <a class="item"><%= link_to "Seeds", information_seeds_path %></a>
+    <a class="item"><%= link_to "Alerts", information_alerts_path %></a>
+    <a class="item"><%= link_to "Help", information_help_path %></a>
     </div><br><br>
 
     <div class="league">

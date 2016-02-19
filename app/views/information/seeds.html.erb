@@ -1,9 +1,10 @@
 
-<% if @wrestlers.count > 0 %>
-  <%= render 'wrestlers/shared/index', { :wrestlers => @wrestlers } %>
-<% else %>
+
+  <%= render 'wrestlers/index_by_weight', { :wrestlers => @wrestlers } %>
+
 <br><br><br><br><br><br><br><br><br><br>
-  <div class="ncs-brackets">
-  NO WRESTLERS HAVE BEEN SEEDED YET
+  <div class="ui center aligned segment">
+  <h1>NO WRESTLERS HAVE BEEN SEEDED YET</h1>
+  check again soon!
   </div>
-<% end %>
+

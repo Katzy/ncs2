@@ -31,6 +31,8 @@ Rails.application.routes.draw do
 
   get 'information/schedule' => 'information#schedule'
 
+  get 'information/seeds' => 'information#seeds'
+
   get 'information/help' => 'information#help'
 
   post 'create_user' => 'users#create', as: :create_user
