@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-type' />
+  </head>
+  <body>
+    <h1> Welcome <%= (@user.name).split(" ").first %></h1>
+      <p>
+        The NCS seeding meeting in this Sunday and League tournaments are already underway.  To streamline the entry process, we have upgraded the online site to list your league entries.  League Reps will enter in all of the wrestler data.  Coaches for each school will also have logins and the ability to edit the information on their wrestler.
+      </p><br>
+
+      <p>
+        visit  <%= link_to "NCS Wrestling Championships Website", "http://www.ncswrestling.com"  %> (www.ncswrestling.com)
+      </p><br>
+
+      <p>
+          <ul>YOUR USERNAME:  <b><%= @user.email %></b> </ul>
+          <ul> YOUR PASSWORD:  <b><%= @user.password %></b></ul>
+      </p><br>
+
+      <p>
+        Fill in ALL information for each wrestler. <b>Please do NOT enter names in all caps!</b>
+        (ex. John Stone and not JOHN STONE).
+      </p><br>
+
+      <p>
+        <b>All wrestlers must show a TOTAL season record.  Records must include ALL wins and ALL losses, includig out-of-section losses.</b>
+      </p><br>
+
+      <p>
+        You may make changes to any entry until Monday night at 7:00PM.  After that time, all changes must be directed via email to:<br><br> <u>lhkatz@pacbell.net</u> AND <u>bniemi@cifncs.org</u>.
+      </p><br>
+
+      <p>
+        Thank you for your cooperation.  With your help we can get the brackets produced and published as quickly as possible.  Contact Larry Katz @ 510-656-8766 with questions about the tournament or Scott Katz @ 323-317-5900 with questions or issues with the website.
+      </p><br>
+
+      <p>
+        Sincerely,<br><br>
+        NCS
+      </p>
+
+  </body>
+</html>

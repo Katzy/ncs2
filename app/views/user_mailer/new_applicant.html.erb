@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-type' />
+  </head>
+  <body>
+    <h1> <%= @applicant.school %> (<%= @applicant.section %>) </h1>
+    <p>
+      This application just came in from <%= @applicant.coach %>:
+    </p>
+
+    <p><ul>
+      <li>School: <%= @applicant.school %></li>
+      <li>City: <%= @applicant.city %></li>
+      <li>State: <%= @applicant.state %></li>
+      <li>Head Coach: <%= @applicant.coach %></li>
+      <li>Email: <%= @applicant.email %></li>
+      <li>Phone #: <%= @applicant.best_phone %></li>
+      <li>Full Team: <%= @applicant.full_team_entry %></li>
+      <li>Individual Entries: <%= @applicant.individual_entry %></li>
+      <li># of Wrestlers: <%= @applicant.number_of_wrestlers %></li>
+      <li>Team Fee: $<%= @applicant.fee %></li>
+      </ul>
+    </p>
+  </body>
+</html>
