@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  # before_filter :authorize_admin, only: :create
+  before_filter :authorize_admin, :only => [:new, :create]
   before_filter :authenticate_user!, :only => [:edit, :update]
   #before_filter :skip_password_attribute, only: :update
 

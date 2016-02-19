@@ -45,6 +45,11 @@
 
 }
 
+.ui.grid .mobile.only.row .images .image {
+
+  height: 250px;
+}
+
 .ui.segment .grid {
   border-left: 25px;
   border-right: 25px;
