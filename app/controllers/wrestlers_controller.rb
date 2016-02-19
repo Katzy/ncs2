@@ -17,7 +17,7 @@ class WrestlersController < ApplicationController
   end
 
   def new
-    @league = League.find(params[:id])
+
     @wrestler = Wrestler.new
     @tournaments = Tournament.order('name ASC')
   end
