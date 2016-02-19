@@ -46,7 +46,7 @@
 
         <% @leagues.each do |l| %>
 
-            <a class="item" href="/leagues/<%= l.id %>"><%= l.name %></a>
+            <a class="item" href="/leagues/<%= l.id %>/wrestlers/"><%= l.name %></a>
           <% end %>
       <% if user_signed_in? && (@user.league_rep == true) %>
       <div class="league"><br><br>

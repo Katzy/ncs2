@@ -20,7 +20,7 @@ class LeaguesController < ApplicationController
         @schools = School.where("league_id = #{params[:id]}")
         @school_ids = @schools.map { |school| school.id }
         @wrestlers = Wrestler.where("league = '#{@lg.name}'").order('weight ASC, seed ASC, wins DESC')
-        load_league
+
       end
 
       def create

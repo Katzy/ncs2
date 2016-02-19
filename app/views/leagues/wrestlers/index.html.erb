@@ -5,7 +5,7 @@
   </div>
    <div class="ui center aligned segment">
     <% if user_signed_in? && (current_user.admin? || ((@user.league_id == @lg.id) && @user.league_rep == true)) %>
-        <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_wrestler_path %>
+        <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_league_wrestler_path %>
         <% end %>
 <table class="ui celled right aligned structured stackable table">
   <thead>
@@ -45,53 +45,3 @@
 </table>
 </div>
 </div>
-
-
-
-<div class="ui grid">
-  <div class="five column row">
-    <div class="center aligned column"></div>
-    <div class="column"></div>
-    <div class="center aligned column">
-
-
-
-
-        <p>
-
-<!--           Download:
-            <%= link_to "CSV", users_path(format: "csv") %> |
-            <%= link_to "Excel", users_path(format: "xls") %><br><br>
- -->
-
-
-
-        </p>
-
-    </div>
-
-    <div class="column"></div>
-    <div class="column"></div>
-  </div>
-</div>
-<div class="ui segment">
-<div class="ui center aligned grid">
-  <div class="center aligned three column row">
-    <div class="column">
-
-    </div>
-    <div class="column">
-    <u>SCHOOLS</u><br>
-        <% @schools.each do |school| %>
-            <div class="segment"><b><%= school.name %></b></div>
-          <% end %>
-
-
-    </div>
-    <div class="column">
-
-    </div>
-  </div>
-</div>
-</div>
-

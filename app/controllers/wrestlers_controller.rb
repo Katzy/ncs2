@@ -1,8 +1,8 @@
 class WrestlersController < ApplicationController
-  before_action :new, :load_league
+  before_action :load_league, only: [:new, :create]
   def index
 
-    @wrestlers = Wrestler.order('weight ASC, seed ASC, wins DESC')
+    @wrestlers = Wrestler.order('weight ASC, wins ASC')
     wrestlers = Wrestler.order('weight ASC, seed ASC, wins DESC')  # for csv format
 
     @user = current_user
@@ -17,18 +17,16 @@ class WrestlersController < ApplicationController
   end
 
   def new
-
+    @league = League.find(params[:id])
     @wrestler = Wrestler.new
     @tournaments = Tournament.order('name ASC')
   end
 
-
-
   def create
+
     @wrestler = Wrestler.new(wrestler_params)
-
-
     @wrestler.league = @league.name
+    @tournaments = Tournament.order('name ASC')
     user = current_user
     wrestler = @wrestler
     wrestler_array = [user, wrestler]
@@ -40,7 +38,7 @@ class WrestlersController < ApplicationController
         # added:
         format.js   { render json: @wrestler.errors, status: :unprocessable_entity }
       else
-
+        load_league
         format.html { render action: 'new' }
         format.json { render json: @wrestler.errors, status: :unprocessable_entity }
         # added:
@@ -52,10 +50,16 @@ class WrestlersController < ApplicationController
 
 
   def edit
+
+
     @wrestler = Wrestler.find(params[:id])
+
     uid = @wrestler.school_id
     @school = School.find(@wrestler.school_id)
     @league = League.find(@school.league_id)
+    @tournaments = Tournament.all
+    p @league.name
+
   end
 
   def weight_106
@@ -190,18 +194,18 @@ class WrestlersController < ApplicationController
 
    def load_league
       #get product_type from session if it is blank
-      params[:id] ||= session[:id]
+      params[:league_id] ||= session[:league_id]
       #save product_type to session for future requests
-      session[:id] = params[:id]
-      if params[:id]
-        @league = League.find(params[:id])
+      session[:league_id] = params[:league_id]
+      if params[:league_id]
+        @league = League.find(params[:league_id])
 
       end
     end
 
 
   def select_wrestlers(wt)
-      @wrestlers = Wrestler.where("weight = #{wt}").order('seed ASC, wins DESC')
+      @wrestlers = Wrestler.where("weight = #{wt}").order('weight ASC, wins DESC')
       wrestlers = Wrestler.where("weight = #{wt}").order('seed ASC, wins DESC')  # for csv format
 
       @count2 = @wrestlers.count

@@ -42,9 +42,9 @@ Rails.application.routes.draw do
   resources :users, except: :create
 
   resources :leagues do
-    resources :schools, controller: "leagues/schools"
+    resources :wrestlers, controller: "leagues/wrestlers"
       member do
-        delete :delete_school
+        delete :delete_wrestler
       end
   end
 
