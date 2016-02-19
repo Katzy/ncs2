@@ -200,6 +200,9 @@
       <div class="ui toggle3 item"><i class="sidebar icon"></i>LEAGUE ENTRY MENU
 
       </div>
+      <div class="ui toggle4 item"><i class="sidebar icon"></i>WRESTLERS
+
+    </div>
       <% else %>
     <div class="ui toggle item"><i class="sidebar icon"></i>BRACKETS
 
@@ -215,7 +218,7 @@
     <div class="ui toggle4 item"><i class="sidebar icon"></i>WRESTLERS
 
     </div>
-
+      <% end %>
      <div class="right menu">
       <% if user_signed_in? %>
         <% if current_user.admin? %>
@@ -232,7 +235,7 @@
       </div>
       <% end %>
       </div>
-      <% end %>
+
 
   </div>
 </div>

@@ -34,7 +34,7 @@ class WrestlersController < ApplicationController
     wrestler_array = [user, wrestler]
     respond_to do |format|
       if @wrestler.save
-      # UserMailer.wrestler_added(wrestler_array).deliver
+       UserMailer.wrestler_added(wrestler_array).deliver
         format.html { redirect_to league_path(@league), notice: 'wrestler was successfully created.' }
          format.json { render json: @wrestler.errors, status: :unprocessable_entity }
         # added:
@@ -128,7 +128,7 @@ class WrestlersController < ApplicationController
     @league = @school.league_id
     wrestler_array = [user, wrestler]
     if @wrestler.update(wrestler_params)
-      #  UserMailer.wrestler_updated(wrestler_array).deliver
+       UserMailer.wrestler_updated(wrestler_array).deliver
       if current_user.admin?
         if weight == 106
           redirect_to wrestlers_weight_106_path
