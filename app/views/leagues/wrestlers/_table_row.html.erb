@@ -12,17 +12,19 @@
 
   <td><%= wrestler.section_place %></td>
   <td><%= wrestler.state_place %></td>
-  <td><%= wrestler.t1_name %>&emsp;&emsp;<%= wrestler.t1_place %><br>
-            <%= wrestler.t2_name %>&emsp;&emsp;<%=  wrestler.t2_place %><br>
-            <%= wrestler.t3_name %>&emsp;&emsp;<%= wrestler.t3_place %><br>
-            <%= wrestler.t4_name %>&emsp;&emsp;<%= wrestler.t4_place %><br>
-            <%= wrestler.t5_name %>&emsp;&emsp;<%=  wrestler.t5_place %></td>
-            <td><%= wrestler.h2h_1 %>&emsp;&emsp;<%= wrestler.h2h_r1 %><br>
-            <%= wrestler.h2h_2 %>&emsp;&emsp;<%= wrestler.h2h_r2 %><br>
-            <%= wrestler.h2h_3 %>&emsp;&emsp;<%= wrestler.h2h_r3 %><br>
-            <%= wrestler.h2h_4 %>&emsp;&emsp;<%= wrestler.h2h_r4 %><br>
-            <%= wrestler.h2h_5 %>&emsp;&emsp;<%= wrestler.h2h_r5 %></td>
 
+
+  <td><%= wrestler.t1_name %>&emsp;&emsp;<%= wrestler.t1_place %><br>
+    <%= wrestler.t2_name %>&emsp;&emsp;<%= wrestler.t2_place %><br>
+    <%= wrestler.t3_name %>&emsp;&emsp;<%= wrestler.t3_place %><br>
+    <%= wrestler.t4_name %>&emsp;&emsp;<%= wrestler.t4_place %><br>
+    <%= wrestler.t5_name %>&emsp;&emsp;<%= wrestler.t5_place %></td>
+
+  <td><%= wrestler.h2h_1 %>&emsp;&emsp;<%= wrestler.h2h_r1 %><br>
+      <%= wrestler.h2h_2 %>&emsp;&emsp;<%= wrestler.h2h_r2 %><br>
+      <%= wrestler.h2h_3 %>&emsp;&emsp;<%= wrestler.h2h_r3 %><br>
+        <%= wrestler.h2h_4 %>&emsp;&emsp;<%= wrestler.h2h_r4 %><br>
+        <%= wrestler.h2h_5 %>&emsp;&emsp;<%= wrestler.h2h_r5 %></td>
 
   <% if user_signed_in? &&  (current_user.admin? || (current_user.league && current_user.league.name == wrestler.league) || current_user.school_id == wrestler.school_id ) %>
     <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
