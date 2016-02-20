@@ -1,6 +1,14 @@
 <div class="ui center aligned segment">
 <h1>145</h1>
 (<%= @count2 %>)
+        <p>
+          <% if user_signed_in? && current_user.admin? %>
+          Download:
+            <%= link_to "CSV", wrestlers_weight_145_path(format: "csv") %> |
+            <%= link_to "Excel", wrestlers_weight_145_path(format: "csv") %><br><br>
+            <% end %>
+
+        </p>
 </div>
 
     <%= render partial: 'wrestlers/index_by_weight', locals: { wrestlers: @wrestlers, user: @user } %>

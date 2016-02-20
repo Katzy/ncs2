@@ -1,6 +1,14 @@
 <div class="ui center aligned segment">
 <h1>ALL WRESTLERS</h1>
 (<%= @count %>)
+        <p>
+          <% if user_signed_in? && current_user.admin? %>
+          Download:
+            <%= link_to "CSV", wrestlers_path(format: "csv") %> |
+            <%= link_to "Excel", wrestlers_path(format: "csv") %><br><br>
+            <% end %>
+
+        </p>
 </div>
 
 <div class="ui segment">
