@@ -4,7 +4,15 @@ class LeaguesController < ApplicationController
         @leagues = League.all
         @u_hash = {}
         @wrestler_count_hash = {}
-
+        @leagues.each do |l|
+          l.schools.each do |s|
+            if @wrestler_count_hash[l.id.to_s] != nil
+            @wrestler_count_hash[l.id.to_s] += s.wrestlers.count
+            else
+            @wrestler_count_hash[l.id.to_s] = s.wrestlers.count
+            end
+          end
+        end
         @users = User.where('league_id IS NOT NULL')
         @users.each do |user|
           @u_hash[user.league_id.to_s] = user.name

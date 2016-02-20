@@ -1,4 +1,13 @@
-<div class="ui segment">
+<div class="ui center aligned segment">
+      <p>
+          <% if user_signed_in? && current_user.admin? %>
+          Download:
+            <%= link_to "CSV", wrestlers_path(format: "csv") %> |
+            <%= link_to "Excel", wrestlers_path(format: "csv") %><br><br>
+            <% end %>
+
+        </p>
+
   <table class="ui celled right aligned structured stackable table">
     <thead>
       <tr>
