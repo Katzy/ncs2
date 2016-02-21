@@ -62,8 +62,15 @@
              <%= f.text_field :seed, :readonly=>true %>
           <% end %>
         </div>
+        <% if current_user.admin? %>
+         <div class="checkbox field">
+         <%= f.label :alternate %><br>
+          <%= f.check_box :alternate %>
+         </div>
+         <% end %>
+
         <div class="field">
-          <%= f.label :grade, "Grade **" %><br>
+          <%= f.label :grade, "Grade" %><br>
           <%= f.collection_select :grade, ['9', '10', '11', '12'], :to_s, :to_s, :include_blank => true %>
         </div>
 
