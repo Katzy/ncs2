@@ -11,7 +11,8 @@ class WrestlersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { send_data wrestlers.to_csv2 }
+      format.csv { send_data wrestlers.to_csv }
+      format.xls { send_data wrestlers.to_csv({col_sep: "\t"})}
 
     end
   end
@@ -213,6 +214,7 @@ class WrestlersController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { send_data wrestlers.to_csv2 }
+      format.xls { send_data wrestlers.to_csv2({col_sep: "\t"})}
 
     end
   end

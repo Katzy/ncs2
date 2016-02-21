@@ -5,7 +5,7 @@
           <% if user_signed_in? && current_user.admin? %>
           Download:
             <%= link_to "CSV", wrestlers_weight_126_path(format: "csv") %> |
-            <%= link_to "Excel", wrestlers_weight_126_path(format: "csv") %><br><br>
+            <%= link_to "Excel", wrestlers_weight_126_path(format: "xls") %><br><br>
             <% end %>
 
         </p>
