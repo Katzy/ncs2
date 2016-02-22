@@ -27,10 +27,10 @@
         <%= wrestler.h2h_4 %>&emsp;&emsp;<%= wrestler.h2h_r4 %><br>
         <%= wrestler.h2h_5 %>&emsp;&emsp;<%= wrestler.h2h_r5 %></td>
 
-  <% if user_signed_in? &&  (current_user.admin? || (current_user.league && current_user.league.name == wrestler.league) || current_user.school_id == wrestler.school_id ) %>
+  <% if user_signed_in? &&  (current_user.admin?) %>
     <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
     <% end %>
-    <% if user_signed_in? && (current_user.admin? || (current_user.league && current_user.league.name == wrestler.league)) %>
+    <% if user_signed_in? && (current_user.admin?) %>
     <td><%= link_to 'Delete', wrestler, method: "delete", :data => {:confirm => 'Are you sure?'} %> </td>
   <% end %>
 </tr>

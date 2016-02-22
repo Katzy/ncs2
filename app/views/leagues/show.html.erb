@@ -4,7 +4,7 @@
     <b><%= @lg.name %></b>
   </div>
    <div class="ui center aligned segment">
-    <% if user_signed_in? && (current_user.admin? || ((@user.league_id == @lg.id) && @user.league_rep == true)) %>
+    <% if user_signed_in? && (current_user.admin? ) %>
         <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_wrestler_path %>
         <% end %>
 <table class="ui celled right aligned structured stackable table">

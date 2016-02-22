@@ -55,6 +55,11 @@
   height: 150px;
 }
 
+.ui.left.segment .image {
+
+  height: 60px;
+}
+
 .ui.segment .grid {
   border-left: 25px;
   border-right: 25px;
