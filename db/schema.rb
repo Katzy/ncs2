@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221023610) do
+ActiveRecord::Schema.define(version: 20160223154746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,8 +106,10 @@ ActiveRecord::Schema.define(version: 20160221023610) do
     t.text     "comments"
     t.integer  "school_id"
     t.boolean  "alternate"
+    t.integer  "league_id"
   end
 
+  add_index "wrestlers", ["league_id"], name: "index_wrestlers_on_league_id", using: :btree
   add_index "wrestlers", ["school_id"], name: "index_wrestlers_on_school_id", using: :btree
 
 end

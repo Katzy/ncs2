@@ -1,0 +1,24 @@
+<tr>
+  <td><%= wrestler.seed %></td>
+  <td><%= wrestler.weight %></td>
+  <td><%= wrestler.league_place %></td>
+  <td><%= wrestler.school.name %><br>(<%= wrestler.school.league.name %>)</td>
+  <td><%= wrestler.first_name %></td>
+  <td><%= wrestler.last_name %></td>
+  <td><%= wrestler.grade %></td>
+  <td><%= wrestler.wins %></td>
+  <td><%= wrestler.losses %></td>
+
+
+  <td><%= wrestler.section_place %></td>
+  <td><%= wrestler.state_place %></td>
+
+
+
+  <% if user_signed_in? &&  (current_user.admin?) %>
+    <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
+    <% end %>
+    <% if user_signed_in? && (current_user.admin?) %>
+    <td><%= link_to 'Delete', wrestler, method: "delete", :data => {:confirm => 'Are you sure?'} %> </td>
+  <% end %>
+</tr>

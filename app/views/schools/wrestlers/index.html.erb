@@ -13,7 +13,7 @@
     </div>
     <div class="ui center aligned segment">
     <% if user_signed_in? && (current_user.admin?) %>
-        <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_league_wrestler_path %>
+        <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_school_wrestler_path %>
         <% end %>
         NCS TOURNAMENT QUALIFIERS
       <table class="ui celled right aligned structured stackable table">
@@ -31,15 +31,13 @@
             <th rowspan="2">SEC Pl</th>
             <th rowspan="2">ST Pl</th>
 
-            <th colspan="1">TOURNAMENT PLACES</th>
-            <th colspan="1">HEAD 2 HEAD</th>
 
 
 
-            <% if user_signed_in? && (current_user.admin? || current_user.school) %>
+            <% if user_signed_in? && (current_user.admin? ) %>
             <th rowspan="2">EDIT</th>
             <% end %>
-            <% if user_signed_in? && (current_user.admin? || current_user.school) %>
+            <% if user_signed_in? && (current_user.admin? ) %>
             <th rowspan="2">DELETE</th>
             <% end %>
           </tr>
@@ -47,7 +45,7 @@
         </thead>
         <tbody>
           <% @wrestlers.each do |wrestler| %>
-             <%= render partial: 'leagues/wrestlers/table_row', locals: { wrestler: wrestler } %>
+             <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler } %>
             <% end %>
 
         </tbody>
@@ -61,7 +59,7 @@
     <div class="ui center aligned segment">
         <h4>NCS TOURNAMENT QUALIFIERS</h4>
     <% if user_signed_in? && (current_user.admin? ) %>
-        <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_league_wrestler_path %>
+        <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_school_wrestler_path %>
         <% end %>
 
       <table class="ui celled right aligned structured stackable table">
@@ -79,15 +77,14 @@
             <th rowspan="2">SEC Pl</th>
             <th rowspan="2">ST Pl</th>
 
-            <th colspan="1">TOURNAMENT PLACES</th>
-            <th colspan="1">HEAD 2 HEAD</th>
 
 
 
-            <% if user_signed_in? && (current_user.admin? || current_user.school) %>
+
+            <% if user_signed_in? && (current_user.admin?) %>
             <th rowspan="2">EDIT</th>
             <% end %>
-            <% if user_signed_in? && (current_user.admin? || current_user.school) %>
+            <% if user_signed_in? && (current_user.admin?) %>
             <th rowspan="2">DELETE</th>
             <% end %>
           </tr>
@@ -95,7 +92,7 @@
         </thead>
         <tbody>
           <% @wrestlers.each do |wrestler| %>
-             <%= render partial: 'leagues/wrestlers/table_row', locals: { wrestler: wrestler } %>
+             <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler } %>
             <% end %>
 
         </tbody>

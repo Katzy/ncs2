@@ -1,6 +1,7 @@
 module Leagues
   class WrestlersController < ApplicationController
    before_action :load_league, only: [:new, :create]
+    before_filter :authorize_user, :only => [:new, :create]
     def index
       @lg = League.find(params[:league_id])
        @schools = School.where("league_id = #{params[:league_id]}")
@@ -220,7 +221,7 @@ module Leagues
     end
 
     def wrestler_params
-      params.require(:wrestler).permit(:first_name, :abbreviation, :school, :league, :last_name, :weight, :grade, :wins, :losses, :tourney_wins, :league_place, :section_place, :state_place, :seed, :comments, :school_id, :t1_name, :t1_place, :t2_name, :t2_place, :t3_name, :t3_place, :t4_name, :t4_place, :t5_name, :t5_place, :h2h_1, :h2h_r1, :h2h_2, :h2h_r2, :h2h_3, :h2h_r3, :h2h_4, :h2h_r4, :h2h_5, :h2h_r5, :alternate)
+      params.require(:wrestler).permit(:first_name, :abbreviation, :school, :league_id, :league, :last_name, :weight, :grade, :wins, :losses, :tourney_wins, :league_place, :section_place, :state_place, :seed, :comments, :school_id, :t1_name, :t1_place, :t2_name, :t2_place, :t3_name, :t3_place, :t4_name, :t4_place, :t5_name, :t5_place, :h2h_1, :h2h_r1, :h2h_2, :h2h_r2, :h2h_3, :h2h_r3, :h2h_4, :h2h_r4, :h2h_5, :h2h_r5, :alternate)
     end
 
   end
