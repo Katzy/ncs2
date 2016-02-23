@@ -27,6 +27,12 @@ class ApplicationController < ActionController::Base
 
     # @users = User.where.not(league: nil)
     @user = current_user
+    @schools = School.order('abbreviation ASC')
+    count = @schools.count
+    half = count / 2
+
+    @schools1 = @schools[0..half]
+    @schools2 = @schools[(half+1)..@schools.count]
 
     if @user != nil && @user.league_rep == true
       id = @user.league_id

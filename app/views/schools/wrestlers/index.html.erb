@@ -1,0 +1,102 @@
+<div class="ui center aligned grid">
+
+    <% if user_signed_in? && (current_user.league_id || current_user.school_id || current_user.admin?) %>
+     <div class="ui center aligned segment">
+  <h4>All changes must be emailed to lhkatz@pacbell.net AND bniemi@cifncs.org</h4>
+  </div>
+  <% end %>
+
+
+  <div class="ui mobile only row">
+     <div class="sixteen wide column">
+      <b><%= @school.name %></b>
+    </div>
+    <div class="ui center aligned segment">
+    <% if user_signed_in? && (current_user.admin?) %>
+        <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_league_wrestler_path %>
+        <% end %>
+      <table class="ui celled right aligned structured stackable table">
+        <thead>
+          <tr>
+            <th rowspan="2">SEED</th>
+            <th rowspan="2">WT</th>
+            <th rowspan="2">LEAGUE PL</th>
+            <th rowspan="2">SCHOOL</th>
+            <th rowspan="2">FIRST</th>
+            <th rowspan="2">LAST</th>
+
+            <th rowspan="2">W/L</th>
+
+            <th rowspan="2">SEC Pl</th>
+            <th rowspan="2">ST Pl</th>
+
+            <th colspan="1">TOURNAMENT PLACES</th>
+            <th colspan="1">HEAD 2 HEAD</th>
+
+
+
+            <% if user_signed_in? && (current_user.admin? || current_user.school) %>
+            <th rowspan="2">EDIT</th>
+            <% end %>
+            <% if user_signed_in? && (current_user.admin? || current_user.school) %>
+            <th rowspan="2">DELETE</th>
+            <% end %>
+          </tr>
+
+        </thead>
+        <tbody>
+          <% @wrestlers.each do |wrestler| %>
+             <%= render partial: 'leagues/wrestlers/table_row', locals: { wrestler: wrestler } %>
+            <% end %>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="ui computer only tablet only row">
+    <div class="sixteen wide column">
+      <b><%= @school.name %></b>
+    </div>
+    <div class="ui center aligned segment">
+    <% if user_signed_in? && (current_user.admin? ) %>
+        <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_league_wrestler_path %>
+        <% end %>
+      <table class="ui celled right aligned structured stackable table">
+        <thead>
+          <tr>
+            <th rowspan="2">SEED</th>
+            <th rowspan="2">WT</th>
+            <th rowspan="2">LEAGUE PL</th>
+            <th rowspan="2">SCHOOL</th>
+            <th rowspan="2">FIRST</th>
+            <th rowspan="2">LAST</th>
+            <th rowspan="2">YR</th>
+            <th rowspan="2">W</th>
+            <th rowspan="2">L</th>
+            <th rowspan="2">SEC Pl</th>
+            <th rowspan="2">ST Pl</th>
+
+            <th colspan="1">TOURNAMENT PLACES</th>
+            <th colspan="1">HEAD 2 HEAD</th>
+
+
+
+            <% if user_signed_in? && (current_user.admin? || current_user.school) %>
+            <th rowspan="2">EDIT</th>
+            <% end %>
+            <% if user_signed_in? && (current_user.admin? || current_user.school) %>
+            <th rowspan="2">DELETE</th>
+            <% end %>
+          </tr>
+
+        </thead>
+        <tbody>
+          <% @wrestlers.each do |wrestler| %>
+             <%= render partial: 'leagues/wrestlers/table_row', locals: { wrestler: wrestler } %>
+            <% end %>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

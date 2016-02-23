@@ -1,6 +1,7 @@
 class Wrestler < ActiveRecord::Base
 
   belongs_to :school
+  belongs_to :league
 
   validates :first_name, presence: true, null: false
   validates :last_name, presence: true, null: false
