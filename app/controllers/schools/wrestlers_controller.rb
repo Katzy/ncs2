@@ -5,7 +5,7 @@ module Schools
 
        @school = School.find(params[:school_id])
         @lg = League.find(@school.league_id)
-        @wrestlers = @school.wrestlers.all
+        @wrestlers = @school.wrestlers.order('weight ASC')
          wrestlers = @school.wrestlers.all
 
       @user = current_user
