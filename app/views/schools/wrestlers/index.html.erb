@@ -15,6 +15,7 @@
     <% if user_signed_in? && (current_user.admin?) %>
         <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_league_wrestler_path %>
         <% end %>
+        NCS TOURNAMENT QUALIFIERS
       <table class="ui celled right aligned structured stackable table">
         <thead>
           <tr>
@@ -58,9 +59,11 @@
       <b><%= @school.name %></b>
     </div>
     <div class="ui center aligned segment">
+        <h4>NCS TOURNAMENT QUALIFIERS</h4>
     <% if user_signed_in? && (current_user.admin? ) %>
         <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_league_wrestler_path %>
         <% end %>
+
       <table class="ui celled right aligned structured stackable table">
         <thead>
           <tr>
