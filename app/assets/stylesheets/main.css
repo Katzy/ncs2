@@ -21,7 +21,10 @@
 
 }
 
-
+.ui.wrestler.sidebar .school .column a {
+  padding-left: 2em;
+  font-size: 14px;
+}
 
 .ui.info.sidebar a {
 

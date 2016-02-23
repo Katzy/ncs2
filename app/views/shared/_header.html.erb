@@ -100,22 +100,27 @@
           <a class="item" href="/wrestlers/weight_285.html">285</a>
         </div>
       </div>
+
       <div class="divider">
       </div>
+
       <div class="weight item">
         <b>BY SCHOOL</b>
       </div>
-      <div class="two column row">
-        <div class="column">
-          <% @schools1.each do |s| %>
-            <a class="item" href="/schools/<%= s.id %>/wrestlers/"><%= s.abbreviation %></a>
-          <% end %>
 
-        </div>
-        <div class="column">
-          <% @schools2.each do |s| %>
-            <a class="item" href="/schools/<%= s.id %>/wrestlers/"><%= s.abbreviation %></a>
-          <% end %>
+      <div class="two column row">
+        <div class="school">
+          <div class="column">
+            <% @schools1.each do |s| %>
+              <a class="item" href="/schools/<%= s.id %>/wrestlers/"><%= s.name %></a>
+            <% end %>
+
+          </div>
+          <div class="column">
+            <% @schools2.each do |s| %>
+              <a class="item" href="/schools/<%= s.id %>/wrestlers/"><%= s.name %></a>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
