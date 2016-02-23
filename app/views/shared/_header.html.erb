@@ -7,7 +7,7 @@
     <a class="item"><b>TOURNEY INFO</b></a>
     <a class="item" href="/images/NCS_schedule_2016.pdf">Schedule</a>
     <a class="item" href="/information/seeds.html">Seeds</a>
-    <a class="item" href="/information/alerts.html">Alerts</a>
+    <a class="item" href="/information/alerts.html">Receive SMS Alerts</a>
     <a class="item" href="/information/help.html">Help</a>
     <br><br>
     <a class="item"><b>PAST RESULTS BOYS</b></a>
@@ -66,15 +66,29 @@
 
   <div class="ui inverted wrestler wide sidebar vertical menu">
     <div class="ui grid">
-      <div class="mobile only tablet only row">
-        <div class="item">
-          <b>VIEW BY LEAGUE</b>
+
+        <div class="weight item">
+          <b>BY LEAGUE</b>
         </div>
-        <% @leagues.each do |l| %>
+        <div class="two column row">
+        <div class="column">
+           <% @leagues1.each do |l| %>
 
             <a class="item" href="/leagues/<%= l.id %>/wrestlers/"><%= l.name %></a>
           <% end %>
+        </div>
+        <div class="column">
+         <% if @leagues2 %>
+         <% @leagues2.each do |l| %>
+
+            <a class="item" href="/leagues/<%= l.id %>/wrestlers/"><%= l.name %></a>
+          <% end %>
+          <% end %>
+        </div>
       </div>
+
+
+
 
       <div class="weight item">
         <b>BY WEIGHT</b>
@@ -103,6 +117,8 @@
 
       <div class="divider">
       </div>
+
+
 
       <div class="weight item">
         <b>BY SCHOOL</b>
@@ -167,10 +183,6 @@
       <div class="ui toggle2 item"><i class="sidebar icon"></i>TOURNEY INFO
 
       </div>
-      <div class="ui toggle3 item"><i class="sidebar icon"></i>LEAGUES
-
-      </div>
-
 
       <% end %>
       <div class="ui toggle4 item"><i class="sidebar icon"></i>WRESTLERS

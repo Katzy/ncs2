@@ -24,7 +24,8 @@ class ApplicationController < ActionController::Base
   def initialize_users_for_header
     # @users = User.order('school ASC')
     @leagues = League.all
-
+    @leagues1 = @leagues[0..5]
+    @leagues2 = @leagues[6..11]
     # @users = User.where.not(league: nil)
     @user = current_user
     @schools = School.order('abbreviation ASC')
