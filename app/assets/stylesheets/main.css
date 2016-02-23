@@ -75,9 +75,9 @@
   width: 50%;
 }
 
-.ui.footer.segment {
+.ui.footer.segment .left.column {
 
-
+  font-size: 25px;
 }
 
 .ui.grid .column b {
