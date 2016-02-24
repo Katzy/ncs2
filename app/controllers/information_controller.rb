@@ -20,6 +20,11 @@ class InformationController < ApplicationController
   def schedule
   end
 
+  def help
+    @conversation = Conversation.find(1)
+    @message = @conversation.messages.new
+    @messages = Message.all
+  end
 
 
   def send_sms_106

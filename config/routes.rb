@@ -52,6 +52,9 @@ Rails.application.routes.draw do
     resources :wrestlers, controller: "schools/wrestlers"
   end
 
+  resources :conversations do
+    resources :messages
+  end
 
   # resources :alerts
   resources :tournaments
