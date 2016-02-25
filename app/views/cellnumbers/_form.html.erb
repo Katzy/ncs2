@@ -1,0 +1,110 @@
+<div class="ui raised segment">
+  <div class="ui center aligned raised segment">
+  <h2>NCS TOURNAMENT ALERTS</h2>
+  Check box on all weights you'd like to receive alerts!  We'll alert you when wrestlers for that weight are called to the warm up area.
+  </div>
+    <div class="ui form">
+    <%= form_for Cellnumber.new  do |f| %>
+      <% if cellnumber.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(cellnumber.errors.count, "error") %> prohibited this number from being saved for alerts:</h2>
+
+          <ul>
+            <% cellnumber.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="fields">
+
+        <div class="eight wide field">
+          <%= f.label :cell %><br />
+          <%= f.text_field :cell %>
+        </div>
+
+        <div class="six wide field">
+        <%= f.label :carrier_name %><br />
+        <%= f.select :carrier_name, carrier_collection, :include_blank => true %>
+        </div>
+        </div>
+        <div class="fields">
+          <div class="field">
+            <%= f.label :alert_106, "106" %><br>
+            <%= f.check_box :alert_106 %>
+          </div>
+
+          <div class="field">
+            <%= f.label :alert_113, "113" %><br>
+            <%= f.check_box :alert_113 %>
+          </div>
+
+          <div class="field">
+            <%= f.label :alert_120, "120" %><br>
+            <%= f.check_box :alert_120 %>
+          </div>
+
+          <div class="field">
+            <%= f.label :alert_126, "126" %><br>
+            <%= f.check_box :alert_126 %>
+          </div>
+
+          <div class="field">
+            <%= f.label :alert_132, "132" %><br>
+            <%= f.check_box :alert_132 %>
+          </div>
+
+          <div class="field">
+            <%= f.label :alert_138, "138" %><br>
+            <%= f.check_box :alert_138 %>
+          </div>
+
+          <div class="field">
+            <%= f.label :alert_145, "145" %><br>
+            <%= f.check_box :alert_145 %>
+          </div>
+
+          <div class="field">
+            <%= f.label :alert_152, "152" %><br>
+            <%= f.check_box :alert_152 %>
+          </div>
+
+          <div class="field">
+            <%= f.label :alert_160, "160" %><br>
+            <%= f.check_box :alert_160 %>
+          </div>
+
+          <div class="field">
+            <%= f.label :alert_170, "170" %><br>
+            <%= f.check_box :alert_170 %>
+          </div>
+
+          <div class="field">
+            <%= f.label :alert_182, "182" %><br>
+            <%= f.check_box :alert_182 %>
+          </div>
+
+          <div class="field">
+            <%= f.label :alert_195, "195" %><br>
+            <%= f.check_box :alert_195 %>
+          </div>
+
+          <div class="field">
+            <%= f.label :alert_220, "220" %><br>
+            <%= f.check_box :alert_220 %>
+          </div>
+
+          <div class="field">
+            <%= f.label :alert_285, "285" %><br>
+            <%= f.check_box :alert_285 %>
+          </div>
+
+      </div>
+
+
+      <div class="actions">
+        <%= f.submit "Create" %>
+      </div>
+    <% end %>
+  </div>
+</div>

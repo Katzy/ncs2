@@ -11,10 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223154746) do
+ActiveRecord::Schema.define(version: 20160225211834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "alerts", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "message"
+  end
+
+  create_table "cellnumbers", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "cell"
+    t.string   "carrier_name"
+    t.boolean  "alert_106"
+    t.boolean  "alert_113"
+    t.boolean  "alert_120"
+    t.boolean  "alert_126"
+    t.boolean  "alert_132"
+    t.boolean  "alert_138"
+    t.boolean  "alert_145"
+    t.boolean  "alert_152"
+    t.boolean  "alert_160"
+    t.boolean  "alert_170"
+    t.boolean  "alert_182"
+    t.boolean  "alert_195"
+    t.boolean  "alert_220"
+    t.boolean  "alert_285"
+  end
 
   create_table "leagues", force: :cascade do |t|
     t.datetime "created_at"

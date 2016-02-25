@@ -1,0 +1,418 @@
+<div class="ui two column grid">
+ <% if user_signed_in? && current_user.admin? %>
+  <div class="four wide column">
+    <div class="ui segment">
+      <h2>STANDARD ALERT</h2><br>
+
+      Message: <%= @message %><br>
+
+      Message 2: <%= @messageb %>
+    </div>
+
+  </div>
+  <div class="twelve wide column">
+  <div class="ui compact segment">
+    <div class="ui row">
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_106'}, {class: 'cellnumber'}   ) do  %>
+
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        106lb Champ (<%= @numbers106.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+
+    </div>
+    <% end %>
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_106_cons'}, {class: 'cellnumber'}   ) do  %>
+
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        106lb Cons (<%= @numbers106.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+
+    </div>
+    <% end %>
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_113'}, {class: 'cellnumber'}) do  %>
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        113lb Champ (<%= @numbers113.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+    </div>
+    <% end %>
+
+     <%= link_to({controller: 'cellnumbers', action: 'send_alert_113_cons'}, {class: 'cellnumber'}   ) do  %>
+
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        113lb Cons (<%= @numbers113.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+
+    </div>
+    <% end %>
+    </div>
+    </div>
+
+    <div class="ui compact segment">
+    <div class="ui row">
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_120'}, {class: 'cellnumber'}) do  %>
+    <div class="ui animated huge button" tabindex="0">
+        <div class="visible content">
+          120lb Champ (<%= @numbers120.count %>)
+        </div>
+        <div class="hidden content">
+          <i class="mobile icon"></i>
+        </div>
+    </div>
+    <% end %>
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_120_cons'}, {class: 'cellnumber'}   ) do  %>
+
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        120lb Cons (<%= @numbers120.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+
+    </div>
+    <% end %>
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_126'}, {class: 'cellnumber'}) do  %>
+    <div class="ui animated huge button" tabindex="0">
+        <div class="visible content">
+          126lb Champ (<%= @numbers126.count %>)
+        </div>
+        <div class="hidden content">
+          <i class="mobile icon"></i>
+        </div>
+    </div>
+    <% end %>
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_126_cons'}, {class: 'cellnumber'}   ) do  %>
+
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        126lb Cons (<%= @numbers126.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+
+    </div>
+    <% end %>
+    </div>
+    </div>
+
+    <div class="ui compact segment">
+    <div class="ui row">
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_132'}, {class: 'cellnumber'}) do  %>
+      <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        132lb Champ (<%= @numbers132.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+    </div>
+    <% end %>
+
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_132_cons'}, {class: 'cellnumber'}   ) do  %>
+
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        132lb Cons (<%= @numbers132.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+
+    </div>
+    <% end %>
+
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_138'}, {class: 'cellnumber'}) do  %>
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        138lb Champ (<%= @numbers138.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+    </div>
+    <% end %>
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_138_cons'}, {class: 'cellnumber'}   ) do  %>
+
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        138lb Cons (<%= @numbers138.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+
+    </div>
+    <% end %>
+    </div>
+    </div>
+
+    <div class="ui compact segment">
+    <div class="ui row">
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_145'}, {class: 'cellnumber'}) do  %>
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        145lb Champ (<%= @numbers145.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+    </div>
+    <% end %>
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_145_cons'}, {class: 'cellnumber'}   ) do  %>
+
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        145lb Cons (<%= @numbers145.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+
+    </div>
+    <% end %>
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_152'}, {class: 'cellnumber'}) do  %>
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        152lb Champ (<%= @numbers152.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+    </div>
+    <% end %>
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_152_cons'}, {class: 'cellnumber'}   ) do  %>
+
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        152lb Cons (<%= @numbers152.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+
+    </div>
+    <% end %>
+    </div>
+    </div>
+
+    <div class="ui compact segment">
+    <div class="ui row">
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_160'}, {class: 'cellnumber'}) do  %>
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        160lb Champ (<%= @numbers160.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+    </div>
+    <% end %>
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_160_cons'}, {class: 'cellnumber'}   ) do  %>
+
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        160lb Cons (<%= @numbers160.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+
+    </div>
+    <% end %>
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_170'}, {class: 'cellnumber'}) do  %>
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        170lb Champ (<%= @numbers170.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+    </div>
+    <% end %>
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_170_cons'}, {class: 'cellnumber'}   ) do  %>
+
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        170lb Cons (<%= @numbers170.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+
+    </div>
+    <% end %>
+    </div>
+    </div>
+
+    <div class="ui compact segment">
+     <div class="ui row">
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_182'}, {class: 'cellnumber'}) do  %>
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        182lb Champ (<%= @numbers182.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+    </div>
+    <% end %>
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_182_cons'}, {class: 'cellnumber'}   ) do  %>
+
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        182lb Cons (<%= @numbers182.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+
+    </div>
+    <% end %>
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_195'}, {class: 'cellnumber'}) do  %>
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        195lb Champ (<%= @numbers195.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+    </div>
+    <% end %>
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_195_cons'}, {class: 'cellnumber'}   ) do  %>
+
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        195lb Cons (<%= @numbers195.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+
+    </div>
+    <% end %>
+    </div>
+    </div>
+
+    <div class="ui compact segment">
+
+    <div class="ui row">
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_220'}, {class: 'cellnumber'}) do  %>
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        220lb Champ (<%= @numbers220.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+    </div>
+    <% end %>
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_220_cons'}, {class: 'cellnumber'}   ) do  %>
+
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        220lb Cons (<%= @numbers220.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+
+    </div>
+    <% end %>
+
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_285'}, {class: 'cellnumber'}) do  %>
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        285lb Champ (<%= @numbers285.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+    </div>
+    <% end %>
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_285_cons'}, {class: 'cellnumber'}   ) do  %>
+
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        285lb Cons (<%= @numbers285.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+
+    </div>
+    <% end %>
+    </div>
+
+    </div>
+  </div>
+  <% end %>
+</div>
+
+
+<div class="ui two column grid">
+  <div class="four wide column">
+    <div class="ui floated segment">
+    <h2>CUSTOM ALERTS</h2>
+    <%= link_to 'Change Alert', new_alert_path(@alert) %><br>
+    <% if @alert != nil %>
+    <h2><%= @alert.message %></h2>
+    <% end %>
+    </div>
+  </div>
+  <div class="twelve wide column">
+    <div class="ui segment">
+        <div class="ui row">
+    <%= link_to({controller: 'cellnumbers', action: 'send_alert_all'}, {class: 'cellnumber'}) do  %>
+    <div class="ui animated huge button" tabindex="0">
+      <div class="visible content">
+        SEND TO ALL (<%= @numbers.count %>)
+      </div>
+      <div class="hidden content">
+        <i class="mobile icon"></i>
+      </div>
+    </div>
+    <% end %>
+    </div>
+    </div>
+  </div>
+</div>
+<br><br>
+
+

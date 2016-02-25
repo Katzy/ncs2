@@ -1,0 +1,20 @@
+<div class="ui three column grid">
+  <div class="column">
+  </div>
+  <div class="center aligned column">
+    <div class="ui segment">
+      <div class="ui form">
+
+          <div class="field">
+            <label>Click the button to remove <%= @cellnumber.cell %> from the alerts list!</label>
+
+          </div><br>
+          <%= button_to 'Remove', @cellnumber, method: "delete"  %>
+
+
+      </div>
+    </div>
+  </div>
+  <div class="column">
+  </div>
+</div>

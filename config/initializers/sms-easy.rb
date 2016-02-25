@@ -1,0 +1,1 @@
+SMSEasy::Client.config['from_address'] = "noreply@ncswrestling.com"

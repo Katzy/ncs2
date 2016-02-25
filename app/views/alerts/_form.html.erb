@@ -1,0 +1,35 @@
+<div class="ui raised segment">
+  <div class="ui center aligned raised segment">
+  <h2>Custom ALERT</h2>
+
+  </div>
+    <div class="ui form">
+    <%= form_for Alert.new  do |f| %>
+      <% if alert.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(alert.errors.count, "error") %> prohibited this number from being saved for alerts:</h2>
+
+          <ul>
+            <% alert.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="fields">
+
+        <div class="eight wide field">
+          <%= f.label :message %><br />
+          <%= f.text_area :message %>
+        </div>
+
+
+      </div>
+
+
+      <div class="actions">
+        <%= f.submit "Create" %>
+      </div>
+    <% end %>
+  </div>
+</div>
