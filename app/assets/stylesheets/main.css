@@ -70,6 +70,10 @@
 
 }
 
+.streaming.header {
+
+  font-size: 35px;
+}
 .ui.footer.segment .ncs.image {
 
   width: 50%;
