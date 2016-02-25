@@ -7,8 +7,9 @@
     <a class="item"><b>TOURNEY INFO</b></a>
     <a class="item" href="/images/NCS_schedule_2016.pdf">Schedule</a>
     <a class="item" href="/information/seeds.html">Seeds</a>
+    <% if user_signed_in? && current_user.admin? %>
     <a class="item" href="/cellnumbers/new.html">Alerts</a>
-
+    <% end %>
     <a class="item" href="http://www.nfhsnetwork.com/events/cifncs/91d037937d">Live Streaming</a>
     <a class="item" href="/information/help.html">Help</a>
     <br><br>
@@ -69,7 +70,9 @@
       <a class="weight item"><b>TOURNEY INFO</b></a>
     <a class="item" href="/images/NCS_schedule_2016.pdf">Schedule</a>
     <a class="item" href="/information/seeds.html">Seeds</a>
+        <% if user_signed_in? && current_user.admin? %>
     <a class="item" href="/cellnumbers/new.html">Alerts</a>
+    <% end %>
     <a class="item" href="http://www.nfhsnetwork.com/events/cifncs/91d037937d">Live Streaming</a>
     <a class="item" href="/information/help.html">Help</a>
     </div><br><br>
