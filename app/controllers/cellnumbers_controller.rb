@@ -82,6 +82,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_106
     @numbers = Cellnumber.where(:alert_106 => true)
+    @alert = Alert.find(1)
+    @alert.message = "106"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "106 #{MESSAGE}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -91,6 +94,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_106_cons
     @numbers = Cellnumber.where(:alert_106 => true)
+    @alert = Alert.find(1)
+    @alert.message = "106"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "106 #{MESSAGE_B}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -100,6 +106,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_113
     @numbers = Cellnumber.where(:alert_113 => true)
+    @alert = Alert.find(1)
+    @alert.message = "113"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "113 #{MESSAGE}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -109,6 +118,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_113_cons
     @numbers = Cellnumber.where(:alert_113 => true)
+    @alert = Alert.find(1)
+    @alert.message = "113"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "113 #{MESSAGE_B}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -118,6 +130,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_120
     @numbers = Cellnumber.where(:alert_120 => true)
+    @alert = Alert.find(1)
+    @alert.message = "120"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "120 #{MESSAGE}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -127,6 +142,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_120_cons
     @numbers = Cellnumber.where(:alert_120 => true)
+    @alert = Alert.find(1)
+    @alert.message = "120"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "120 #{MESSAGE_B}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -136,6 +154,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_126
     @numbers = Cellnumber.where(:alert_126 => true)
+    @alert = Alert.find(1)
+    @alert.message = "126"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "126 #{MESSAGE}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -145,6 +166,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_126_cons
     @numbers = Cellnumber.where(:alert_126 => true)
+    @alert = Alert.find(1)
+    @alert.message = "126"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "126 #{MESSAGE_B}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -155,6 +179,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_132
     @numbers = Cellnumber.where(:alert_132 => true)
+    @alert = Alert.find(1)
+    @alert.message = "132"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "132 #{MESSAGE}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -164,6 +191,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_132_cons
     @numbers = Cellnumber.where(:alert_132 => true)
+    @alert = Alert.find(1)
+    @alert.message = "132"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "132 #{MESSAGE_B}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -173,6 +203,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_138
     @numbers = Cellnumber.where(:alert_138 => true)
+    @alert = Alert.find(1)
+    @alert.message = "138"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "138 #{MESSAGE}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -182,6 +215,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_138_cons
     @numbers = Cellnumber.where(:alert_138 => true)
+    @alert = Alert.find(1)
+    @alert.message = "138"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "138 #{MESSAGE_B}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -191,6 +227,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_145
     @numbers = Cellnumber.where(:alert_145 => true)
+    @alert = Alert.find(1)
+    @alert.message = "145"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "145 #{MESSAGE}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -200,6 +239,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_145_cons
     @numbers = Cellnumber.where(:alert_145 => true)
+    @alert = Alert.find(1)
+    @alert.message = "145"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "145 #{MESSAGE_B}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -209,6 +251,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_152
     @numbers = Cellnumber.where(:alert_152 => true)
+    @alert = Alert.find(1)
+    @alert.message = "152"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "152 #{MESSAGE}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -218,6 +263,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_152_cons
     @numbers = Cellnumber.where(:alert_152 => true)
+    @alert = Alert.find(1)
+    @alert.message = "152"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "152 #{MESSAGE_B}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -227,6 +275,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_160
     @numbers = Cellnumber.where(:alert_160 => true)
+    @alert = Alert.find(1)
+    @alert.message = "160"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "160 #{MESSAGE}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -236,6 +287,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_160_cons
     @numbers = Cellnumber.where(:alert_160 => true)
+    @alert = Alert.find(1)
+    @alert.message = "160"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "160 #{MESSAGE_B}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -245,6 +299,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_170
     @numbers = Cellnumber.where(:alert_170 => true)
+    @alert = Alert.find(1)
+    @alert.message = "170"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "170 #{MESSAGE}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -254,6 +311,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_170_cons
     @numbers = Cellnumber.where(:alert_170 => true)
+    @alert = Alert.find(1)
+    @alert.message = "170"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "170 #{MESSAGE_B}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -263,6 +323,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_182
     @numbers = Cellnumber.where(:alert_182 => true)
+    @alert = Alert.find(1)
+    @alert.message = "182"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "182 #{MESSAGE}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -272,6 +335,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_182_cons
     @numbers = Cellnumber.where(:alert_182 => true)
+    @alert = Alert.find(1)
+    @alert.message = "182"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "182 #{MESSAGE_B}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -281,6 +347,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_195
     @numbers = Cellnumber.where(:alert_195 => true)
+    @alert = Alert.find(1)
+    @alert.message = "195"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "195 #{MESSAGE}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -290,6 +359,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_195_cons
     @numbers = Cellnumber.where(:alert_195 => true)
+    @alert = Alert.find(1)
+    @alert.message = "195"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "195 #{MESSAGE_B}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -299,6 +371,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_220
     @numbers = Cellnumber.where(:alert_220 => true)
+    @alert = Alert.find(1)
+    @alert.message = "220"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "220 #{MESSAGE}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -308,6 +383,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_220_cons
     @numbers = Cellnumber.where(:alert_220 => true)
+    @alert = Alert.find(1)
+    @alert.message = "220"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "220 #{MESSAGE_B}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -317,6 +395,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_285
     @numbers = Cellnumber.where(:alert_285 => true)
+    @alert = Alert.find(1)
+    @alert.message = "285"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "285 #{MESSAGE}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")
@@ -326,6 +407,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_285_cons
     @numbers = Cellnumber.where(:alert_285 => true)
+    @alert = Alert.find(1)
+    @alert.message = "285"
+    @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
       easy.deliver("#{number.cell}", "#{number.carrier_name}", "285 #{MESSAGE_B}  To unsubscribe,visit www.ncswrestling.com/cellnumbers/#{number.id}")

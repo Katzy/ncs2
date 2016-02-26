@@ -1,5 +1,21 @@
+<div class="ui center aligned grid">
 
-<div class="ui center aligned segment">
-  <h2>Check back soon! Live Tournament SMS Alerts!</h2>
-
+  <div class="alert">
+  <div class="row">
+  <i class="mobile icon"></i><%= link_to "ALERT SIGNUP", new_cellnumber_path, :class => "button" %>
   </div>
+  </div>
+  <div class="ui center aligned row">
+  <div class="text"><br><br>
+ Choose which weight or weights you want to be alerted by. Remove yourself from alerts whenever you want.  Visit this page to see last weight called.
+  </div>
+  </div><br><br>
+  <div class="row">
+    <div class="segment">
+      <div class="weight">
+      LAST WEIGHT CALLED: <%= @alert.message %>
+      </div>
+    </div>
+  </div>
+</div>
+

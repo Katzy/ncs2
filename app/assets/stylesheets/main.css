@@ -70,6 +70,21 @@
 
 }
 
+.ui.grid .alert {
+
+  font-size: 35px;
+}
+
+.ui.grid .row .text {
+
+  font-size: 20px;
+}
+
+.ui.grid .row .weight {
+
+  font-size: 35px;
+}
+
 .streaming.header {
 
   font-size: 35px;
