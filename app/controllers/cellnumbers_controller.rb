@@ -1,6 +1,6 @@
 class CellnumbersController < ApplicationController
   before_filter :authorize_admin, :only => [:index]
-  MESSAGE = "lb CHAMPIONSHIP the staging area."
+  MESSAGE = "lb CHAMPIONSHIP to the staging area."
   MESSAGE_B = "lb CONSOLATION to the staging area."
 
   def index
