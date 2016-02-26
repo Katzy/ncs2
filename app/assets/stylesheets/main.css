@@ -75,6 +75,17 @@
   font-size: 50px;
 }
 
+.ui.grid .ui.row .weight h2 {
+
+  font-size: 40px;
+
+}
+
+.ui.grid .ui.row .weight h3 {
+
+  font-size: 35px;
+
+}
 .ui.grid .alert {
 
   font-size: 35px;

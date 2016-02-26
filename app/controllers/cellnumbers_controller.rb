@@ -82,8 +82,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_106
     @numbers = Cellnumber.where(:alert_106 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "106"
+    @alert.message = "106 CHAMPIONSHIP"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -94,8 +95,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_106_cons
     @numbers = Cellnumber.where(:alert_106 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "106"
+    @alert.message = "106 CONSOLATION"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -106,8 +108,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_113
     @numbers = Cellnumber.where(:alert_113 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "113"
+    @alert.message = "113 CHAMPIONSHIP"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -118,8 +121,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_113_cons
     @numbers = Cellnumber.where(:alert_113 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "113"
+    @alert.message = "113 CONSOLATION"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -130,8 +134,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_120
     @numbers = Cellnumber.where(:alert_120 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "120"
+    @alert.message = "120 CHAMPIONSHIP"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -142,8 +147,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_120_cons
     @numbers = Cellnumber.where(:alert_120 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "120"
+    @alert.message = "120 CONSOLATION"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -154,8 +160,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_126
     @numbers = Cellnumber.where(:alert_126 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "126"
+    @alert.message = "126 CHAMPIONSHIP"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -166,8 +173,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_126_cons
     @numbers = Cellnumber.where(:alert_126 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "126"
+    @alert.message = "126 CONSOLATION"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -179,8 +187,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_132
     @numbers = Cellnumber.where(:alert_132 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "132"
+    @alert.message = "132 CHAMPIONSHIP"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -191,8 +200,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_132_cons
     @numbers = Cellnumber.where(:alert_132 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "132"
+    @alert.message = "132 CONSOLATION"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -203,8 +213,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_138
     @numbers = Cellnumber.where(:alert_138 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "138"
+    @alert.message = "138 CHAMPIONSHIP"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -215,8 +226,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_138_cons
     @numbers = Cellnumber.where(:alert_138 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "138"
+    @alert.message = "138 CONSOLATION"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -227,8 +239,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_145
     @numbers = Cellnumber.where(:alert_145 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "145"
+    @alert.message = "145 CHAMPIONSHIP"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -239,8 +252,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_145_cons
     @numbers = Cellnumber.where(:alert_145 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "145"
+    @alert.message = "145 CONSOLATION"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -251,8 +265,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_152
     @numbers = Cellnumber.where(:alert_152 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "152"
+    @alert.message = "152 CHAMPIONSHIP"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -263,8 +278,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_152_cons
     @numbers = Cellnumber.where(:alert_152 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "152"
+    @alert.message = "152 CONSOLATION"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -275,8 +291,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_160
     @numbers = Cellnumber.where(:alert_160 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "160"
+    @alert.message = "160 CHAMPIONSHIP"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -287,8 +304,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_160_cons
     @numbers = Cellnumber.where(:alert_160 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "160"
+    @alert.message = "160 CONSOLATION"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -299,8 +317,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_170
     @numbers = Cellnumber.where(:alert_170 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "170"
+    @alert.message = "170 CHAMPIONSHIP"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -311,8 +330,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_170_cons
     @numbers = Cellnumber.where(:alert_170 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "170"
+    @alert.message = "170 CONSOLATION"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -323,8 +343,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_182
     @numbers = Cellnumber.where(:alert_182 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "182"
+    @alert.message = "182 CHAMPIONSHIP"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -335,8 +356,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_182_cons
     @numbers = Cellnumber.where(:alert_182 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "182"
+    @alert.message = "182 CONSOLATION"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -347,8 +369,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_195
     @numbers = Cellnumber.where(:alert_195 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "195"
+    @alert.message = "195 CHAMPIONSHIP"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -359,8 +382,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_195_cons
     @numbers = Cellnumber.where(:alert_195 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "195"
+    @alert.message = "195 CONSOLATION"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -371,8 +395,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_220
     @numbers = Cellnumber.where(:alert_220 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "220"
+    @alert.message = "220 CHAMPIONSHIP"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -383,8 +408,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_220_cons
     @numbers = Cellnumber.where(:alert_220 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "220"
+    @alert.message = "220 CONSOLATION"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -395,8 +421,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_285
     @numbers = Cellnumber.where(:alert_285 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "285"
+    @alert.message = "285 CHAMPIONSHIP"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -407,8 +434,9 @@ class CellnumbersController < ApplicationController
 
   def send_alert_285_cons
     @numbers = Cellnumber.where(:alert_285 => true)
+    shift_recent_alert
     @alert = Alert.find(1)
-    @alert.message = "285"
+    @alert.message = "285 CONSOLATION"
     @alert.save
     easy = SMSEasy::Client.new
     @numbers.each do |number|
@@ -418,6 +446,16 @@ class CellnumbersController < ApplicationController
   end
 
   private
+
+  def shift_recent_alert
+    @alert3 = Alert.find(3)
+    @alert2 = Alert.find(2)
+    @alert1 = Alert.find(1)
+    @alert3.message = @alert2.message
+    @alert3.save
+    @alert2.message = @alert1.message
+    @alert2.save
+  end
 
   def cellnumber_params
     params.require(:cellnumber).permit(:cell, :carrier_name, :alert_106, :alert_113, :alert_120, :alert_126, :alert_132, :alert_138, :alert_145, :alert_152, :alert_160, :alert_170, :alert_182, :alert_195, :alert_220, :alert_285)

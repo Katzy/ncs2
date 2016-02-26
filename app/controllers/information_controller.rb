@@ -16,6 +16,8 @@ class InformationController < ApplicationController
 
   def alerts
     @alert = Alert.find(1)
+    @alert2 = Alert.find(2)
+    @alert3 = Alert.find(3)
   end
 
   def schedule
