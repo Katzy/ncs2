@@ -385,7 +385,7 @@
   <% end %>
 </div>
 
-
+<% if user_signed_in? && current_user.admin? %>
 <div class="ui two column grid">
   <div class="four wide column">
     <div class="ui floated segment">
@@ -413,6 +413,7 @@
     </div>
   </div>
 </div>
+<% end %>
 <br><br>
 
 
