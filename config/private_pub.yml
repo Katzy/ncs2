@@ -6,5 +6,5 @@ test:
   secret_token: "secret"
 production:
   server: "http://calm-falls-54678.com/faye"
-  secret_token: "d8f51219b344a4543fe44f679697e3e5332d5395e915aa7707f56b9b2d246f6f"
+  secret_token: "77a79be3fe287432e8a6503cc04f31bf81b8ce0e385618736290d4b25a16ce71"
   signature_expiration: 3600 # one hour
