@@ -76,6 +76,11 @@
   overflow: auto;
 }
 
+li h4 {
+
+  font-size: 20px;
+}
+
 .ui.grid .ui.row .weight h1 {
 
   font-size: 50px;
