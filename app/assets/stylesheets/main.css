@@ -70,7 +70,7 @@
 
 }
 
-#comments {
+.ui.grid .ui.segment ul {
 
   max-height: 500px;
   overflow: auto;

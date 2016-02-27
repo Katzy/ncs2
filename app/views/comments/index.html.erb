@@ -1,21 +1,28 @@
 
 
   <% if current_user %>
+    <h1>NCS Chatroom</h1>
+    <div class="ui grid">
+      <div class="four wide column">
+      </div>
+      <div class="eight wide column">
+        <div class="ui segment">
+          <ul id="chat">
+              <%= render @comments %>
+            </ul>
+            </div>
+          <div class="ui center aligned segment">
+          <div class="header">
+            <h1>Join the discussion!</h1>
+          </div>
 
-      <div class="container" id="comments">
-          <ul class="media-list">
-            <%= render @comments %>
-          </ul>
+        <%= render '/comments/form' %>
         </div>
       </div>
-
-    <div class="ui center aligned segment">
-      <div class="header">
-        <h1>Join the discussion!</h1>
+      <div class="four wide column">
       </div>
-
-    <%= render '/comments/form' %>
     </div>
-  <% else %>
-    <h1>Sign in or Create an account to chat with other NCS Wrestling fans.</h1>
-  <% end %>
+    <% else %>
+      <h1>Sign in or Create an account to chat with other NCS Wrestling fans.</h1>
+    <% end %>
+

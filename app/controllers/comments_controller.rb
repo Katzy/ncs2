@@ -2,8 +2,12 @@ class CommentsController < ApplicationController
 
 
   def index
-    @comment = Comment.new
-    @comments = Comment.order('created_at DESC')
+
+    @comments = Comment.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
@@ -14,25 +18,15 @@ class CommentsController < ApplicationController
 
 
   def create
-    if current_user
-      @comment = current_user.comments.build(comment_params)
-      if @comment.save
-        flash[:success] = 'Your comment was successfully posted!'
-      else
-        flash[:error] = 'Your comment cannot be shared.'
-      end
-      format.html {redirect_to 'index'}
-      format.js
-    else
-      format.html {redirect_to 'index'}
-      format.js {render nothing: true}
-    end
+
+    @comment = current_user.comments.build(comment_params)
+
+    @comment.save
   end
 
-  private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body, :user_id)
   end
 
 end

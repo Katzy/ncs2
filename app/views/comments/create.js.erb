@@ -1,6 +1,8 @@
-<% if @comment.new_record? %>
-  alert('Your comment cannot be saved.');
-<% else %>
-  $('#comments.media-list').prepend('<%= j render @comment %>');
-
+<% publish_to "/comments/new" do %>
+$("#chat").append("<%= j render(@comment) %>");
+var myDiv = document.getElementById("chat");
+myDiv.scrollTop = myDiv.scrollHeight;
 <% end %>
+$("#new_comment")[0].reset();
+
+
