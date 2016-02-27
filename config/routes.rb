@@ -124,6 +124,8 @@ Rails.application.routes.draw do
 
   resources :alerts
 
+  resources :comments
+
   resources :tournaments
 
   resources :wrestlers do

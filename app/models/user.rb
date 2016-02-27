@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   belongs_to :school
   belongs_to :league
+  has_many :comments, dependent: :delete_all
 
   validates :name, presence: true
 

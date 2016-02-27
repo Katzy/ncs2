@@ -70,6 +70,12 @@
 
 }
 
+#comments {
+
+  max-height: 500px;
+  overflow: auto;
+}
+
 .ui.grid .ui.row .weight h1 {
 
   font-size: 50px;
