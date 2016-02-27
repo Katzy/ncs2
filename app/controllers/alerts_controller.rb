@@ -12,6 +12,8 @@ class AlertsController < ApplicationController
   def destroy
   end
 
+  def update
+  end
 
   def create
     @alert = Alert.new(alert_params)

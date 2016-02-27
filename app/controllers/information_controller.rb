@@ -24,9 +24,7 @@ class InformationController < ApplicationController
   end
 
   def help
-    @conversation = Conversation.find(1)
-    @message = @conversation.messages.new
-    @messages = Message.all
+
   end
 
 

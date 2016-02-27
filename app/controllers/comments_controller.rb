@@ -11,6 +11,8 @@ class CommentsController < ApplicationController
     @comments = Comment.order('created_at ASC')
   end
 
+
+
   def create
     if current_user
       @comment = current_user.comments.build(comment_params)
