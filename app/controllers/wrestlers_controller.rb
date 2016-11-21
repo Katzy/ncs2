@@ -65,6 +65,10 @@ class WrestlersController < ApplicationController
 
   end
 
+  def show
+    @wrestler = Wrestler.find(params[:id])
+  end
+
   def weight_106
     select_wrestlers(106)
   end
