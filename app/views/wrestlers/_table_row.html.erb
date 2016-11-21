@@ -4,7 +4,7 @@
   <td><%= wrestler.league_place %></td>
   <td><%= wrestler.school.name %><br>(<%= wrestler.school.league.name %>)</td>
   <td><%= wrestler.first_name %></td>
-  <td><%= wrestler.last_name %></td>
+  <td><%= link_to '#{wrestler.last_name}', wrestler_path(wrestler) %></td>
   <td><%= wrestler.grade %></td>
   <td><%= wrestler.wins %></td>
   <td><%= wrestler.losses %></td>
