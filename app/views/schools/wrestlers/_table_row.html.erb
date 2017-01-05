@@ -1,17 +1,20 @@
 <tr>
-  <td><%= wrestler.seed %></td>
+  <!-- <td><%= wrestler.seed %></td> -->
   <td><%= wrestler.weight %></td>
-  <td><%= wrestler.league_place %></td>
   <td><%= wrestler.school.name %><br>(<%= wrestler.school.league.name %>)</td>
   <td><%= link_to "#{wrestler.first_name + ' ' + wrestler.last_name}", wrestler_path(wrestler) %></td>
   <td><%= wrestler.grade %></td>
-  <td><%= wrestler.wins %></td>
-  <td><%= wrestler.losses %></td>
-
-
+  <td><%= @wins.count %></td>
+  <td><%= @losses.count %></td>
+  <td><%= wrestler.league_place %></td>
   <td><%= wrestler.section_place %></td>
   <td><%= wrestler.state_place %></td>
-
+  <td><% @tourneys.each do |tourney| %>
+  
+  <%= tourney.tourney_name %>-<%= tourney.tourney_place %><br>
+  <% end %> 
+  </td>
+  
 
 
   <% if user_signed_in? &&  (current_user.admin?) %>

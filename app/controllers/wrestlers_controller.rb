@@ -1,6 +1,6 @@
 class WrestlersController < ApplicationController
-  before_action :load_league, only: [:new, :create]
-  before_filter :authorize_user, :only => [:new, :create]
+  # before_action :load_league, only: [:new, :create]
+  # before_filter :authorize_user, :only => [:new, :create]
   def index
 
     @wrestlers = Wrestler.order('weight ASC, seed ASC, wins DESC')
@@ -53,8 +53,6 @@ class WrestlersController < ApplicationController
 
 
   def edit
-
-
     @wrestler = Wrestler.find(params[:id])
 
     uid = @wrestler.school_id
@@ -63,10 +61,6 @@ class WrestlersController < ApplicationController
     @tournaments = Tournament.all
     p @league.name
 
-  end
-
-  def show
-    @wrestler = Wrestler.find(params[:id])
   end
 
   def weight_106
@@ -127,6 +121,9 @@ class WrestlersController < ApplicationController
 
   def show
     @wrestler = Wrestler.find(params[:id])
+    @bouts = @wrestler.bouts.order("date ASC")
+    @match_number = 1
+    @full_name = @wrestler.first_name + ' ' + @wrestler.last_name
   end
 
   def update
@@ -216,7 +213,8 @@ class WrestlersController < ApplicationController
       wrestlers = Wrestler.where("weight = #{wt}").order('weight ASC, seed ASC, wins DESC')  # for csv format
 
       @count2 = @wrestlers.count
-
+      @wins = []
+      @losses = []
     respond_to do |format|
       format.html
       format.csv { send_data wrestlers.to_csv2 }

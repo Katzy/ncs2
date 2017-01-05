@@ -11,8 +11,9 @@ module Schools
 
       @user = current_user
       @count = @wrestlers.count
-
-
+      @wins = []
+      @losses = []
+      @tourneys = []
       respond_to do |format|
         format.html
         format.csv { send_data wrestlers.to_csv }
@@ -63,6 +64,12 @@ module Schools
       @school = School.find(@wrestler.school_id)
        @league = League.find_by_id(params[:league_id])
 
+    end
+
+    def show
+      # @wrestler = Wrestler.find(params[:id])
+
+      @bouts = @wrestler.bouts.all
     end
 
     def weight_106

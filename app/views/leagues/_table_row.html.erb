@@ -1,5 +1,5 @@
 <tr>
-  <td><%= lg.name %></td>
+  <td><%= link_to "#{lg.name}", league_path(lg) %></td>
   <td><%= lg.schools.count %></td>
   <td><%= @u_hash[lg.id.to_s] %></td>
 

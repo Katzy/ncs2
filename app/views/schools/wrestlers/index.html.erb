@@ -15,38 +15,44 @@
     <% if user_signed_in? && (current_user.admin?) %>
         <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_school_wrestler_path %>
         <% end %>
-        NCS TOURNAMENT QUALIFIERS
+       
       <table class="ui celled right aligned structured stackable table">
         <thead>
-          <tr>
-            <th rowspan="2">SEED</th>
+         <tr>
+            <!-- <th rowspan="2">SEED</th> -->
             <th rowspan="2">WT</th>
-            <th rowspan="2">LEAGUE PL</th>
             <th rowspan="2">SCHOOL</th>
-            <th rowspan="4">NAME</th>
-            
-            <th rowspan="2">W/L</th>
-
-            <th rowspan="2">SEC Pl</th>
-            <th rowspan="2">ST Pl</th>
-
-
-
-
-            <% if user_signed_in? && (current_user.admin? ) %>
+            <th rowspan="2">NAME</th>
+            <th rowspan="2">YR</th>
+            <th rowspan="2">W</th>
+            <th rowspan="2">L</th>
+            <th colspan="3">2016 PLACES</th>
+            <th rowspan="2">2017 TOURNAMENTS</th>
+             <% if user_signed_in? && (current_user.admin?) %>
             <th rowspan="2">EDIT</th>
             <% end %>
-            <% if user_signed_in? && (current_user.admin? ) %>
+            <% if user_signed_in? && (current_user.admin?) %>
             <th rowspan="2">DELETE</th>
             <% end %>
           </tr>
-
+          <tr>
+            <th rowspan="1">SECTION</th>
+            <th rowspan="1">STATE</th>
+            <th rowspan="1">LEAGUE</th>
+          </tr>
         </thead>
         <tbody>
           <% @wrestlers.each do |wrestler| %>
-             <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler } %>
+             <% if wrestler.bouts %>
+              <% wrestler.bouts.map{ |bout| bout.tourney_place ? @tourneys << bout : @tourneys } %>
+              <% wrestler.bouts.map{ |bout| bout.win_loss == "W" ? @wins << bout : @wins } %>
+              <% wrestler.bouts.map{ |bout| bout.win_loss == "L" ? @losses << bout : @losses } %>
+              <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler, wins: @wins, losses: @losses } %>
+              <% @wins = [] %>
+              <% @losses = [] %>
+              <% @tourneys = [] %>
             <% end %>
-
+          <% end %>
         </tbody>
       </table>
     </div>
@@ -56,43 +62,49 @@
       <b><%= @school.name %></b>
     </div>
     <div class="ui center aligned segment">
-        <h4>NCS TOURNAMENT QUALIFIERS</h4>
+   
     <% if user_signed_in? && (current_user.admin? ) %>
         <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_school_wrestler_path %>
         <% end %>
 
-      <table class="ui celled right aligned structured stackable table">
+      <table class="ui celled center aligned structured stackable table">
         <thead>
           <tr>
-            <th rowspan="2">SEED</th>
+            <!-- <th rowspan="2">SEED</th> -->
             <th rowspan="2">WT</th>
-            <th rowspan="2">LEAGUE PL</th>
             <th rowspan="2">SCHOOL</th>
-            <th rowspan="4">NAME</th>
+            <th rowspan="2">NAME</th>
             <th rowspan="2">YR</th>
             <th rowspan="2">W</th>
             <th rowspan="2">L</th>
-            <th rowspan="2">SEC Pl</th>
-            <th rowspan="2">ST Pl</th>
-
-
-
-
-
-            <% if user_signed_in? && (current_user.admin?) %>
+            <th colspan="3">2016 PLACES</th>
+            <th rowspan="2">2017 TOURNAMENTS</th>
+             <% if user_signed_in? && (current_user.admin?) %>
             <th rowspan="2">EDIT</th>
             <% end %>
             <% if user_signed_in? && (current_user.admin?) %>
             <th rowspan="2">DELETE</th>
             <% end %>
           </tr>
+          <tr>
+            <th rowspan="1">SECTION</th>
+            <th rowspan="1">STATE</th>
+            <th rowspan="1">LEAGUE</th>
+          </tr>
 
         </thead>
         <tbody>
           <% @wrestlers.each do |wrestler| %>
-             <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler } %>
+            <% if wrestler.bouts %>
+              <% wrestler.bouts.map{ |bout| bout.tourney_place ? @tourneys << bout : @tourneys } %>
+              <% wrestler.bouts.map{ |bout| bout.win_loss == "W" ? @wins << bout : @wins } %>
+              <% wrestler.bouts.map{ |bout| bout.win_loss == "L" ? @losses << bout : @losses } %>
+              <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler, wins: @wins, losses: @losses } %>
+              <% @wins = [] %>
+              <% @losses = [] %>
+              <% @tourneys = [] %>
             <% end %>
-
+          <% end %>
         </tbody>
       </table>
     </div>

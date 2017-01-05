@@ -106,6 +106,7 @@ Rails.application.routes.draw do
   resources :users, except: :create
 
   resources :leagues do
+    resources :schools, controller: "leagues/schools"
     resources :wrestlers, controller: "leagues/wrestlers"
       member do
         delete :delete_wrestler
@@ -128,7 +129,10 @@ Rails.application.routes.draw do
 
   resources :tournaments
 
+  resources :bouts
+
   resources :wrestlers do
+    resources :bouts, controller: "wrestlers/bouts"
     collection do
       delete 'destroy_all'
     end
