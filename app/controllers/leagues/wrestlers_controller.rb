@@ -6,13 +6,15 @@ module Leagues
       @lg = League.find(params[:league_id])
        @schools = School.where("league_id = #{params[:league_id]}")
         @school_ids = @schools.map { |school| school.id }
-        @wrestlers = Wrestler.where("league = '#{@lg.name}'").order('weight ASC, seed ASC, wins DESC')
+        @wrestlers = @lg.wrestlers.order('weight ASC, wins DESC')
+       # @wrestlers = Wrestler.where("league = '#{@lg.name}'").order('weight ASC, seed ASC, wins DESC')
          wrestlers = Wrestler.where("league = '#{@lg.name}'").order('weight ASC, seed ASC, wins DESC')
 
       @user = current_user
       @count = @wrestlers.count
-
-
+      @wins = []
+      @losses = []
+      @tourneys = []
       respond_to do |format|
         format.html
         format.csv { send_data wrestlers.to_csv }
@@ -63,6 +65,13 @@ module Leagues
       @school = School.find(@wrestler.school_id)
        @league = League.find_by_id(params[:league_id])
 
+    end
+
+    def show
+      p "hiihihihih"
+      # @wrestler = Wrestler.find(params[:id])
+
+      @bouts = @wrestler.bouts.all
     end
 
     def weight_106

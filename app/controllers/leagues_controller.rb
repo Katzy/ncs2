@@ -40,7 +40,7 @@ class LeaguesController < ApplicationController
 
         respond_to do |format|
           if @league.save
-            format.html { redirect_to user_leagues_path(@user), notice: 'league was successfully created.' }
+            format.html { redirect_to leagues_path(@user), notice: 'league was successfully created.' }
             format.json { render action: 'index', status: :created, location: @league }
             # added:
             format.js   { render action: 'index', status: :created, location: @league }
@@ -54,11 +54,11 @@ class LeaguesController < ApplicationController
       end
 
       def edit
-
+        @league = League.find(params[:league_id])
       end
 
       def update
-
+        @league = League.find(params[:league_id])
       end
 
       def destroy
@@ -83,6 +83,6 @@ class LeaguesController < ApplicationController
   end
 
       def league_params
-        params.require(:league).permit(:name)
+        params.require(:league).permit(:name, :league_rep)
       end
     end

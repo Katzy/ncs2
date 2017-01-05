@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226203117) do
+ActiveRecord::Schema.define(version: 20170103162305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,22 @@ ActiveRecord::Schema.define(version: 20160226203117) do
     t.datetime "updated_at"
     t.text     "message"
   end
+
+  create_table "bouts", force: :cascade do |t|
+    t.string  "date"
+    t.string  "weight"
+    t.string  "dual_or_tourney"
+    t.string  "tourney_name"
+    t.integer "tourney_seed"
+    t.string  "opponent_name"
+    t.string  "win_loss"
+    t.string  "result_type"
+    t.string  "score_time"
+    t.integer "tourney_place"
+    t.integer "wrestler_id"
+  end
+
+  add_index "bouts", ["wrestler_id"], name: "index_bouts_on_wrestler_id", using: :btree
 
   create_table "cellnumbers", force: :cascade do |t|
     t.datetime "created_at"
@@ -57,6 +73,7 @@ ActiveRecord::Schema.define(version: 20160226203117) do
     t.datetime "updated_at"
     t.string   "name"
     t.integer  "entries"
+    t.string   "league_rep"
   end
 
   create_table "schools", force: :cascade do |t|

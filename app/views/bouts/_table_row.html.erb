@@ -1,0 +1,18 @@
+<tr>
+  <td><%= @match_number %></td>
+  <td><%= bout.date %></td>
+  <td><%= bout.weight %></td>
+  <td><%= bout.dual_or_tourney %></td>
+  <td><%= bout.tourney_name %><br>
+  <td><%= bout.tourney_seed %></td>
+  <td><%= bout.opponent_name %></td>
+  <td><%= bout.win_loss %></td>
+  <td><%= bout.result_type %></td>
+  <td><%= bout.score_time %></td>
+  <td><%= bout.tourney_place %></td>
+  <% if user_signed_in? && (current_user.admin?) %>
+    <td><%= link_to 'Edit', edit_bout_path(bout) %></td>
+    <td><%= link_to 'Delete', bout, method: "delete", :data => {:confirm => 'Are you sure?'} %> </td>
+  <% end %>
+<tr>
+

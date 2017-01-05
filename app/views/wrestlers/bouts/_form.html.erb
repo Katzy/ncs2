@@ -1,0 +1,79 @@
+<h1>
+  ENTER MATCH RESULT (** Required Field)
+  </h1>
+    <div class="ui form">
+    <%= form_for [@bout] do |f| %>
+      <% if @bout.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@bout.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+          <ul>
+            <% @bout.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="fields">
+        <div class="two wide field">
+          <%= f.label :date, "Date" %><br>
+          <%= f.text_field :date, :placeholder => 'MM/DD/YY' %>
+
+        </div>
+        <div class="one wide field">
+          <%= f.label :weight, "Weight **" %><br>
+           <% if current_user.admin? || current_user.league_id == @league.id %>
+          <%= f.collection_select :weight, ['106', '113', '120', '126', '132', '138', '145', '152', '160', '170', '182', '195', '220', '285'], :to_s, :to_s, :include_blank => true %>
+          <% else %>
+           <%= f.text_field :weight, :readonly=>true %>
+           <% end %>
+        </div>
+        <div class="one wide field">
+          <%= f.label :dual_or_tourney, "Event" %><br />
+          <%= f.collection_select :dual_or_tourney, ['Dual', 'Tournament'], :to_s, :to_s, :include_blank => true %>
+        </div>
+      
+        <div class="two wide field">
+          <%= f.label :tourney_name, "Tourney Name" %><br />
+          <%= f.text_field :tourney_name %>
+        </div>
+        <div class="one wide field">
+            <%= f.label :tourney_seed, 'Seed' %><br>
+            <%= f.collection_select :tourney_seed, ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'], :to_s, :to_s, :include_blank => true %>
+        </div>
+        <div class="three wide field">
+          <%= f.label :opponent_name, "Opponent" %><br>
+           <%= f.text_field :opponent_name %>
+        </div>
+      
+        <div class="one wide field">
+          <%= f.label :win_loss, "W/L" %><br>
+          <%= f.collection_select :win_loss, ['W', 'L'], :to_s, :to_s, :include_blank => true %>
+        </div>
+        <div class="one wide field">
+          <%= f.label :result_type, "Result" %><br>
+           <%= f.collection_select :result_type, ['D', 'MD', 'TF', 'F', 'FORFEIT'], :to_s, :to_s, :include_blank => true %>
+        </div>
+
+        <div class="one wide field">
+          <%= f.label :score_time, "Score/Time" %><br>
+          <%= f.text_field :score_time %>
+        </div>
+
+        <div class="one wide field">
+          <%= f.label :tourney_place, "Place" %><br>
+           <%= f.collection_select :tourney_place, ['1', '2', '3', '4', '5', '6', '7', '8'], :to_s, :to_s, :include_blank => true %>
+        </div>
+
+      </div>
+     
+      <div class="actions">
+        <div class="ui red botton center aligned" id="btn-modal-1">
+          <%= f.submit "Create" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
