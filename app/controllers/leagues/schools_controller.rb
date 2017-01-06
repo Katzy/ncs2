@@ -22,7 +22,7 @@ module Leagues
           # added:
           format.js   { render action: 'index', status: :created, location: @school }
         else
-          format.html { render action: 'new' }
+          format.html { render 'leagues/schools/new' }
           format.json { render json: @school.errors, status: :unprocessable_entity }
           # added:
           format.js   { render json: @school.errors, status: :unprocessable_entity }
