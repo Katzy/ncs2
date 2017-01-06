@@ -1,9 +1,8 @@
 GIT
-  remote: https://github.com/suzan2go/less-rails.git
-  revision: c2f110982615dc9ed5faa22a84156480727a9f22
-  branch: fix-nomethoderror-for-sprockets3
+  remote: https://github.com/Genkilabs/less-rails
+  revision: 7407431b8ae527b0d941c1919c5567c0e59130ea
   specs:
-    less-rails (2.7.0)
+    less-rails (2.8.0.pre.rails5)
       actionpack (>= 4.0)
       less (~> 2.6.0)
       sprockets (> 2, < 4)
@@ -235,7 +234,7 @@ DEPENDENCIES
   private_pub
   rails (= 4.2.1)
   rails_12factor
-  sass-rails (~> 5.0)
+  sass-rails (~> 5.0.6)
   sdoc (~> 0.4.0)
   sms-easy
   spring
