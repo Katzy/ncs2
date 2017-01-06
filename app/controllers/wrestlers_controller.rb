@@ -27,7 +27,7 @@ class WrestlersController < ApplicationController
   def create
     @school = School.find(wrestler_params[:school_id])
     @wrestler = @school.wrestlers.new(wrestler_params)
-    @league = League.find(@wrestler.school.league_id)
+    @league = League.find(wrestler_params[:league_id])
     @wrestler.league_id = @league.id
     @tournaments = Tournament.order('name ASC')
     user = current_user
@@ -35,7 +35,7 @@ class WrestlersController < ApplicationController
     wrestler_array = [user, wrestler]
     respond_to do |format|
       if @wrestler.save
-       UserMailer.wrestler_added(wrestler_array).deliver
+      # UserMailer.wrestler_added(wrestler_array).deliver
         format.html { redirect_to school_wrestlers_path(@school), notice: 'wrestler was successfully created.' }
          format.json { render json: @wrestler.errors, status: :unprocessable_entity }
         # added:

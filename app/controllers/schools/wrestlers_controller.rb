@@ -23,7 +23,7 @@ module Schools
 
     def new
      @school = School.find(params[:school_id])
-
+     @league = League.find(@school.league_id)
       @wrestler = @school.wrestlers.new
       @tournaments = Tournament.order('name ASC')
     end
