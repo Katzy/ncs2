@@ -86,7 +86,10 @@
           <%= f.label :state_place, "2016 State Place" %><br>
           <%= f.collection_select :state_place, ['1', '2', '3', '4', '5', '6', '7', '8'], :to_s, :to_s, :include_blank => true %>
         </div>
-
+        <div class="hidden field">
+          
+          <%= f.hidden_field :school_id, :value => @school.id %>
+        </div> 
       </div>
    
       <div class="actions">

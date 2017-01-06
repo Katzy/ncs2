@@ -25,8 +25,8 @@ class WrestlersController < ApplicationController
   end
 
   def create
-
-    @wrestler = Wrestler.new(wrestler_params)
+    @school = School.find(wrestler_params[:school_id])
+    @wrestler = @school.wrestlers.new(wrestler_params)
     @league = League.find(@wrestler.school.league_id)
     @wrestler.league_id = @league.id
     @tournaments = Tournament.order('name ASC')
