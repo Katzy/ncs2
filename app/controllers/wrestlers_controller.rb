@@ -36,7 +36,7 @@ class WrestlersController < ApplicationController
     respond_to do |format|
       if @wrestler.save
        UserMailer.wrestler_added(wrestler_array).deliver
-        format.html { redirect_to league_path(@league), notice: 'wrestler was successfully created.' }
+        format.html { redirect_to school_wrestlers_path(@school), notice: 'wrestler was successfully created.' }
          format.json { render json: @wrestler.errors, status: :unprocessable_entity }
         # added:
         format.js   { render json: @wrestler.errors, status: :unprocessable_entity }
