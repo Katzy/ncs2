@@ -12,15 +12,15 @@ class SchoolsController < ApplicationController
   def create
     @user = current_user
     @school = School.new(school_params)
-
+    league = League.find(@school.league_id)
     respond_to do |format|
       if @school.save
-        format.html { redirect_to user_schools_path(@user), notice: 'school was successfully created.' }
+        format.html { redirect_to league_path(league), notice: 'school was successfully created.' }
         format.json { render action: 'index', status: :created, location: @school }
         # added:
         format.js   { render action: 'index', status: :created, location: @school }
       else
-        format.html { render action: 'new' }
+        format.html { render 'leagues/schools/new' }
         format.json { render json: @school.errors, status: :unprocessable_entity }
         # added:
         format.js   { render json: @school.errors, status: :unprocessable_entity }
@@ -39,8 +39,9 @@ class SchoolsController < ApplicationController
   def destroy
     @user = current_user
     @school = School.find(params[:id])
+    @league = @school.league_id
     @school.destroy
-    redirect_to schools_path
+    redirect_to league_path(@league)
   end
 
   private

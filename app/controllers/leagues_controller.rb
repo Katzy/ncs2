@@ -54,11 +54,21 @@ class LeaguesController < ApplicationController
       end
 
       def edit
-        @league = League.find(params[:league_id])
+        @league = League.find(params[:id])
       end
 
       def update
-        @league = League.find(params[:league_id])
+        @user = current_user
+        @league = League.find(params[:id])
+        respond_to do |format|
+          if @league.update(league_params)
+            format.html { redirect_to leagues_path(@user), notice: 'league was successfully updated.' }
+            format.json { render json: @league.errors, status: :unprocessable_entity }
+            format.js   { render json: @league.errors, status: :unprocessable_entity }
+          else
+            format.html { render action: 'edit' }
+          end
+        end
       end
 
       def destroy
@@ -83,6 +93,6 @@ class LeaguesController < ApplicationController
   end
 
       def league_params
-        params.require(:league).permit(:name, :league_rep)
+        params.require(:league).permit(:name, :league_rep, :cell, :email)
       end
     end
