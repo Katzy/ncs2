@@ -121,7 +121,7 @@ class WrestlersController < ApplicationController
 
   def show
     @wrestler = Wrestler.find(params[:id])
-    @bouts = @wrestler.bouts.order("date ASC")
+    @bouts = @wrestler.bouts.all
     @match_number = 1
     @full_name = @wrestler.first_name + ' ' + @wrestler.last_name
   end
