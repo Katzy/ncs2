@@ -22,8 +22,12 @@ module Schools
     end
 
     def import
-      School.find(params[:school_id]).wrestlers.import(params[:file])
-      redirect_to school_wrestlers_path(School.find(params[:school_id])), notice: "Import successful!"
+      if params[:file] != nil
+        School.find(params[:school_id]).wrestlers.import(params[:file])
+        redirect_to school_wrestlers_path(School.find(params[:school_id])), notice: "Import successful!"
+      else
+        redirect_to school_wrestlers_path(School.find(params[:school_id])), notice: "Choose a file to import first!"
+      end
     end
 
     def new
