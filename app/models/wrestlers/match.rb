@@ -1,4 +1,4 @@
-class Wrestler < ActiveRecord::Base
+class Match < ActiveRecord::Base
  #get rid of file
   belongs_to :wrestler
   
