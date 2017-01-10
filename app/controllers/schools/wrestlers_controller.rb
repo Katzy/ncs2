@@ -21,6 +21,11 @@ module Schools
       end
     end
 
+    def import
+      School.find(params[:school_id]).wrestlers.import(params[:file])
+      redirect_to school_wrestlers_path(School.find(params[:school_id])), notice: "Import successful!"
+    end
+
     def new
      @school = School.find(params[:school_id])
      @league = League.find(@school.league_id)

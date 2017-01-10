@@ -114,7 +114,9 @@ Rails.application.routes.draw do
   end
 
   resources :schools do
-    resources :wrestlers, controller: "schools/wrestlers"
+    resources :wrestlers, controller: "schools/wrestlers" do
+      collection { post :import }
+    end
   end
 
   resources :cellnumbers, only: [:index, :show, :new, :create, :destroy] do
@@ -132,7 +134,9 @@ Rails.application.routes.draw do
   resources :bouts
 
   resources :wrestlers do
-    resources :bouts, controller: "wrestlers/bouts"
+    resources :bouts, controller: "wrestlers/bouts" do
+      collection { post :import }
+    end
     collection do
       delete 'destroy_all'
     end
