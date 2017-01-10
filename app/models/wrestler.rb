@@ -10,10 +10,14 @@ class Wrestler < ActiveRecord::Base
   validates :school_id, presence: true, null: false
  
   # validates_uniqueness_of :weight, scope: :school_id
+ 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-       # if Wrestler.find()
-      Wrestler.create! row.to_hash
+      if Wrestler.exists?(first_name: row[3], last_name: row[4], grade: row[1])
+        row
+      else
+        Wrestler.create! row.to_hash
+      end
     end
   end
 
