@@ -27,9 +27,10 @@ class WrestlersController < ApplicationController
   def create
     @school = School.find(wrestler_params[:school_id])
     @wrestler = @school.wrestlers.new(wrestler_params)
+    @wrestler.alternate == 0 ? @wrestler.alternate = false : @wrestler.alternate
     @league = League.find(wrestler_params[:league_id])
     @wrestler.league_id = @league.id
-    @tournaments = Tournament.order('name ASC')
+    # @tournaments = Tournament.order('name ASC')
     user = current_user
     wrestler = @wrestler
     wrestler_array = [user, wrestler]
