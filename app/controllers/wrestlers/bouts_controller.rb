@@ -13,6 +13,16 @@ module Wrestlers
       @match_number = 1
     end
 
+
+    def import
+      if params[:file] != nil
+        Wrestler.find(params[:wrestler_id]).bouts.import(params[:file])
+        redirect_to wrestler_path(Wrestler.find(params[:wrestler_id])), notice: "Import successful"
+      else
+        redirect_to wrestler_path(Wrestler.find(params[:wrestler_id])), alert: "Choose file to import"
+      end
+    end
+
     def create
       @wrestler = Wrestler.find(params[:wrestler_id])
       @bout = @wrestler.bout.new(bout_params)

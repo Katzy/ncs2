@@ -13,8 +13,12 @@
     </div>
     <div class="ui center aligned segment">
     <% if user_signed_in? && (current_user.admin?) %>
-        <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_school_wrestler_path %>
-        <% end %>
+      <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_school_wrestler_path %>
+      <%= form_tag import_school_wrestlers_path, multipart: true do %>
+        <%= file_field_tag :file %>
+        <%= submit_tag "Import Wrestlers from CSV" %>
+      <% end %>
+    <% end %>
        
       <table class="ui celled right aligned structured stackable table">
         <thead>
@@ -64,7 +68,12 @@
     <div class="ui center aligned segment">
    
     <% if user_signed_in? && (current_user.admin? ) %>
-        <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_school_wrestler_path %>
+        <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_school_wrestler_path %><br><br>
+        <%= form_tag import_school_wrestlers_path, multipart: true do %>
+        <%= submit_tag "Import Wrestlers from CSV" %>
+        <%= file_field_tag :file  %>
+        
+      <% end %>
         <% end %>
 
       <table class="ui celled center aligned structured stackable table">

@@ -43,7 +43,11 @@
       <% if user_signed_in? &&  (current_user.admin? || (current_user.league && current_user.league.name == wrestler.league) || current_user.school_id == wrestler.school_id ) %>
         <div class="sixteen wide center aligned column">
           <i class="add user icon"></i><%= link_to 'ADD MATCH RESULT', new_wrestler_bout_path(@wrestler) %>
-        </div>
+        </div><br>
+        <%= form_tag import_wrestler_bouts_path(@wrestler), multipart: true do %>
+        <%= submit_tag "Import Matches from CSV" %>
+        <%= file_field_tag :file  %>
+        <% end %>
       <% end %>
     </div>
     <%= render partial: 'wrestlers/match_table' %>
