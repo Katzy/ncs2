@@ -1,5 +1,5 @@
 class Wrestler < ActiveRecord::Base
-
+ #get rid of file
   belongs_to :wrestler
   
   validates :date, presence: true, null: false
