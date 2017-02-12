@@ -3,7 +3,7 @@ class League < ActiveRecord::Base
   
   has_many :schools
   has_many :wrestlers
-  has_one :user
+  has_many :users
 
   validates :name, presence: true
   validates_uniqueness_of :name
