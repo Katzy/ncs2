@@ -1,6 +1,6 @@
 class WrestlersController < ApplicationController
-  before_action :load_league, only: [:new, :create]
-  before_filter :authorize_user, :only => [:new, :create]
+  # before_action :load_league, only: [:new, :create]
+  # before_filter :authorize_user, :only => [:new, :create]
   def index
 
     @wrestlers = Wrestler.order('weight ASC, seed ASC, wins DESC')
@@ -25,18 +25,20 @@ class WrestlersController < ApplicationController
   end
 
   def create
-
-    @wrestler = Wrestler.new(wrestler_params)
-    @league = League.find(@wrestler.school.league_id)
+    @school = School.find(wrestler_params[:school_id])
+    @wrestler = @school.wrestlers.new(wrestler_params)
+    # @wrestler.alternate == 0 ? @wrestler.alternate = false : @wrestler.alternate
+    @league = League.find(wrestler_params[:league_id])
     @wrestler.league_id = @league.id
-    @tournaments = Tournament.order('name ASC')
-    user = current_user
-    wrestler = @wrestler
-    wrestler_array = [user, wrestler]
+    # @tournaments = Tournament.order('name ASC')
+    # user = current_user
+    # wrestler = @wrestler
+    # wrestler_array = [user, wrestler]
+    @wrestler.fullname = wrestler_params[:first_name] + " " + wrestler_params[:last_name]
     respond_to do |format|
       if @wrestler.save
-       UserMailer.wrestler_added(wrestler_array).deliver
-        format.html { redirect_to league_path(@league), notice: 'wrestler was successfully created.' }
+      # UserMailer.wrestler_added(wrestler_array).deliver
+        format.html { redirect_to school_wrestlers_path(@school), notice: 'wrestler was successfully created.' }
          format.json { render json: @wrestler.errors, status: :unprocessable_entity }
         # added:
         format.js   { render json: @wrestler.errors, status: :unprocessable_entity }
@@ -51,10 +53,13 @@ class WrestlersController < ApplicationController
 
   end
 
+  def autocomplete 
+    query = params[:query].downcase
+    @graplers = Wrestler.where("lower(fullname) LIKE ?", "%#{query}%")
+    render json: { graplers: @graplers.present_name_weight_school }
+  end
 
   def edit
-
-
     @wrestler = Wrestler.find(params[:id])
 
     uid = @wrestler.school_id
@@ -123,6 +128,9 @@ class WrestlersController < ApplicationController
 
   def show
     @wrestler = Wrestler.find(params[:id])
+    @bouts = @wrestler.bouts.all
+    @match_number = 1
+    @full_name = @wrestler.first_name + ' ' + @wrestler.last_name
   end
 
   def update
@@ -135,7 +143,7 @@ class WrestlersController < ApplicationController
     @league = @school.league_id
     wrestler_array = [user, wrestler]
     if @wrestler.update(wrestler_params)
-       UserMailer.wrestler_updated(wrestler_array).deliver
+       # UserMailer.wrestler_updated(wrestler_array).deliver
       if current_user.admin?
         if weight == 106
           redirect_to wrestlers_weight_106_path
@@ -167,7 +175,7 @@ class WrestlersController < ApplicationController
           redirect_to wrestlers_weight_285_path
         end
       else
-        redirect_to league_path(@league)
+        redirect_to school_wrestlers_path(@wrestler.school)
       end
     else
       render :edit
@@ -189,7 +197,7 @@ class WrestlersController < ApplicationController
     wrestler = @wrestler
     wrestler_array = [user, wrestler]
     @wrestler.destroy
-    UserMailer.wrestler_deleted(wrestler_array).deliver
+    # UserMailer.wrestler_deleted(wrestler_array).deliver
     redirect_to :back
   end
 
@@ -212,7 +220,8 @@ class WrestlersController < ApplicationController
       wrestlers = Wrestler.where("weight = #{wt}").order('weight ASC, seed ASC, wins DESC')  # for csv format
 
       @count2 = @wrestlers.count
-
+      @wins = []
+      @losses = []
     respond_to do |format|
       format.html
       format.csv { send_data wrestlers.to_csv2 }
@@ -222,7 +231,7 @@ class WrestlersController < ApplicationController
   end
 
   def wrestler_params
-    params.require(:wrestler).permit(:first_name, :abbreviation, :school, :league_id, :league, :last_name, :weight, :grade, :wins, :losses, :tourney_wins, :league_place, :section_place, :state_place, :seed, :comments, :school_id, :t1_name, :t1_place, :t2_name, :t2_place, :t3_name, :t3_place, :t4_name, :t4_place, :t5_name, :t5_place, :h2h_1, :h2h_r1, :h2h_2, :h2h_r2, :h2h_3, :h2h_r3, :h2h_4, :h2h_r4, :h2h_5, :h2h_r5, :alternate)
+    params.require(:wrestler).permit(:first_name, :abbreviation, :school, :league_id, :league, :last_name, :weight, :grade, :wins, :losses, :tourney_wins, :league_place, :section_place, :state_place, :seed, :comments, :school_id, :t1_name, :t1_place, :t2_name, :t2_place, :t3_name, :t3_place, :t4_name, :t4_place, :t5_name, :t5_place, :t6_name, :t6_place, :h2h_1, :h2h_r1, :h2h_2, :h2h_r2, :h2h_3, :h2h_r3, :h2h_4, :h2h_r4, :h2h_5, :h2h_r5, :alternate, :fullname)
   end
 
 end

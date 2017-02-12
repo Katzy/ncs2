@@ -1,0 +1,43 @@
+<div class="ui raised segment">
+  <div class="ui center aligned raised segment">
+  <h2>Create League</h2><br>
+  (** Required Field)
+  </div>
+    <div class="ui form">
+    <%= form_for [@league]  do |f| %>
+      <% if @league.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@league.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <ul>
+            <% @league.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="fields">
+        <div class="three wide field">
+          <%= f.label :name, "League Name" %><br>
+          <%= f.text_field :name %>         
+        </div>
+        <div class="five wide field">
+          <%= f.label :league_rep, "League Rep" %><br />
+          <%= f.text_field :league_rep %>
+        </div>
+        <div class="five wide field">
+          <%= f.label :cell, "Cell" %><br />
+          <%= f.text_field :cell %>
+        </div>
+        <div class="five wide field">
+          <%= f.label :email, "Email" %><br />
+          <%= f.text_field :email %>
+        </div>
+      </div>     
+      <div class="actions">
+        <div class="ui red botton" id="btn-modal-1">
+          <%= f.submit "Create" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

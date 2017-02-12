@@ -48,6 +48,17 @@
 
 }
 
+#medalists  {
+
+  height: 250px;
+
+}
+
+#medalists2  {
+
+  height: 190px;
+
+}
 .ui.grid .mobile.only.row .images .image {
 
   height: 250px;
@@ -56,6 +67,12 @@
 .state .image {
 
   height: 150px;
+}
+
+.ui.images .two .image {
+
+  height: 150px;
+
 }
 
 .ui.left.segment .image {

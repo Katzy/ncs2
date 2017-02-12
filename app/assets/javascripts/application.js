@@ -17,3 +17,4 @@
 //= require private_pub
 //= require semantic_ui/semantic_ui
 //= require_tree .
+

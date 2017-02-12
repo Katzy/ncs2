@@ -12,17 +12,17 @@ module Leagues
     end
 
     def create
-      @user = current_user
-      @school = School.new(school_params)
+      @league = League.find(params[:league_id])
+      @school = @league.schools.new(school_params)
 
       respond_to do |format|
         if @school.save
-          format.html { redirect_to user_schools_path(@user), notice: 'school was successfully created.' }
+          format.html { redirect_to league_schools_path(@league), notice: 'school was successfully created.' }
           format.json { render action: 'index', status: :created, location: @school }
           # added:
           format.js   { render action: 'index', status: :created, location: @school }
         else
-          format.html { render action: 'new' }
+          format.html { render 'leagues/schools/new' }
           format.json { render json: @school.errors, status: :unprocessable_entity }
           # added:
           format.js   { render json: @school.errors, status: :unprocessable_entity }

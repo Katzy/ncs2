@@ -1,0 +1,88 @@
+<div class="ui segment">
+  <table class="ui celled center aligned structured stackable table">
+    <thead>
+      <tr>
+        <th rowspan="2">WEIGHT<br>(seed)</th>
+        <th rowspan="2">SCHOOL</th>
+        <th rowspan="2">NAME </th>
+        <th rowspan="2">YR</th>
+        <th rowspan="2">RECORD</th>
+        <th rowspan="2">TOURNAMENT<br>RESULTS</th>
+        <th rowspan="2">SECTION<br>HEAD 2 HEAD</th>
+        <th colspan="2">2016 PLACES</th>
+        <% if user_signed_in? && (current_user.admin? || current_user.league || current_user.school) %>
+        <th rowspan="2">Edit</th>
+        <th rowspan="2">Delete</th>
+        <% end %>
+        
+      </tr>
+      <tr>
+        <th rowspan="1">NCS</th>
+        <th rowspan="1">STATE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @wrestlers.each do |wrestler, user| %>
+          <% if wrestler.bouts %>
+          <% wrestler.bouts.map { |bout| bout.win_loss == "W" ? @wins << bout : @wins } %>
+          <% wrestler.bouts.map { |bout| bout.win_loss == "L" ? @losses << bout : @losses } %>  
+          <% end %>            
+          <tr>
+            <td><%= wrestler.weight %>
+                  <% if wrestler.seed %>
+                  <br>(<%= wrestler.seed %>)
+                  <% end %>
+              </td>
+            
+            <td><%= wrestler.school.name %><br>(<%= wrestler.school.league.name %>)</td>
+            <td><%= link_to wrestler.first_name + " " + wrestler.last_name, wrestler_path(wrestler) %></td>
+            <td><%= wrestler.grade %></td>
+            <td><%= wrestler.wins %>-<%= wrestler.losses %></td>
+          <td><% if wrestler.t1_name != "" %>
+      <%= wrestler.t1_name %> <%= wrestler.t1_place %><br>
+      <% end %>
+      <% if wrestler.t2_name != "" %>
+      <%= wrestler.t2_name %> <%= wrestler.t2_place %><br>
+      <% end %>
+      <% if wrestler.t3_name != "" || wrestler.t3_name != nil %>
+      <%= wrestler.t3_name %> <%= wrestler.t3_place %><br>
+      <% end %>
+      <% if wrestler.t4_name != "" || wrestler.t3_name != nil %>
+      <%= wrestler.t4_name %> <%= wrestler.t4_place %><br>
+      <% end %>
+      <% if wrestler.t5_name != "" || wrestler.t3_name != nil%>
+      <%= wrestler.t5_name %> <%= wrestler.t5_place %><br>
+      <% end %>
+  </td>
+  <td><% if wrestler.h2h_1 != "" %>
+      <%= wrestler.h2h_1 %> <%= wrestler.h2h_r1 %><br>
+      <% end %>
+      <% if wrestler.h2h_2 != "" %>
+      <%= wrestler.h2h_2 %> <%= wrestler.h2h_r2 %><br>
+      <% end %>
+      <% if wrestler.h2h_3 != "" %>
+      <%= wrestler.h2h_3 %> <%= wrestler.h2h_r3 %><br>
+      <% end %>
+      <% if wrestler.h2h_1 != "" %>
+      <%= wrestler.h2h_4 %> <%= wrestler.h2h_r4 %><br>
+      <% end %>
+      <% if wrestler.h2h_1 != "" %>
+      <%= wrestler.h2h_5 %> <%= wrestler.h2h_r5 %><br>
+      <% end %>
+  </td>
+            <td><%= wrestler.section_place %></td>
+            <td><%= wrestler.state_place %></td>
+          
+            <% if user_signed_in? && (current_user.admin?) %>
+              <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
+              <% else %>
+              <td></td>
+            <% end %>
+            <% if user_signed_in? && (current_user.admin? ) %>
+          <td><%= link_to 'Delete', wrestler, method: "delete", :data => {:confirm => 'Are you sure?'} %> </td>
+          <% end %>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -5,40 +5,25 @@
   </div>
    <div class="ui center aligned segment">
     <% if user_signed_in? && (current_user.admin? ) %>
-        <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_wrestler_path %>
+        <i class="add user icon"></i><%= link_to 'ADD TEAM', new_league_school_path(@lg) %>
         <% end %>
 <table class="ui celled right aligned structured stackable table">
   <thead>
     <tr>
-      <th rowspan="2">SEED</th>
-      <th rowspan="2">WT</th>
-      <th rowspan="2">LEAGUE PL</th>
       <th rowspan="2">SCHOOL</th>
-      <th rowspan="2">FIRST</th>
-      <th rowspan="2">LAST</th>
-      <th rowspan="2">YR</th>
-      <th rowspan="2">W</th>
-      <th rowspan="2">L</th>
-      <th rowspan="2">SEC Pl</th>
-      <th rowspan="2">ST Pl</th>
-
-      <th colspan="1">TOURNAMENT PLACES</th>
-      <th colspan="1">HEAD 2 HEAD</th>
-
-
-
-      <% if user_signed_in? && (current_user.admin? || current_user.league || current_user.school) %>
+      <th rowspan="2">COACH</th>
+      <% if user_signed_in? && (current_user.admin? || current_user.league_rep == true ) %>
+      <th rowspan="2">EMAIL</th>
+      <th rowspan="2">CELL</th>
       <th rowspan="2">EDIT</th>
-      <% end %>
-      <% if user_signed_in? && (current_user.admin? || current_user.league || current_user.school) %>
       <th rowspan="2">DELETE</th>
       <% end %>
     </tr>
 
   </thead>
   <tbody>
-    <% @wrestlers.each do |wrestler| %>
-       <%= render partial: 'leagues/wrestlers/table_row', locals: { wrestler: wrestler } %>
+    <% @schools.each do |school| %>
+       <%= render partial: 'leagues/teams_table_row', locals: { school: school } %>
       <% end %>
 
   </tbody>

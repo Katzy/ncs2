@@ -1,0 +1,49 @@
+<div class="ui raised segment">
+  <div class="ui center aligned raised segment">
+  <h2>Create School</h2><br>
+  (** Required Field)
+  </div>
+    <div class="ui form">
+    <%= form_for [@school]  do |f| %>
+      <% if @school.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@school.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <ul>
+            <% @school.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="fields">
+        <div class="three wide field">
+          <%= f.label :name, "School Name" %><br>
+          <%= f.text_field :name %>         
+        </div>
+        <div class="three wide field">
+          <%= f.label :abbreviation, "Abbreviation" %><br />
+          <%= f.text_field :abbreviation %>
+        </div>
+        <div class="three wide field">
+          <%= f.label :head_coach, "Head Coach" %><br /> 
+          <%= f.text_field :head_coach %>
+        </div>
+      
+        <div class="five wide field">
+          <%= f.label :address, "Address" %><br /> 
+          <%= f.text_field :address %>
+        </div>
+      </div>  
+      <div class="hidden field">
+          
+          <%= f.hidden_field :league_id, :value => @league.id %>
+        </div> 
+     
+      <div class="actions">
+        <div class="ui red botton" id="btn-modal-1">
+          <%= f.submit "Create" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

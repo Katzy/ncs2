@@ -1,0 +1,37 @@
+  <div class="ui center aligned segment">
+    <table class="ui celled center aligned structured stackable table">
+      <thead>
+        <tr>
+          <th colspan="13"><h3>2017 MATCHES</h3>
+          </th>
+        </tr>
+        <tr>
+          <th rowspan="2">Match #</th>
+          <th rowspan="2">Date</th>
+          <th rowspan="2">Weight</th>
+          <th rowspan="2">Dual or Tournament</th>
+          <th rowspan="2">Tournament Name</th>
+          <th rowspan="2">Seed</th>
+          <th rowspan="2">Opponent</th>
+          <th rowspan="2">W/L</th>
+          <th rowspan="2">D/MD/TF/Fall</th>
+          <th rowspan="2">Score/Time</th>
+          <th rowspan="2">Tournament Place</th>
+          <% if user_signed_in? && (current_user.admin?) %>
+          <th rowspan="2">EDIT</th>
+          <% end %>
+          <% if user_signed_in? && (current_user.admin?) %>
+          <th rowspan="2">DELETE</th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        
+          <% @bouts.each do |bout| %>
+            <%= render partial: 'bouts/table_row', locals: { bout: bout } %>
+            <% @match_number += 1 %>
+          <% end %>
+        
+      </tbody>
+    </table>
+  </div>

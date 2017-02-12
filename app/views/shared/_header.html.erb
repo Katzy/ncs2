@@ -5,7 +5,7 @@
 
   <div class="ui inverted info wide sidebar vertical menu">
     <a class="item"><b>TOURNEY INFO</b></a>
-    <a class="item" href="/images/NCS_schedule_2016.pdf">Schedule</a>
+    <a class="item" href="/images/NCS_schedule_2017.pdf">Schedule</a>
     <a class="item" href="/information/seeds.html">Seeds</a>
     <a class="item" href="/information/alerts.html">Alerts</a>
     <a class="item" href="http://www.nfhsnetwork.com/events/cifncs/91d037937d">Live Streaming</a>
@@ -144,7 +144,7 @@
       </div>
 
 
-
+      <% if @schools1 %>
         <div class="two column row">
           <div class="column">
             <div class="school">
@@ -153,15 +153,17 @@
             <% end %>
             </div>
           </div>
+          <% if @schools2 %>
           <div class="column">
-             <div class="school">
+            <div class="school">
             <% @schools2.each do |s| %>
               <a class="item" href="/schools/<%= s.id %>/wrestlers/"><%= s.name %></a>
             <% end %>
             </div>
           </div>
+          <% end %>
         </div>
-
+      <% end %>
     </div>
   </div>
 
@@ -177,7 +179,7 @@
   <div class="ui center aligned top attached header">
     <div class="ui center aligned segment">
 
-     <b>North Coast Section / Les Schwab Tires Wrestling Championships</b><br>JAMES LOGAN HIGH SCHOOL<br>Union City, California<br>Feb 26-27, 2016<br>
+     <b>North Coast Section / Les Schwab Tires Wrestling Championships</b><br>JAMES LOGAN HIGH SCHOOL<br>Union City, California<br>Feb 24-25, 2017<br>
 
     </div>
     </div>
@@ -191,7 +193,7 @@
 
 
       <% if user_signed_in? && (@user.league_rep == true) %>
-       <div class="ui toggle3 item"><i class="sidebar icon"></i>LEAGUE ENTRY MENU
+       <div class="ui toggle3 item"><i class="sidebar icon"></i>LEAGUE REP MENU
 
       </div>
       <% else %>
@@ -242,7 +244,7 @@
     </div>
 
       <% if user_signed_in? && (@user.league_rep == true) %>
-      <div class="ui toggle3 item"><i class="sidebar icon"></i>LEAGUE ENTRY MENU
+      <div class="ui toggle3 item"><i class="sidebar icon"></i>LEAGUE REP MENU
 
       </div>
       <div class="ui toggle4 item"><i class="sidebar icon"></i>WRESTLERS

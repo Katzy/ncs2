@@ -11,8 +11,9 @@ module Schools
 
       @user = current_user
       @count = @wrestlers.count
-
-
+      @wins = []
+      @losses = []
+      @tourneys = []
       respond_to do |format|
         format.html
         format.csv { send_data wrestlers.to_csv }
@@ -20,9 +21,37 @@ module Schools
       end
     end
 
+  
+
+    def download
+      school = School.find(params[:school_id])
+      respond_to do |format|
+        format.html
+        format.csv { send_data Wrestler.download(school), filename: school.name + '_import_file' + '.csv' }
+      end
+    end
+
+    def help
+      @school = School.find(params[:school_id])
+    end
+
+    def import
+
+      school = School.find(params[:school_id])
+      if params[:file] != nil
+        School.find(params[:school_id]).wrestlers.import(params[:file], school)
+        wrestlers = school.wrestlers.order('weight ASC')
+        wrestler_array = [current_user, wrestlers]
+        UserMailer.team_upload(wrestler_array).deliver
+        redirect_to user_wrestlers_path(User.find(params[:user_id])), notice: "Import successful!"
+      else
+        redirect_to user_wrestlers_path(User.find(params[:user_id])), notice: "Choose a file to import!"
+      end
+    end
+
     def new
      @school = School.find(params[:school_id])
-
+     @league = League.find(@school.league_id)
       @wrestler = @school.wrestlers.new
       @tournaments = Tournament.order('name ASC')
     end
@@ -63,6 +92,12 @@ module Schools
       @school = School.find(@wrestler.school_id)
        @league = League.find_by_id(params[:league_id])
 
+    end
+
+    def show
+      # @wrestler = Wrestler.find(params[:id])
+
+      @bouts = @wrestler.bouts.all
     end
 
     def weight_106
@@ -221,7 +256,7 @@ module Schools
     end
 
     def wrestler_params
-      params.require(:wrestler).permit(:first_name, :abbreviation, :school, :league_id, :league, :last_name, :weight, :grade, :wins, :losses, :tourney_wins, :league_place, :section_place, :state_place, :seed, :comments, :school_id, :t1_name, :t1_place, :t2_name, :t2_place, :t3_name, :t3_place, :t4_name, :t4_place, :t5_name, :t5_place, :h2h_1, :h2h_r1, :h2h_2, :h2h_r2, :h2h_3, :h2h_r3, :h2h_4, :h2h_r4, :h2h_5, :h2h_r5, :alternate)
+      params.require(:wrestler).permit(:first_name, :abbreviation, :school, :league_id, :league, :last_name, :weight, :grade, :wins, :losses, :tourney_wins, :league_place, :section_place, :state_place, :seed, :comments, :school_id, :t1_name, :t1_place, :t2_name, :t2_place, :t3_name, :t3_place, :t4_name, :t4_place, :t5_name, :t5_place, :t6_name, :t6_place, :h2h_1, :h2h_r1, :h2h_2, :h2h_r2, :h2h_3, :h2h_r3, :h2h_4, :h2h_r4, :h2h_5, :h2h_r5, :alternate, :fullname)
     end
 
   end

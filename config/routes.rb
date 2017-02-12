@@ -101,11 +101,14 @@ Rails.application.routes.draw do
 
   post 'create_user' => 'users#create', as: :create_user
 
+  resources :seasons
+
   devise_for :users, controllers: {registrations: 'registrations'}
 
   resources :users, except: :create
 
   resources :leagues do
+    resources :schools, controller: "leagues/schools"
     resources :wrestlers, controller: "leagues/wrestlers"
       member do
         delete :delete_wrestler
@@ -113,7 +116,14 @@ Rails.application.routes.draw do
   end
 
   resources :schools do
-    resources :wrestlers, controller: "schools/wrestlers"
+    collection { get :autocomplete }
+    resources :wrestlers, controller: "schools/wrestlers" do
+      collection do
+       post :import 
+       get :help
+       get :download
+     end
+    end
   end
 
   resources :cellnumbers, only: [:index, :show, :new, :create, :destroy] do
@@ -126,9 +136,17 @@ Rails.application.routes.draw do
 
   resources :comments
 
-  resources :tournaments
+  resources :tournaments do
+    collection { get :autocomplete }
+  end
+
+  resources :bouts
 
   resources :wrestlers do
+    collection { get :autocomplete }
+    resources :bouts, controller: "wrestlers/bouts" do
+      collection { post :import }
+    end
     collection do
       delete 'destroy_all'
     end

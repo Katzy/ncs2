@@ -1,0 +1,56 @@
+<div class="ui center aligned grid">
+  <div class="ui mobile only row">
+     <div class="sixteen wide column">
+      <b><%= @wrestler.first_name %> <%=@wrestler.last_name%></b>
+    </div>
+    <%= render partial: 'wrestlers/match_table' %>
+    <% @match_number = 1 %>
+  </div>
+  <div class="ui computer only tablet only">
+    <div class="ui grid">
+      <div class="five wide column">
+       <b><%= @wrestler.first_name %> <%=@wrestler.last_name%></b><br>
+       <%= @wrestler.school.name %><br>
+       Grade: <%= @wrestler.grade %>
+      </div>
+      <div class="ui  wide center aligned column">
+
+        <table class="ui celled center aligned structured stackable table">
+          <thead>
+            <tr>
+              <th rowspan="2">Current Record</th>
+              <th colspan="3">2015-16 PLACES</th>       
+            </tr>
+            <tr>
+              <th rowspan="1">NCS</th>
+              <th rowspan="1">STATE</th>
+              <th rowspan="1">LEAGUE</th>
+            </tr>
+          </thead>
+          <tbody>
+         
+            <td><%= @wrestler.bouts.select {|bout| bout["win_loss"] == "W" }.count %>-<%= @wrestler.bouts.select {|bout| bout["win_loss"] == "L" }.count %></td>
+            <td><%= @wrestler.section_place %></td>
+            <td><%= @wrestler.state_place %></td>
+            <td><%= @wrestler.league_place %></td>
+          </tbody>
+        </table>
+
+
+
+
+      </div>
+      <% if user_signed_in? &&  (current_user.admin? || (current_user.league.name == @wrestler.school.league.name) || current_user.school_id == @wrestler.school_id ) %>
+        <div class="sixteen wide center aligned column">
+          <i class="add user icon"></i><%= link_to 'ADD MATCH RESULT', new_wrestler_bout_path(@wrestler) %>
+        </div><br>
+        <%= form_tag import_wrestler_bouts_path(@wrestler), multipart: true do %>
+        <%= submit_tag "Import Matches from CSV" %>
+        <%= file_field_tag :file  %>
+        <% end %>
+      <% end %>
+    </div>
+    <%= render partial: 'wrestlers/match_table' %>
+
+  </div>
+</div>
