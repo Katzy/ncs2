@@ -1,7 +1,7 @@
 class LeaguesController < ApplicationController
   
       def index
-        @leagues = League.all
+        @leagues = League.all.order('name ASC')
         @u_hash = {}
         @wrestler_count_hash = {}
         @leagues.each do |l|
