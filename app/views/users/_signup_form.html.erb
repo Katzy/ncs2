@@ -34,6 +34,7 @@
       </div>
 
       <div class="fields">
+      <% if user_signed_in? && current_user.admin? %>
         <div class="four wide field">
           <%= f.label :league_id %><br>
           <%= f.collection_select :league_id, League.order(:name), :id, :name, :include_blank => true %>
@@ -43,19 +44,42 @@
           <%= f.label :school_id %><br>
           <%= f.collection_select :school_id, School.order(:name), :id, :name, :include_blank => true %>
         </div>
+        <% end %>
+        <% if user_signed_in? && current_user.league_rep == true %>
+        <div class="eight wide field">
+          <%= f.label :school_id %><br>
+          <%= f.collection_select :school_id, League.find(current_user.league_id).schools.order(:name), :id, :name, :include_blank => true %>
+        </div>
+        <% end %>
       </div>
 
+       
       <div class="fields">
-         <div class="four wide field">
-            <%= f.label :league_rep %><br>
-            <%= f.check_box :league_rep %>
-          </div>
-
-           <div class="four wide field">
+        <% if user_signed_in? && current_user.admin? %>
+          <div class="four wide field">
             <%= f.label :admin %><br>
             <%= f.check_box :admin %>
           </div>
 
+          <div class="four wide field">
+            <%= f.label :league_rep %><br>
+            <%= f.check_box :league_rep %>
+          </div>
+
+         
+          <% if current_user.admin? || current_user.league_rep == true %>
+            <div class="four wide field">
+              <%= f.label :coach %><br>
+              <%= f.check_box :coach %>
+            </div>
+            <% if current_user.admin? || current_user.league_rep == true || current_user.coach == true %>
+              <div class="four wide field">
+                <%= f.label :asst, "Assistant" %><br>
+                <%= f.check_box :asst %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
 
 

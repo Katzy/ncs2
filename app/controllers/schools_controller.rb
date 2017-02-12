@@ -36,6 +36,14 @@ class SchoolsController < ApplicationController
 
   end
 
+
+
+  def autocomplete 
+    query = params[:query].downcase
+    @teams = School.where("lower(name) LIKE ?", "%#{query}%")
+    render json: { teams: @teams.present_all }
+  end
+
   def destroy
     @user = current_user
     @school = School.find(params[:id])

@@ -22,39 +22,32 @@
        
       <table class="ui celled right aligned structured stackable table">
         <thead>
-         <tr>
-            <!-- <th rowspan="2">SEED</th> -->
-            <th rowspan="2">WT</th>
-            <th rowspan="2">SCHOOL</th>
-            <th rowspan="2">NAME</th>
-            <th rowspan="2">YR</th>
-            <th rowspan="2">W</th>
-            <th rowspan="2">L</th>
-            <th colspan="3">2016 PLACES</th>
-            <th rowspan="2">2017 TOURNAMENTS</th>
-             <% if user_signed_in? && (current_user.admin?) %>
-            <th rowspan="2">EDIT</th>
-            <% end %>
-            <% if user_signed_in? && (current_user.admin?) %>
-            <th rowspan="2">DELETE</th>
-            <% end %>
-          </tr>
-          <tr>
-            <th rowspan="1">SECTION</th>
-            <th rowspan="1">STATE</th>
-            <th rowspan="1">LEAGUE</th>
-          </tr>
+             <tr>
+        <th rowspan="2">WEIGHT<br>(seed)</th>
+        <th rowspan="2">SCHOOL</th>
+        <th rowspan="2">NAME </th>
+        <th rowspan="2">YR</th>
+        <th rowspan="2">RECORD</th>
+        <th rowspan="2">TOURNAMENTS<br>RESULTS</th>
+        <th rowspan="2">SECTION<br>HEAD 2 HEAD</th>
+        <th colspan="2">2016</th>
+        <% if user_signed_in? && (current_user.admin? || current_user.league || current_user.school) %>
+        <th rowspan="2">Edit</th>
+        <th rowspan="2">Delete</th>
+        <% end %>
+        
+      </tr>
+      <tr>
+        <th rowspan="1">NCS</th>
+        <th rowspan="1">STATE</th>
+      </tr>
         </thead>
         <tbody>
           <% @wrestlers.each do |wrestler| %>
              <% if wrestler.bouts %>
-              <% wrestler.bouts.map{ |bout| bout.tourney_place ? @tourneys << bout : @tourneys } %>
-              <% wrestler.bouts.map{ |bout| bout.win_loss == "W" ? @wins << bout : @wins } %>
-              <% wrestler.bouts.map{ |bout| bout.win_loss == "L" ? @losses << bout : @losses } %>
+              
               <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler, wins: @wins, losses: @losses } %>
-              <% @wins = [] %>
-              <% @losses = [] %>
-              <% @tourneys = [] %>
+             
             <% end %>
           <% end %>
         </tbody>
@@ -62,60 +55,81 @@
     </div>
   </div>
   <div class="ui computer only tablet only row">
-    <div class="sixteen wide column">
-      <b><%= @school.name %></b>
+    <div class="four wide column">
+      <b><%= @school.name %></b><br><br>
+      <div class="ui animated fade button">
+        <a href="/schools/<%= @school.id %>/wrestlers/new">
+          <div class="visible content">ADD WRESTLER</div>
+          <div class="hidden content">1 at a time</div>
+        </a>
+      </div>
     </div>
-    <div class="ui center aligned segment">
    
-    <% if user_signed_in? && (current_user.admin? ) %>
-        <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_school_wrestler_path %><br><br>
-        <%= form_tag import_school_wrestlers_path, multipart: true do %>
-        <%= submit_tag "Import Wrestlers from CSV" %>
-        <%= file_field_tag :file  %>
-        
-      <% end %>
+   
+    <% if user_signed_in? && (current_user.admin? || current_user.school.name == @school.name || current_user.league_id == @school.league_id ) %>
+          <div class="left aligned seven wide column"><br><br>
+            <b>1. </b><div class="ui animated help button">
+               <a href="/schools/<%= @school.id %>/wrestlers/help"> 
+                <div class="visible content">UPLOAD ROSTER INSTRUCTIONS</div>
+                <div class="hidden content download">Click for Instructions! READ ME!</div>
+               </a>   
+            </div><br><br><b>2. </b>
+            <div class="ui animated fade button download">
+              <a href="/schools/<%= @school.id %>/wrestlers/download.csv">
+
+               <div class="visible content">DOWNLOAD TEMPLATE TO UPLOAD ROSTER</div>
+               <div class="hidden content download">Click to Download CSV File!<br>
+                 Read instructions on step 1 above first! 
+               </div>
+              </a>
+            </div>
+            <br><br><b>3.  Fill out spreadsheet!</b>
+          </div>
+             
+             <div class="left aligned five wide column">
+               <br><br>
+              <b>4. Save file</b>
+              <%= form_tag import_school_wrestlers_path, multipart: true do %>
+              <br><b>5. </b><%= file_field_tag :file  %><br><br>
+              <b>6. </b><%= submit_tag "Upload Wrestlers", :class => "ui button" %>
+              
+              <% end %>
+               
+        </div>
         <% end %>
 
       <table class="ui celled center aligned structured stackable table">
         <thead>
-          <tr>
-            <!-- <th rowspan="2">SEED</th> -->
-            <th rowspan="2">WT</th>
-            <th rowspan="2">SCHOOL</th>
-            <th rowspan="2">NAME</th>
-            <th rowspan="2">YR</th>
-            <th rowspan="2">W</th>
-            <th rowspan="2">L</th>
-            <th colspan="3">2016 PLACES</th>
-            <th rowspan="2">2017 TOURNAMENTS</th>
-             <% if user_signed_in? && (current_user.admin?) %>
-            <th rowspan="2">EDIT</th>
-            <% end %>
-            <% if user_signed_in? && (current_user.admin?) %>
-            <th rowspan="2">DELETE</th>
-            <% end %>
-          </tr>
-          <tr>
-            <th rowspan="1">SECTION</th>
-            <th rowspan="1">STATE</th>
-            <th rowspan="1">LEAGUE</th>
-          </tr>
+           <tr>
+        <th rowspan="2">WEIGHT<br>(seed)</th>
+        <th rowspan="2">SCHOOL</th>
+        <th rowspan="2">NAME </th>
+        <th rowspan="2">YR</th>
+        <th rowspan="2">RECORD</th>
+        <th rowspan="2">TOURNAMENTS<br>RESULTS</th>
+        <th rowspan="2">SECTION<br>HEAD 2 HEAD</th>
+        <th colspan="2">2016</th>
+        <% if user_signed_in? && (current_user.admin? || current_user.league || current_user.school) %>
+        <th rowspan="2">Edit</th>
+        <th rowspan="2">Delete</th>
+        <% end %>
+        
+      </tr>
+      <tr>
+        <th rowspan="1">NCS</th>
+        <th rowspan="1">STATE</th>
+      </tr>
 
         </thead>
         <tbody>
           <% @wrestlers.each do |wrestler| %>
             <% if wrestler.bouts %>
-              <% wrestler.bouts.map{ |bout| bout.tourney_place ? @tourneys << bout : @tourneys } %>
-              <% wrestler.bouts.map{ |bout| bout.win_loss == "W" ? @wins << bout : @wins } %>
-              <% wrestler.bouts.map{ |bout| bout.win_loss == "L" ? @losses << bout : @losses } %>
+             
               <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler, wins: @wins, losses: @losses } %>
-              <% @wins = [] %>
-              <% @losses = [] %>
-              <% @tourneys = [] %>
+            
             <% end %>
           <% end %>
         </tbody>
-      </table>
-    </div>
+      </table><br><br><br><br><br>
   </div>
 </div>

@@ -1,11 +1,11 @@
 <div class="ui center aligned grid">
 
-    <% if user_signed_in? && (current_user.league_id || current_user.school_id || current_user.admin?) %>
+  <!--   <% if user_signed_in? && (current_user.league_id || current_user.school_id || current_user.admin?) %>
      <div class="ui center aligned segment">
   <h4>All changes must be emailed to lhkatz@pacbell.net AND bniemi@cifncs.org</h4>
   </div>
   <% end %>
-
+ -->
 
   <div class="ui mobile only row">
      <div class="sixteen wide column">
@@ -15,6 +15,26 @@
     
       <table class="ui celled center aligned structured stackable table">
         <thead>
+         <th rowspan="2">WT</th>
+            <th rowspan="2">SCHOOL</th>
+            <th rowspan="2">NAME</th>
+            <th rowspan="2">YR</th>
+            <th rowspan="2">W</th>
+            <th rowspan="2">L</th>
+            <th colspan="3">2016 PLACES</th>
+            <th rowspan="2">2017 TOURNAMENTS</th>
+             <% if user_signed_in? && (current_user.admin? || current_user.league_id == @lg.id || current_user.school_id) %>
+            <th rowspan="2">EDIT</th>
+            <% end %>
+            <% if user_signed_in? && (current_user.admin?) %>
+            <th rowspan="2">DELETE</th>
+            <% end %>
+          </tr>
+          <tr>
+            <th rowspan="1">SECTION</th>
+            <th rowspan="1">STATE</th>
+            <th rowspan="1">LEAGUE</th>
+          </tr>
           <tr>
         <th rowspan="2">WEIGHT</th>
         <th rowspan="2">SCHOOL</th>
@@ -53,14 +73,15 @@
     
       <table class="ui celled center aligned structured stackable table">
         <thead>
-          <tr>
-        <th rowspan="2">WEIGHT</th>
+           <tr>
+        <th rowspan="2">WEIGHT<br>(seed)</th>
         <th rowspan="2">SCHOOL</th>
         <th rowspan="2">NAME </th>
         <th rowspan="2">YR</th>
-        <th rowspan="2">2017 RECORD</th>
-        <th colspan="3">2016 PLACES</th>
-        <th rowspan="2">2017 TOURNAMENTS</th>
+        <th rowspan="2">RECORD</th>
+        <th rowspan="2">TOURNAMENTS<br>RESULTS</th>
+        <th rowspan="2">SECTION<br>HEAD 2 HEAD</th>
+        <th colspan="2">2016</th>
         <% if user_signed_in? && (current_user.admin? || current_user.league || current_user.school) %>
         <th rowspan="2">Edit</th>
         <th rowspan="2">Delete</th>
@@ -70,7 +91,6 @@
       <tr>
         <th rowspan="1">NCS</th>
         <th rowspan="1">STATE</th>
-        <th rowspan="1">LEAGUE</th>
       </tr>
 
         </thead>

@@ -13,7 +13,9 @@ class BoutsController < ApplicationController
     def create
       @wrestler = Wrestler.find(bout_params[:wrestler_id])
       @bout = @wrestler.bouts.new(bout_params)
-
+      create_tourney
+      @bout.tourney_name = params[:tourney_name]
+      @bout.opponent_name = params[:opponent_name]
       respond_to do |format|
         if @bout.save
           format.html { redirect_to wrestler_path(@wrestler), notice: 'bout was successfully created.' }
@@ -66,7 +68,13 @@ class BoutsController < ApplicationController
     end
 
     private
- 
+    
+    def create_tourney
+      if Tournament.exists?(:name => params[:tourney_name]) == false
+        Tournament.create!({ :name => params[:tourney_name] })
+      end
+    end
+
     def bout_params
       params.require(:bout).permit(:date, :weight, :dual_or_tourney, :tourney_name, :tourney_seed, :opponent_name, :win_loss, :result_type, :score_time, :tourney_place, :wrestler_id)
     end

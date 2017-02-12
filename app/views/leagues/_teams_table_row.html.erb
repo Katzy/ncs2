@@ -1,6 +1,9 @@
 <tr>
   <td><%= link_to "#{school.name}", school_wrestlers_path(school) %></td>
- 
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
     <% if user_signed_in? && current_user.admin? %>
       <td><%= link_to 'Delete', school, method: "delete", :data => {:confirm => 'Are you sure?'} %> </td>
     <% end %>

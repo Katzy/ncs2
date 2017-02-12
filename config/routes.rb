@@ -101,6 +101,8 @@ Rails.application.routes.draw do
 
   post 'create_user' => 'users#create', as: :create_user
 
+  resources :seasons
+
   devise_for :users, controllers: {registrations: 'registrations'}
 
   resources :users, except: :create
@@ -114,8 +116,13 @@ Rails.application.routes.draw do
   end
 
   resources :schools do
+    collection { get :autocomplete }
     resources :wrestlers, controller: "schools/wrestlers" do
-      collection { post :import }
+      collection do
+       post :import 
+       get :help
+       get :download
+     end
     end
   end
 
@@ -129,11 +136,14 @@ Rails.application.routes.draw do
 
   resources :comments
 
-  resources :tournaments
+  resources :tournaments do
+    collection { get :autocomplete }
+  end
 
   resources :bouts
 
   resources :wrestlers do
+    collection { get :autocomplete }
     resources :bouts, controller: "wrestlers/bouts" do
       collection { post :import }
     end

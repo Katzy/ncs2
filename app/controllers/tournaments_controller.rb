@@ -44,6 +44,15 @@
         end
       end
 
+      def autocomplete 
+
+        query = params[:query].downcase
+        @tournaments = Tournament.where("lower(name) LIKE ?", "%#{query}%")
+        
+      
+        render json: { tournaments: @tournaments.present_all }
+      end
+
       def destroy
 
         @tournament = Tournament.find(params[:id])
@@ -54,6 +63,6 @@
       private
 
       def tournament_params
-        params.require(:tournament).permit(:name)
+        params.require(:tournament).permit(:name, :query)
       end
     end

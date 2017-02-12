@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     @schools = School.order('abbreviation ASC')
     count = @schools.count
     half = count / 2
-
+    @tournaments = Tournament.all
     @schools1 = @schools[0..half]
     @schools2 = @schools[(half+1)..@schools.count]
 

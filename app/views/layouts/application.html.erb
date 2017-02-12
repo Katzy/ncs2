@@ -26,6 +26,119 @@
 <%= render partial: "shared/footer", locals: { user: @user } %>
 
 <script>
+
+
+$('.ui.form.bout')
+  .form({
+    fields: {
+      tournament_name: {
+        identifier  : 'tournament_name',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Enter Tournament'
+          }
+        ]
+      },
+      opponent_team: {
+        identifier  : 'opponent_team',
+        rules: [
+          {
+            type    : 'empty',
+            prompt  : 'Enter School'
+          }
+        ]
+      },
+      dual_or_tourney: {
+        identifier  : 'dual_or_tourney'
+      }
+    }
+  })
+;
+
+// var standardHeader = $.fn.search.settings.templates.message;
+
+// var newHeader = function (message, type) {
+//     var
+//     html = '';
+//     if (message !== undefined && type !== undefined) {
+//         html += '' + '<div class="message ' + type + '">';
+//         // message type
+//         if (type == 'empty') {
+//             html += '' + '<div class="header">Tournament not found!</div class="header">' + '<div class="description">' + message + '</div class="description">';
+//         } else {
+//             html += ' <div class="description">' + message + '</div>';
+//         }
+//         html += '</div>';
+//     }
+//     return html;
+// };
+
+// $.fn.search.settings.templates.message = newHeader;
+$('.ui.search.school')
+  .search({
+    apiSettings: {
+      url: '/schools/autocomplete.json?query={query}'
+    },
+    fields: {
+      results: 'teams',
+      title: 'name'
+    },
+    minCharacters : 3,
+    error: {
+      noResults: 'Enter school now!'
+    }
+  } 
+)
+; 
+
+$('.ui.search.tourney')
+  .search({
+    apiSettings: {
+      url: '/tournaments/autocomplete.json?query={query}'
+    },
+    fields: {
+      results: 'tournaments',
+      title: 'name'
+    },
+    minCharacters : 2,
+    error: {
+      noResults: 'Enter tournament now!'
+    }
+  } 
+)
+; 
+
+$('.ui.search.wrestler')
+  .search({
+    apiSettings: {
+      url: '/wrestlers/autocomplete.json?query={query}'
+    },
+    fields: {
+      results: 'graplers',
+      title: 'fullname'
+
+    },
+    minCharacters : 2,
+    error: {
+      noResults: 'Enter wrestler now!'
+    },
+    onSelect(result, response) {
+        $('.ui.search.school').search('set value', result.school)
+        $('.ui.search.wrestler').search('set value', result.fullname)
+        $('.ui.search.wrestler').search('hide results')
+        return false
+    }
+  }
+)
+; 
+  
+$('.ui.dropdown.dual_or_tourney')
+  .dropdown({
+
+  })
+// $.fn.search.settings.templates.message = standardHeader;
+
 $('.ui.dropdown')
   .dropdown({
 
@@ -39,6 +152,7 @@ $('ui.accordion')
     }
   })
 ;
+
 
 
 

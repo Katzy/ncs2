@@ -1,28 +1,56 @@
-
 <tr>
- 
-  <td><%= wrestler.weight %></td>
-  
+  <!-- <td><%= wrestler.seed %></td> -->
+  <td><%= wrestler.weight %>
+    <% if wrestler.seed %>
+        <br>(<%= wrestler.seed %>)
+    <% end %>
+  </td>
   <td><%= wrestler.school.name %><br>(<%= wrestler.school.league.name %>)</td>
   <td><%= link_to "#{wrestler.first_name + ' ' + wrestler.last_name}", wrestler_path(wrestler) %></td>
   <td><%= wrestler.grade %></td>
-  <td><%= @wins.count %>-<%= @losses.count %></td>
-
-  <td><%= wrestler.league_place %></td>
+  <td><%= wrestler.wins %>-<%= wrestler.losses %></td>
+  <td><% if wrestler.t1_name != "" %>
+      <%= wrestler.t1_name %> <%= wrestler.t1_place %><br>
+      <% end %>
+      <% if wrestler.t2_name != "" %>
+      <%= wrestler.t2_name %> <%= wrestler.t2_place %><br>
+      <% end %>
+      <% if wrestler.t3_name != "" %>
+      <%= wrestler.t3_name %> <%= wrestler.t3_place %><br>
+      <% end %>
+      <% if wrestler.t4_name != "" %>
+      <%= wrestler.t4_name %> <%= wrestler.t4_place %><br>
+      <% end %>
+      <% if wrestler.t5_name != "" %>
+      <%= wrestler.t5_name %> <%= wrestler.t5_place %><br>
+      <% end %>
+  </td>
+  <td><% if wrestler.h2h_1 != "" %>
+      <%= wrestler.h2h_1 %> <%= wrestler.h2h_r1 %><br>
+      <% end %>
+      <% if wrestler.h2h_2 != "" %>
+      <%= wrestler.h2h_2 %> <%= wrestler.h2h_r2 %><br>
+      <% end %>
+      <% if wrestler.h2h_3 != "" %>
+      <%= wrestler.h2h_3 %> <%= wrestler.h2h_r3 %><br>
+      <% end %>
+      <% if wrestler.h2h_1 != "" %>
+      <%= wrestler.h2h_4 %> <%= wrestler.h2h_r4 %><br>
+      <% end %>
+      <% if wrestler.h2h_1 != "" %>
+      <%= wrestler.h2h_5 %> <%= wrestler.h2h_r5 %><br>
+      <% end %>
+  </td>
   <td><%= wrestler.section_place %></td>
   <td><%= wrestler.state_place %></td>
-
-  <td><% @tourneys.each do |tourney| %>
   
-  <%= tourney.tourney_name %>-<%= tourney.tourney_place %><br>
-  <% end %> 
-  </td>
   
 
-  <% if user_signed_in? &&  (current_user.admin?) %>
+
+  <% if user_signed_in? &&  (current_user.admin? || current_user.league_id == wrestler.school.league.id || current_user.school.name == wrestler.school.name) %>
     <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
     <% end %>
-    <% if user_signed_in? && (current_user.admin?) %>
+    <% if user_signed_in? && (current_user.admin? || current_user.league_id == wrestler.school.league.id || current_user.school.name == wrestler.school.name) %>
     <td><%= link_to 'Delete', wrestler, method: "delete", :data => {:confirm => 'Are you sure?'} %> </td>
   <% end %>
 </tr>

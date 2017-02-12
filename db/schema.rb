@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110175912) do
+ActiveRecord::Schema.define(version: 20170207155645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170110175912) do
     t.integer  "wrestler_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "opponent_team"
   end
 
   add_index "bouts", ["wrestler_id"], name: "index_bouts_on_wrestler_id", using: :btree
@@ -118,6 +119,8 @@ ActiveRecord::Schema.define(version: 20170110175912) do
     t.boolean  "admin"
     t.integer  "league_id"
     t.integer  "school_id"
+    t.boolean  "coach"
+    t.boolean  "asst"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -164,6 +167,7 @@ ActiveRecord::Schema.define(version: 20170110175912) do
     t.integer  "school_id"
     t.boolean  "alternate"
     t.integer  "league_id"
+    t.string   "fullname"
   end
 
   add_index "wrestlers", ["league_id"], name: "index_wrestlers_on_league_id", using: :btree
