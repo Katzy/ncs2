@@ -30,6 +30,8 @@ gem 'devise'
 
 gem 'pry'
 
+gem 'axlsx', '~> 2.0', '>= 2.0.1'
+gem 'acts_as_xlsx'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.

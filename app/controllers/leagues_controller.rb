@@ -1,5 +1,5 @@
 class LeaguesController < ApplicationController
-
+  
       def index
         @leagues = League.all
         @u_hash = {}

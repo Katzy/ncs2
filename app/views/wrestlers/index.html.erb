@@ -15,8 +15,8 @@
   <table class="ui celled right aligned structured stackable table">
   <thead>
     <tr>
-      <th rowspan="2">SEED</th>
-      <th rowspan="2">WT</th>
+    
+      <th rowspan="2">WT<br>(seed)</th>
       <th rowspan="2">LEAGUE PL</th>
       <th rowspan="2">SCHOOL</th>
       <th rowspan="2">FIRST</th>
@@ -34,10 +34,10 @@
 
 
 
+      <% if user_signed_in? && (current_user.admin? || current_user.coach ) %>
 
       <th rowspan="2">EDIT</th>
 
-      <% if user_signed_in? && (current_user.admin? || current_user.id == @user.id) %>
       <th rowspan="2">DELETE</th>
       <% end %>
     </tr>

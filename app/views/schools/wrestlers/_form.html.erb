@@ -53,28 +53,38 @@
 
       <div class="fields">
 
-        <div class="three wide field">
+        
 
+            
+            <% if current_user.admin?  %>
+        <div class="three wide field">
             <%= f.label :seed %><br>
-            <% if current_user.admin? %>
             <%= f.collection_select :seed, ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], :to_s, :to_s, :include_blank => true %>
-            <% else %>
-             <%= f.text_field :seed, :readonly=>true %>
-          <% end %>
         </div>
-        <% if current_user.admin? %>
-         <div class="checkbox field">
-         <%= f.label :alternate %><br>
-          <%= f.check_box :alternate %>
+            <% elsif @wrestler.seed %>
+            <div class="three wide field">
+             <%= f.label :seed %><br>
+             <%= f.text_field :seed, :readonly=>true %>
+          </div>
+       
+        <% end %>
+        <% if current_user.admin? || current_user.league_id == @wrestler.school.league_id %>
+         <div class="three wide field">
+         <%= f.label :alternate, "2017 LEAGUE PLACE" %><br>
+          <%= f.collection_select :seed, ['1', '2', '3', '4', '5', '6', 'ALT-1', 'ALT-2', 'ALT-3', 'ALT-4', 'ALT-5'], :to_s, :to_s, :include_blank => true %>
          </div>
          <% end %>
-
-
-        <div class="three wide field">
-          <%= f.label :league_place, "2016 League Place" %><br>
-           <%= f.collection_select :league_place, ['1', '2', '3', '4', 'ALT 1', 'ALT 2'], :to_s, :to_s, :include_blank => true %>
-
+          <div class="two wide field">
+          <%= f.label :wins, "Wins **" %><br>
+          <%= f.collection_select :wins, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50'], :to_s, :to_s, :include_blank => true %>
         </div>
+
+        <div class="two wide field">
+          <%= f.label :losses, "Losses **" %><br>
+           <%= f.collection_select :losses, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50'], :to_s, :to_s, :include_blank => true %>
+        </div>
+
+        
 
         <div class="three wide field">
           <%= f.label :section_place, "2016 Section Place" %><br>
@@ -92,7 +102,124 @@
         </div>
        
       </div>
-   
+             <h2 class="ui center aligned header">SEEDING INFORMATION</h2>
+      <h3 class="ui center aligned dividing header">TOURNAMENT PLACES</h3>
+
+      <div class="fields">
+
+          <div class="three wide field">
+          <%= f.label :t1_name, "TOURNAMENT 1" %><br>
+          <%= f.collection_select :t1_name, @tournaments, :name, :name, {:include_blank => true} %>
+          </div>
+
+
+           <div class="three wide field">
+          <%= f.label :t2_name, "TOURNAMENT 2" %><br>
+          <%= f.collection_select :t2_name, @tournaments, :name, :name, {:include_blank => true} %>
+          </div>
+
+
+           <div class="three wide field">
+          <%= f.label :t3_name, "TOURNAMENT 3" %><br>
+          <%= f.collection_select :t3_name, @tournaments, :name, :name, {:include_blank => true} %>
+          </div>
+           <div class="three wide field">
+          <%= f.label :t4_name, "TOURNAMENT 4" %><br>
+          <%= f.collection_select :t4_name, @tournaments, :name, :name, {:include_blank => true} %>
+
+          </div>
+             
+          <div class="three wide field">
+            <%= f.label :t5_name, "TOURNAMENT 5" %><br>
+            <%= f.collection_select :t5_name, @tournaments, :name, :name, {:include_blank => true} %>
+          </div>
+        </div>
+        <div class="fields">
+          <div class="three wide field">
+           <%= f.label :t1_place %><br>
+           <%= f.collection_select :t1_place, ['DNP', '1', '2', '3', '4', '5', '6', '7', '8'],  :to_s, :to_s, :include_blank => true %>
+          </div>
+
+          <div class="three wide field">
+            <%= f.label :t2_place %><br>
+            <%= f.collection_select :t2_place, ['DNP', '1', '2', '3', '4', '5', '6', '7', '8'],  :to_s, :to_s, :include_blank => true %>
+          </div>
+
+          <div class="three wide field">
+            <%= f.label :t3_place %><br>
+            <%= f.collection_select :t3_place, ['DNP', '1', '2', '3', '4', '5', '6', '7', '8'],  :to_s, :to_s, :include_blank => true %>
+          </div>
+
+          <div class="three wide field">
+
+          <%= f.label :t4_place %><br>
+          <%= f.collection_select :t4_place, ['DNP', '1', '2', '3', '4', '5', '6', '7', '8'],  :to_s, :to_s, :include_blank => true %>
+
+          </div>
+             <div class="three wide field">
+          <%= f.label :t5_place %><br>
+          <%= f.collection_select :t5_place, ['DNP', '1', '2', '3', '4', '5', '6', '7', '8'],  :to_s, :to_s, :include_blank => true %>
+
+          </div>
+
+      </div>
+      <h3 class="ui center aligned dividing header">HEAD TO HEAD RESULTS</h3>
+      <h5 class="ui center aligned header">EXAMPLES:<br>Williams (DLS)  W 9-2</h5>
+      <h4 class="ui center aligned header"></h4>
+      <div class="fields">
+         <div class="field">
+          <%= f.label :h2h_1, "OPPONENT 1" %><br>
+          <%= f.text_field :h2h_1, :placeholder => "Lopez (JL)" %>
+         </div>
+
+          <div class="field">
+            <%= f.label :h2h_r1, "W/L" %><br>
+            <%= f.text_field :h2h_r1, :placeholder => "W Fall" %>
+          </div>
+
+           <div class="field">
+          <%= f.label :h2h_2, "OPPONENT 2" %><br>
+          <%= f.text_field :h2h_2, :placeholder => "Smith (UKIAH)" %>
+         </div>
+
+
+          <div class="field">
+            <%= f.label :h2h_r2, "W/L" %><br>
+            <%= f.text_field :h2h_r2, :placeholder => "L 2-1" %>
+          </div>
+        </div>
+        <div class="fields">
+          <div class="field">
+           <%= f.label :h2h_3, "OPPONENT 3" %><br>
+           <%= f.text_field :h2h_3 %>
+          </div>
+
+          <div class="field">
+            <%= f.label :h2h_r3, "W/L" %><br>
+            <%= f.text_field :h2h_r3 %>
+          </div>
+
+           <div class="field">
+          <%= f.label :h2h_4, "OPPONENT 4" %><br>
+          <%= f.text_field :h2h_4 %>
+         </div>
+
+          <div class="field">
+            <%= f.label :h2h_r4, "W/L" %><br>
+            <%= f.text_field :h2h_r4 %>
+          </div>
+          </div>
+        <div class="fields">
+           <div class="field">
+          <%= f.label :h2h_5, "OPPONENT 5" %><br>
+          <%= f.text_field :h2h_5 %>
+         </div>
+
+          <div class="field">
+            <%= f.label :h2h_r5, "W/L" %><br>
+            <%= f.text_field :h2h_r5 %>
+          </div>
+      </div>
       <div class="actions">
         <div class="ui red botton" id="btn-modal-1">
           <%= f.submit "Create" %>
