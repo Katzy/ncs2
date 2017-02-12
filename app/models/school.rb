@@ -1,5 +1,4 @@
 class School < ActiveRecord::Base
-  acts_as_xlsx
 
   belongs_to :league
   has_many :wrestlers
