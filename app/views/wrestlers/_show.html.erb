@@ -29,7 +29,7 @@
           </thead>
           <tbody>
          
-            <td><%= @wrestler.bouts.select {|bout| bout["win_loss"] == "W" }.count %>-<%= @wrestler.bouts.select {|bout| bout["win_loss"] == "L" }.count %></td>
+            <td><%= @wrestler.wins %>-<%= @wrestler.losses %></td>
             <td><%= @wrestler.section_place %></td>
             <td><%= @wrestler.state_place %></td>
             <td><%= @wrestler.league_place %></td>
@@ -44,10 +44,7 @@
         <div class="sixteen wide center aligned column">
           <i class="add user icon"></i><%= link_to 'ADD MATCH RESULT', new_wrestler_bout_path(@wrestler) %>
         </div><br>
-        <%= form_tag import_wrestler_bouts_path(@wrestler), multipart: true do %>
-        <%= submit_tag "Import Matches from CSV" %>
-        <%= file_field_tag :file  %>
-        <% end %>
+        
       <% end %>
     </div>
     <%= render partial: 'wrestlers/match_table' %>
