@@ -43,9 +43,9 @@ module Schools
         wrestlers = school.wrestlers.order('weight ASC')
         wrestler_array = [current_user, wrestlers]
         UserMailer.team_upload(wrestler_array).deliver
-        redirect_to user_wrestlers_path(User.find(params[:user_id])), notice: "Import successful!"
+        redirect_to school_wrestlers_path(school), notice: "Import successful!"
       else
-        redirect_to user_wrestlers_path(User.find(params[:user_id])), notice: "Choose a file to import!"
+        redirect_to school_wrestlers_path(school), notice: "Choose a file to import!"
       end
     end
 
