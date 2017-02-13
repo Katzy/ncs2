@@ -57,7 +57,7 @@
   <div class="ui computer only tablet only row">
     <div class="four wide column">
       <b><%= @school.name %></b><br><br>
-     <% if user_signed_in? &&  (current_user.admin? || current_user.league_id == wrestler.school.league.id || current_user.school.name == wrestler.school.name) %>
+     <% if user_signed_in? &&  (current_user.admin? || current_user.league_id == @school.league.id || current_user.school.name == @school.name) %>
       <div class="ui animated fade button">
         <a href="/schools/<%= @school.id %>/wrestlers/new">
           
