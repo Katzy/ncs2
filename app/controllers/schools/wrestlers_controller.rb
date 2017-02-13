@@ -1,7 +1,7 @@
 module Schools
   class WrestlersController < ApplicationController
    before_action :load_league, only: [:new, :index, :create]
-   before_filter :authorize_user, :only => [:new, :create]
+   # before_filter :authorize_user, :only => [:new, :create]
     def index
 
        @school = School.find(params[:school_id])

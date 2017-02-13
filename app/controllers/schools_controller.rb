@@ -29,11 +29,18 @@ class SchoolsController < ApplicationController
   end
 
   def edit
+    @school = School.find(params[:id])
 
   end
 
   def update
-
+    @school = School.find(params[:id])
+    league = League.find(@school.league_id)
+     if @school.update(school_params)
+        redirect_to league_path(league)
+     else
+      render :edit
+    end
   end
 
 
