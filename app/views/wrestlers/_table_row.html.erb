@@ -14,19 +14,19 @@
 
   <td><%= wrestler.section_place %></td>
   <td><%= wrestler.state_place %></td>
-  <td><% if wrestler.t1_name != "" %>
+    <td><% if wrestler.t1_name != "" %>
       <%= wrestler.t1_name %> <%= wrestler.t1_place %><br>
       <% end %>
       <% if wrestler.t2_name != "" %>
       <%= wrestler.t2_name %> <%= wrestler.t2_place %><br>
       <% end %>
-      <% if wrestler.t3_name != "" || wrestler.t3_name != nil %>
+      <% if wrestler.t3_name != nil %>
       <%= wrestler.t3_name %> <%= wrestler.t3_place %><br>
       <% end %>
-      <% if wrestler.t4_name != "" || wrestler.t3_name != nil %>
+      <% if wrestler.t4_name != nil %>
       <%= wrestler.t4_name %> <%= wrestler.t4_place %><br>
       <% end %>
-      <% if wrestler.t5_name != "" || wrestler.t3_name != nil %>
+      <% if wrestler.t5_name != nil %>
       <%= wrestler.t5_name %> <%= wrestler.t5_place %><br>
       <% end %>
   </td>
@@ -39,7 +39,7 @@
       <% if wrestler.h2h_3 != "" %>
       <%= wrestler.h2h_3 %> <%= wrestler.h2h_r3 %><br>
       <% end %>
-      <% if wrestler.h2h_1 != "" %>
+      <% if wrestler.h2h_1 != ""  %>
       <%= wrestler.h2h_4 %> <%= wrestler.h2h_r4 %><br>
       <% end %>
       <% if wrestler.h2h_1 != "" %>

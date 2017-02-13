@@ -38,19 +38,19 @@
             <td><%= link_to wrestler.first_name + " " + wrestler.last_name, wrestler_path(wrestler) %></td>
             <td><%= wrestler.grade %></td>
             <td><%= wrestler.wins %>-<%= wrestler.losses %></td>
-          <td><% if wrestler.t1_name != "" %>
+            <td><% if wrestler.t1_name != "" %>
       <%= wrestler.t1_name %> <%= wrestler.t1_place %><br>
       <% end %>
       <% if wrestler.t2_name != "" %>
       <%= wrestler.t2_name %> <%= wrestler.t2_place %><br>
       <% end %>
-      <% if wrestler.t3_name != "" || wrestler.t3_name != nil %>
+      <% if wrestler.t3_name != "" %>
       <%= wrestler.t3_name %> <%= wrestler.t3_place %><br>
       <% end %>
-      <% if wrestler.t4_name != "" || wrestler.t3_name != nil %>
+      <% if wrestler.t4_name != "" %>
       <%= wrestler.t4_name %> <%= wrestler.t4_place %><br>
       <% end %>
-      <% if wrestler.t5_name != "" || wrestler.t3_name != nil%>
+      <% if wrestler.t5_name != ""%>
       <%= wrestler.t5_name %> <%= wrestler.t5_place %><br>
       <% end %>
   </td>
@@ -63,7 +63,7 @@
       <% if wrestler.h2h_3 != "" %>
       <%= wrestler.h2h_3 %> <%= wrestler.h2h_r3 %><br>
       <% end %>
-      <% if wrestler.h2h_1 != "" %>
+      <% if wrestler.h2h_1 != ""  %>
       <%= wrestler.h2h_4 %> <%= wrestler.h2h_r4 %><br>
       <% end %>
       <% if wrestler.h2h_1 != "" %>
