@@ -34,8 +34,9 @@ class SchoolsController < ApplicationController
   end
 
   def update
-    @school = School.find(params[:id])
-    league = League.find(@school.league_id)
+    league = League.find(School.find(params[:id]).league_id)
+    @school = league.schools.find(params[:id])
+    
      if @school.update(school_params)
         redirect_to league_path(league)
      else
