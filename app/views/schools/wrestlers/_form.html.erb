@@ -70,8 +70,8 @@
         <% end %>
         <% if current_user.admin? || current_user.league_id == @wrestler.school.league_id %>
          <div class="three wide field">
-         <%= f.label :alternate, "2017 LEAGUE PLACE" %><br>
-          <%= f.collection_select :seed, ['1', '2', '3', '4', '5', '6', 'ALT-1', 'ALT-2', 'ALT-3', 'ALT-4', 'ALT-5'], :to_s, :to_s, :include_blank => true %>
+         <%= f.label :league_place, "2017 LEAGUE PLACE" %><br>
+          <%= f.collection_select :league_place, ['1', '2', '3', '4', '5', '6', 'ALT-1', 'ALT-2', 'ALT-3', 'ALT-4', 'ALT-5'], :to_s, :to_s, :include_blank => true %>
          </div>
          <% end %>
           <div class="two wide field">
