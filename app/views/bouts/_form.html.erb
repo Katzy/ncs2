@@ -30,18 +30,9 @@
            <%= f.text_field :weight, :readonly=>true %>
            <% end %>
         </div>
-        <div class="two wide field">
-         <%= f.label :dual_or_tourney, "Event" %><br>
-         <div class="ui compact selection dropdown dual_or_tourney">
-           <input type="hidden" name="gender">
-           <i class="dropdown icon"></i>
-           
-           <div class="menu">
-             <div class="item" data-value="1">Dual</div>
-             <div class="item" data-value="0">Tourney</div>
-           </div>
-         </div> 
-         
+        <div class="three wide field">
+          <%= f.label :dual_or_tourney, "Event" %><br />
+          <%= f.collection_select :dual_or_tourney, ['Dual', 'Tournament'], :to_s, :to_s, :include_blank => true %>
         </div>
       
         <div class="four wide field">
