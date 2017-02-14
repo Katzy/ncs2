@@ -22,7 +22,7 @@ class UserMailer < ActionMailer::Base
   def team_upload(wrestler_array)
     @user = wrestler_array[0]
     @wrestlers = wrestler_array[1]
-    mail(to: ["scottalankatz@gmail.com", "lhkatz@pacbell.net"], subject: "#{@user.school.name} Imported Roster")
+    mail(to: ["scottalankatz@gmail.com", "lhkatz@pacbell.net"], subject: "#{@wrestlers[0].school.name} Imported Roster")
   end
 
   def wrestler_updated(wrestler_array)

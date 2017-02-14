@@ -33,7 +33,7 @@ class WrestlersController < ApplicationController
     # @tournaments = Tournament.order('name ASC')
     user = current_user
     wrestler = @wrestler
-   wrestler_array = [user, wrestler]
+    wrestler_array = [user, wrestler]
     @wrestler.fullname = wrestler_params[:first_name] + " " + wrestler_params[:last_name]
     respond_to do |format|
       if @wrestler.save

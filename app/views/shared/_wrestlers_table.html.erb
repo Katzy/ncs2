@@ -22,11 +22,8 @@
       </tr>
     </thead>
     <tbody>
-      <% @wrestlers.each do |wrestler, user| %>
-          <% if wrestler.bouts %>
-          <% wrestler.bouts.map { |bout| bout.win_loss == "W" ? @wins << bout : @wins } %>
-          <% wrestler.bouts.map { |bout| bout.win_loss == "L" ? @losses << bout : @losses } %>  
-          <% end %>            
+      <% @wrestlers.each do |wrestler| %>
+                  
           <tr>
             <td><%= wrestler.weight %>
                   <% if wrestler.seed %>
