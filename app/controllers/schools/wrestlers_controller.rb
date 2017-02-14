@@ -36,12 +36,12 @@ module Schools
     end
 
     def import
-
+      user = current_user
       school = School.find(params[:school_id])
       if params[:file] != nil
         School.find(params[:school_id]).wrestlers.import(params[:file], school)
         wrestlers = school.wrestlers.order('weight ASC')
-        wrestler_array = [current_user, wrestlers]
+        wrestler_array = [user, wrestlers]
         UserMailer.team_upload(wrestler_array).deliver
         redirect_to school_wrestlers_path(school), notice: "Import successful!"
       else
