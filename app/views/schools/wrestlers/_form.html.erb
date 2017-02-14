@@ -109,29 +109,49 @@
 
           <div class="three wide field">
           <%= f.label :t1_name, "TOURNAMENT 1" %><br>
-          <%= f.collection_select :t1_name, @tournaments, :name, :name, {:include_blank => true} %>
+          <% if :t1_name != nil && :t1_name != "" %>
+
+           <%= f.text_field :t1_name %>
+            <% else %>
+            <%= f.collection_select :t1_name, @tournaments, :name, :name, {:include_blank => true} %>
+           <% end %>
           </div>
 
 
            <div class="three wide field">
           <%= f.label :t2_name, "TOURNAMENT 2" %><br>
+          <% if :t2_name != nil && :t2_name != "" %>
+            <%= f.text_field :t2_name %>
+            <% else %>
           <%= f.collection_select :t2_name, @tournaments, :name, :name, {:include_blank => true} %>
+          <% end %>
           </div>
 
 
            <div class="three wide field">
           <%= f.label :t3_name, "TOURNAMENT 3" %><br>
-          <%= f.collection_select :t3_name, @tournaments, :name, :name, {:include_blank => true} %>
+          <% if params[:t3_name] != nil %>
+           <%= f.text_field :t3_name %>
+            <% else %>
+           <%= f.collection_select :t3_name, @tournaments, :name, :name, {:include_blank => true} %>
+          <% end %>
           </div>
            <div class="three wide field">
           <%= f.label :t4_name, "TOURNAMENT 4" %><br>
+          <% if params[:t4_name] != nil %>
+           <%= f.text_field :t4_name %>
+            <% else %>
           <%= f.collection_select :t4_name, @tournaments, :name, :name, {:include_blank => true} %>
-
+          <% end %>
           </div>
              
           <div class="three wide field">
             <%= f.label :t5_name, "TOURNAMENT 5" %><br>
+          <% if params[:t5_name] != nil %>
+           <%= f.text_field :t5_name %>
+            <% else %>
             <%= f.collection_select :t5_name, @tournaments, :name, :name, {:include_blank => true} %>
+          <% end %>
           </div>
         </div>
         <div class="fields">
