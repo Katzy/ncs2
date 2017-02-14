@@ -31,13 +31,13 @@ class WrestlersController < ApplicationController
     @league = League.find(wrestler_params[:league_id])
     @wrestler.league_id = @league.id
     # @tournaments = Tournament.order('name ASC')
-    # user = current_user
-    # wrestler = @wrestler
-    # wrestler_array = [user, wrestler]
+    user = current_user
+    wrestler = @wrestler
+   wrestler_array = [user, wrestler]
     @wrestler.fullname = wrestler_params[:first_name] + " " + wrestler_params[:last_name]
     respond_to do |format|
       if @wrestler.save
-      # UserMailer.wrestler_added(wrestler_array).deliver
+       UserMailer.wrestler_added(wrestler_array).deliver
         format.html { redirect_to school_wrestlers_path(@school), notice: 'wrestler was successfully created.' }
          format.json { render json: @wrestler.errors, status: :unprocessable_entity }
         # added:
