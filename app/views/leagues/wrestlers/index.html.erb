@@ -83,6 +83,7 @@
         <th rowspan="2">SECTION<br>HEAD 2 HEAD</th>
         <th colspan="2">2016</th>
          <% if user_signed_in? && (current_user.admin? || current_user.league_id == @lg.id  ) %>
+        <th rowspan="2">LEAGUE<br>PLACE</th>
         <th rowspan="2">Edit</th>
         <th rowspan="2">Delete</th>
         <% end %>
