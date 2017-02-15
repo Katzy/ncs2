@@ -230,7 +230,7 @@ module Leagues
 
 
     def select_wrestlers(wt)
-        @wrestlers = Wrestler.where("weight = #{wt}").order('weight ASC, state_place DESC, section_place DESC, wins DESC')
+        @wrestlers = Wrestler.where("weight = #{wt}").order('weight ASC, state_place ASC, section_place ASC, wins DESC')
         wrestlers = Wrestler.where("weight = #{wt}").order('seed ASC, wins DESC')  # for csv format
 
         @count2 = @wrestlers.count

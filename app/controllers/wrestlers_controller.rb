@@ -3,7 +3,7 @@ class WrestlersController < ApplicationController
   # before_filter :authorize_user, :only => [:new, :create]
   def index
 
-    @wrestlers = Wrestler.order('weight ASC, state_place DESC, section_place DESC, seed ASC, wins DESC')
+    @wrestlers = Wrestler.order('weight ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
     wrestlers = @wrestlers
 
     @user = current_user
@@ -216,7 +216,7 @@ class WrestlersController < ApplicationController
 
 
   def select_wrestlers(wt)
-      @wrestlers = Wrestler.where("weight = #{wt}").order('weight ASC, seed ASC, wins DESC')
+      @wrestlers = Wrestler.where("weight = #{wt}").order('weight ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
       wrestlers = Wrestler.where("weight = #{wt}").order('weight ASC, seed ASC, wins DESC')  # for csv format
 
       @count2 = @wrestlers.count
