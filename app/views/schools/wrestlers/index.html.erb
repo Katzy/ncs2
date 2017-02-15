@@ -17,7 +17,9 @@
       <%= form_tag import_school_wrestlers_path, multipart: true do %>
         <%= file_field_tag :file %>
         <%= submit_tag "Import Wrestlers from CSV" %>
-      <% end %>
+      <% end %><br><br>
+       Download Wrestlers:
+            <%= link_to "CSV", school_wrestlers_path(format: "csv") %> <br><br>
     <% end %>
        
       <table class="ui celled right aligned structured stackable table">
@@ -64,6 +66,9 @@
           <div class="hidden content">1 at a time</div>
         </a>
       </div>
+      <br><br>
+       Download Wrestlers:
+            <%= link_to "CSV", school_wrestlers_path(format: "csv") %> <br><br>
       <% end %>
     </div>
    

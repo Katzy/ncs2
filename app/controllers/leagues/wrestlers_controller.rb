@@ -8,7 +8,7 @@ module Leagues
         @school_ids = @schools.map { |school| school.id }
         @wrestlers = @lg.wrestlers.order('weight ASC, state_place DESC, section_place DESC, wins DESC')
        # @wrestlers = Wrestler.where("league = '#{@lg.name}'").order('weight ASC, seed ASC, wins DESC')
-         wrestlers = Wrestler.where("league = '#{@lg.name}'").order('weight ASC, seed ASC, wins DESC')
+         wrestlers = @wrestlers
 
       @user = current_user
       @count = @wrestlers.count
@@ -19,7 +19,7 @@ module Leagues
       respond_to do |format|
         format.html
         format.json { render json: @wrestlers }
-        format.csv { send_data wrestlers.to_csv }
+        format.csv { send_data wrestlers.to_csv2, filename: @lg.name + '_wrestlers' + '.csv' }
         format.xlsx{
           xlsx_package = Wrestler.to_xlsx
           begin 

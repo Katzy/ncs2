@@ -1,0 +1,31 @@
+<div class="wrestler">
+  <h1>Wrestler Weight Card</h1>
+ 
+  <h3>Name: <%= wrestler.first %> <%= wrestler.last %></h3>
+ 
+  <table>
+    <thead>
+        <tr>
+          <th>Description</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td><%= wrestler.school %></td>
+            <td><%= wrestler.wins %> <%= wrestler.losses %></td>
+            <td><%= wrestler.h2h_1 %> <%= wrestler.h2h_1r %> </td>
+            <td><%= wrestler.h2h_2 %> <%= wrestler.h2h_2r %> </td>
+            <td><%= wrestler.h2h_3 %> <%= wrestler.h2h_3r %> </td>
+            <td><%= wrestler.h2h_4 %> <%= wrestler.h2h_4r %> </td>
+          </tr>
+        
+      </tbody>
+  </table>
+ 
+  <% if wrestler.comments %>
+  <div class="comments">
+    <p><strong>Comments:</strong> <%= wrestler.comments %></p>
+  </div>
+  <% end %>
+</div>

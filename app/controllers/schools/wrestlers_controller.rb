@@ -16,7 +16,7 @@ module Schools
       @tourneys = []
       respond_to do |format|
         format.html
-        format.csv { send_data wrestlers.to_csv }
+        format.csv { send_data wrestlers.to_csv2, filename: @school.name + '_wrestlers.csv'}
 
       end
     end
