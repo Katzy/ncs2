@@ -1,7 +1,7 @@
 <tr>
   <td><%= link_to "#{lg.name}", league_path(lg) %></td>
   <td><%= lg.schools.count %></td>
-  <td><%= lg.league_rep %></td>
+  <td><%= lg.league_rep %> (<%= User.where('name LIKE ?', "%#{lg.league_rep}%")[0].school.name %>)</td>
 
 
     <td><%= link_to "Wrestlers (#{@wrestler_count_hash[lg.id.to_s]})", league_wrestlers_path(lg) %></td>
