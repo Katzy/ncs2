@@ -7,6 +7,7 @@ module Leagues
        @schools = School.where("league_id = #{params[:league_id]}")
         @school_ids = @schools.map { |school| school.id }
         @wrestlers = @lg.wrestlers.order('weight ASC, state_place DESC, section_place DESC, wins DESC')
+
        # @wrestlers = Wrestler.where("league = '#{@lg.name}'").order('weight ASC, seed ASC, wins DESC')
          wrestlers = @wrestlers
 
@@ -229,7 +230,7 @@ module Leagues
 
 
     def select_wrestlers(wt)
-        @wrestlers = Wrestler.where("weight = #{wt}").order('weight ASC, wins DESC')
+        @wrestlers = Wrestler.where("weight = #{wt}").order('weight ASC, state_place DESC, section_place DESC, wins DESC')
         wrestlers = Wrestler.where("weight = #{wt}").order('seed ASC, wins DESC')  # for csv format
 
         @count2 = @wrestlers.count

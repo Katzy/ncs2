@@ -3,7 +3,7 @@ class DownloadsController < ApplicationController
   def show
     respond_to do |format|
       format.js { render "alert('Hello World');"}
-      # format.pdf { send_wrestler_pdf }
+      format.pdf { send_wrestler_pdf }
     end
   end
  
