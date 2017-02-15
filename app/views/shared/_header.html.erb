@@ -268,10 +268,11 @@
       <div class="ui toggle3 item"><i class="sidebar icon"></i>LEAGUE REP MENU
 
       </div>
-        <% if user_signed_in? && ((@user.league_rep == true) || (@user.coach == true))%>
+        <% if user_signed_in? && (@user.league_rep == true) %>
       <div class="ui item">
         <%= link_to "MY TEAM", school_wrestlers_path(@user.school) %>
         </div>
+        <% end %>
       <div class="ui toggle4 item"><i class="sidebar icon"></i>WRESTLERS
 
     </div>
