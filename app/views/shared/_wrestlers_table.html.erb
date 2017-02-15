@@ -10,7 +10,7 @@
         <th rowspan="2">TOURNAMENT<br>RESULTS</th>
         <th rowspan="2">SECTION<br>HEAD 2 HEAD</th>
         <th colspan="2">2016 PLACES</th>
-        <% if user_signed_in? && (current_user.admin? || current_user.league || current_user.school) %>
+        <% if user_signed_in? && (current_user.admin? || current_user.league || current_user.coach) %>
         <th rowspan="2">Edit</th>
         <th rowspan="2">Delete</th>
         <% end %>
@@ -22,8 +22,11 @@
       </tr>
     </thead>
     <tbody>
-      <% @wrestlers.each do |wrestler| %>
-                  
+      <% @wrestlers.each do |wrestler, user| %>
+          <% if wrestler.bouts %>
+          <% wrestler.bouts.map { |bout| bout.win_loss == "W" ? @wins << bout : @wins } %>
+          <% wrestler.bouts.map { |bout| bout.win_loss == "L" ? @losses << bout : @losses } %>  
+          <% end %>            
           <tr>
             <td><%= wrestler.weight %>
                   <% if wrestler.seed %>
@@ -69,7 +72,7 @@
   </td>
             <td><%= wrestler.section_place %></td>
             <td><%= wrestler.state_place %></td>
-           <% if user_signed_in? && (current_user.admin? || current_user.school.name == wrestler.school.name || current_user.league_id == wrestler.league_id ) %>
+           <% if user_signed_in? && (current_user.admin? || current_user.school.name == wrestler.school.name || (current_user.league && (current_user.league_id == wrestler.league_id )) %>
               <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
               <% else %>
               <td></td>
