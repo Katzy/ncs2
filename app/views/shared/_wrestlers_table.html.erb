@@ -72,7 +72,7 @@
   </td>
             <td><%= wrestler.section_place %></td>
             <td><%= wrestler.state_place %></td>
-           <% if user_signed_in? && (current_user.admin? || current_user.school.name == wrestler.school.name || (current_user.league && (current_user.league_id == wrestler.league_id )) %>
+           <% if user_signed_in? && (current_user.admin? || current_user.school.name == wrestler.school.name || (current_user.league && (current_user.league_id == wrestler.league_id ))) %>
               <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
               <% else %>
               <td></td>
