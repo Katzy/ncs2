@@ -198,7 +198,7 @@
     </div>
 
   <div class="ui secondary main menu grid">
-    <div class="computer only row">
+    <div class="row">
 
       <div class="item">
         <%= link_to "Home", root_path %>
@@ -268,6 +268,7 @@
       <div class="ui toggle3 item"><i class="sidebar icon"></i>LEAGUE REP MENU
 
       </div>
+        <% if user_signed_in? && ((@user.league_rep == true) || (@user.coach == true))%>
       <div class="ui item">
         <%= link_to "MY TEAM", school_wrestlers_path(@user.school) %>
         </div>
@@ -282,6 +283,10 @@
     <div class="ui toggle2 item"><i class="sidebar icon"></i>TOURNEY INFO
 
     </div>
+        <% if user_signed_in? && ((@user.league_rep == false) && (@user.coach == true))%>
+      <div class="ui item">
+        <%= link_to "MY TEAM", school_wrestlers_path(@user.school) %>
+        </div>
 
     <div class="ui toggle4 item"><i class="sidebar icon"></i>WRESTLERS
 
