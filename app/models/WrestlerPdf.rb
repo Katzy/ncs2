@@ -1,5 +1,8 @@
+require "render_anywhere"
+
 class WrestlerPdf
- 
+  include RenderAnywhere
+   
   def initialize(wrestler)
     @wrestler = wrestler
   end

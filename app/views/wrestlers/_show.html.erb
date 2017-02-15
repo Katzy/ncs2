@@ -13,6 +13,7 @@
        <%= @wrestler.school.name %><br>
        Grade: <%= @wrestler.grade %>
       </div>
+      <%= link_to "Download PDF",wrestler_downloads_path(@wrestler, format: "pdf"), target: "_blank", class: "download" %>
   <div class="center aligned row">
       <div class="ui segment">
   <table class="ui celled center aligned structured stackable table">
