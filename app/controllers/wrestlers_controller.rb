@@ -133,12 +133,12 @@ class WrestlersController < ApplicationController
     @full_name = @wrestler.first_name + ' ' + @wrestler.last_name
     respond_to do |format|
       format.html { render :show }
-      format.pdf do
-        render pdf: "#{@wrestler.first_name}_#{@wrestler.last_name}_#{@wrestler.weight}.pdf",
-               layout: "wrestler_pdf", 
-               template: "wrestlers/show.pdf.erb",
-               locals: { :wrestler => @wrestler }
-      end
+      # format.pdf do
+      #   render pdf: "#{@wrestler.first_name}_#{@wrestler.last_name}_#{@wrestler.weight}.pdf",
+      #          layout: "wrestler_pdf", 
+      #          template: "wrestlers/show.pdf.erb",
+      #          locals: { :wrestler => @wrestler }
+      # end
     end
   end
 
