@@ -20,8 +20,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-gem 'pdfkit'
-gem 'render_anywhere'
+gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

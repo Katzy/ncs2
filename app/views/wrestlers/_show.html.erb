@@ -14,8 +14,8 @@
        Grade: <%= @wrestler.grade %>
       </div>
       <% if current_user.admin? %>
-      <%= link_to "Download PDF", wrestler_downloads_path(@wrestler, format: "pdf"), target: "_blank", class: "download" %>
-      <% end %>
+      <%= link_to "Download PDF", wrestler_path(@wrestler, format: "pdf") %>
+      <% end %> 
   <div class="center aligned row">
       <div class="ui segment">
   <table class="ui celled center aligned structured stackable table">

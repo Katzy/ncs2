@@ -1,0 +1,77 @@
+<div class="wrestler">
+<h1 style="text-align:center">NCS Boys' Wrestling Registration</h1>
+  <% if @wrestler.league_place.in?(["ALT-1", "ALT-2", "ALT-3", "ALT-4", "ALT-5"]) %>
+    <h2 style="text-align:center">** ALTERNATE WRESTLER **</h2>
+  <% end %><br><br>
+  <table>
+    <thead>
+       
+      </thead>
+      <tbody>
+      <tr>
+        <td style="width:60%;text-align:left;font-size:25px;">Weight: <%= wrestler.weight %></td>
+        <td style="width:10%;padding-left:20px;text-align:right;font-size:25px;">League Place: <%= wrestler.league_place %></td>
+      </tr>
+      <tr>
+        <td style="width:60%;text-align:left;font-size:25px;">Name: <%= @wrestler.first_name %> <%= @wrestler.last_name %></td>
+        <td style="width:60%;text-align:right;font-size:25px;">Seed: <%= wrestler.seed %></td>
+      </tr>
+      <tr>
+        <td style="width:60%;text-align:left;font-size:25px;">School: <%= wrestler.school.name %></td>
+      </tr>
+      <tr>
+        <td style="width:60%;text-align:left;font-size:25px;">League: <%= wrestler.league.name %></td>
+      </tr>
+      <tr>
+        <td style="width:60%;text-align:left;font-size:25px;">Grade: <%= wrestler.grade %></td>
+      </tr>
+      <tr>
+        <td style="width:60%;text-align:left;font-size:25px;">Overall Record: <%= wrestler.wins %>-<%= wrestler.losses %></td>
+      </tr>
+      <tr>
+        <td style="position:flex;width:60%;text-align:left;font-size:25px;">League Place: <%= wrestler.league_place %></td>
+      </tr>
+      <tr>
+       <td style="width:60%;text-align:left;font-size:25px;">2016 State Place: <%= wrestler.state_place %></td>
+        <td style="width:60%;padding-left:20px;text-align:right;font-size:25px;">2016 Section Place: <%= wrestler.section_place %></td>
+      </tr>
+
+      
+
+           
+        
+      </tbody>
+  </table>
+  <p style="font-size:25px;">
+    <b>My athlete is eligible under all CIF, NCS, NFHS rules.</b><br><br>
+    Coach's Signature: ______________________________________
+  </p><br><br><br><br>
+
+  <table>
+    <thead>
+       
+    </thead>
+    <tbody>
+      <tr>
+        <td style="width:50%;text-align:left;font-size:20px;">Friday:</td>
+        <td style="width:45%;text-align:left;font-size:20px;">Saturday:</td>
+      </tr>
+      <tr>
+        <td style="width:50%;text-align:left;font-size:20px;">Actual Weight:________________</td>
+        <td style="width:45%;text-align:left;font-size:20px;">Actual Weight:________________</td>
+      </tr>
+      <tr>
+        <td style="width:50%;text-align:left;font-size:20px;">Wrestler's Signature:____________</td>
+        <td style="width:45%;text-align:left;font-size:20px;">Wrestler's Signature:____________</td>
+      </tr>
+      <tr>
+        <td style="width:50%;text-align:left;font-size:20px;">Official's Signature:_____________</td>
+        <td style="width:45%;text-align:left;font-size:20px;">Official's Signature:_____________</td>
+      </tr>      
+      </tbody>
+  </table>
+  
+    
+</div>
+
+   
