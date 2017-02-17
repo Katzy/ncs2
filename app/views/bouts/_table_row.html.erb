@@ -5,7 +5,11 @@
   <td><%= bout.dual_or_tourney %></td>
   <td><%= bout.tourney_name %><br>
   <td><%= bout.tourney_seed %></td>
-  <td><%= bout.opponent_name %><br>(<%= bout.opponent_team %>)</td>
+  <td><%= bout.opponent_name %><br>
+        <% if bout.opponent_team %>
+        (<%= bout.opponent_team %>)
+        <% end %>
+        </td>
   <td><%= bout.win_loss %></td>
   <td><%= bout.result_type %></td>
   <td><%= bout.score_time %></td>
