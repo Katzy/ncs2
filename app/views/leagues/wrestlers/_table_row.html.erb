@@ -53,5 +53,9 @@
     <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
     
     <td><%= link_to 'Delete', wrestler, method: "delete", :data => {:confirm => 'Are you sure?'} %> </td>
+    <% if wrestler.league_place != nil && wrestler.league_place != "" %>
+    <td><%= link_to wrestler_path(wrestler, format: "pdf") do %><i class="file pdf outline icon"></i>
+         <% end %></td>
+         <% end %>
   <% end %>
 </tr>

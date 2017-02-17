@@ -119,6 +119,7 @@
         <% if user_signed_in? && (current_user.admin? || current_user.school.name == @school.name || current_user.league_id == @school.league_id ) %>
         <th rowspan="2">Edit</th>
         <th rowspan="2">Delete</th>
+        <td rowspan="2">PDF</td>
         <% end %>
         
       </tr>

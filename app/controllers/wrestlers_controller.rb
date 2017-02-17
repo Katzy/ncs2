@@ -138,6 +138,7 @@ class WrestlersController < ApplicationController
                layout: "wrestler_pdf", 
                template: "wrestlers/show.pdf.erb",
                locals: { :wrestler => @wrestler }
+               # disposition: 'attachment'
       end
     end
   end
