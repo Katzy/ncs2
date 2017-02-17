@@ -14,10 +14,13 @@
       </tr>
       <tr>
         <td style="width:60%;text-align:left;font-size:25px;">Name: <%= @wrestler.first_name %> <%= @wrestler.last_name %></td>
-        <td style="width:60%;text-align:right;font-size:25px;">Seed: <%= wrestler.seed %>_____</td>
+        <td style="width:60%;text-align:right;font-size:25px;">Seed: <%= wrestler.seed %>___</td>
       </tr>
       <tr>
         <td style="width:60%;text-align:left;font-size:25px;">School: <%= wrestler.school.name %></td>
+          <% if @wrestler.league_place.in?(["ALT-1", "ALT-2", "ALT-3", "ALT-4", "ALT-5"]) %>
+         <td style="width:60%;text-align:right;font-size:25px;">At Large:    <input type="checkbox" style="transform:scale(3, 3)"></td>
+         <% end %>
       </tr>
       <tr>
         <td style="width:60%;text-align:left;font-size:25px;">League: <%= wrestler.league.name %></td>
@@ -40,8 +43,8 @@
         
       </tbody>
   </table>
-  <p style="font-size:25px;">
-    <b>My athlete is eligible under all CIF, NCS, NFHS rules.</b><br><br><br><br>
+  <p style="font-size:25px;"><br><br><br><br>
+    <b>My athlete is eligible under all CIF, NCS, NFHS rules.</b><br><br><br>
     Coach's Signature: ______________________________________
   </p><br><br><br><br>
 

@@ -33,12 +33,16 @@
       
         <div class="four wide field">
           <%= f.label :tourney_name, 'Tournament' %><br>
+          <% if bout.tourney_name != nil && bout.tourney_name != "" %>
+            <%= f.text_field :tourney_name %>
+          <% else %>
           <div class="ui search tourney">
             <div class="ui icon input">
                 <input class="prompt" name="tourney_name" type="text" placeholder="Enter Tourney">        
               <!-- <input class="prompt" name="tourney_name" type="text" placeholder="Tournament Name..."> -->
             </div>
           </div>
+          <% end %>
         </div>
 
         <div class="two wide field">
@@ -53,19 +57,27 @@
       <div class="fields">
        <div class="four wide field">
           <%= f.label :opponent_name, "Opponent **" %><br>
-           <div class="ui search wrestler">
-            <div class="ui icon input">
-              <input class="prompt" name="opponent_name" type="text" placeholder="Enter Wrestler">
-            </div> 
-          </div>
+          <% if bout.opponent_name %>
+            <%= f.text_field :opponent_name %>
+          <% else %>
+            <div class="ui search wrestler">
+              <div class="ui icon input">
+                <input class="prompt" name="opponent_name" type="text" placeholder="Enter Wrestler">
+              </div> 
+            </div>
+          <% end %>
         </div>
         <div class="four wide field">
           <%= f.label :opponent_team, "Opponent School **" %><br>
+          <% if bout.opponent_team %>
+          <%= f.text_field :opponent_team %>
+          <% else %>
           <div class="ui search school">
             <div class="ui icon input">
               <input class="prompt" name="opponent_team" type="text" placeholder="Enter School">
             </div> 
           </div>
+          <% end %>
         </div>
 
        

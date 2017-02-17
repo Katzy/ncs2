@@ -1,2 +1,4 @@
 <%= render partial: '/wrestlers/show' %><br><br>
-<%= render partial: 'bouts/form', locals: { :wrestler => @wrestler, :bout => @bout } %>
+ <div class="ui coupled medium fluid modal" id="modal1">
+ <%= render partial: 'bouts/form', locals: { :wrestler => @wrestler, :bout => @bout } %>
+ </div> 

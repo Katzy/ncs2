@@ -77,7 +77,7 @@ module Wrestlers
     private
  
     def bout_params
-      params.require(:bout).permit(:date, :weight, :dual_or_tourney, :tourney_name, :tourney_seed, :opponent_name, :win_loss, :result_type, :score_time, :tourney_place, :wrestler_id)
+      params.require(:bout).permit(:date, :weight, :dual_or_tourney, :tourney_name, :tourney_seed, :opponent_name, :opponent_team, :win_loss, :result_type, :score_time, :tourney_place, :wrestler_id)
     end
   end
 end
