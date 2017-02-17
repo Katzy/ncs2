@@ -13,8 +13,8 @@
        <%= @wrestler.school.name %><br>
        Grade: <%= @wrestler.grade %>
       </div>
-      <% if user_signed_in? && current_user.admin? %>
-      <%= link_to "Download Wrestler Weight Card PDF", wrestler_path(@wrestler, format: "pdf") %>
+      <% if user_signed_in? && (current_user.admin? || current_user.league_rep || current_user.coach) %>
+      <%= link_to "View Wrestler Weight Card PDF", wrestler_path(@wrestler, format: "pdf") %>
       <% end %> 
   <div class="center aligned row">
       <div class="ui segment">
