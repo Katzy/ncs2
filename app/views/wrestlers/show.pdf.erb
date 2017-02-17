@@ -14,7 +14,7 @@
       </tr>
       <tr>
         <td style="width:60%;text-align:left;font-size:25px;">Name: <%= @wrestler.first_name %> <%= @wrestler.last_name %></td>
-        <td style="width:60%;text-align:right;font-size:25px;">Seed: <%= wrestler.seed %>___</td>
+        <td style="width:60%;text-align:right;font-size:25px;">Seed: ___</td>
       </tr>
       <tr>
         <td style="width:60%;text-align:left;font-size:25px;">School: <%= wrestler.school.name %></td>
@@ -34,18 +34,51 @@
       
       <tr>
        <td style="width:60%;text-align:left;font-size:25px;">2016 Section Place: <%= wrestler.section_place %></td>
-        <td style="width:60%;padding-left:20px;text-align:right;font-size:25px;">2016 State Place: <%= wrestler.state_place %></td>
+        <td style="width:0%;padding-left:20px;text-align:right;font-size:25px;">2016 State Place: <%= wrestler.state_place %></td>
       </tr>
-
-      
-
-           
-        
+      <tr>
+      <tr></tr>
+      <tr></tr>
+      <tr></tr>
+      <tr></tr>
+    <td style="width:60%;text-align:left;font-size:15px;"><% if wrestler.t1_name != "" && wrestler.t1_name != nil %>
+      <%= wrestler.t1_name %> <%= wrestler.t1_place %><br>
+      <% end %>
+      <% if wrestler.t2_name != "" && wrestler.t2_name != nil %>
+      <%= wrestler.t2_name %> <%= wrestler.t2_place %><br>
+      <% end %>
+      <% if wrestler.t3_name != "" && wrestler.t3_name != nil %>
+      <%= wrestler.t3_name %> <%= wrestler.t3_place %><br>
+      <% end %>
+      <% if wrestler.t4_name != "" && wrestler.t4_name != nil %>
+      <%= wrestler.t4_name %> <%= wrestler.t4_place %><br>
+      <% end %>
+      <% if wrestler.t5_name != "" && wrestler.t5_name != nil%>
+      <%= wrestler.t5_name %> <%= wrestler.t5_place %><br>
+      <% end %>
+  </td>
+  <td style="width:50%;text-align:left;font-size:15px;"><% if wrestler.h2h_1 != "" && wrestler.h2h_1 != nil %>
+      <%= wrestler.h2h_1 %> <%= wrestler.h2h_r1 %><br>
+      <% end %>
+      <% if wrestler.h2h_2 != "" && wrestler.h2h_2 != nil %>
+      <%= wrestler.h2h_2 %> <%= wrestler.h2h_r2 %><br>
+      <% end %>
+      <% if wrestler.h2h_3 != "" && wrestler.h2h_3 != nil %>
+      <%= wrestler.h2h_3 %> <%= wrestler.h2h_r3 %><br>
+      <% end %>
+      <% if wrestler.h2h_1 != "" && wrestler.h2h_4 != nil  %>
+      <%= wrestler.h2h_4 %> <%= wrestler.h2h_r4 %><br>
+      <% end %>
+      <% if wrestler.h2h_1 != "" && wrestler.h2h_5 != nil %>
+      <%= wrestler.h2h_5 %> <%= wrestler.h2h_r5 %><br>
+      <% end %>
+  </td>
+  </tr>
       </tbody>
   </table>
-  <p style="font-size:25px;"><br><br><br><br>
+  <p style="font-size:25px;"><br>
     <b>My athlete is eligible under all CIF, NCS, NFHS rules.</b><br><br><br>
-    Coach's Signature: ______________________________________
+    Coach's Signature: _______________________________
   </p><br><br><br><br>
 
   <table>
@@ -58,8 +91,8 @@
         <td style="width:45%;text-align:left;font-size:20px;">Saturday:</td>
       </tr>
       <tr>
-        <td style="width:50%;text-align:left;font-size:20px;">Actual Weight:________________</td>
-        <td style="width:45%;text-align:left;font-size:20px;">Actual Weight:________________</td>
+        <td style="width:50%;text-align:left;font-size:20px;">Actual Weight: ________________</td>
+        <td style="width:45%;text-align:left;font-size:20px;">Actual Weight: ________________</td>
       </tr>
       <tr>
         <td style="width:50%;text-align:left;font-size:20px;">Wrestler's Signature:____________</td>
