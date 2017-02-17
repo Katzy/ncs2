@@ -10,11 +10,11 @@
       <tbody>
       <tr>
         <td style="width:60%;text-align:left;font-size:25px;">Weight: <%= wrestler.weight %></td>
-        <td style="width:10%;padding-left:20px;text-align:right;font-size:25px;">League Place: <%= wrestler.league_place %></td>
+        <td style="width:10%;padding-left:20px;text-align:right;font-size:25px;">League Place: <%= wrestler.league_place %>_____</td>
       </tr>
       <tr>
         <td style="width:60%;text-align:left;font-size:25px;">Name: <%= @wrestler.first_name %> <%= @wrestler.last_name %></td>
-        <td style="width:60%;text-align:right;font-size:25px;">Seed: <%= wrestler.seed %></td>
+        <td style="width:60%;text-align:right;font-size:25px;">Seed: <%= wrestler.seed %>_____</td>
       </tr>
       <tr>
         <td style="width:60%;text-align:left;font-size:25px;">School: <%= wrestler.school.name %></td>
@@ -28,12 +28,10 @@
       <tr>
         <td style="width:60%;text-align:left;font-size:25px;">Overall Record: <%= wrestler.wins %>-<%= wrestler.losses %></td>
       </tr>
+      
       <tr>
-        <td style="position:flex;width:60%;text-align:left;font-size:25px;">League Place: <%= wrestler.league_place %></td>
-      </tr>
-      <tr>
-       <td style="width:60%;text-align:left;font-size:25px;">2016 State Place: <%= wrestler.state_place %></td>
-        <td style="width:60%;padding-left:20px;text-align:right;font-size:25px;">2016 Section Place: <%= wrestler.section_place %></td>
+       <td style="width:60%;text-align:left;font-size:25px;">2016 Section Place: <%= wrestler.section_place %></td>
+        <td style="width:60%;padding-left:20px;text-align:right;font-size:25px;">2016 State Place: <%= wrestler.state_place %></td>
       </tr>
 
       
@@ -43,7 +41,7 @@
       </tbody>
   </table>
   <p style="font-size:25px;">
-    <b>My athlete is eligible under all CIF, NCS, NFHS rules.</b><br><br>
+    <b>My athlete is eligible under all CIF, NCS, NFHS rules.</b><br><br><br><br>
     Coach's Signature: ______________________________________
   </p><br><br><br><br>
 
