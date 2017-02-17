@@ -137,7 +137,8 @@ class WrestlersController < ApplicationController
         render pdf: "#{@wrestler.first_name}_#{@wrestler.last_name}_#{@wrestler.weight}.pdf",
                layout: "wrestler_pdf", 
                template: "wrestlers/show.pdf.erb",
-               locals: { :wrestler => @wrestler }
+               locals: { :wrestler => @wrestler },
+               target: "_blank"
                # disposition: 'attachment'
       end
     end

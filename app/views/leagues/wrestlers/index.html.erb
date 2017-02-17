@@ -79,6 +79,7 @@
         <thead>
            <tr>
         <th rowspan="2">WEIGHT<br>(seed)</th>
+        <th rowspan="2">LEAGUE<br>PLACE</th>
         <th rowspan="2">SCHOOL</th>
         <th rowspan="2">NAME </th>
         <th rowspan="2">YR</th>
@@ -87,7 +88,6 @@
         <th rowspan="2">SECTION<br>HEAD 2 HEAD</th>
         <th colspan="2">2016</th>
          <% if user_signed_in? && (current_user.admin? || current_user.league_id == @lg.id  ) %>
-        <th rowspan="2">LEAGUE<br>PLACE</th>
         <th rowspan="2">Edit</th>
         <th rowspan="2">Delete</th>
         <th rowspan="2">WT Card<br>PDF</th>

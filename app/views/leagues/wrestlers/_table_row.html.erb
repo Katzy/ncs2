@@ -5,6 +5,7 @@
         <br>(<%= wrestler.seed %>)
     <% end %>
   </td>
+    <td><%= wrestler.league_place %></td>
   <td><%= wrestler.school.name %><br>(<%= wrestler.school.league.name %>)</td>
   <td><%= link_to "#{wrestler.first_name + ' ' + wrestler.last_name}", wrestler_path(wrestler) %></td>
   <td><%= wrestler.grade %></td>
@@ -49,7 +50,6 @@
 
            <% if user_signed_in? && (current_user.admin? || current_user.league_id == @lg.id  ) %>
     
-    <td></td>
     <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
     
     <td><%= link_to 'Delete', wrestler, method: "delete", :data => {:confirm => 'Are you sure?'} %> </td>
