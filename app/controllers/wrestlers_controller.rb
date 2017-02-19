@@ -2,8 +2,8 @@ class WrestlersController < ApplicationController
   # before_action :load_league, only: [:new, :create]
   # before_filter :authorize_user, :only => [:new, :create]
   def index
-
-    @wrestlers = Wrestler.order('weight ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
+     @wrestlers = Wrestler.where.not(league_place: "").order('weight ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
+    # @wrestlers = Wrestler.order('weight ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
     wrestlers = @wrestlers
 
     @user = current_user
@@ -128,6 +128,7 @@ class WrestlersController < ApplicationController
 
   def show
     @wrestler = Wrestler.find(params[:id])
+    wrestler = @wrestler
     @bouts = @wrestler.bouts.all
     @match_number = 1
     @full_name = @wrestler.first_name + ' ' + @wrestler.last_name
@@ -137,9 +138,7 @@ class WrestlersController < ApplicationController
         render pdf: "#{@wrestler.first_name}_#{@wrestler.last_name}_#{@wrestler.weight}.pdf",
                layout: "wrestler_pdf", 
                template: "wrestlers/show.pdf.erb",
-               locals: { :wrestler => @wrestler },
-               target: "_blank"
-               # disposition: 'attachment'
+               locals: { :wrestler => wrestler }
       end
     end
   end
@@ -227,8 +226,9 @@ class WrestlersController < ApplicationController
 
 
   def select_wrestlers(wt)
-      @wrestlers = Wrestler.where("weight = #{wt}").order('weight ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
-      wrestlers = Wrestler.where("weight = #{wt}").order('weight ASC, seed ASC, wins DESC')  # for csv format
+      @wrestlers = Wrestler.where('weight = #{wt}').where.not(league_place: "").order('weight ASC, seed ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
+      wrestlers = @wrestlers 
+      # Wrestler.where("weight = #{wt}").order('weight ASC, seed ASC, wins DESC')  # for csv format
 
       @count2 = @wrestlers.count
       @wins = []

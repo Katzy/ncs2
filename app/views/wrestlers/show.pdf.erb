@@ -1,6 +1,6 @@
 <div class="wrestler">
 <h1 style="text-align:center">NCS Boys' Wrestling Registration</h1>
-  <% if @wrestler.league_place.in?(["ALT-1", "ALT-2", "ALT-3", "ALT-4", "ALT-5"]) %>
+  <% if wrestler.league_place.in?(["ALT-1", "ALT-2", "ALT-3", "ALT-4", "ALT-5"]) %>
     <h2 style="text-align:center">** ALTERNATE WRESTLER **</h2>
   <% end %><br><br>
   <table>
@@ -13,12 +13,12 @@
         <td style="width:60%;padding-left:20px;text-align:right;font-size:25px;">League Place:  <%= wrestler.league_place %></td>
       </tr>
       <tr>
-        <td style="width:60%;text-align:left;font-size:25px;">Name: <%= @wrestler.first_name %> <%= @wrestler.last_name %></td>
+        <td style="width:60%;text-align:left;font-size:25px;">Name: <%= wrestler.first_name %> <%= wrestler.last_name %></td>
         <td style="width:60%;text-align:right;font-size:25px;">Seed: ___</td>
       </tr>
       <tr>
         <td style="width:60%;text-align:left;font-size:25px;">School: <%= wrestler.school.name %></td>
-          <% if @wrestler.league_place.in?(["ALT-1", "ALT-2", "ALT-3", "ALT-4", "ALT-5"]) %>
+          <% if wrestler.league_place.in?(["ALT-1", "ALT-2", "ALT-3", "ALT-4", "ALT-5"]) %>
          <td style="width:60%;text-align:right;font-size:25px;">At Large: ___</td>
          <% end %>
       </tr>

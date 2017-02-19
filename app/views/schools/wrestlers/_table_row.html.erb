@@ -5,6 +5,7 @@
         <br>(<%= wrestler.seed %>)
     <% end %>
   </td>
+  <td><%= wrestler.league_place %>
   <td><%= wrestler.school.name %> (<%= wrestler.school.league.name %>)</td>
   <td><%= link_to "#{wrestler.first_name + ' ' + wrestler.last_name}", wrestler_path(wrestler) %></td>
   <td><%= wrestler.grade %></td>

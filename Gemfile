@@ -23,6 +23,8 @@ gem 'jquery-rails'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'wkhtmltopdf-heroku'
+gem 'combine_pdf'
+gem 'delayed_job'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem 'less-rails-semantic_ui'

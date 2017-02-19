@@ -1,12 +1,12 @@
 module Leagues
   class WrestlersController < ApplicationController
-   before_action :load_league, only: [:new, :create]
+    before_action :load_league, only: [:new, :create]
     before_filter :authorize_user, :only => [:new, :create]
     def index
       @lg = League.find(params[:league_id])
        @schools = School.where("league_id = #{params[:league_id]}")
         @school_ids = @schools.map { |school| school.id }
-        @wrestlers = @lg.wrestlers.order('weight ASC, state_place DESC, section_place DESC, wins DESC')
+        @wrestlers = @lg.wrestlers.order('weight ASC, seed ASC, league_place ASC, state_place ASC, section_place ASC, wins DESC')
 
        # @wrestlers = Wrestler.where("league = '#{@lg.name}'").order('weight ASC, seed ASC, wins DESC')
          wrestlers = @wrestlers
@@ -32,6 +32,20 @@ module Leagues
             temp.unlink
           end
         }
+        # format.pdf do
+        #   pdfs = CombinePDF.new
+        #   @wrestlers.each do |wrestler|
+        #     if wrestler.league_place.in?(["1", "2", "3", "4", "5", "6", "ALT-1", "ALT-2", "ALT-3", "ALT-4", "ALT-5"]) 
+        #       html = render layout: "wrestler_pdf", 
+        #                     template: "wrestlers/show.pdf.erb",
+        #                     locals: { :wrestler => wrestler },
+        #                     disposition: 'attachment'
+        #       pdf = WickedPdf.new.pdf_from_string(html)
+        #       pdfs << CombinePDF.load(pdf)
+        #     end
+        #   end
+        #   pdfs.save "#{@lg.name}_placers.pdf"
+        # end
       end
     end
 

@@ -73,6 +73,8 @@ class Wrestler < ActiveRecord::Base
     end
   end
 
+
+
     def self.download(school)
     CSV.generate do |csv|
       csv << ["weight", "school", "first_name", "last_name", "grade", "wins", "losses", "section_place", "state_place", "t1_name", "t1_place", "t2_name", "t2_place", "t3_name", "t3_place", "t4_name", "t4_place", "t5_name", "t5_place"]
