@@ -127,7 +127,7 @@ class WrestlersController < ApplicationController
   end
 
   def alternates
-    @wrestlers = Wrestler.where('league_place LIKE ?', '%LT-%')
+    @wrestlers = Wrestler.where('league_place LIKE ?', '%LT-%').order('weight ASC, league_place ASC')
   end
 
   def show
