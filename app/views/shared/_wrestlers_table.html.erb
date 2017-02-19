@@ -4,6 +4,7 @@
       <tr>
         <th rowspan="2">WEIGHT<br>(seed)</th>
         <th rowspan="2">LEAGUE PLACE</th>
+        <th rowspan="2">AT LARGE</th>
         <th rowspan="2">SCHOOL</th>
         <th rowspan="2">NAME </th>
         <th rowspan="2">YR</th>
@@ -31,7 +32,11 @@
                   <br>(<%= wrestler.seed %>)
                   <% end %>
               </td>
-            <td><%= wrestler.league_place %>
+            <td><%= wrestler.league_place %></td>
+            <td><% if wrestler.alternate == true %>
+                  X
+                <% end %>
+                </td>
             <td><%= wrestler.school.name %> (<%= wrestler.school.league.name %>)</td>
             <td><%= link_to wrestler.first_name + " " + wrestler.last_name, wrestler_path(wrestler) %></td>
             <td><%= wrestler.grade %></td>
