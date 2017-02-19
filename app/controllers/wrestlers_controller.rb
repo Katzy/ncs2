@@ -226,7 +226,8 @@ class WrestlersController < ApplicationController
 
 
   def select_wrestlers(wt)
-      @wrestlers = Wrestler.where('weight = #{wt}').where.not(league_place: "").order('weight ASC, seed ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
+      @w = Wrestler.where("weight = #{wt}")
+      @wrestlers = @w.where.not(league_place: "").order('weight ASC, seed ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
       wrestlers = @wrestlers 
       # Wrestler.where("weight = #{wt}").order('weight ASC, seed ASC, wins DESC')  # for csv format
 
