@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   get 'wrestlers/weight_285' => 'wrestlers#weight_285'
 
+  get 'wrestlers/alternates' => 'wrestlers#alternates'
+
   get 'information/alerts' => 'information#alerts'
 
   get 'information/schedule' => 'information#schedule'

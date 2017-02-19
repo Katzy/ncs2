@@ -126,6 +126,10 @@ class WrestlersController < ApplicationController
     select_wrestlers(285)
   end
 
+  def alternates
+    @wrestlers = Wrestler.where('league_place LIKE ?', '%LT-%')
+  end
+
   def show
     @wrestler = Wrestler.find(params[:id])
     wrestler = @wrestler
