@@ -230,8 +230,9 @@ class WrestlersController < ApplicationController
 
 
   def select_wrestlers(wt)
+      params1 = ["#{wt}", false]
       params = ["1","2","3","4","5", true]
-      @w = Wrestler.where("weight = #{wt} AND scratch = #{false}")
+      @w = Wrestler.where("weight = ? AND scratch = ?", *params1)
       @wrestlers = @w.where("league_place = ? OR league_place = ? OR league_place = ? OR league_place = ? OR league_place = ? OR alternate = ?", *params).order('weight ASC, seed ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
       wrestlers = @wrestlers 
       # Wrestler.where("weight = #{wt}").order('weight ASC, seed ASC, wins DESC')  # for csv format
