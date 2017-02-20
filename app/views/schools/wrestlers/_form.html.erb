@@ -71,20 +71,24 @@
         <% if current_user.admin? || current_user.league_id == @wrestler.school.league_id %>
          <div class="two wide field">
          <%= f.label :alternate, "AT LARGE" %><br>
-         <%= f.check_box :alternate %>
+         <%= f.check_box :alternate %><br>
+         </div>
+         <div class="two wide field">
+         <%= f.label :scratch, "SCRATCH" %><br>
+         <%= f.check_box :scratch %>
          </div>
          <div class="three wide field">
          <%= f.label :league_place, "2017 LEAGUE PLACE" %><br>
           <%= f.collection_select :league_place, ['1', '2', '3', '4', '5', '6', 'ALT-1', 'ALT-2', 'ALT-3', 'ALT-4', 'ALT-5'], :to_s, :to_s, :include_blank => true %>
          </div>
          <% end %>
-          <div class="two wide field">
-          <%= f.label :wins, "Wins **" %><br>
+          <div class="one wide field">
+          <%= f.label :wins, "Wins" %><br>
           <%= f.collection_select :wins, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50'], :to_s, :to_s, :include_blank => true %>
         </div>
 
-        <div class="two wide field">
-          <%= f.label :losses, "Losses **" %><br>
+        <div class="one wide field">
+          <%= f.label :losses, "Losses" %><br>
            <%= f.collection_select :losses, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50'], :to_s, :to_s, :include_blank => true %>
         </div>
 
