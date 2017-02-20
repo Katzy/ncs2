@@ -77,8 +77,6 @@
             <td><%= wrestler.state_place %></td>
            <% if user_signed_in? && (current_user.admin? || current_user.school.name == wrestler.school.name || ((current_user.league_rep == true) && (current_user.league_id == wrestler.league_id ))) %>
               <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
-              <% else %>
-              <td></td>
             <% end %>
             <% if user_signed_in? && (current_user.admin? ) %>
           <td><%= link_to 'Delete', wrestler, method: "delete", :data => {:confirm => 'Are you sure?'} %> </td>
