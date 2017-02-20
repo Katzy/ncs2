@@ -42,19 +42,21 @@
   font-size: 18px;
 }
 
-.images .image {
-
+.grid .images .column .image img {
   height: 350px;
-
 }
 
-#medalists  {
 
-  height: 250px;
+.grid #medalists {
 
+  max-height: 350px;
 }
 
-#medalists2  {
+.grid .label {
+
+  position: relative;
+}
+.grid #medalists3  {
 
   height: 190px;
 

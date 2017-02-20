@@ -67,7 +67,12 @@
     </div>
 
     <div class="computer only row">
-    <div class="ui segment">
+    <div class="ui center aligned segment">
+              <% if user_signed_in? && (current_user.admin? || current_user.league_rep || current_user.coach) %>
+          Download:
+            <%= link_to "CSV", information_seeds_path(format: "csv") %>
+           <% end %>
+
       <table class="ui celled right aligned structured stackable table">
         <thead>
           <tr>

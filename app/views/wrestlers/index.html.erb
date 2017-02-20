@@ -2,7 +2,7 @@
 <h1>ALL WRESTLERS</h1>
 (<%= @count %>)
         <p>
-          <% if user_signed_in? && current_user.admin? %>
+          <% if user_signed_in? && current_user.admin? || current_user.league_rep || current_user.coach %>
           Download:
             <%= link_to "CSV", wrestlers_path(format: "csv") %> |
             <%= link_to "Excel", wrestlers_path(format: "xls") %><br><br>
