@@ -42,23 +42,25 @@
   font-size: 18px;
 }
 
-.grid .images .column .image img {
+.images .grid  .column .image img {
   height: 350px;
+  width: auto;
 }
 
 
-.grid #medalists {
-
-  max-height: 350px;
+#medalists2 img{
+  height: 250px;
+  width: auto;
 }
 
-.grid .label {
+.label {
 
   position: relative;
 }
-.grid #medalists3  {
+#medalists3 img {
 
   height: 190px;
+  width: auto;
 
 }
 .ui.grid .mobile.only.row .images .image {
