@@ -5,6 +5,7 @@
         <th rowspan="2">WEIGHT<br>(seed)</th>
         <th rowspan="2">LEAGUE PLACE</th>
         <th rowspan="2">AT LARGE</th>
+        <th rowspan="2">SCRATCH</th>
         <th rowspan="2">SCHOOL</th>
         <th rowspan="2">NAME </th>
         <th rowspan="2">YR</th>
@@ -34,6 +35,10 @@
               </td>
             <td><%= wrestler.league_place %></td>
             <td><% if wrestler.alternate == true %>
+                  X
+                <% end %>
+                </td>
+            <td><% if wrestler.scratch == true %>
                   X
                 <% end %>
                 </td>
