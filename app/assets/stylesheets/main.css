@@ -42,24 +42,19 @@
   font-size: 18px;
 }
 
-.images .grid  .column .image img {
+.images .grid #medalists .column .image img {
   height: 350px;
+}
+      
+
+.grid #medalists2 .column .image img {
+
+  height: 600px;
   width: auto;
 }
+.images .grid #medalists3 .column .image img {
 
-
-#medalists2 img{
-  height: 250px;
-  width: auto;
-}
-
-.label {
-
-  position: relative;
-}
-#medalists3 img {
-
-  height: 190px;
+  height: 240px;
   width: auto;
 
 }
