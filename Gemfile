@@ -52,7 +52,10 @@ gem "less-rails", :git => 'https://github.com/suzan2go/less-rails.git', :branch 
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'rails_12factor', group: :production
+
+group :production do
+  gem 'rails_12factor'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
