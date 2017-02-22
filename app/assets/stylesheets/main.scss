@@ -47,14 +47,35 @@
 }
       
 
-.grid #medalists2 .column .image img {
+#medalists2 .column {
 
-  height: 600px;
-  width: auto;
+  height: 350px;
+  
 }
+
+#medalists2 .column img {
+
+  height: 330px;
+  width: auto;
+
+}
+
+
 .images .grid #medalists3 .column .image img {
 
-  height: 240px;
+  height: 280px;
+
+}
+
+#medalists3 .column {
+
+  height: 280px;
+  
+}
+
+#medalists3 .column img {
+
+  height: 250px;
   width: auto;
 
 }
