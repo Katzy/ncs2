@@ -76,7 +76,11 @@
         <th rowspan="2">RECORD</th>
         <th rowspan="2">TOURNAMENTS<br>RESULTS</th>
         <th rowspan="2">SECTION<br>HEAD 2 HEAD</th>
+          <% if @season.id-1 != 0 %>
           <th colspan="2"><%= Season.find(@season.id-1).name %></th>
+          <% else %>
+          <th colspan="2"><%= @season.start_date - 1 %></th>
+          <% end %>
         <% if user_signed_in? && (current_user.admin? || current_user.school.name == @school.name || current_user.league_id == @school.league_id ) %>
         <% if @season.id == Season.last.id %>
         <th rowspan="2">Edit</th>
