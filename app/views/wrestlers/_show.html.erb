@@ -57,7 +57,7 @@
             <td><%= @wrestler.school.name %> (<%= @wrestler.school.league.name %>)</td>
             <td><%= @wrestler.first_name + " " + @wrestler.last_name %></td>
             <td><%= @wrestler.grade %></td>
-            <td><%= @wrestler.wins %>-<%= @wrestler.losses %></td>
+            <td><%= @wrestler.bouts.where(win_loss: "W").count %>-<%= @wrestler.bouts.where(win_loss: "L").count %></td>
           <td><% if @wrestler.t1_name != "" && @wrestler.t1_name != nil %>
       <%= @wrestler.t1_name %> <%= @wrestler.t1_place %><br>
       <% end %>

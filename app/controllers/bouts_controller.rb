@@ -6,7 +6,7 @@ class BoutsController < ApplicationController
 
     def new
       @wrestler = Wrestler.find(params[:wrestler_id])
-      @season =
+     
       @bout = @wrestler.bouts.new
       @bouts = @wrestler.bouts.all
     end
@@ -36,6 +36,7 @@ class BoutsController < ApplicationController
     def edit
       @bout = Bout.find(params[:id])
       @wrestler = Wrestler.find(@bout.wrestler_id)
+      @season = Season.find(SeasonWrestler.where(wrestler_id: @wrestler.id)[0].season_id)
       @bouts = @wrestler.bouts.order("date ASC")
       @match_number = 1 
     end
