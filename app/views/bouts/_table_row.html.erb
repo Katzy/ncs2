@@ -14,7 +14,7 @@
   <td><%= bout.result_type %></td>
   <td><%= bout.score_time %></td>
   <td><%= bout.tourney_place %></td>
-  <% if user_signed_in? &&  (current_user.admin? || current_user.league_id == wrestler.school.league.id) %>
+  <% if user_signed_in? &&  (current_user.admin? || current_user.league_id == @wrestler.school.league.id) %>
     <td><%= link_to 'Edit', edit_bout_path(bout) %></td>
     <td><%= link_to 'Delete', bout, method: "delete", :data => {:confirm => 'Are you sure?'} %> </td>
   <% end %>
