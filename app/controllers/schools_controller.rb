@@ -14,7 +14,7 @@ class SchoolsController < ApplicationController
     @seasons = Season.all.order('id DESC')
     @season = Season.last
     if SeasonWrestler.where(season_id: @season.id, wrestler_school_id: @school.id).count > 0 
-          @wrestlers = @season.wrestlers.where(school_id: @school.id)
+          @wrestlers = @season.wrestlers.where(school_id: @school.id).('weight ASC')
         else
           @wrestlers = []
         end
