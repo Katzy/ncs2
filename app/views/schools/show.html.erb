@@ -86,7 +86,7 @@
     <div class="ui center aligned segment">
       <table class="ui celled center aligned structured stackable table">
         <thead>
-        <h3><%= @season.name %></h3>
+        <h3><%= @season.name %> TEAM ROSTER</h3>
            <tr>
         <th rowspan="2">WEIGHT<br>(seed)</th>
         <th rowspan="2">LEAGUE PL</th>
@@ -104,7 +104,9 @@
         <% if user_signed_in? && (current_user.admin? || current_user.school.name == @school.name || current_user.league_id == @school.league_id ) %>
         <th rowspan="2">Edit</th>
         <th rowspan="2">Delete</th>
+        <% if DateTime.now.to_s > "2018-2" %>
         <td rowspan="2">Wt Card<br>PDF</td>
+        <% end %>
         <% end %>
         
       </tr>
