@@ -123,7 +123,7 @@ $('.ui.search.wrestler')
       noResults: 'Enter wrestler now!'
     },
     onSelect(result, response) {
-        $('.ui.search.school').search('set value', result.school)
+        // $('.ui.search.school').search('set value', result.school)
         $('.ui.search.wrestler').search('set value', result.fullname)
         $('.ui.search.wrestler').search('hide results')
         return false
