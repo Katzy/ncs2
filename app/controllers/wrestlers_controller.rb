@@ -134,8 +134,12 @@ class WrestlersController < ApplicationController
   end
 
   def show
-    @season = Season.find(params[:season_id])
-    @wrestler = @season.wrestlers.find(params[:id])
+    # @season = Season.find(params[:season_id])
+    @wrestler = Wrestler.find(params[:id])
+    @season_wrestler = SeasonWrestler.where(wrestler_id: params[:id])
+    # @wrestler = @season.wrestlers.find(params[:id])
+    
+    @season = Season.find(@season_wrestler[0].season_id)
     wrestler = @wrestler
     @bouts = @wrestler.bouts.all
     @match_number = 1

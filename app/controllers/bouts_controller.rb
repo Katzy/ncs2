@@ -6,7 +6,7 @@ class BoutsController < ApplicationController
 
     def new
       @wrestler = Wrestler.find(params[:wrestler_id])
-      @season = Season.last
+      @season =
       @bout = @wrestler.bouts.new
       @bouts = @wrestler.bouts.all
     end
@@ -20,7 +20,7 @@ class BoutsController < ApplicationController
       @bout.opponent_team = params[:opponent_team]
       respond_to do |format|
         if @bout.save
-          format.html { redirect_to wrestler_path(@wrestler), notice: 'bout was successfully created.' }
+          format.html { redirect_to wrestler_path(@wrestler, season_id: Season.last.id), notice: 'bout was successfully created.' }
           format.json { render action: 'wrestlers/show', status: :created, location: @wrestler }
           # added:
           format.js   { render action: 'show', status: :created, location: @wrestler }
