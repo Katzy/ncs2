@@ -13,11 +13,9 @@
        <%= @wrestler.school.name %><br>
        Grade: <%= @wrestler.grade %>
       </div>
-       <% if DateTime.now.to_s > "2018-2" %>
-        <% if user_signed_in? && (current_user.admin? || current_user.league_rep || current_user.coach) %>
+        <% if user_signed_in? && (current_user.admin?) %>
         <%= link_to "View Wrestler Weight Card PDF", wrestler_path(@wrestler, format: "pdf") %>
         <% end %>
-      <% end %> 
   <div class="center aligned row">
       <div class="ui segment">
   <table class="ui celled center aligned structured stackable table">
