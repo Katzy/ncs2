@@ -52,7 +52,7 @@
     <div class="ui grid"><br>
      <% if user_signed_in? && (@user.league_rep == true) %>
     <div class="ui item">
-        <%= link_to "MY TEAM", school_wrestlers_path(@user.school) %>
+        <%= link_to "MY TEAM", school_wrestlers_path(@user.school, season_id: Season.last.id) %>
         <%= link_to "VIEW LEAGUES", leagues_path %>
         </div>
         <% end %>
@@ -213,7 +213,7 @@
 
       </div>
       <div class="ui item">
-        <%= link_to "MY TEAM", school_wrestlers_path(@user.school) %>
+        <%= link_to "MY TEAM", school_wrestlers_path(@user.school, season_id: Season.last.id) %>
         </div>
       <% else %>
        <div class="ui toggle item"><i class="sidebar icon"></i>BRACKETS
@@ -227,7 +227,7 @@
       <% end %>
       <% if user_signed_in? && (@user.coach == true) %>
          <div class="ui item">
-        <%= link_to "MY TEAM", school_wrestlers_path(@user.school) %>
+        <%= link_to "MY TEAM", school_wrestlers_path(@user.school, season_id: Season.last.id) %>
         </div>
         <% end %>
       <div class="ui toggle4 item"><i class="sidebar icon"></i>WRESTLERS
@@ -273,7 +273,7 @@
       </div>
         <% if user_signed_in? && (@user.league_rep == true) %>
       <div class="ui item">
-        <%= link_to "MY TEAM", school_wrestlers_path(@user.school) %>
+        <%= link_to "MY TEAM", school_wrestlers_path(@user.school, season_id: Season.last.id) %>
         </div>
         <% end %>
       <div class="ui toggle4 item"><i class="sidebar icon"></i>WRESTLERS
@@ -289,7 +289,7 @@
     </div>
         <% if user_signed_in? && ((@user.league_rep == false) && (@user.coach == true))%>
       <div class="ui item">
-        <%= link_to "MY TEAM", school_wrestlers_path(@user.school) %>
+        <%= link_to "MY TEAM", school_wrestlers_path(@user.school, season_id: Season.last.id) %>
         </div>
         <% end %>
     <div class="ui toggle4 item"><i class="sidebar icon"></i>WRESTLERS
