@@ -99,11 +99,9 @@
 </div>
 
       <% if user_signed_in? &&  (current_user.admin? || (current_user.league.name == @wrestler.school.league.name) || current_user.school_id == @wrestler.school_id ) %>
-       <% if @season.id == Season.last %>
         <div class="sixteen wide center aligned column">
           <i class="add user icon"></i><%= link_to 'ADD MATCH RESULT', new_wrestler_bout_path(@wrestler) %>
         </div><br>
-        <% end %>
       <% end %>
     </div>
     <%= render partial: 'wrestlers/match_table' %>
