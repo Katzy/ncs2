@@ -3,14 +3,16 @@ class Wrestler < ActiveRecord::Base
 
   belongs_to :league
   belongs_to :school
+  belongs_to :season
+  has_many :season_wrestlers
   has_many :bouts
 
   validates :first_name, presence: true, null: false
   validates :last_name, presence: true, null: false
   validates :weight, presence: true, null: false
   validates :school_id, presence: true, null: false
-  validates :wins, presence: true, null: false
-  validates :losses, presence: true, null: false
+  # validates :wins, presence: true, null: false
+  # validates :losses, presence: true, null: false
   # validates_uniqueness_of :weight, scope: :school_id
   def self.present_all
     self.all.map { |item| item.present }
@@ -53,6 +55,7 @@ class Wrestler < ActiveRecord::Base
         row
       else
         Wrestler.create! row.to_hash
+        SeasonWrestler.create({season_id: Season.last.id, wrestler_id: Wrestler.last.id, wrestler_school_id: Wrestler.last.school.id})
       end
     end
   end
@@ -69,6 +72,7 @@ class Wrestler < ActiveRecord::Base
         row[3] = row[3].downcase.capitalize
         p row
         School.find(school.id).wrestlers.create! row.to_hash
+          SeasonWrestler.create({season_id: Season.last.id, wrestler_id: Wrestler.last.id, wrestler_school_id: Wrestler.last.school.id})
       end
     end
   end
@@ -77,20 +81,50 @@ class Wrestler < ActiveRecord::Base
 
     def self.download(school)
     CSV.generate do |csv|
-      csv << ["weight", "school", "first_name", "last_name", "grade", "wins", "losses", "section_place", "state_place", "t1_name", "t1_place", "t2_name", "t2_place", "t3_name", "t3_place", "t4_name", "t4_place", "t5_name", "t5_place"]
+      csv << ["weight", "school", "first_name", "last_name", "grade"]
+      # , "wins", "losses", "section_place", "state_place", "t1_name", "t1_place", "t2_name", "t2_place", "t3_name", "t3_place", "t4_name", "t4_place", "t5_name", "t5_place"
+      csv << [ "106", school.name]
+      csv << [ "106", school.name]
+      csv << [ "106", school.name]
       csv << [ "106", school.name]
       csv << [ "113", school.name ]
+      csv << [ "113", school.name ]
+      csv << [ "113", school.name ] 
+      csv << [ "120", school.name ]
+      csv << [ "120", school.name ]
       csv << [ "120", school.name ]
       csv << [ "126", school.name ]
+      csv << [ "126", school.name ]
+      csv << [ "126", school.name ]
+      csv << [ "132", school.name ]
+      csv << [ "132", school.name ]
       csv << [ "132", school.name ]
       csv << [ "138", school.name ]
+      csv << [ "138", school.name ]
+      csv << [ "138", school.name ]
+      csv << [ "145", school.name ]
+      csv << [ "145", school.name ]
       csv << [ "145", school.name ]
       csv << [ "152", school.name ]
+      csv << [ "152", school.name ]
+      csv << [ "152", school.name ]
+      csv << [ "160", school.name ]
+      csv << [ "160", school.name ]
       csv << [ "160", school.name ]
       csv << [ "170", school.name ]
+      csv << [ "170", school.name ]
+      csv << [ "170", school.name ]
+      csv << [ "182", school.name ]
+      csv << [ "182", school.name ]
       csv << [ "182", school.name ]
       csv << [ "195", school.name ]
+      csv << [ "195", school.name ]
+      csv << [ "195", school.name ]
       csv << [ "220", school.name ]
+      csv << [ "220", school.name ]
+      csv << [ "220", school.name ]
+      csv << [ "285", school.name ]
+      csv << [ "285", school.name ]
       csv << [ "285", school.name ]      
     end
   end

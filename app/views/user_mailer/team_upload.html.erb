@@ -3,7 +3,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-type' />
   </head>
   <body>
+    <% if @user.school %>
     <h1> <%= @user.school.name %> - Team Imported</h1><br>
+    <% end %>
     <p>
       <% @wrestlers.each do |wrestler| %>
       <h2><%= wrestler.weight %> lbs - <b><%= wrestler.first_name %> <%= wrestler.last_name %></b></h2>

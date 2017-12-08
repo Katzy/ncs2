@@ -1,29 +1,54 @@
 <div class="ui center aligned segment">
    <div class="header">
     <h1>Upload Roster Instructions</h1>
+    <h4>You have the choice to enter wrestlers 1 at a time or to upload your roster from a spreadsheet provided below.  Here are the steps to upload your roster:</h4>
    </div>
 </div>
-    <div class="description" style="padding:5em">
-      <p>You have the choice to enter wrestlers 1 at a time or to upload your roster from a spreadsheet that is provided on the previous page.  Here are the steps to upload your roster: <br><br>
-      <div class="ui left aligned segment">
+<div class="ui segment" style="padding-left:5em">
+<% if user_signed_in? && (current_user.admin? || current_user.school.name == @school.name || current_user.league_id == @school.league_id ) %>
+          <div class="left aligned seven wide column"><br><br>
+            1. </b>
+            <div class="ui animated fade button download">
+              <a href="/schools/<%= @school.id %>/wrestlers/download.csv">
+
+               <div class="visible content">DOWNLOAD TEMPLATE TO UPLOAD ROSTER</div>
+               <div class="hidden content download">Click to Download CSV File!<br>
+                 Read instructions on step 1 above first! 
+               </div>
+              </a>
+            </div>
+            <br><b>2.  Fill out spreadsheet according to template below!</b>
+            <br>-- 2a. First and foremost: <u>DO NOT CHANGE OR ADD HEADERS IN THE TEMPLATE FILE</u>
+            <br>-- 2b. List your wrestlers in each weight. (No limit to how many wrestlers you can enter per weight. Enter your whole team from this one file if you want.)
+            <br>-- 2c. ALL FIELDS ARE REQUIRED (WEIGHT, SCHOOL, FIRST NAME, LAST NAME, GRADE) OR THE FILE WILL NOT UPLOAD  
+          </div>
+             
+             
+               
+              <b>3. Save file as a <u>CSV file!!!!!</u></b>
+              <br>-- (FYI, it is already a CSV file so you will most likely just have to save it as is)
+              <%= form_tag import_school_wrestlers_path, multipart: true do %>
+              <b>4. </b><%= file_field_tag :file  %><br>
+              <b>5. </b><%= submit_tag "Upload Wrestlers", :class => "ui button" %>
+              
+              <% end %>
+              6.  If you run into issues, please email scottalankatz@gmail.com
+        <% end %>
+        </div>
+    <div class="description" style="padding:1em">
+     <!--  <div class="ui left aligned segment">
      1. Read these instructions carefully!<br>
      2. Download the spreadsheet entry template.<br>
      3. Fill out the spreadsheet following the examples below.<br>
-     4. Save your file.<br>
+     4. Save your file AS a CSV file.  IT MUST BE A CSV to import.<br>
      5. Select (browse) file for upload.<br>
      6. Upload<br>
-      </div>
+      </div> -->
 
 
       </p>
-      <p><h3>You must follow the same format as the examples below on the CSV file you will download on step 2.</h3>  
-      <h3>First and foremost: <u>DO NOT CHANGE THE HEADERS IN THAT FILE</u>.</h3>  
-      <h3>List your wrestlers in each weight.</h3>  
-      <h3>One per weight ONLY.  These are your guys who will be competing in the league tournament and have a shot at NCS qualifying</h3>
-      <h3>The FIRST 7 COLUMNS ARE REQUIRED (WEIGHT, SCHOOL, FIRST NAME, LAST NAME, GRADE, WINS, LOSSES).  The rest of the fields can be left blank unless they are seedable.</h3>  <h3>For seeding purposes, please ONLY list a tournament if your wrestler medaled in that tournament!</h3>
-       <h3>When you have finished filling out the spreadsheet with your wrestlers' information, save the file in CSV format.(FYI, it is already a CSV file so you will most likely just have to save it as is).</h3>  
-       <h3>Use that file to upload your wrestlers into the system.</h3>  </p>
-      <p><h3>If you run into issues, please contact Scott Katz @ 323-317-5900.</h3></p>
+      
+     
     </div>
 
     <table class="ui celled center aligned structured stackable table">
@@ -35,85 +60,49 @@
       <th rowspan="2">FIRST</th>
       <th rowspan="2">LAST</th>
       <th rowspan="2">YR</th>
-      <th rowspan="2">W</th>
-      <th rowspan="2">L</th>
-      <th rowspan="2">SEC Pl</th>
-      <th rowspan="2">ST Pl</th>
-      <th rowspan="2">T1<br>Name</th>
-      <th rowspan="2">T1<br>Place</th>
-      <th rowspan="2">T2</th>
-      <th rowspan="2">T2 Place</th>
-      <th rowspan="2">T3</th>    
-      <th rowspan="2">T3 Place</th>     
-      <th rowspan="2">T4</th>    
-      <th rowspan="2">T4 Place</th>
-      <th rowspan="2">T5</th>    
-      <th rowspan="2">T5 Place</th>
+     
   </thead>
   <tbody>
     <tr>
       <td>106</td>
       <td><%= @school.name %></td>
-      <td>Jimmy</td>
-      <td>Tango</td>
+      <td>Tyrell</td>
+      <td>Wellick</td>
       <td>11</td>
-      <td>21</td>
-      <td>6</td>
-      <td></td>
-      <td></td>
-      <td>Reno TOC</td>
-      <td>7</td>
-      <td>Walsh Ironman</td>
-      <td>5</td>
-      <td>Mid-Cals</td>
-      <td>3</td>
-      <td>Five Counties</td>
-      <td>6</td>
-      <td>Cal Classic</td>
-      <td>7</td>
+     
+    </tr>
+    <tr>
+      <td>106</td>
+      <td><%= @school.name %></td>
+      <td>Sam</td>
+      <td>Sepiol</td>
+      <td>12</td>
+     
+    </tr>
+    <tr>
+      <td>106</td>
+      <td><%= @school.name %></td>
+      <td>Elliot</td>
+      <td>Alderson</td>
+      <td>10</td>
+     
     </tr>
         <tr>
-      <td>113</td>
+      <td>138</td>
       <td><%= @school.name %></td>
-      <td>Tom</td>
-      <td>Soso</td>
+      <td>Phillip</td>
+      <td>Price</td>
       <td>9</td>
-      <td>28</td>
-      <td>8</td>
-      <td></td>
-      <td></td>
-      <td>Walsh Ironman</td>
-      <td>7</td>
-      <td>Five Counties</td>
-      <td>4</td>
-      <td>Puma Classic</td>
-      <td>1</td>
-      <td>Mission San Jose</td>
-      <td>1</td>
-      <td></td>
-      <td></td>
+     
       
     </tr>
        <tr>
-      <td>120</td>
+      <td>220</td>
       <td><%= @school.name %></td>
-      <td>Lewis</td>
-      <td>Smith</td>
+      <td>Gideon</td>
+      <td>Goddard</td>
       <td>12</td>
-      <td>10</td>
-      <td>3</td>
-      <td></td>
-      <td></td>
-      <td>Five Counties</td>
-      <td>8</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+     
     </tr>
   </tbody>
 </table>

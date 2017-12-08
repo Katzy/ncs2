@@ -29,7 +29,11 @@
         <th rowspan="2">RECORD</th>
         <th rowspan="2">TOURNAMENT<br>RESULTS</th>
         <th rowspan="2">SECTION<br>HEAD 2 HEAD</th>
-        <th colspan="2">2016 PLACES</th>
+        <% if (@season.id - 1) != 0 %>
+          <th colspan="2"><%= Season.find((@season.id - 1)).name %></th>
+          <% else %>
+          <th colspan="2"><%= @season.start_date - 1 %></th>
+          <% end %>
         <th rowspan="2">COMMENTS</th>
         
       </tr>
@@ -95,10 +99,11 @@
 </div>
 
       <% if user_signed_in? &&  (current_user.admin? || (current_user.league.name == @wrestler.school.league.name) || current_user.school_id == @wrestler.school_id ) %>
+       <% if @season.id == Season.last %>
         <div class="sixteen wide center aligned column">
           <i class="add user icon"></i><%= link_to 'ADD MATCH RESULT', new_wrestler_bout_path(@wrestler) %>
         </div><br>
-        
+        <% end %>
       <% end %>
     </div>
     <%= render partial: 'wrestlers/match_table' %>

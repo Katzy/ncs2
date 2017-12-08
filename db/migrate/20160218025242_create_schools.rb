@@ -1,4 +1,4 @@
-class CreateSchools < ActiveRecord::Migration
+sclass CreateSchools < ActiveRecord::Migration
   def change
     create_table :schools do |t|
       t.timestamps

@@ -26,6 +26,7 @@ class WrestlersController < ApplicationController
 
   def create
     @school = School.find(wrestler_params[:school_id])
+
     @wrestler = @school.wrestlers.new(wrestler_params)
     # @wrestler.alternate == 0 ? @wrestler.alternate = false : @wrestler.alternate
     @league = League.find(wrestler_params[:league_id])
@@ -35,10 +36,12 @@ class WrestlersController < ApplicationController
     wrestler = @wrestler
     wrestler_array = [user, wrestler]
     @wrestler.fullname = wrestler_params[:first_name] + " " + wrestler_params[:last_name]
+
     respond_to do |format|
       if @wrestler.save
+      SeasonWrestler.create({season_id: Season.last.id, wrestler_id: Wrestler.last.id, wrestler_school_id: Wrestler.last.school.id})
        UserMailer.wrestler_added(wrestler_array).deliver
-        format.html { redirect_to school_wrestlers_path(@school), notice: 'wrestler was successfully created.' }
+        format.html { redirect_to school_wrestlers_path(@school, season_id: Season.last.id), notice: 'wrestler was successfully created.' }
          format.json { render json: @wrestler.errors, status: :unprocessable_entity }
         # added:
         format.js   { render json: @wrestler.errors, status: :unprocessable_entity }
@@ -131,7 +134,8 @@ class WrestlersController < ApplicationController
   end
 
   def show
-    @wrestler = Wrestler.find(params[:id])
+    @season = Season.find(params[:season_id])
+    @wrestler = @season.wrestlers.find(params[:id])
     wrestler = @wrestler
     @bouts = @wrestler.bouts.all
     @match_number = 1
@@ -231,7 +235,9 @@ class WrestlersController < ApplicationController
 
   def select_wrestlers(wt)
       params = ["1","2","3","4","5", true]
-      @w = Wrestler.where("weight = #{wt}")
+      sea_id = Season.last.id - 1
+      @season = Season.find(sea_id)
+      @w = @season.wrestlers.where("weight = #{wt}")
       @wrestlers = @w.where("league_place = ? OR league_place = ? OR league_place = ? OR league_place = ? OR league_place = ? OR alternate = ?", *params).order('weight ASC, seed ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
       wrestlers = @wrestlers 
       # Wrestler.where("weight = #{wt}").order('weight ASC, seed ASC, wins DESC')  # for csv format

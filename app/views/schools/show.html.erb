@@ -10,22 +10,12 @@
   <div class="ui mobile only row">
      <div class="sixteen wide column">
       <b><%= @school.name %></b>
-      
     </div>
     <div class="ui center aligned segment">
-    <% if user_signed_in? && (current_user.admin?) %>
-      <i class="add user icon"></i><%= link_to 'ADD WRESTLER', new_school_wrestler_path %>
-      <%= form_tag import_school_wrestlers_path, multipart: true do %>
-        <%= file_field_tag :file %>
-        <%= submit_tag "Import Wrestlers from CSV" %>
-      <% end %><br><br>
-       Download Wrestlers:
-            <%= link_to "CSV", school_wrestlers_path(format: "csv") %> <br><br>
-    <% end %>
+ 
        
       <table class="ui celled right aligned structured stackable table" style="padding:5em;">
         <thead>
-        <h3><%= @season.name %></h3>
              <tr>
         <th rowspan="2">WEIGHT<br>(seed)</th>
         <th rowspan="2">SCHOOL</th>
@@ -59,10 +49,40 @@
     </div>
   </div>
   <div class="ui computer only tablet only row">
-    <%= render partial: 'schools/shared/add_wrestlers', locals: { school: @school, seasons: @seasons } %>
-    
+    <div class="two wide left aligned column">
+    <h3>Season</h4>
+      <% @seasons.each do |season| %>
+        <div class="season">
+          <%= link_to "#{season.name}", school_wrestlers_path(@school, season_id: season.id) %></div>
+      <% end %>
+    </div>
+    <div class="ten wide column">
+      <b><%= @school.name %></b><br><br>
+    <% if @season.id == Season.last.id %>
+      <% if user_signed_in? && (current_user.admin? || current_user.school.name == @school.name || current_user.league_id == @school.league_id ) %>
+        <div class="ui animated fade button">
+          <a href="/schools/<%= @school.id %>/wrestlers/new">
+            <div class="visible content">ADD WRESTLER</div>
+            <div class="hidden content">1 at a time</div>
+          </a>
+        </div><br>
+
+        <div class="ui animated help button">
+           <a href="/schools/<%= @school.id %>/wrestlers/help"> 
+            <div class="visible content">UPLOAD ROSTER INSTRUCTIONS</div>
+            <div class="hidden content download">Click for Instructions! READ ME!</div>
+           </a>   
+        </div>
+        <br><br>
+       <!--  Download Wrestlers:
+          <%= link_to "CSV", school_wrestlers_path(@school, format: "csv") %> <br><br> -->
+      <% end %>
+    <% end %>
+    </div>
+
    
-    
+  
+
     <div class="ui center aligned segment">
       <table class="ui celled center aligned structured stackable table">
         <thead>
@@ -76,15 +96,15 @@
         <th rowspan="2">RECORD</th>
         <th rowspan="2">TOURNAMENTS<br>RESULTS</th>
         <th rowspan="2">SECTION<br>HEAD 2 HEAD</th>
-          <th colspan="2"><%= @season.name %></th>
+        <% if (@season.id - 1) != 0 %>
+          <th colspan="2"><%= Season.find((@season.id - 1)).name %></th>
+          <% else %>
+          <th colspan="2"><%= @season.start_date - 1 %></th>
+          <% end %>
         <% if user_signed_in? && (current_user.admin? || current_user.school.name == @school.name || current_user.league_id == @school.league_id ) %>
-        <% if @season.id == Season.last.id %>
         <th rowspan="2">Edit</th>
         <th rowspan="2">Delete</th>
-        <% if DateTime.now.to_s > "2018-2" %>
         <td rowspan="2">Wt Card<br>PDF</td>
-        <% end %>
-        <% end %>
         <% end %>
         
       </tr>
@@ -98,7 +118,7 @@
           <% @wrestlers.each do |wrestler| %>
             <% if wrestler.bouts %>
              
-              <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler, wins: @wins, losses: @losses, season: @season } %>
+              <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler, wins: @wins, losses: @losses } %>
             
             <% end %>
           <% end %>

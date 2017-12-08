@@ -9,6 +9,7 @@ module Wrestlers
     def new
       @wrestler = Wrestler.find(params[:wrestler_id])
       @bout = @wrestler.bouts.new
+      @season = Season.last
       @tournaments = []
       Tournament.all.each{ |t| @tournaments << t.name }
       @tournament = Tournament.new

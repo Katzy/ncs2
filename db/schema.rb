@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220181248) do
+ActiveRecord::Schema.define(version: 20171128144229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,28 @@ ActiveRecord::Schema.define(version: 20170220181248) do
   end
 
   add_index "schools", ["league_id"], name: "index_schools_on_league_id", using: :btree
+
+  create_table "season_wrestlers", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "season_id"
+    t.integer  "wrestler_id"
+    t.integer  "wrestler_school_id"
+    t.integer  "wrestler_grade"
+    t.string   "first_name"
+    t.string   "last_name"
+  end
+
+  add_index "season_wrestlers", ["season_id"], name: "index_season_wrestlers_on_season_id", using: :btree
+  add_index "season_wrestlers", ["wrestler_id"], name: "index_season_wrestlers_on_wrestler_id", using: :btree
+
+  create_table "seasons", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "start_date"
+    t.integer  "end_date"
+    t.string   "name"
+  end
 
   create_table "tournaments", force: :cascade do |t|
     t.datetime "created_at"

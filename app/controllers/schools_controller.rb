@@ -9,6 +9,18 @@ class SchoolsController < ApplicationController
     @school = School.new
   end
 
+  def show
+    @school = School.find(params[:id])
+    @seasons = Season.all.order('id DESC')
+    @season = Season.last
+    if SeasonWrestler.where(season_id: @season.id, wrestler_school_id: @school.id).count > 0 
+          @wrestlers = @season.wrestlers.where(school_id: @school.id)
+        else
+          @wrestlers = []
+        end
+
+  end
+
   def create
     @user = current_user
     @school = School.new(school_params)

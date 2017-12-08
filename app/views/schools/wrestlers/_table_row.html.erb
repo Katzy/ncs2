@@ -7,7 +7,7 @@
   </td>
   <td><%= wrestler.league_place %>
   <td><%= wrestler.school.name %> (<%= wrestler.school.league.name %>)</td>
-  <td><%= link_to "#{wrestler.first_name + ' ' + wrestler.last_name}", wrestler_path(wrestler) %></td>
+  <td><%= link_to "#{wrestler.first_name + ' ' + wrestler.last_name}", wrestler_path(wrestler, season_id: @season.id) %></td>
   <td><%= wrestler.grade %></td>
   <td><%= wrestler.wins %>-<%= wrestler.losses %></td>
   <td><% if wrestler.t1_name != "" && wrestler.t1_name != nil %>
@@ -47,16 +47,19 @@
   
   
 
-
-  <% if user_signed_in? &&  (current_user.admin? || current_user.league_id == wrestler.school.league.id) %>
-    <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
-   
-    <td><%= link_to 'Delete', wrestler, method: "delete", :data => {:confirm => 'Are you sure?'} %> </td>
-    <% end %>
-    <% if user_signed_in? && (current_user.admin? || current_user.league_id == wrestler.school.league.id || current_user.school.name == wrestler.school.name) %>
-      <% if (wrestler.league_place != nil && wrestler.league_place != "") || wrestler.alternate %>
-        <td><%= link_to wrestler_path(wrestler, format: "pdf") do %><i class="file pdf outline icon"></i></td>
+  <% if @season.id == Season.last.id %>
+    <% if user_signed_in? &&  (current_user.admin? || current_user.league_id == wrestler.school.league.id) %>
+      <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
+     
+      <td><%= link_to 'Delete', wrestler, method: "delete", :data => {:confirm => 'Are you sure?'} %> </td>
+      <% end %>
+      <% if DateTime.now.to_s > "2018-2" %>
+        <% if user_signed_in? && (current_user.admin? || current_user.league_id == wrestler.school.league.id || current_user.school.name == wrestler.school.name) %>
+          <% if (wrestler.league_place != nil && wrestler.league_place != "") || wrestler.alternate %>
+            <td><%= link_to wrestler_path(wrestler, format: "pdf") do %><i class="file pdf outline icon"></i></td>
+          <% end %>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
+    <% end %>
 </tr>

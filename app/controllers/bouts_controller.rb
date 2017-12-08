@@ -6,6 +6,7 @@ class BoutsController < ApplicationController
 
     def new
       @wrestler = Wrestler.find(params[:wrestler_id])
+      @season = Season.last
       @bout = @wrestler.bouts.new
       @bouts = @wrestler.bouts.all
     end

@@ -1,7 +1,8 @@
 class Bout < ActiveRecord::Base
   acts_as_xlsx
-  
+
   belongs_to :wrestler
+  # belongs_to :season_wrestler
   
   validates :weight, presence: true, null: false
   validates :dual_or_tourney, presence: true, null: false

@@ -6,8 +6,14 @@ module Schools
 
        @school = School.find(params[:school_id])
         @lg = League.find(@school.league_id)
-        @wrestlers = @school.wrestlers.order('weight ASC')
-         wrestlers = @school.wrestlers.all
+      @seasons = Season.all.order('id DESC')
+       @season = Season.find(params[:season_id])
+        if SeasonWrestler.where(season_id: @season.id, wrestler_school_id: @school.id).count > 0 
+          @wrestlers = @season.wrestlers.where(school_id: @school.id).order('weight ASC')
+        else
+          @wrestlers = []
+        end
+        wrestlers = @wrestlers
 
       @user = current_user
       @count = @wrestlers.count
@@ -38,14 +44,15 @@ module Schools
     def import
       user = current_user
       school = School.find(params[:school_id])
+      @season = Season.last
       if params[:file] != nil
         School.find(params[:school_id]).wrestlers.import(params[:file], school)
         wrestlers = school.wrestlers.order('weight ASC')
         wrestler_array = [user, wrestlers]
         UserMailer.team_upload(wrestler_array).deliver
-        redirect_to school_wrestlers_path(school), notice: "Import successful!"
+        redirect_to school_wrestlers_path(school, season_id: @season.id), notice: "Import successful!"
       else
-        redirect_to school_wrestlers_path(school), notice: "Choose a file to import!"
+        redirect_to school_wrestlers_path(school, season_id: @season.id), notice: "Choose a file to import!"
       end
     end
 
