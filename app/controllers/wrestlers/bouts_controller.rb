@@ -30,10 +30,10 @@ module Wrestlers
     def create
       @wrestler = Wrestler.find(params[:wrestler_id])
       @bout = @wrestler.bout.new(bout_params)
-
+      @season = Season.find(SeasonWrestler.where(wrestler_id: @wrestler.id)[0].season_id)
       respond_to do |format|
         if @bout.save
-          format.html { redirect_to wrestler_path(@wrestler), notice: 'bout was successfully created.' }
+          format.html { redirect_to wrestler_path(@wrestler, season: @season), notice: 'bout was successfully created.' }
           format.json { render action: 'wrestlers/show', status: :created, location: @wrestler }
           # added:
           format.js   { render action: 'show', status: :created, location: @wrestler }
