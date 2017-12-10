@@ -14,13 +14,11 @@ class BoutsController < ApplicationController
       @wrestler = Wrestler.find(bout_params[:wrestler_id])
       @bout = @wrestler.bouts.new(bout_params)
       create_tourney
-      @season = Season.last
       @bout.tourney_name = params[:tourney_name]
       @bout.opponent_name = params[:opponent_name]
       @bout.opponent_team = params[:opponent_team]
       respond_to do |format|
         if @bout.save
-          
           format.html { redirect_to wrestler_path(@wrestler), notice: 'bout was successfully created.' }
           format.json { render action: 'wrestlers/show', status: :created, location: @wrestler }
           # added:
@@ -37,6 +35,7 @@ class BoutsController < ApplicationController
     def edit
       @bout = Bout.find(params[:id])
       @wrestler = Wrestler.find(@bout.wrestler_id)
+      @season = Season.find(SeasonWrestler.where(wrestler_id: @wrestler.id)[0].season_id)
       @bouts = @wrestler.bouts.order("date ASC")
       @match_number = 1 
     end
