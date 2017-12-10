@@ -107,7 +107,7 @@
       <% end %>
     <% end %>
     </div>
-    <%= render partial: 'wrestlers/match_table' %>
+    <%= render partial: 'wrestlers/match_table', locals: { bouts: @bouts } %>
 
   </div>
 </div>
