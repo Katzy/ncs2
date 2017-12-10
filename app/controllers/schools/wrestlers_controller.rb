@@ -101,11 +101,7 @@ module Schools
 
     end
 
-    def show
-      # @wrestler = Wrestler.find(params[:id])
-
-      @bouts = @wrestler.bouts.all
-    end
+   
 
     def weight_106
       select_wrestlers(106)
@@ -250,8 +246,9 @@ module Schools
 
 
     def select_wrestlers(wt)
-        @wrestlers = Wrestler.where("weight = #{wt}").order('weight ASC, wins DESC')
-        wrestlers = Wrestler.where("weight = #{wt}").order('seed ASC, wins DESC')  # for csv format
+        @season = Season.last
+        @wrestlers = @season.wrestlers.where(weight: wt).order('weight ASC, wins DESC')
+        wrestlers = @season.wrestlers.where(weight: wt).order('seed ASC, wins DESC')  # for csv format
 
         @count2 = @wrestlers.count
 

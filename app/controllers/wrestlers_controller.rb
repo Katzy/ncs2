@@ -239,13 +239,13 @@ class WrestlersController < ApplicationController
 
   def select_wrestlers(wt)
       params = ["1","2","3","4","5", true]
-      sea_id = Season.last.id - 1
-      @season = Season.find(sea_id)
-      @w = @season.wrestlers.where("weight = #{wt}")
-      @wrestlers = @w.where("league_place = ? OR league_place = ? OR league_place = ? OR league_place = ? OR league_place = ? OR alternate = ?", *params).order('weight ASC, seed ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
-      wrestlers = @wrestlers 
+      @season = Season.last
+      @w = @season.wrestlers.where(weight: wt)
+      # @wrestlers = @w.where("league_place = ? OR league_place = ? OR league_place = ? OR league_place = ? OR league_place = ? OR alternate = ?", *params).order('weight ASC, seed ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
+      @wrestlers = @w.order('weight ASC, seed ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
+      # wrestlers = @wrestlers 
       # Wrestler.where("weight = #{wt}").order('weight ASC, seed ASC, wins DESC')  # for csv format
-
+      
       @count2 = @wrestlers.count
       @wins = []
       @losses = []
