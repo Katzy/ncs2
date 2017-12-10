@@ -18,9 +18,10 @@ class BoutsController < ApplicationController
       @bout.tourney_name = params[:tourney_name]
       @bout.opponent_name = params[:opponent_name]
       @bout.opponent_team = params[:opponent_team]
+      @season = Season.find(SeasonWrestler.where(wrestler_id: @wrestler.id)[0].season_id)
       respond_to do |format|
         if @bout.save
-          format.html { redirect_to wrestler_path(@wrestler, season_id: Season.last.id), notice: 'bout was successfully created.' }
+          format.html { redirect_to wrestler_path(@wrestler, season: @season), notice: 'bout was successfully created.' }
           format.json { render action: 'wrestlers/show', status: :created, location: @wrestler }
           # added:
           format.js   { render action: 'show', status: :created, location: @wrestler }
