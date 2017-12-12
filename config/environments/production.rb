@@ -25,7 +25,7 @@ Rails.application.configure do
   config.serve_static_files = true
   config.assets.compile = true
 
-  Rails.application.routes.default_url_options[:host] = 'ncs2.herokuapp.com'
+  Rails.application.routes.default_url_options[:host] = 'ncswrestling.com'
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
