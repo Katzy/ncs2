@@ -99,6 +99,32 @@
   <div class="ui inverted wrestler wide sidebar vertical menu">
     <div class="ui grid">
 
+    <div class="weight item">
+        <b>BY SCHOOL</b>
+      </div>
+
+
+      <% if @schools1 %>
+        <div class="two column row">
+          <div class="column">
+            <div class="school">
+            <% @schools1.each do |s| %>
+              <a class="item" href="/schools/<%= s.id %>"><%= s.name %></a>
+            <% end %>
+            </div>
+          </div>
+          <% if @schools2 %>
+          <div class="column">
+            <div class="school">
+            <% @schools2.each do |s| %>
+              <a class="item" href="/schools/<%= s.id %>"><%= s.name %></a>
+            <% end %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+
         <div class="weight item">
           <b>BY LEAGUE</b>
         </div>
@@ -153,31 +179,7 @@
 
 
 
-      <div class="weight item">
-        <b>BY SCHOOL</b>
-      </div>
-
-
-      <% if @schools1 %>
-        <div class="two column row">
-          <div class="column">
-            <div class="school">
-            <% @schools1.each do |s| %>
-              <a class="item" href="/schools/<%= s.id %>"><%= s.name %></a>
-            <% end %>
-            </div>
-          </div>
-          <% if @schools2 %>
-          <div class="column">
-            <div class="school">
-            <% @schools2.each do |s| %>
-              <a class="item" href="/schools/<%= s.id %>"><%= s.name %></a>
-            <% end %>
-            </div>
-          </div>
-          <% end %>
-        </div>
-      <% end %>
+      
     </div>
   </div>
 

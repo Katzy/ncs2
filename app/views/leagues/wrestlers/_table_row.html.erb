@@ -5,7 +5,7 @@
         <br>(<%= wrestler.seed %>)
     <% end %>
   </td>
-    <td><%= wrestler.league_place %></td>
+    
   <td><%= wrestler.school.name %><br>(<%= wrestler.school.league.name %>)</td>
   <td><%= link_to "#{wrestler.first_name + ' ' + wrestler.last_name}", wrestler_path(wrestler, season_id: @season.id) %></td>
   <td><%= wrestler.grade %></td>
@@ -42,6 +42,7 @@
       <%= wrestler.h2h_5 %> <%= wrestler.h2h_r5 %><br>
       <% end %>
   </td>
+  <td><%= wrestler.league_place %></td>
   <td><%= wrestler.section_place %></td>
   <td><%= wrestler.state_place %></td>
   

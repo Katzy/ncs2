@@ -74,22 +74,22 @@ $('.ui.form.bout')
 // };
 
 // $.fn.search.settings.templates.message = newHeader;
-$('.ui.search.school')
-  .search({
-    apiSettings: {
-      url: '/schools/autocomplete.json?query={query}'
-    },
-    fields: {
-      results: 'teams',
-      title: 'name'
-    },
-    minCharacters : 3,
-    error: {
-      noResults: 'Enter school now!'
-    }
-  } 
-)
-; 
+// $('.ui.search.school')
+//   .search({
+//     apiSettings: {
+//       url: '/schools/autocomplete.json?query={query}'
+//     },
+//     fields: {
+//       results: 'teams',
+//       title: 'name'
+//     },
+//     minCharacters : 3,
+//     error: {
+//       noResults: 'Enter school now!'
+//     }
+//   } 
+// )
+// ; 
 
 $('.ui.search.tourney')
   .search({
@@ -126,6 +126,30 @@ $('.ui.search.wrestler')
         // $('.ui.search.school').search('set value', result.school)
         $('.ui.search.wrestler').search('set value', result.fullname)
         $('.ui.search.wrestler').search('hide results')
+        return false
+    }
+  }
+)
+; 
+
+$('.ui.search.school')
+  .search({
+    apiSettings: {
+      url: '/schools/autocomplete.json?query={query}'
+    },
+    fields: {
+      results: 'schools',
+      title: 'name'
+
+    },
+    minCharacters : 2,
+    error: {
+      noResults: 'Enter School now!'
+    },
+    onSelect(result, response) {
+        // $('.ui.search.school').search('set value', result.school)
+        $('.ui.search.school').search('set value', result.name)
+        $('.ui.search.school').search('hide results')
         return false
     }
   }

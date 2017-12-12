@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   belongs_to :league
   has_many :comments, dependent: :delete_all
 
-  validates :name, presence: true
+  validates :name, presence: true, null: false
 
   validates :password, length: {minimum: 5, maximum: 120}, on: :update, allow_blank: true
 
