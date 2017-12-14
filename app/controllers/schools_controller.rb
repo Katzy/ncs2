@@ -60,8 +60,8 @@ class SchoolsController < ApplicationController
 
   def autocomplete 
     query = params[:query].downcase
-    @teams = School.where("lower(name) LIKE ?", "%#{query}%")
-    render json: { teams: @teams.present_all }
+    @schools = School.where("lower(name) LIKE ?", "%#{query}%")
+    render json: { schools: @schools.present_all }
   end
 
   def destroy

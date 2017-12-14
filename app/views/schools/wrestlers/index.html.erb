@@ -27,13 +27,12 @@
         <thead>
         <h3><%= @season.name %> TEAM ROSTER</h3>
              <tr>
-        <th rowspan="2">WEIGHT<br>(seed)</th>
+        <th rowspan="2">WEIGHT</th>
         <th rowspan="2">SCHOOL</th>
         <th rowspan="2">NAME </th>
         <th rowspan="2">YR</th>
         <th rowspan="2">RECORD</th>
         <th rowspan="2">TOURNAMENTS<br>RESULTS</th>
-        <th rowspan="2">SECTION<br>HEAD 2 HEAD</th>
         <th colspan="2">2016</th>
         <% if user_signed_in? && (current_user.admin? || current_user.league || current_user.school) %>
         <th rowspan="2">Edit</th>
@@ -68,14 +67,13 @@
         <thead>
         <h3><%= @season.name %> TEAM ROSTER</h3>
            <tr>
-        <th rowspan="2">WEIGHT<br>(seed)</th>
+        <th rowspan="2">WEIGHT</th>
         
         <th rowspan="2">SCHOOL</th>
         <th rowspan="2">NAME </th>
         <th rowspan="2">YR</th>
         <th rowspan="2">RECORD</th>
         <th rowspan="2">TOURNAMENTS<br>RESULTS</th>
-        <th rowspan="2">SECTION<br>HEAD 2 HEAD</th>
           <% if @season.id-1 != 0 %>
           <th colspan="3"><%= Season.find(@season.id-1).name %></th>
           <% else %>

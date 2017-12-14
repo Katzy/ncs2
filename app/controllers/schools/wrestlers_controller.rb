@@ -5,7 +5,9 @@ module Schools
     def index
 
        @school = School.find(params[:school_id])
+       if @school.league_id
         @lg = League.find(@school.league_id)
+      end
       @seasons = Season.all.order('id DESC')
        @season = Season.find(params[:season_id])
         if SeasonWrestler.where(season_id: @season.id, wrestler_school_id: @school.id).count > 0 

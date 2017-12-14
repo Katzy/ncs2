@@ -1,0 +1,43 @@
+          <tr>
+            <td><%= wrestler.weight %>
+                  <% if wrestler.seed %>
+                  <br>(<%= wrestler.seed %>)
+                  <% end %>
+              </td>
+            
+           <!--  <td><% if wrestler.alternate == true %>
+                  X
+                <% end %>
+                </td>
+            <td><% if wrestler.scratch == true %>
+                  X
+                <% end %> -->
+                </td>
+        <% if wrestler.school.league %>
+          <td><%= wrestler.school.name %> (<%= wrestler.school.league.name %>)</td>
+        <% else %>
+          <td><%= wrestler.school.name %> </td>
+        <% end %>
+        <td><%= link_to wrestler.first_name + " " + wrestler.last_name, wrestler_path(wrestler) %></td>
+        <td><%= wrestler.grade %></td>
+             <td><%= wrestler.bouts.where(win_loss: "W").count %>-<%= wrestler.bouts.where(win_loss: "L").count %></td>
+          <td><% if wrestler.t1_name != "" && wrestler.t1_name != nil %>
+      <%= wrestler.t1_name %> <%= wrestler.t1_place %><br>
+      <% end %>
+      <% if wrestler.t2_name != "" && wrestler.t2_name != nil %>
+      <%= wrestler.t2_name %> <%= wrestler.t2_place %><br>
+      <% end %>
+      <% if wrestler.t3_name != "" && wrestler.t3_name != nil %>
+      <%= wrestler.t3_name %> <%= wrestler.t3_place %><br>
+      <% end %>
+      <% if wrestler.t4_name != "" && wrestler.t4_name != nil %>
+      <%= wrestler.t4_name %> <%= wrestler.t4_place %><br>
+      <% end %>
+      <% if wrestler.t5_name != "" && wrestler.t5_name != nil%>
+      <%= wrestler.t5_name %> <%= wrestler.t5_place %><br>
+      <% end %>
+  </td>
+  
+            <td><%= wrestler.league_place %></td>
+            <td><%= wrestler.section_place %></td>
+            <td><%= wrestler.state_place %></td>

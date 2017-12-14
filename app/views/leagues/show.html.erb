@@ -5,7 +5,7 @@
   </div>
    <div class="ui center aligned segment">
     <% if user_signed_in? && (current_user.admin? ) %>
-        <i class="add user icon"></i><%= link_to 'ADD TEAM', new_league_school_path(@lg) %>
+     <td><%= link_to("ADD SCHOOL", add_school_league_path(@lg)) %> </td>
         <% end %>
 <table class="ui celled right aligned structured stackable table">
   <thead>
@@ -23,7 +23,7 @@
   </thead>
   <tbody>
     <% @schools.each do |school| %>
-       <%= render partial: 'leagues/teams_table_row', locals: { school: school } %>
+       <%= render partial: 'leagues/teams_table_row', locals: { league_id: @lg.id, school: school } %>
       <% end %>
 
   </tbody>

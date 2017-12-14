@@ -45,10 +45,7 @@
           <% end %>
         </div>
 
-        <div class="two wide field">
-            <%= f.label :tourney_seed, 'Seed' %><br>
-            <%= f.collection_select :tourney_seed, ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'], :to_s, :to_s, :include_blank => true %>
-        </div>
+      
          <div class="two wide field">
           <%= f.label :tourney_place, "Place" %><br>
            <%= f.collection_select :tourney_place, ['1', '2', '3', '4', '5', '6', '7', '8'], :to_s, :to_s, :include_blank => true %>
@@ -69,12 +66,12 @@
         </div>
          <div class="four wide field">
           <%= f.label :opponent_team, "School **" %><br>
-          <% if bout.opponent_name %>
+          <% if bout.opponent_team %>
             <%= f.text_field :opponent_team %>
           <% else %>
             <div class="ui search school">
               <div class="ui icon input">
-                <input class="prompt" name="opponent_school" type="text" placeholder="Enter School">
+                <input class="prompt" name="opponent_team" type="text" placeholder="Enter School">
               </div> 
             </div>
           <% end %>

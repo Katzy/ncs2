@@ -110,6 +110,11 @@ Rails.application.routes.draw do
   resources :users, except: :create
 
   resources :leagues do
+    member do 
+      get :detach
+      get :add_school
+      post :add_school_create
+    end
     resources :schools, controller: "leagues/schools"
     resources :wrestlers, controller: "leagues/wrestlers"
       member do

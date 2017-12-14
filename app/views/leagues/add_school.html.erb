@@ -1,0 +1,43 @@
+<div class="ui coupled small fluid modal" id="modal1">
+  <div class="ui raised segment">
+    <div class="ui center aligned raised segment">
+    <h2>Add School</h2><br>
+    (** Required Field)
+    </div>
+      <div class="ui form">
+      <%= form_for [@school], :url => { :action => "add_school_create"}  do |f| %>
+        <% if @school.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@school.errors.count, "error") %> prohibited this user from being saved:</h2>
+            <ul>
+              <% @school.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="fields">
+          <div class="four wide field">
+            <%= f.label :name, "School Name" %><br>
+           
+            <div class="ui search school">
+              <div class="ui icon input">
+                <input class="prompt" name="name" type="text" placeholder="Enter School">
+              </div> 
+            </div>
+        </div> 
+         
+        <div class="hidden field">
+            
+            <%= f.hidden_field :league_id, :value => @league.id %>
+          </div> 
+       
+        <div class="actions">
+          <div class="ui red botton" id="btn-modal-1">
+            <%= f.submit "ADD" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

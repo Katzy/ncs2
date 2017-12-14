@@ -3,16 +3,7 @@ class LeaguesController < ApplicationController
       def index
         @leagues = League.all
         @u_hash = {}
-        @wrestler_count_hash = {}
-        @leagues.each do |l|
-          l.schools.each do |s|
-            if @wrestler_count_hash[l.id.to_s] != nil
-            @wrestler_count_hash[l.id.to_s] += s.wrestlers.count
-            else
-            @wrestler_count_hash[l.id.to_s] = s.wrestlers.count
-            end
-          end
-        end
+        
         @users = User.where('league_id IS NOT NULL')
         @users.each do |user|
           @u_hash[user.league_id.to_s] = user.name
@@ -77,6 +68,47 @@ class LeaguesController < ApplicationController
         @league.destroy
         redirect_to leagues_path
       end
+
+      def detach
+        @league = League.find(params[:id])
+        @school = School.find(params[:school_id])
+        @wrestlers = @school.wrestlers
+        @league.schools.delete(@school)
+        @wrestlers.each do |wr|
+          @league.wrestlers.delete(wr)
+        end
+        redirect_to league_path(@league)
+      end
+
+      def add_school
+        @league = League.find(params[:id])
+        @school = School.new
+      end
+
+      def add_school_create
+        @league = League.find(params[:school][:league_id])
+        @school = School.where(name: params[:name])[0]
+        @wrestlers = @school.wrestlers
+        @school.league_id = @league.id
+        @wrestlers.each do |wr|
+          wr.league_id = @league.id
+          wr.save
+        end
+        respond_to do |format|
+          if @school.save
+            format.html { redirect_to leagues_path(@league), notice: 'league was successfully created.' }
+            format.json { render action: 'index', status: :created, location: @league }
+            # added:
+            format.js   { render action: 'index', status: :created, location: @league }
+          else
+            format.html { render action: 'add_school' }
+            format.json { render json: @league.errors, status: :unprocessable_entity }
+            # added:
+            format.js   { render json: @league.errors, status: :unprocessable_entity }
+          end
+        end
+      end
+        
 
       private
 

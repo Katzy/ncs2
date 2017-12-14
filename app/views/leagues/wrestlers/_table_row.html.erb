@@ -6,7 +6,11 @@
     <% end %>
   </td>
     
-  <td><%= wrestler.school.name %><br>(<%= wrestler.school.league.name %>)</td>
+   <% if wrestler.school.league %>
+          <td><%= wrestler.school.name %> (<%= wrestler.school.league.name %>)</td>
+        <% else %>
+          <td><%= wrestler.school.name %> </td>
+        <% end %>
   <td><%= link_to "#{wrestler.first_name + ' ' + wrestler.last_name}", wrestler_path(wrestler, season_id: @season.id) %></td>
   <td><%= wrestler.grade %></td>
   <td><%= wrestler.wins %>-<%= wrestler.losses %></td>
@@ -26,22 +30,7 @@
       <%= wrestler.t5_name %> <%= wrestler.t5_place %><br>
       <% end %>
   </td>
-  <td><% if wrestler.h2h_1 != "" && wrestler.h2h_1 != nil %>
-      <%= wrestler.h2h_1 %> <%= wrestler.h2h_r1 %><br>
-      <% end %>
-      <% if wrestler.h2h_2 != "" && wrestler.h2h_2 != nil %>
-      <%= wrestler.h2h_2 %> <%= wrestler.h2h_r2 %><br>
-      <% end %>
-      <% if wrestler.h2h_3 != "" && wrestler.h2h_3 != nil %>
-      <%= wrestler.h2h_3 %> <%= wrestler.h2h_r3 %><br>
-      <% end %>
-      <% if wrestler.h2h_1 != "" && wrestler.h2h_4 != nil  %>
-      <%= wrestler.h2h_4 %> <%= wrestler.h2h_r4 %><br>
-      <% end %>
-      <% if wrestler.h2h_1 != "" && wrestler.h2h_5 != nil %>
-      <%= wrestler.h2h_5 %> <%= wrestler.h2h_r5 %><br>
-      <% end %>
-  </td>
+  
   <td><%= wrestler.league_place %></td>
   <td><%= wrestler.section_place %></td>
   <td><%= wrestler.state_place %></td>
