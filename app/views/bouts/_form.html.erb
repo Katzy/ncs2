@@ -66,15 +66,7 @@
         </div>
          <div class="four wide field">
           <%= f.label :opponent_team, "School **" %><br>
-          <% if bout.opponent_team %>
             <%= f.text_field :opponent_team %>
-          <% else %>
-            <div class="ui search school">
-              <div class="ui icon input">
-                <input class="prompt" name="opponent_team" type="text" placeholder="Enter School">
-              </div> 
-            </div>
-          <% end %>
         </div>
        
         <!-- <div class="four wide field">
