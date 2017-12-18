@@ -1,9 +1,10 @@
 <tr>
-  <td><%= link_to "#{school.name}", school_wrestlers_path(school) %></td>
+  <td><%= link_to "#{school.name}", school_path(school) %></td>
+  <% if user_signed_in? && current_user.admin? %>
   <td><%= User.find_by_school_id(school.id)  ? User.find_by_school_id(school.id).name : "" %></td>
   <td><%= User.find_by_school_id(school.id) ? User.find_by_school_id(school.id).email : "" %></td> 
   <td><%= User.find_by_school_id(school.id) ? User.find_by_school_id(school.id).cell : "" %></td>
-   <% if user_signed_in? && current_user.admin? %>
+   
  
   <td><%= link_to 'Edit', edit_school_path(school) %></td>
       <td><%= link_to("Delete", detach_league_path(@lg, school_id: school.id), :data => {:confirm => 'Are you sure?'}) %> </td>

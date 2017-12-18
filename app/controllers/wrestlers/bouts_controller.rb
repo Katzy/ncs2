@@ -3,7 +3,7 @@ module Wrestlers
 
     def index
       @wrestler = Wrestler.find(params[:wrestler_id])
-      @matches = @wrestler.matches.all
+      @matches = @wrestler.matches.order('date ASC')
     end
 
     def new

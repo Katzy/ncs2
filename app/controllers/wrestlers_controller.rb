@@ -141,7 +141,7 @@ class WrestlersController < ApplicationController
     
     @season = Season.find(@season_wrestler[0].season_id)
     wrestler = @wrestler
-    @bouts = @wrestler.bouts.all
+    @bouts = @wrestler.bouts.order('date ASC')
     @match_number = 1
     @full_name = @wrestler.first_name + ' ' + @wrestler.last_name
     respond_to do |format|
