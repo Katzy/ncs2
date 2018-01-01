@@ -13,7 +13,7 @@ module Wrestlers
       @tournaments = []
       Tournament.all.each{ |t| @tournaments << t.name }
       @tournament = Tournament.new
-      @bouts = @wrestler.bouts.order("date ASC")
+      @bouts = @wrestler.bouts.order("id ASC")
       @match_number = 1
     end
 

@@ -1,4 +1,14 @@
 <div class="ui center aligned segment">
+<div class="two wide left aligned column">
+     <% if user_signed_in? && current_user.admin? %>
+        
+        <div class="compare">
+          <%= link_to "COMPARE WRESTLERS", compare_wrestlers_path(wrestlers: @wrestlers) %>
+            
+        </div>
+        <% end %>
+    </div>
+<div class="ten wide center aligned column">
   <h1>106 </h1>
   (<%= @count2 %>)
         <p>
@@ -7,9 +17,11 @@
             <%= link_to "CSV", wrestlers_weight_106_path(format: "csv") %> |
             <%= link_to "Excel", wrestlers_weight_106_path(format: "xls") %><br><br>
           <%= link_to "VIEW ALTERNATES ONLY", wrestlers_alternates_path %>
+
             <% end %>
 
         </p>
+</div>
 </div>
 
     <%= render partial: 'wrestlers/index_by_weight', locals: { wrestlers: @wrestlers, user: @user } %>

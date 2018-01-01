@@ -151,7 +151,10 @@ Rails.application.routes.draw do
 
   resources :wrestlers do
     # resource :download, only: [:show]
-    collection { get :autocomplete }
+    collection do 
+      get :autocomplete 
+      get :compare
+    end
     resources :bouts, controller: "wrestlers/bouts" do
       collection { post :import }
     end
