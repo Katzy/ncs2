@@ -162,6 +162,7 @@ class WrestlersController < ApplicationController
   def update
 
     @wrestler = Wrestler.find(params[:id])
+    @season_id = SeasonWrestler.where(wrestler_id: @wrestler.id)[0].season_id
     weight = @wrestler.weight
     user = current_user
     wrestler = @wrestler
@@ -201,7 +202,7 @@ class WrestlersController < ApplicationController
           redirect_to wrestlers_weight_285_path
         end
       else
-        redirect_to school_wrestlers_path(@wrestler.school)
+        redirect_to school_wrestlers_path(@wrestler.school, season_id: @season_id)
       end
     else
       render :edit

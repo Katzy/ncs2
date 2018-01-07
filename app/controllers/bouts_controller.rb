@@ -13,6 +13,7 @@ class BoutsController < ApplicationController
     def create
       @wrestler = Wrestler.find(bout_params[:wrestler_id])
       @bout = @wrestler.bouts.new(bout_params)
+      @season = Season.last
       create_tourney
       # @season = Season.find(SeasonWrestler.where(wrestler_id: @wrestler.id)[0].season_id)
       # @bouts = @wrestler.bouts
