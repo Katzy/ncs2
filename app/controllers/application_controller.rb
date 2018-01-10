@@ -34,6 +34,7 @@ class ApplicationController < ActionController::Base
     @tournaments = Tournament.all
     @schools1 = @schools[0..half]
     @schools2 = @schools[(half+1)..@schools.count]
+    @season = Season.last
 
     if @user != nil && @user.league_rep == true
       id = @user.league_id
