@@ -129,6 +129,7 @@ Rails.application.routes.draw do
        post :import 
        get :help
        get :download
+       get :tourney_team
      end
     end
   end

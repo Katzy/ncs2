@@ -27,7 +27,7 @@
       
       <% end %>
       <% if @school.wrestlers.where(tourney_team: true).count > 0 %>
-          <%= link_to "Export Tournament Team", school_wrestlers_path(@school, season_id: @season.id, format: "csv") %> <br> 
+          <%= link_to "Export Tournament Team", tourney_team_school_wrestlers_path(@school, season_id: @season.id, format: "csv") %> <br> 
           <%= link_to "Export 2018 Roster", school_wrestlers_path(@school, season_id: @season.id, format: "csv") %>
           <% else %>
           <h2> YOU MUST SELECT YOUR TOURNAMENT TEAM FOR LEAGUE, NCS & OTHER TOURNAMENTS etc...<h2> 

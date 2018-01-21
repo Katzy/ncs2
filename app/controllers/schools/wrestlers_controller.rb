@@ -29,7 +29,20 @@ module Schools
       end
     end
 
-  
+    def tourney_team
+      @school = School.find(params[:school_id])
+      @season = Season.find(params[:season_id])
+      if SeasonWrestler.where(season_id: @season.id, wrestler_school_id: @school.id).count > 0 
+        @wrestlers = @season.wrestlers.where(school_id: @school.id, tourney_team: true).order('weight ASC')
+      else
+        @wrestlers = []
+      end
+      wrestlers = @wrestlers
+      respond_to do |format|
+        format.html
+        format.csv { send_data wrestlers.to_csv2, filename: @school.name + '_tournament_wrestlers.csv'}
+      end
+    end
 
     def download
       school = School.find(params[:school_id])
