@@ -16,7 +16,7 @@ module Schools
           @wrestlers = []
         end
         wrestlers = @wrestlers
-        @tourney_results
+        @tourney_results = []
       @user = current_user
       @count = @wrestlers.count
       @wins = []
