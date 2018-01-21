@@ -17,13 +17,12 @@
       <table class="ui celled right aligned structured stackable table" style="padding:5em;">
         <thead>
              <tr>
-        <th rowspan="2">WEIGHT<br>(seed)</th>
+        <th rowspan="2">WEIGHT</th>
         <th rowspan="2">SCHOOL</th>
         <th rowspan="2">NAME </th>
         <th rowspan="2">YR</th>
         <th rowspan="2">RECORD</th>
         <th rowspan="2">TOURNAMENTS<br>RESULTS</th>
-        <th rowspan="2">SECTION<br>HEAD 2 HEAD</th>
         <th colspan="2">2016</th>
         <% if user_signed_in? && (current_user.admin? || current_user.league || current_user.school) %>
         <th rowspan="2">Edit</th>
@@ -59,7 +58,7 @@
     <div class="ten wide column">
       <b><%= @school.name %></b><br><br>
     <% if @season.id == Season.last.id %>
-      <% if user_signed_in? && (current_user.admin? || current_user.school.name == @school.name || current_user.league_id == @school.league_id ) %>
+      <% if user_signed_in? && (current_user.admin? || current_user.school.name == @school.name || (current_user.league_id == @school.league_id) && current_user.league_rep == true ) %>
         <div class="ui animated fade button">
           <a href="/schools/<%= @school.id %>/wrestlers/new">
             <div class="visible content">ADD WRESTLER</div>
@@ -74,9 +73,11 @@
            </a>   
         </div>
         <br><br>
-       <!--  Download Wrestlers:
-          <%= link_to "CSV", school_wrestlers_path(@school, format: "csv") %> <br><br> -->
-      <% end %>
+        <% end %>
+          <%= link_to "Export Tournament Team", school_wrestlers_path(@school, season_id: @season.id, format: "csv") %> <br> 
+          <%= link_to "Export 2018 Roster", school_wrestlers_path(@school, season_id: @season.id, format: "csv") %>
+
+      
     <% end %>
     </div>
 
@@ -86,9 +87,9 @@
     <div class="ui center aligned segment">
       <table class="ui celled center aligned structured stackable table">
         <thead>
-        <h3><%= @season.name %> TEAM ROSTER</h3>
+        <h3><%= @season.name %> ROSTER</h3> (tournament team upper case)
            <tr>
-        <th rowspan="2">WEIGHT<br>(seed)</th>
+        <th rowspan="2">WEIGHT</th>
         
         <th rowspan="2">SCHOOL</th>
         <th rowspan="2">NAME </th>
@@ -119,10 +120,16 @@
         <tbody>
           <% @wrestlers.each do |wrestler| %>
             <% if wrestler.bouts %>
-             
-              <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler, wins: @wins, losses: @losses } %>
-            
+              <% wrestler.bouts.each do |bout| %>
+                <% if bout.tourney_place && bout.tourney_place > 0 %>
+                  <% unless @tourney_results.include?([bout.tourney_name, bout.tourney_place]) %>
+                    <% @tourney_results << [bout.tourney_name, bout.tourney_place] %>
+                  <% end %>
+                <% end %>
+              <% end %>    
+              <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler, tourney_results: @tourney_results, wins: @wins, losses: @losses } %>
             <% end %>
+            <% @tourney_results = [] %>
           <% end %>
         </tbody>
       </table>

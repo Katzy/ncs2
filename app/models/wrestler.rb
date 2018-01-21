@@ -13,7 +13,9 @@ class Wrestler < ActiveRecord::Base
   validates :school_id, presence: true, null: false
   # validates :wins, presence: true, null: false
   # validates :losses, presence: true, null: false
-  # validates_uniqueness_of :weight, scope: :school_id
+  validates_uniqueness_of :tourney_team, scope: [:school_id, :weight], if: 'tourney_team == true', :message => ":  You already designated a wrestler at this weight to be on your tournament team.  Only 1 is allowed per weight!"
+
+
   def self.present_all
     self.all.map { |item| item.present }
   end
@@ -23,6 +25,12 @@ class Wrestler < ActiveRecord::Base
     puts a
     a
   end
+
+  # def has_tourney_team
+  #   exists.where(school_id: school_id).where(weight: weight).where(tourney_team: true)
+  # end
+    
+ 
 
   def name_weight_school
     { 

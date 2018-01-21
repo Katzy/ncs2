@@ -17,9 +17,13 @@
         </div>
       <% end %>
       <div class="fields">
+         <div class="two wide field">
+         <%= f.label :tourney_team, "Tourney Team" %><br>
+         <%= f.check_box :tourney_team %><br>
+         </div>
         <div class="three wide field">
           <%= f.label :weight, "Weight **" %><br>
-           <% if current_user.admin? || current_user.league_id == @league.id %>
+           <% if current_user.admin? || current_user.league_id  %>
           <%= f.collection_select :weight, ['106', '113', '120', '126', '132', '138', '145', '152', '160', '170', '182', '195', '220', '285'], :to_s, :to_s, :include_blank => true %>
           <% else %>
            <%= f.text_field :weight, :readonly=>true %>
@@ -99,11 +103,7 @@
           <%= f.label :state_place, "2017 STATE PLACE" %><br>
           <%= f.collection_select :state_place, ['1', '2', '3', '4', '5', '6', '7', '8'], :to_s, :to_s, :include_blank => true %>
         </div>
-        <div class="hidden field">
-          <%= f.hidden_field :league_id, :value => @league.id %>
-          
-        </div>
-       
+       <!--  --> 
       </div>
     <!--          <h2 class="ui center aligned header">SEEDING INFORMATION</h2>
       <h3 class="ui center aligned dividing header">TOURNAMENT PLACES</h3>

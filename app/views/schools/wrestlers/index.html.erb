@@ -25,7 +25,7 @@
        
       <table class="ui celled right aligned structured stackable table" style="padding:5em;">
         <thead>
-        <h3><%= @season.name %> TEAM ROSTER</h3>
+        <h3><%= @season.name %> TEAM ROSTER </h3>  (tournament team upper case)
              <tr>
         <th rowspan="2">WEIGHT</th>
         <th rowspan="2">SCHOOL</th>
@@ -47,6 +47,7 @@
         </thead>
         <tbody>
           <% @wrestlers.each do |wrestler| %>
+            
              <% if wrestler.bouts %>
               
               <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler, wins: @wins, losses: @losses } %>
@@ -65,7 +66,7 @@
     <div class="ui center aligned segment">
       <table class="ui celled center aligned structured stackable table">
         <thead>
-        <h3><%= @season.name %> TEAM ROSTER</h3>
+        <h3><%= @season.name %> TEAM ROSTER </h3> (tournament team upper case)
            <tr>
         <th rowspan="2">WEIGHT</th>
         
@@ -100,12 +101,19 @@
         <tbody>
           <% @wrestlers.each do |wrestler| %>
             <% if wrestler.bouts %>
-             
-              <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler, wins: @wins, losses: @losses, season: @season } %>
-            
+              <% wrestler.bouts.each do |bout| %>
+                <% if bout.tourney_place && bout.tourney_place > 0 %>
+                  <% unless @tourney_results.include?([bout.tourney_name, bout.tourney_place]) %>
+                    <% @tourney_results << [bout.tourney_name, bout.tourney_place] %>
+                  <% end %>
+                <% end %>
+              <% end %>    
+              <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler, tourney_results: @tourney_results, wins: @wins, losses: @losses } %>
             <% end %>
+            <% @tourney_results = [] %>
           <% end %>
         </tbody>
+        
       </table>
       </div><br><br><br><br><br>
   </div>

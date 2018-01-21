@@ -9,7 +9,7 @@
     <div class="ten wide column">
       <b><%= @school.name %></b><br><br>
     <% if @season.id == Season.last.id %>
-      <% if user_signed_in? && (current_user.admin? || current_user.school.name == @school.name || current_user.league_id == @school.league_id ) %>
+      <% if user_signed_in? && (current_user.admin? || current_user.school.name == @school.name || (current_user.league_id == @school.league_id) && current_user.league_rep == true ) %>
         <div class="ui animated fade button">
           <a href="/schools/<%= @school.id %>/wrestlers/new">
             <div class="visible content">ADD WRESTLER</div>
@@ -24,8 +24,14 @@
            </a>   
         </div>
         <br><br>
-       <!--  Download Wrestlers:
-          <%= link_to "CSV", school_wrestlers_path(@school, format: "csv") %> <br><br> -->
+      
       <% end %>
+      <% if @school.wrestlers.where(tourney_team: true).count > 0 %>
+          <%= link_to "Export Tournament Team", school_wrestlers_path(@school, season_id: @season.id, format: "csv") %> <br> 
+          <%= link_to "Export 2018 Roster", school_wrestlers_path(@school, season_id: @season.id, format: "csv") %>
+          <% else %>
+          <h2> YOU MUST SELECT YOUR TOURNAMENT TEAM FOR LEAGUE, NCS & OTHER TOURNAMENTS etc...<h2> 
+          To do this, click "EDIT" next to a wrestler and check the box for tournament team.
+          <% end %>
     <% end %>
     </div>

@@ -14,11 +14,18 @@ class SchoolsController < ApplicationController
     @seasons = Season.all.order('id DESC')
     @season = Season.last
     if SeasonWrestler.where(season_id: @season.id, wrestler_school_id: @school.id).count > 0 
-          @wrestlers = @season.wrestlers.where(school_id: @school.id).order('weight ASC')
-        else
-          @wrestlers = []
-        end
-
+      @wrestlers = @season.wrestlers.where(school_id: @school.id).order('tourney_team DESC, weight ASC')
+    else
+      @wrestlers = []
+    end
+    @tourney_results = []
+    # @wrestlers.each do |wrestler|
+    #   wrestler.bouts.each do |bout|
+    #     if bout.tourney_place
+    #       @tourney_results.push([bout.tourney_name, bout.tourney_place])
+    #     end
+    #   end
+    # end
   end
 
   def create
