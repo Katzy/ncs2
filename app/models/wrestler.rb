@@ -151,7 +151,7 @@ class Wrestler < ActiveRecord::Base
     
     CSV.generate(options) do |csv|
       
-      csv << ["weight", "school", "first_name", "last_name", "grade", "wins", "losses", "section place", "state place", "T1", "T1 PLACE", "T2", "T2 PLACE", "T3", "T3 PLACE", "T4", "T4 PLACE", "T5", "T5 PLACE"]
+      csv << ["weight", "school", "first_name", "last_name", "grade", "wins", "losses", "section_place", "state_place", "t1_name", "t1_place", "t2_name", "t2_place", "t3_name", "t3_place", "t4_name", "t4_place", "t5_name", "t5_place"]
       all.each do |wrestler|
         tourney_array = []
         if wrestler.bouts
