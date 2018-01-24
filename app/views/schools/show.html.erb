@@ -74,9 +74,16 @@
         </div>
         <br><br>
         <% end %>
+           <% if @school.wrestlers.where(tourney_team: true).count > 0 %>
           <%= link_to "Export Tournament Team", tourney_team_school_wrestlers_path(@school, season_id: @season.id, format: "csv") %> <br> 
           <%= link_to "Export 2018 Roster", school_wrestlers_path(@school, season_id: @season.id, format: "csv") %>
-
+          <% else %>
+         <% if user_signed_in? && (current_user.admin? || current_user.school.name == @school.name || (current_user.league_id == @school.league_id) && current_user.league_rep == true ) %>
+          <h2> YOU MUST SELECT YOUR TOURNAMENT TEAM FOR LEAGUE, NCS & OTHER TOURNAMENTS etc...<h2> 
+          To do this, click "EDIT" next to a wrestler and check the box for tournament team.
+          <% end %>
+          <% end %>
+    <% end %>
       
     <% end %>
     </div>
