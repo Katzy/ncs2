@@ -100,16 +100,31 @@
         </thead>
         <tbody>
           <% @wrestlers.each do |wrestler| %>
-            <% if wrestler.bouts %>
+           
               <% wrestler.bouts.each do |bout| %>
                 <% if bout.tourney_place && bout.tourney_place > 0 %>
                   <% unless @tourney_results.include?([bout.tourney_name, bout.tourney_place]) %>
                     <% @tourney_results << [bout.tourney_name, bout.tourney_place] %>
                   <% end %>
                 <% end %>
-              <% end %>    
-              <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler, tourney_results: @tourney_results, wins: @wins, losses: @losses } %>
-            <% end %>
+              <% end %>
+             <% if wrestler.t1_name != "" %>
+               <% @tourney_results << [ wrestler.t1_name, wrestler.t1_place] %>
+             <% end %>
+             <% if wrestler.t2_name != "" %>
+               <% @tourney_results << [ wrestler.t2_name, wrestler.t2_place] %>
+             <% end %>
+             <% if wrestler.t3_name != "" %>
+               <% @tourney_results << [ wrestler.t3_name, wrestler.t3_place] %>
+             <% end %>
+             <% if wrestler.t4_name != "" %>
+               <% @tourney_results << [ wrestler.t4_name, wrestler.t4_place] %>
+             <% end %>
+             <% if wrestler.t5_name != "" %>
+               <% @tourney_results << [ wrestler.t5_name, wrestler.t5_place] %>
+             <% end %>
+            <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler, tourney_results: @tourney_results, wins: @wins, losses: @losses } %>
+           
             <% @tourney_results = [] %>
           <% end %>
         </tbody>
