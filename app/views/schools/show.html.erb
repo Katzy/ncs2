@@ -128,19 +128,19 @@
                   <% end %>
                 <% end %>
               <% end %>
-             <% if wrestler.t1_name != "" %>
+             <% if wrestler.t1_name != "" && wrestler.t1_name != nil %>
                <% @tourney_results << [ wrestler.t1_name, wrestler.t1_place] %>
              <% end %>
-             <% if wrestler.t2_name != "" %>
+             <% if wrestler.t2_name != "" && wrestler.t2_name != nil %>
                <% @tourney_results << [ wrestler.t2_name, wrestler.t2_place] %>
              <% end %>
-             <% if wrestler.t3_name != "" %>
+             <% if wrestler.t3_name != "" && wrestler.t3_name != nil %>
                <% @tourney_results << [ wrestler.t3_name, wrestler.t3_place] %>
              <% end %>
-             <% if wrestler.t4_name != "" %>
+             <% if wrestler.t4_name != "" && wrestler.t4_name != nil %>
                <% @tourney_results << [ wrestler.t4_name, wrestler.t4_place] %>
              <% end %>
-             <% if wrestler.t5_name != "" %>
+             <% if wrestler.t5_name != "" && wrestler.t5_name != nil %>
                <% @tourney_results << [ wrestler.t5_name, wrestler.t5_place] %>
              <% end %>
             <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler, tourney_results: @tourney_results, wins: @wins, losses: @losses } %>
