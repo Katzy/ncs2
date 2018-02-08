@@ -21,7 +21,8 @@
         <td><%= link_to wrestler.first_name + " " + wrestler.last_name, wrestler_path(wrestler) %></td>
         <td><%= wrestler.grade %></td>
              <td><%= wrestler.bouts.where(win_loss: "W").count %>-<%= wrestler.bouts.where(win_loss: "L").count %></td>
-          <td><% if wrestler.t1_name != "" && wrestler.t1_name != nil %>
+          <td>
+<!--           <% if wrestler.t1_name != "" && wrestler.t1_name != nil %>
       <%= wrestler.t1_name %> <%= wrestler.t1_place %><br>
       <% end %>
       <% if wrestler.t2_name != "" && wrestler.t2_name != nil %>
@@ -36,7 +37,7 @@
       <% if wrestler.t5_name != "" && wrestler.t5_name != nil%>
       <%= wrestler.t5_name %> <%= wrestler.t5_place %><br>
       <% end %>
-  </td>
+ -->  </td>
   
             <td><%= wrestler.league_place %></td>
             <td><%= wrestler.section_place %></td>
