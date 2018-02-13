@@ -3,7 +3,7 @@ module Leagues
     before_action :load_league, only: [:new, :create]
     before_filter :authorize_user, :only => [:new, :create]
     def index
-      @season = Season.offset(1).last
+      @season = Season.last
       @lg = League.find(params[:league_id])
        @schools = School.where("league_id = #{params[:league_id]}")
         @school_ids = @schools.map { |school| school.id }

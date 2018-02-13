@@ -147,6 +147,7 @@ class WrestlersController < ApplicationController
     wrestler = @wrestler
     @bouts = @wrestler.bouts.order('id ASC')
     @match_number = 1
+    @count = 1
     @full_name = @wrestler.first_name + ' ' + @wrestler.last_name
     respond_to do |format|
       format.html { render :show }
@@ -154,7 +155,8 @@ class WrestlersController < ApplicationController
         render pdf: "#{@wrestler.first_name}_#{@wrestler.last_name}_#{@wrestler.weight}.pdf",
                layout: "wrestler_pdf", 
                template: "wrestlers/show.pdf.erb",
-               locals: { :wrestler => wrestler }
+               locals: { :wrestler => wrestler },
+               orientation: "Landscape"
       end
     end
   end
