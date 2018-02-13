@@ -7,7 +7,7 @@
     <h4 style="text-align:center">** ALTERNATE **  AT LARGE: ___</h4>
   <% end %>
   <TABLE BORDER="1" CELLPADDING="5" CELLSPACING="0">
-<TD style="width:35%font-size:15px;">
+<TD style="width:35%font-size:13px;">
 
        
             Seed: ___<br>
@@ -29,7 +29,7 @@
               2016 STATE Place: &emsp;&emsp;<%= wrestler.state_place %> (wt:___)<br><br>
               NCS Losses: &emsp;&emsp;&emsp;&nbsp;<%= wrestler.losses_ncs %><br><br>
 
-              <b>My athlete is eligible under all CIF, NCS, NFHS rules.</b><br><br><br>
+              <b>My athlete is eligible under all CIF, NCS, NFHS rules.</b><br><br>
     Coach's Signature:
     ______________________________
     <br><br>
@@ -41,8 +41,8 @@
             Official:____________&emsp;&emsp;&ensp;Official:____________<br><br>
             </td>
 
-<TD style="vertical-align: top">
-<TABLE BORDER="1" CELLPADDING="3" CELLSPACING="0">
+<TD style="vertical-align:top;width:85%;text-align:center;">
+<TABLE BORDER="1" CELLPADDING="1" CELLSPACING="0">
   
            
            <% if wrestler.bouts && wrestler.bouts.count > 0 %>
@@ -56,17 +56,17 @@
             <% wrestler.bouts.each do |bout| %>
 
               <tr>
-                <td style="width:75%;text-align:left;font-size:10px;"><%= @count %></td> 
-                <td style="width:75%;text-align:left;font-size:10px;"><%= bout.win_loss %>
-                <td style="width:75%;text-align:left;font-size:10px;"><%= bout.date %>
+                <td style="width:75%;text-align:left;font-size:8px;"><%= @count %></td> 
+                <td style="width:75%;text-align:left;font-size:8px;"><%= bout.win_loss %>
+                <td style="width:75%;text-align:left;font-size:8px;"><%= bout.date %>
                 </td>
-                <td style="width:75%;text-align:left;font-size:10px;"><%= bout.opponent_name %>
+                <td style="width:75%;text-align:left;font-size:8px;"><%= bout.opponent_name %>
                 </td>
-                <td style="width:75%;text-align:left;font-size:10px;"><%= bout.opponent_team %>
+                <td style="width:75%;text-align:left;font-size:8px;"><%= bout.opponent_team %>
                 </td>
-                <td style="width:75%;text-align:left;font-size:10px;"><%= bout.result_type %>
+                <td style="width:75%;text-align:left;font-size:8px;"><%= bout.result_type %>
                 </td>
-                <td style="width:75%;text-align:left;font-size:10px;"><%= bout.score_time %>
+                <td style="width:75%;text-align:left;font-size:8px;"><%= bout.score_time %>
                 </td>
               </tr>
               <% @count += 1 %>
@@ -111,7 +111,7 @@
      
    
     
-        <tr>
+      <!--   <tr>
           <td style="width:50%;text-align:left;font-size:14px;">
           </td>
         
@@ -134,7 +134,7 @@
         </tr>
      
     
-  </table>
+  </table> -->
   
   
     
