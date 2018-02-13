@@ -31,8 +31,8 @@
 
               <b>My athlete is eligible under all CIF, NCS, NFHS rules.</b><br><br>
     Coach's Signature:
-    ______________________________
-    <br><br>
+    ___________________________
+    <br>
             _____________________________________________<br>
             <b>Please do not write below line</b><br><br>
             Friday:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Saturday:<br>
@@ -95,9 +95,13 @@
             </tr>
             <% end %>
             <% if wrestler.t5_name != "" && wrestler.t5_name != nil%>
-            <tr><td><%= wrestler.t5_name %> <%= wrestler.t5_place %></td></tr>
+            <tr><td><%= wrestler.t5_name %></td> <td><%= wrestler.t5_place %></td></tr>
             <% end %>
+            <br><br><br><br>
+            <tr><td><%=wrestler.comments %></td></tr>
           <% end %>
+          
+          
           </TABLE>
 
 </TD>
