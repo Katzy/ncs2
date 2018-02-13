@@ -8,7 +8,6 @@
   <% end %>
   <TABLE BORDER="1" CELLPADDING="5" CELLSPACING="0">
 <TD style="width:35%font-size:13px;">
-
        
             Seed: ___<br>
            
@@ -56,17 +55,17 @@
             <% wrestler.bouts.each do |bout| %>
 
               <tr>
-                <td style="width:75%;text-align:left;font-size:7.5px;"><%= @count %></td> 
-                <td style="width:75%;text-align:left;font-size:7.5px;"><%= bout.win_loss %>
-                <td style="width:75%;text-align:left;font-size:7.5px;"><%= bout.date %>
+                <td style="width:75%;text-align:left;font-size:7px;"><%= @count %></td> 
+                <td style="width:75%;text-align:left;font-size:7px;"><%= bout.win_loss %>
+                <td style="width:75%;text-align:left;font-size:7px;"><%= bout.date %>
                 </td>
-                <td style="width:75%;text-align:left;font-size:7.5px;"><%= bout.opponent_name %>
+                <td style="width:75%;text-align:left;font-size:7px;"><%= bout.opponent_name %>
                 </td>
-                <td style="width:75%;text-align:left;font-size:7.5px;"><%= bout.opponent_team %>
+                <td style="width:75%;text-align:left;font-size:7px;"><%= bout.opponent_team %>
                 </td>
-                <td style="width:75%;text-align:left;font-size:7.5px;"><%= bout.result_type %>
+                <td style="width:75%;text-align:left;font-size:7px;"><%= bout.result_type %>
                 </td>
-                <td style="width:75%;text-align:left;font-size:7.5px;"><%= bout.score_time %>
+                <td style="width:75%;text-align:left;font-size:7px;"><%= bout.score_time %>
                 </td>
               </tr>
               <% @count += 1 %>
