@@ -27,6 +27,7 @@
         <th rowspan="2">YR</th>
         <th rowspan="2">RECORD</th>
         <th rowspan="2">TOURNAMENT<br>RESULTS</th>
+        <th rowspan="2">2018 LEAGUE PLACE</th>
         <% if (@season.id - 1) != 0 %>
           <th colspan="3"><%= Season.find((@season.id - 1)).name %></th>
           <% else %>
@@ -75,8 +76,8 @@
       <%= @wrestler.t5_name %> <%= @wrestler.t5_place %><br>
       <% end %>
   </td>
- 
-            <td><%= @wrestler.league_place %></td>
+      <td><%= @wrestler.league_place %></td>
+            <td><%= @wrestler.league_1ya %></td>
             <td><%= @wrestler.section_place %></td>
             <td><%= @wrestler.state_place %></td>
             <td><%= @wrestler.comments %></td>
