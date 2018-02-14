@@ -5,13 +5,13 @@
                   <% end %>
               </td>
             
-           <!--  <td><% if wrestler.alternate == true %>
+            <td><% if wrestler.alternate == true %>
                   X
                 <% end %>
                 </td>
             <td><% if wrestler.scratch == true %>
                   X
-                <% end %> -->
+                <% end %> 
                 </td>
         <% if wrestler.school.league %>
           <td><%= wrestler.school.name %> (<%= wrestler.school.league.name %>)</td>
@@ -38,7 +38,7 @@
       <%= wrestler.t5_name %> <%= wrestler.t5_place %><br>
       <% end %>
  -->  </td>
-  
             <td><%= wrestler.league_place %></td>
+            <td><%= wrestler.league_1ya %></td>
             <td><%= wrestler.section_place %></td>
             <td><%= wrestler.state_place %></td>
