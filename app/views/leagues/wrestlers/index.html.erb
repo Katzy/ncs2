@@ -9,7 +9,7 @@
 
   <div class="ui mobile only row">
      <div class="sixteen wide column">
-      <b><%= @lg.name %></b><br>(<%= @lg.wrestlers.count %>)
+      <b><%= @lg.name %></b><br>(<%= @lg.wrestlers.where(tourney_team: true).count %>)
     </div>
     <div class="ui center aligned segment">
     
@@ -70,7 +70,7 @@
   </div>
   <div class="ui computer only tablet only row">
     <div class="sixteen wide column">
-      <b><%= @lg.name %></b><br>(<%= Season.find(@season.id).name %> season)<br>(<%= @lg.wrestlers.count %>)<br><br>
+      <b><%= @lg.name %></b><br>(<%= Season.find(@season.id).name %> season)<br>(<%= @lg.wrestlers.where(tourney_team: true).count %>)<br><br>
        Download:
             <%= link_to "CSV", league_wrestlers_path(format: "csv") %> <br><br>
     </div><br>
