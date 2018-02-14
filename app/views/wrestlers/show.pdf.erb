@@ -48,6 +48,8 @@
             <TD>#</TD>
            <TD>W/L</TD>
            <TD>DATE</TD>
+           <TD>DUAL/TOURNEY</TD>
+           <TD>TOURNEY NAME</TD>
            <TD>OPPONENT</TD>
            <TD>SCHOOL</TD>
            <TD>TYPE</TD>
@@ -56,8 +58,12 @@
 
               <tr>
                 <td style="width:75%;text-align:left;font-size:7px;"><%= @count %></td> 
-                <td style="width:75%;text-align:left;font-size:7px;"><%= bout.win_loss %>
+                <td style="width:75%;text-align:left;font-size:7px;"><%= bout.win_loss %></td>
                 <td style="width:75%;text-align:left;font-size:7px;"><%= bout.date %>
+                </td>
+                <td style="width:75%;text-align:left;font-size:7px;"><%= bout.dual_or_tourney %>
+                </td>
+                <td style="width:75%;text-align:left;font-size:7px;"><%= bout.tourney_name %>
                 </td>
                 <td style="width:75%;text-align:left;font-size:7px;"><%= bout.opponent_name %>
                 </td>
