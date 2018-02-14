@@ -30,7 +30,7 @@
       <%= wrestler.t5_name %> <%= wrestler.t5_place %><br>
       <% end %>
   </td>
-  <td><% if wrestler.h2h_1 != "" && wrestler.h2h_1 != nil %>
+ <!--  <td><% if wrestler.h2h_1 != "" && wrestler.h2h_1 != nil %>
       <%= wrestler.h2h_1 %> <%= wrestler.h2h_r1 %><br>
       <% end %>
       <% if wrestler.h2h_2 != "" && wrestler.h2h_2 != nil %>
@@ -46,7 +46,7 @@
       <%= wrestler.h2h_5 %> <%= wrestler.h2h_r5 %><br>
       <% end %>
   </td>
-
+ -->
 
   <% if user_signed_in? &&  (current_user.admin? ) %>
     <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
