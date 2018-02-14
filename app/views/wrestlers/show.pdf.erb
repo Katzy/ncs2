@@ -82,6 +82,7 @@
           <% else %>
           <td>Tournament Name</td>
           <td>Tournament Place</td>
+          <td>COMMENTS</td>
          
             <% if wrestler.t1_name != "" && wrestler.t1_name != nil %>
               <tr>
@@ -108,10 +109,21 @@
             <tr></tr>
             <tr></tr>
             <tr></tr>
-            <tr><td><%=wrestler.comments %></td></tr>
+            
           <% end %>
           
           
+          </TABLE>
+          <TABLE><br><br><br>
+          <td>COMMENTS:</td>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr><td><%=wrestler.comments %></td></tr>
           </TABLE>
 
 </TD>
