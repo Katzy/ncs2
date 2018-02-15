@@ -154,7 +154,16 @@ class Wrestler < ActiveRecord::Base
         csv << ["t", team.name, team.abbreviation]
       end
       all.each do |wrestler|
-        csv << ["w", wrestler.weight, wrestler.first_name + " " + wrestler.last_name, wrestler.school.abbreviation, wrestler.grade, wrestler.wins, wrestler.losses ]
+        
+         if wrestler.bouts.where(win_loss: "W").count && (wrestler.wins >= 0 if wrestler.wins != nil)
+            wins = (wrestler.bouts.where(win_loss: "W").count + wrestler.wins)
+            losses = (wrestler.bouts.where(win_loss: "L").count + wrestler.losses)
+        else
+          wins = wrestler.wins
+          losses = wrestler.losses 
+        end 
+
+        csv << ["w", wrestler.weight, wrestler.first_name + " " + wrestler.last_name, wrestler.school.abbreviation, wrestler.grade, wins, losses ]
       end
     end
   end
@@ -178,7 +187,14 @@ class Wrestler < ActiveRecord::Base
         until tourney_array.count == 12
           tourney_array << " "
         end
-        csv << [wrestler.weight, wrestler.school.name, wrestler.first_name, wrestler.last_name, wrestler.grade, wrestler.bouts.where(win_loss: "W").count, wrestler.bouts.where(win_loss: "L").count, wrestler.section_place, wrestler.state_place, tourney_array[0][0], tourney_array[0][1], tourney_array[1][0], tourney_array[1][1], tourney_array[2][0], tourney_array[2][1], tourney_array[3][0], tourney_array[3][1], tourney_array[4][0], tourney_array[4][1]]
+        #  if wrestler.bouts.where(win_loss: "W").count && (wrestler.wins >= 0 if wrestler.wins != nil)
+        #     wins = (wrestler.bouts.where(win_loss: "W").count + wrestler.wins)
+        #     losses = (wrestler.bouts.where(win_loss: "L").count + wrestler.losses)
+        # else
+        #   wins = wrestler.wins
+        #   losses = wrestler.losses 
+        # end 
+        csv << [wrestler.weight, wrestler.school.name, wrestler.first_name, wrestler.last_name, wrestler.grade, (wrestler.bouts.where(win_loss: "W").count + wrestler.wins), (wrestler.bouts.where(win_loss: "L").count + wrestler.losses), wrestler.section_place, wrestler.state_place, tourney_array[0][0], tourney_array[0][1], tourney_array[1][0], tourney_array[1][1], tourney_array[2][0], tourney_array[2][1], tourney_array[3][0], tourney_array[3][1], tourney_array[4][0], tourney_array[4][1]]
       end
     end
   end
