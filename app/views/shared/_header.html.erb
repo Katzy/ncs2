@@ -19,6 +19,7 @@
     <br><br>
     <a class="item"><b>PAST RESULTS BOYS</b></a>
      <div class="results">
+     <a class="item" href="/assets/2017NCSCompleteResults.pdf">2017</a>
       <a class="item" href="http://cifncs.org/sports/wrestling/WRESTLING_RESULTS_HISTORY/2016/2016_Final_Results.pdf">2016</a>
       <a class="item" href="http://cifncs.org/sports/wrestling/WRESTLING_RESULTS_HISTORY/2015/Final_Brackets_Boys.pdf">2015</a>
       <a class="item" href="http://cifncs.org/sports/wrestling/WRESTLING_RESULTS_HISTORY/2014/2014NCSFinalScoresPlacersBrackets.pdf">2014</a>
@@ -218,16 +219,16 @@
         <%= link_to "MY TEAM", school_wrestlers_path(@user.school, season_id: Season.last.id) %>
         </div>
       <% else %>
-       <div class="ui toggle item"><i class="sidebar icon"></i>2017 RESULTS
+       <!-- <div class="ui toggle item"><i class="sidebar icon"></i>2017 RESULTS
 
-      </div>
+      </div> -->
 
       <div class="ui toggle2 item"><i class="sidebar icon"></i>TOURNEY INFO
 
       </div>
 
       <% end %>
-      <% if user_signed_in? && (@user.coach == true) %>
+      <% if user_signed_in? && ((@user.coach == true) && @user.league_rep == false) %>
          <div class="ui item">
         <%= link_to "MY TEAM", school_wrestlers_path(@user.school, season_id: Season.last.id) %>
         </div>
@@ -282,9 +283,9 @@
 
     </div>
       <% else %>
-    <div class="ui toggle item"><i class="sidebar icon"></i>2017 RESULTS
+   <!--  <div class="ui toggle item"><i class="sidebar icon"></i>2017 RESULTS
 
-    </div>
+    </div> -->
 
     <div class="ui toggle2 item"><i class="sidebar icon"></i>TOURNEY INFO
 

@@ -147,6 +147,18 @@ class Wrestler < ActiveRecord::Base
     end
   end
 
+    def self.to_csv3(options = {}, teams, wrestlers)
+    CSV.generate(options) do |csv|
+      # csv << ["weight", "full name", "abbreviation", "grade", "wins", "losses", "Comments"]
+      teams.each do |team|
+        csv << ["t", team.school, team.abbreviate]
+      end
+      all.each do |wrestler|
+        csv << ["w", wrestler.weight, wrestler.first_name + " " + wrestler.last_name, wrestler.abbreviation, wrestler.grade, wrestler.wins, wrestler.losses ]
+      end
+    end
+  end
+
   def self.to_csv2(options = {})
     
     CSV.generate(options) do |csv|

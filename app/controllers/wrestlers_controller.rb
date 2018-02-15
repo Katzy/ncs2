@@ -4,15 +4,21 @@ class WrestlersController < ApplicationController
   def index
      @wrestlers = Season.last.wrestlers.where(tourney_team: true).where.not(league_place: "").order('weight ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
     # @wrestlers = Wrestler.order('weight ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
+    @wrestlers_nbl = Season.last.wrestlers.where(tourney_team: true, league_id: 10).order('weight ASC, state_place ASC, section_place ASC, wins DESC')
     wrestlers = @wrestlers
-
+    wrestlers_nbl = @wrestlers_nbl
+    teams = School.where(league_id: 10).order('name ASC')
     @user = current_user
     @count = @wrestlers.count
 
 
     respond_to do |format|
       format.html
-      format.csv { send_data wrestlers.to_csv }
+      if current_user.id == 265 || current_user.id == 206
+        format.csv { send_data wrestlers.to_csv3({}, teams, wrestlers) }
+      else 
+        format.csv { send_data wrestlers.to_csv }
+      end
       format.xls { send_data wrestlers.to_csv({col_sep: "\t"})}
 
     end
