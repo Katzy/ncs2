@@ -5,6 +5,7 @@ class BoutsController < ApplicationController
     end
 
     def new
+      @tourney_results = []
       @wrestler = Wrestler.find(params[:wrestler_id])
       @bout = @wrestler.bouts.new
       @bouts = @wrestler.bouts.all
