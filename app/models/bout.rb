@@ -16,7 +16,7 @@ class Bout < ActiveRecord::Base
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-      row[3] = Wrestler.where(last_name: row[0], first_name: row[1], school_id: row[2])[0].id
+      row[3] = Season.last.wrestlers.where(last_name: row[0], first_name: row[1], school_id: row[2])[0].id
        Bout.create! row.to_hash
       
     end
