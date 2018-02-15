@@ -151,10 +151,10 @@ class Wrestler < ActiveRecord::Base
     CSV.generate(options) do |csv|
       # csv << ["weight", "full name", "abbreviation", "grade", "wins", "losses", "Comments"]
       teams.each do |team|
-        csv << ["t", team.name, team.abbreviate]
+        csv << ["t", team.name, team.abbreviation]
       end
       all.each do |wrestler|
-        csv << ["w", wrestler.weight, wrestler.first_name + " " + wrestler.last_name, wrestler.abbreviation, wrestler.grade, wrestler.wins, wrestler.losses ]
+        csv << ["w", wrestler.weight, wrestler.first_name + " " + wrestler.last_name, wrestler.school.abbreviation, wrestler.grade, wrestler.wins, wrestler.losses ]
       end
     end
   end
