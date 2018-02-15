@@ -22,7 +22,6 @@ module Leagues
       @losses = []
       @tourneys = []
       @tourney_results = []
-      
       league_wrestlers_file = @lg.name + "_" + "wrestlers.xlsx"
       respond_to do |format|
         format.html
