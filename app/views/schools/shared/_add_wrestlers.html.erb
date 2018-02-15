@@ -17,17 +17,17 @@
           </a>
         </div><br>
 
-        <div class="ui animated help button">
+       <!--  <div class="ui animated help button">
            <a href="/schools/<%= @school.id %>/wrestlers/help"> 
             <div class="visible content">UPLOAD ROSTER INSTRUCTIONS</div>
             <div class="hidden content download">Click for Instructions! READ ME!</div>
            </a>   
-        </div>
+        </div> -->
         <br><br>
       
       <% end %>
       <% if @school.wrestlers.where(tourney_team: true).count > 0 %>
-          <%= link_to "Export Tournament Team", tourney_team_school_wrestlers_path(@school, season_id: @season.id, format: "csv") %> <br> 
+         <!--  <%= link_to "Export Tournament Team", tourney_team_school_wrestlers_path(@school, season_id: @season.id, format: "csv") %> <br>  -->
           <%= link_to "Export 2018 Roster", school_wrestlers_path(@school, season_id: @season.id, format: "csv") %>
           <% else %>
          <% if user_signed_in? && (current_user.admin? || current_user.school.name == @school.name || (current_user.league_id == @school.league_id) && current_user.league_rep == true ) %>
