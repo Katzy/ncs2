@@ -17,6 +17,7 @@ class LeaguesController < ApplicationController
       end
 
       def show
+        @season_id = Season.last.id
         @count = 0
         @lg = League.find(params[:id])
         @schools = School.where("league_id = #{params[:id]}").order('name ASC')

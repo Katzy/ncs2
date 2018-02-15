@@ -24,7 +24,7 @@
   </thead>
   <tbody>
     <% @schools.each do |school| %>
-       <%= render partial: 'leagues/teams_table_row', locals: { league_id: @lg.id, school: school } %>
+       <%= render partial: 'leagues/teams_table_row', locals: { league_id: @lg.id, school: school, season_id: @season_id } %>
       <% end %>
 
   </tbody>
