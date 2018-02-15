@@ -25,7 +25,7 @@ module Leagues
       respond_to do |format|
         format.html
         format.json { render json: @wrestlers }
-         if current_user.id == 265 || current_user.id == 206
+         if user_signed_in? && (current_user.id == 265 || current_user.id == 206)
           format.csv { send_data wrestlers.to_csv3({}, teams, wrestlers), filename: @lg.name + 'TWT_wrestlers' + '.csv' }
         else 
           format.csv { send_data wrestlers.to_csv2, filename: @lg.name + '_wrestlers' + '.csv' }
