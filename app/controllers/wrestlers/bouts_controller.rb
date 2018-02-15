@@ -11,6 +11,7 @@ module Wrestlers
       @bout = @wrestler.bouts.new
       @season = Season.last
       @tournaments = []
+      @tourney_results = []
       Tournament.all.each{ |t| @tournaments << t.name }
       @tournament = Tournament.new
       @bouts = @wrestler.bouts.order("id ASC")
