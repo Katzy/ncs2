@@ -37,6 +37,7 @@ class BoutsController < ApplicationController
     end
 
     def edit
+      @tourney_results = []
       @bout = Bout.find(params[:id])
       @wrestler = Wrestler.find(@bout.wrestler_id)
       @season = Season.find(SeasonWrestler.where(wrestler_id: @wrestler.id)[0].season_id)
