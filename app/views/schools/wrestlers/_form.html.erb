@@ -67,7 +67,7 @@
           </div>
        
         <% end %>
-        <% if current_user.admin? || current_user.league_id == @wrestler.school.league_id %>
+        <% if current_user.admin? || ((current_user.league_id == @wrestler.school.league_id) && current_user.league_rep == true) %>
          <div class="two wide field">
          <%= f.label :alternate, "AT LARGE" %><br>
          <%= f.check_box :alternate %><br>
