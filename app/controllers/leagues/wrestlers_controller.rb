@@ -13,6 +13,9 @@ module Leagues
        # @wrestlers = Wrestler.where("league = '#{@lg.name}'").order('weight ASC, seed ASC, wins DESC')
          wrestlers = @wrestlers
 
+     @wrestlers_nbl = Season.last.wrestlers.where(tourney_team: true, league_id: 10).order('weight ASC, state_place ASC, section_place ASC, wins DESC')
+      wrestlers_nbl = @wrestlers_nbl
+      teams = School.where(league_id: 10).order('name ASC')
       @user = current_user
       @count = @wrestlers.count
       @wins = []
@@ -22,7 +25,11 @@ module Leagues
       respond_to do |format|
         format.html
         format.json { render json: @wrestlers }
-        format.csv { send_data wrestlers.to_csv2, filename: @lg.name + '_wrestlers' + '.csv' }
+         if current_user.id == 265 || current_user.id == 206
+          format.csv { send_data wrestlers.to_csv3({}, teams, wrestlers), filename: @lg.name + 'TWT_wrestlers' + '.csv' }
+        else 
+          format.csv { send_data wrestlers.to_csv2, filename: @lg.name + '_wrestlers' + '.csv' }
+        end
         format.xlsx{
           xlsx_package = Wrestler.to_xlsx
           begin 
