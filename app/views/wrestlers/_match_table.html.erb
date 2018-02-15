@@ -25,7 +25,7 @@
       </thead>
       <tbody>
         
-          <% @bouts.each do |bout| %>
+          <% @bouts.order('date ASC').each do |bout| %>
             <%= render partial: 'bouts/table_row', locals: { bout: bout } %>
             <% @match_number += 1 %>
           <% end %>

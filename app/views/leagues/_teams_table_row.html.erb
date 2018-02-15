@@ -1,6 +1,6 @@
 <tr>
   <td><%= link_to "#{school.name}", school_path(school) %></td>
-  <td><%= link_to "WRESTLERS (#{school.wrestlers.count})", school_wrestlers_path(school, season_id: @season_id) %>
+  <td><%= link_to "Wrestlers (#{school.wrestlers.count})", school_wrestlers_path(school, season_id: @season_id) %>
   <% if user_signed_in? && current_user.admin? %>
   <td><%= User.find_by_school_id(school.id)  ? User.find_by_school_id(school.id).name : "" %></td>
   <td><%= User.find_by_school_id(school.id) ? User.find_by_school_id(school.id).email : "" %></td> 
