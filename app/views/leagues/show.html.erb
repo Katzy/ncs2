@@ -12,7 +12,8 @@
     <tr>
       <th rowspan="2">SCHOOL</th>
       <th rowspan="2">COACH</th>
-      <% if user_signed_in? && (current_user.admin? || current_user.league_rep == true ) %>
+      <th rowspan="2">WRESTLERS</th>
+      <% if user_signed_in? && (current_user.admin?) %>
       <th rowspan="2">EMAIL</th>
       <th rowspan="2">CELL</th>
       <th rowspan="2">EDIT</th>
