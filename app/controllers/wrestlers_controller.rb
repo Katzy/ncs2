@@ -64,7 +64,7 @@ class WrestlersController < ApplicationController
 
   def edit
     @wrestler = Wrestler.find(params[:id])
-
+    @tourney_results = []
     uid = @wrestler.school_id
     @school = School.find(@wrestler.school_id)
     @league = League.find(@school.league_id)
