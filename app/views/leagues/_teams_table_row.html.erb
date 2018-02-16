@@ -1,7 +1,7 @@
 <tr>
   <td><%= link_to "#{school.name}", school_path(school) %></td>
   <td><%= User.where(school_id: school.id)[0].name %></td>
-  <td><%= link_to "Wrestlers (#{Season.last.wrestlers.where(school_id: school.id).count})", school_wrestlers_path(school, season_id: @season_id) %>
+  <td><%= link_to "Wrestlers (#{Season.last.wrestlers.where(school_id: school.id, tourney_team: true).count})", school_wrestlers_path(school, season_id: @season_id) %>
   <% if user_signed_in? && current_user.admin? %>
   <td><%= User.find_by_school_id(school.id)  ? User.find_by_school_id(school.id).name : "" %></td>
   <td><%= User.find_by_school_id(school.id) ? User.find_by_school_id(school.id).email : "" %></td> 
