@@ -1,0 +1,108 @@
+<div class="ui center aligned segment">
+   <div class="header">
+    <h1>Upload MATCH RESULTS Instructions!</h1>
+    <h4>You have the choice to enter match results 1 at a time or to upload ALL of your match results from a spreadsheet provided below.  Here are the steps to upload your matches:</h4>
+   </div>
+</div>
+<div class="ui segment" style="padding-left:5em">
+<% if user_signed_in? && (current_user.admin? || current_user.school.name == @wrestler.school.name || current_user.league_id == @wrestler.league_id ) %>
+          <div class="left aligned seven wide column"><br><br>
+            1. </b>
+            <div class="ui animated fade button download">
+              <a href="/bouts/download.csv">
+
+               <div class="visible content">DOWNLOAD TEMPLATE TO UPLOAD MATCHES</div>
+               <div class="hidden content download">Click to Download CSV File!<br>
+                 Read instructions! DO NOT CHANGE HEADERS 
+               </div>
+              </a>
+            </div>
+            <br><b>2.  Fill out spreadsheet according to template below!</b>
+            <br>-- 2a. First and foremost: <u>DO NOT CHANGE OR ADD HEADERS IN THE TEMPLATE FILE</u>
+            <br>-- 2b. List all of your wrestler's matches. (No limit to how many wrestlers you can enter per weight. Enter your whole team from this one file if you want.)
+            <br>-- 2c. ALL FIELDS ARE REQUIRED (wrestler_id, weight, type, opponent_name, opponent_team, score_time, win_loss, tourney_place, tourney_name) OR THE FILE WILL NOT UPLOAD  
+          </div>
+            
+               
+              <b>3. Save file as a <u>CSV file!!!!!</u></b>
+              
+              <%= form_tag import_wrestler_bouts_path(@wrestler), multipart: true do %>
+              <b>4. </b><%= file_field_tag :file  %><br>
+              <b>5. </b><%= submit_tag "Upload Matches", :class => "ui button" %>
+              
+              <% end %>
+              6.  If you run into issues, please email scottalankatz@gmail.com
+        <% end %>
+        </div>
+    <div class="description" style="padding:1em">
+     <!--  <div class="ui left aligned segment">
+     1. Read these instructions carefully!<br>
+     2. Download the spreadsheet entry template.<br>
+     3. Fill out the spreadsheet following the examples below.<br>
+     4. Save your file AS a CSV file.  IT MUST BE A CSV to import.<br>
+     5. Select (browse) file for upload.<br>
+     6. Upload<br>
+      </div> -->
+
+
+      </p>
+      
+     
+    </div>
+
+    <table class="ui celled center aligned structured stackable table">
+  <thead>
+    <tr>
+      
+      <th rowspan="2">WT</th>
+      <th rowspan="2">SCHOOL</th>
+      <th rowspan="2">FIRST</th>
+      <th rowspan="2">LAST</th>
+      <th rowspan="2">YR</th>
+     
+  </thead>
+  <tbody>
+    <tr>
+      <td>106</td>
+      <td><%= @school.name %></td>
+      <td>Tyrell</td>
+      <td>Wellick</td>
+      <td>11</td>
+     
+    </tr>
+    <tr>
+      <td>106</td>
+      <td><%= @school.name %></td>
+      <td>Sam</td>
+      <td>Sepiol</td>
+      <td>12</td>
+     
+    </tr>
+    <tr>
+      <td>106</td>
+      <td><%= @school.name %></td>
+      <td>Elliot</td>
+      <td>Alderson</td>
+      <td>10</td>
+     
+    </tr>
+        <tr>
+      <td>138</td>
+      <td><%= @school.name %></td>
+      <td>Phillip</td>
+      <td>Price</td>
+      <td>9</td>
+     
+      
+    </tr>
+       <tr>
+      <td>220</td>
+      <td><%= @school.name %></td>
+      <td>Gideon</td>
+      <td>Goddard</td>
+      <td>12</td>
+     
+    </tr>
+  </tbody>
+</table>
+<br><br>

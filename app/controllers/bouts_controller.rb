@@ -37,6 +37,22 @@ class BoutsController < ApplicationController
       end
     end
 
+
+     def download
+      wrestler = Wrestler.find(params[:wrestler_id])
+      respond_to do |format|
+       
+        format.csv { send_data bout.download(wrestler), filename: wrestler.last_name + '_results_import_file' + '.csv' }
+      end
+    end
+
+    def show
+    end
+
+    def help
+      @wrestler = Wrestler.find(params[:wrestler_id])
+    end
+
     def edit
       @tourney_results = []
       @bout = Bout.find(params[:id])

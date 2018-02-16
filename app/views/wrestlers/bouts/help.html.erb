@@ -1,0 +1,36 @@
+<div class="ui center aligned segment">
+   <div class="header">
+    <h1>Upload MATCH RESULTS Instructions!</h1>
+    <h4>You have the choice to enter match results 1 at a time or to upload ALL of your match results from a spreadsheet provided below.  Here are the steps to upload your matches:</h4>
+   </div>
+</div>
+<div class="ui segment" style="padding-left:2em">
+<% if user_signed_in? && (current_user.admin? || current_user.school.name == @wrestler.school.name || current_user.league_id == @wrestler.league_id ) %>
+          <div class="left aligned seven wide column"><br><br>
+            1. </b>
+            <div class="ui animated fade button download">
+              <a href="/wrestlers/<%= @wrestler.id %>/bouts/download.csv">
+
+               <div class="visible content">DOWNLOAD TEMPLATE TO UPLOAD MATCHES</div>
+               <div class="hidden content download">Click to Download CSV File!<br>
+                 Read instructions! DO NOT CHANGE HEADERS 
+               </div>
+              </a><br>
+            </div>
+            <br><b>2.  Fill out spreadsheet according to template in the file!</b><br>
+            <br>-- 2a. First and foremost: <u>DO NOT CHANGE OR ADD HEADERS IN THE TEMPLATE FILE</u><br>
+            <br>-- 2b. List all of your wrestler's matches. (No limit to how many matches you can enter.)<br>
+            <br>-- 2c. ALL FIELDS ARE REQUIRED (wrestler_id, weight, type, opponent_name, opponent_team, score_time, win_loss, tourney_place, tourney_name) OR THE FILE WILL NOT UPLOAD<br> <br> 
+          </div>
+            
+               
+              <b>3. Save file as a <u>CSV file!!!!!</u></b>
+              
+              <%= form_tag import_wrestler_bouts_path, multipart: true do %><br><br>
+              <b>4. </b><%= file_field_tag :file  %><br><br>
+              <b>5. </b><%= submit_tag "Upload Matches", :class => "ui button" %>
+              
+              <% end %>
+              6.  If you run into issues, please email scottalankatz@gmail.com
+        <% end %>
+        </div>

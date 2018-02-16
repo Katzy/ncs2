@@ -148,7 +148,12 @@ Rails.application.routes.draw do
     collection { get :autocomplete }
   end
 
-  resources :bouts
+  resources :bouts do
+    collection do
+      get :download
+      get :help
+    end
+  end
 
   resources :wrestlers do
     # resource :download, only: [:show]
@@ -157,7 +162,11 @@ Rails.application.routes.draw do
       get :compare
     end
     resources :bouts, controller: "wrestlers/bouts" do
-      collection { post :import }
+      collection do
+        post :import
+        get :download
+        get :help
+      end
     end
     collection do
       delete 'destroy_all'

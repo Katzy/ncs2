@@ -108,6 +108,12 @@
         <div class="sixteen wide center aligned column">
           <i class="add user icon"></i><%= link_to 'ADD MATCH RESULT', new_wrestler_bout_path(@wrestler) %>
         </div><br>
+        <div class="ui animated help button">
+           <a href="/wrestlers/<%= @wrestler.id %>/bouts/help"> 
+            <div class="visible content">UPLOAD MATCH RESULTS INSTRUCTIONS</div>
+            <div class="hidden content download">Click for Instructions! READ ME!</div>
+           </a>   
+        </div>
       <%= form_tag import_wrestler_bouts_path(@wrestler), multipart: true do %>
         <%= file_field_tag :file %>
         <%= submit_tag "Import Bouts from CSV" %>

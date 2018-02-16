@@ -18,6 +18,17 @@ module Wrestlers
       @match_number = 1
     end
 
+     def download
+      wrestler = Wrestler.find(params[:wrestler_id])
+      respond_to do |format|
+       
+        format.csv { send_data Bout.download(wrestler), filename: wrestler.last_name + '_results_import_file' + '.csv' }
+      end
+    end
+
+    def show
+
+    end
 
     def import
       if params[:file] != nil
@@ -46,6 +57,10 @@ module Wrestlers
           format.js   { render json: @bout.errors, status: :unprocessable_entity }
         end
       end
+    end
+
+    def help
+      @wrestler = Wrestler.find(params[:wrestler_id])
     end
 
     def edit
