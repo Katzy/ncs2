@@ -56,7 +56,7 @@
            <TD>TYPE</TD>
            <TD>SCORE</TD>
            <TD>PLACE</TD>
-            <% wrestler.bouts.each do |bout| %>
+            <% wrestler.bouts.order('date ASC').each do |bout| %>
 
               <tr>
                 <td style="width:75%;text-align:left;font-size:7px;"><%= @count %></td> 

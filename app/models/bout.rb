@@ -40,11 +40,9 @@ class Bout < ActiveRecord::Base
       csv << [ "**     tourney_place -  Only needs to be in there once            " ]      
       csv << [ "**     tourney_name -  be consistent with the spelling            " ] 
       csv << [ "**  DELETE THESE ROWS BEFORE IMPORTING                            " ]     
-      csv << [  wrestler.id, "12/16/2017", wrestler.weight, "T", "Steve Johnson", "Arroyo", "MD", "W", "9-1", "1", "Chuck Chansi"]
-      csv << [ wrestler.id, "12/16/2017", wrestler.weight, "T", "Bob McPhereson", "Casa Grande", "F", "W", "2:38", "", "Chuck Chansi"  ]
-      csv << [ wrestler.id, "12/19/2017", wrestler.weight, "DUAL", "Lance Smith", "Gilroy", "D", "L", "2-1"  ]
-     
-     
+      csv << [  wrestler.id, "12/16/2017", wrestler.weight, "T", "Steve Johnson", "Arroyo", "MD", "W", "9 -- 1", "1", "Chuck Chansi"]
+      csv << [ wrestler.id, "12/16/2017", wrestler.weight, "T", "Bob McPhereson", "Casa Grande", "F", "W", "F 2:38", "", "Chuck Chansi"  ]
+      csv << [ wrestler.id, "12/19/2017", wrestler.weight, "DUAL", "Lance Smith", "Gilroy", "D", "L", "2-1" ]
     end
   end
 
