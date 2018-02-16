@@ -14,48 +14,29 @@
     <div class="ui center aligned segment">
     
       <table class="ui celled center aligned structured stackable table">
-        <thead>
-         <th rowspan="2">WT</th>
-            <th rowspan="2">SCHOOL</th>
-            <th rowspan="2">NAME</th>
-            <th rowspan="2">YR</th>
-            <th rowspan="2">W</th>
-            <th rowspan="2">L</th>
-            <th colspan="3">2016 PLACES</th>
-            <th rowspan="2">2017 TOURNAMENTS</th>
-             <% if user_signed_in? && (current_user.admin? || current_user.league_id == @lg.id || current_user.school_id) %>
-            <th rowspan="2">EDIT</th>
-            <% end %>
-            <% if user_signed_in? && (current_user.admin?) %>
-            <th rowspan="2">DELETE</th>
-            <% end %>
-          </tr>
-          <tr>
-            <th rowspan="1">SECTION</th>
-            <th rowspan="1">STATE</th>
-            <th rowspan="1">LEAGUE</th>
-          </tr>
-          <tr>
+       <thead>
+           <tr>
         <th rowspan="2">WEIGHT</th>
+        
         <th rowspan="2">SCHOOL</th>
         <th rowspan="2">NAME </th>
         <th rowspan="2">YR</th>
-        <th rowspan="2">2017 RECORD</th>
-        <th colspan="3">2016 PLACES</th>
-        <th rowspan="2">2017 TOURNAMENTS</th>
-        <% if user_signed_in? && (current_user.admin? || current_user.league || current_user.school) %>
+        <th rowspan="2">RECORD</th>
+        <th rowspan="2">TOURNAMENTS<br>RESULTS</th>
+        <th rowspan="2">2018 LEAGUE PLACE</th>
+        <th colspan="3"><%= Season.last.start_date %></th>
+         <% if user_signed_in? && (current_user.admin? || (current_user.league_id == @lg.id && current_user.league_rep == true ) || current_user.coach == true ) %>
         <th rowspan="2">Edit</th>
         <th rowspan="2">Delete</th>
-        <% if DateTime.now.to_s > "2018-2" %>
-        <th rowspan="2">PDF</th>
-        <% end %>
+        
+        <th rowspan="2">WT Card<br>PDF</th>
         <% end %>
         
       </tr>
       <tr>
+        <th rowspan="1">LEAGUE</th>
         <th rowspan="1">NCS</th>
         <th rowspan="1">STATE</th>
-        <th rowspan="1">LEAGUE</th>
       </tr>
 
         </thead>
@@ -89,9 +70,10 @@
         <th rowspan="2">TOURNAMENTS<br>RESULTS</th>
         <th rowspan="2">2018 LEAGUE PLACE</th>
         <th colspan="3"><%= Season.last.start_date %></th>
-         <% if user_signed_in? && (current_user.admin? || current_user.league_id == @lg.id  ) %>
+         <% if user_signed_in? && (current_user.admin? || (current_user.league_id == @lg.id && current_user.league_rep == true ) || current_user.coach == true ) %>
         <th rowspan="2">Edit</th>
         <th rowspan="2">Delete</th>
+        
         <th rowspan="2">WT Card<br>PDF</th>
         <% end %>
         

@@ -103,7 +103,7 @@
           <% else %>
           <th colspan="3"><%= @season.start_date - 1 %></th>
           <% end %>
-        <% if user_signed_in? && (current_user.admin? || current_user.school.name == @school.name || current_user.league_id == @school.league_id ) %>
+        <% if user_signed_in? && (current_user.admin? || current_user.school.name == @school.name || (current_user.league_id == @school.league_id) && current_user.league_rep == true ) %>
         <th rowspan="2">Edit</th>
         <th rowspan="2">Delete</th>
        

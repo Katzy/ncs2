@@ -55,12 +55,11 @@
   
 
   <% if @season.id == Season.last.id %>
-    <% if user_signed_in? &&  (current_user.admin? || current_user.league_id == wrestler.school.league.id) %>
+    <% if user_signed_in? && (current_user.admin? || (current_user.league_rep == true && current_user.league_id == wrestler.school.league.id) || current_user.school.name == wrestler.school.name) %>
       <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
      
       <td><%= link_to 'Delete', wrestler, method: "delete", :data => {:confirm => 'Are you sure?'} %> </td>
-      <% end %>
-        <% if user_signed_in? && (current_user.admin? || current_user.league_id == wrestler.school.league.id || current_user.school.name == wrestler.school.name) %>
+      
           <% if (wrestler.league_place != nil && wrestler.league_place != "") || wrestler.alternate %>
             <td><%= link_to wrestler_path(wrestler, format: "pdf") do %><i class="file pdf outline icon"></i></td>
           <% end %>
