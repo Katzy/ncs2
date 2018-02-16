@@ -55,6 +55,7 @@
            <TD>SCHOOL</TD>
            <TD>TYPE</TD>
            <TD>SCORE</TD>
+           <TD>PLACE</TD>
             <% wrestler.bouts.each do |bout| %>
 
               <tr>
@@ -75,6 +76,8 @@
                 <td style="width:75%;text-align:left;font-size:7px;"><%= bout.result_type %>
                 </td>
                 <td style="width:75%;text-align:left;font-size:7px;"><%= bout.score_time %>
+                </td>
+                <td style="width:75%;text-align:left;font-size:7px;"><%= bout.tourney_place %>
                 </td>
               </tr>
               <% @count += 1 %>
@@ -116,7 +119,7 @@
           <TABLE><br>
           <td style="width:50em;font-size:10px;">COMMENTS:</td>
           
-          <tr><td style="font-size:8px;"><%=wrestler.comments %></td></tr>
+          <tr><td style="font-size:8px;<%=wrestler.comments %></td></tr>
           </TABLE>
 
 </TD>

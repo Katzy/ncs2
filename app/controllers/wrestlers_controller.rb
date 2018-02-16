@@ -149,7 +149,7 @@ class WrestlersController < ApplicationController
     @match_number = 1
     @count = 1
     @tourney_results = []
-    wrestler.bouts.each do |bout| 
+    wrestler.bouts.order('date ASC').each do |bout| 
       if bout.tourney_place && bout.tourney_place > 0 
         unless @tourney_results.include?([bout.tourney_name, bout.tourney_place]) 
           @tourney_results << [bout.tourney_name, bout.tourney_place] 
