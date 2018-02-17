@@ -8,10 +8,13 @@
   <td><%= wrestler.first_name %></td>
   <td><%= wrestler.last_name %></td>
   <td><%= wrestler.grade %></td>
+  <% if wrestler.bouts.where(win_loss: "W").count && (wrestler.wins >= 0 if wrestler.wins != nil) %>
+    <td><%= wrestler.bouts.where(win_loss: "W").count + wrestler.wins %></td>
+    <td><%= wrestler.bouts.where(win_loss: "L").count + wrestler.losses %></td>
+  <% else %>
   <td><%= wrestler.wins %></td>
   <td><%= wrestler.losses %></td>
-
-
+  <% end %>
   <td><%= wrestler.section_place %></td>
   <td><%= wrestler.state_place %></td>
     <td><% if wrestler.t1_name != "" && wrestler.t1_name != nil %>
