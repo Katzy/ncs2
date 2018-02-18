@@ -8,7 +8,7 @@ class WrestlersController < ApplicationController
 
     @user = current_user
     @count = @wrestlers.count
-
+    @tourney_results = []
 
     respond_to do |format|
       format.html
@@ -74,58 +74,72 @@ class WrestlersController < ApplicationController
   end
 
   def weight_106
+    @tourney_results = []
     select_wrestlers(106)
   end
 
   def weight_113
+    @tourney_results = []
     select_wrestlers(113)
   end
 
   def weight_120
+    @tourney_results = []
     select_wrestlers(120)
   end
 
   def weight_126
+    @tourney_results = []
     select_wrestlers(126)
   end
 
   def weight_132
+    @tourney_results = []
     select_wrestlers(132)
   end
 
   def weight_138
+    @tourney_results = []
     select_wrestlers(138)
   end
 
   def weight_145
+    @tourney_results = []
     select_wrestlers(145)
   end
 
   def weight_152
+    @tourney_results = []
     select_wrestlers(152)
   end
 
   def weight_160
+    @tourney_results = []
     select_wrestlers(160)
   end
 
   def weight_170
+    @tourney_results = []
     select_wrestlers(170)
   end
 
   def weight_182
+    @tourney_results = []
     select_wrestlers(182)
   end
 
   def weight_195
+    @tourney_results = []
     select_wrestlers(195)
   end
 
   def weight_220
+    @tourney_results = []
     select_wrestlers(220)
   end
 
   def weight_285
+    @tourney_results = []
     select_wrestlers(285)
   end
 
@@ -275,7 +289,31 @@ class WrestlersController < ApplicationController
       @wrestlers = @w.order('weight ASC, seed ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
       # wrestlers = @wrestlers 
       # Wrestler.where("weight = #{wt}").order('weight ASC, seed ASC, wins DESC')  # for csv format
-      
+      @tourney_results = []
+      @wrestlers.each do |wrestler|
+        wrestler.bouts.each do |bout| 
+          if bout.tourney_place && bout.tourney_place > 0 
+            unless @tourney_results.include?([bout.tourney_name, bout.tourney_place]) 
+               @tourney_results << [bout.tourney_name, bout.tourney_place] 
+            end 
+          end 
+        end 
+        if wrestler.t1_name != "" && wrestler.t1_name != nil && wrestler.t1_name != " " 
+          @tourney_results << [ wrestler.t1_name, wrestler.t1_place] 
+        end 
+        if wrestler.t2_name != "" && wrestler.t2_name != nil && wrestler.t2_name != " " 
+          @tourney_results << [ wrestler.t2_name, wrestler.t2_place] 
+        end 
+        if wrestler.t3_name != "" && wrestler.t3_name != nil && wrestler.t3_name != " " 
+          @tourney_results << [ wrestler.t3_name, wrestler.t3_place] 
+        end 
+        if wrestler.t4_name != "" && wrestler.t4_name != nil && wrestler.t4_name != " " 
+          @tourney_results << [ wrestler.t4_name, wrestler.t4_place] 
+        end 
+        if wrestler.t5_name != "" && wrestler.t5_name != nil && wrestler.t5_name != " " 
+          @tourney_results << [ wrestler.t5_name, wrestler.t5_place] 
+        end 
+      end
       @count2 = @wrestlers.count
       @wins = []
       @losses = []

@@ -5,13 +5,13 @@ class Bout < ActiveRecord::Base
   # belongs_to :season_wrestler
   
   validates :weight, presence: true, null: false
-  # validates :dual_or_tourney, presence: true, null: false
-  
+  validates :dual_or_tourney, presence: true, null: false
+  validates :date, presence: true
   validates :opponent_name, presence: true, null: false
   validates :win_loss, presence: true, null: false
-  # validates :result_type, presence: true, null: false
+  validates :result_type, presence: true, null: false
   validates :score_time, presence: true, null: false
-  # validates :opponent_team, presence: true, null: false
+  validates :opponent_team, presence: true, null: false
 
 
   def self.import(file)

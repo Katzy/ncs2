@@ -7,7 +7,7 @@
 
     <div class="computer only row">
     
-      <%= render partial: 'shared/wrestlers_table' %>
+       <%= render partial: 'shared/wrestlers_table', locals: { tourney_results: @tourney_results } %>
     </div>
 </div>
 

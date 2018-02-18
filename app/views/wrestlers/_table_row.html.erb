@@ -17,22 +17,31 @@
   <% end %>
   <td><%= wrestler.section_place %></td>
   <td><%= wrestler.state_place %></td>
+     <% if Season.find(SeasonWrestler.where(wrestler_id: wrestler.id)[0].season_id).start_date > 2016 %>
+    <td>
+       <% @tourney_results.each do |t| %>
+          <%= t[0] %> - <%= t[1] %><br>
+        <% end %> 
+    </td>
+    <% else %>
     <td><% if wrestler.t1_name != "" && wrestler.t1_name != nil %>
-      <%= wrestler.t1_name %> <%= wrestler.t1_place %><br>
-      <% end %>
-      <% if wrestler.t2_name != "" && wrestler.t2_name != nil %>
-      <%= wrestler.t2_name %> <%= wrestler.t2_place %><br>
-      <% end %>
-      <% if wrestler.t3_name != "" && wrestler.t3_name != nil %>
-      <%= wrestler.t3_name %> <%= wrestler.t3_place %><br>
-      <% end %>
-      <% if wrestler.t4_name != "" && wrestler.t4_name != nil %>
-      <%= wrestler.t4_name %> <%= wrestler.t4_place %><br>
-      <% end %>
-      <% if wrestler.t5_name != "" && wrestler.t5_name != nil%>
-      <%= wrestler.t5_name %> <%= wrestler.t5_place %><br>
-      <% end %>
-  </td>
+        <%= wrestler.t1_name %> <%= wrestler.t1_place %><br>
+        <% end %>
+        <% if wrestler.t2_name != "" && wrestler.t2_name != nil %>
+        <%= wrestler.t2_name %> <%= wrestler.t2_place %><br>
+        <% end %>
+        <% if wrestler.t3_name != "" && wrestler.t3_name != nil %>
+        <%= wrestler.t3_name %> <%= wrestler.t3_place %><br>
+        <% end %>
+        <% if wrestler.t4_name != "" && wrestler.t4_name != nil %>
+        <%= wrestler.t4_name %> <%= wrestler.t4_place %><br>
+        <% end %>
+        <% if wrestler.t5_name != "" && wrestler.t5_name != nil%>
+        <%= wrestler.t5_name %> <%= wrestler.t5_place %><br>
+        <% end %>
+    </td>
+  
+  <% end %>
  <!--  <td><% if wrestler.h2h_1 != "" && wrestler.h2h_1 != nil %>
       <%= wrestler.h2h_1 %> <%= wrestler.h2h_r1 %><br>
       <% end %>

@@ -26,6 +26,8 @@
     </thead>
     <tbody>
       <% @wrestlers.each do |wrestler, user| %>
+
+        
              <%= render partial: 'shared/wrestlers_table_row', locals: { wrestler: wrestler }%>      
         
            <% if user_signed_in? && (current_user.admin? || current_user.school.name == wrestler.school.name || ((current_user.league_rep == true) && (current_user.league_id == wrestler.league_id ))) %>
