@@ -1,7 +1,7 @@
 module Schools
   class WrestlersController < ApplicationController
    before_action :load_league, only: [:new, :index, :create]
-   # before_filter :authorize_user, :only => [:new, :create]
+   before_filter :authorize_user, :only => [:new, :create, :edit, :update]
     def index
 
        @school = School.find(params[:school_id])
@@ -62,7 +62,7 @@ module Schools
       @season = Season.last
       if params[:file] != nil
         School.find(params[:school_id]).wrestlers.import(params[:file], school)
-        wrestlers = school.wrestlers.order('weight ASC')
+        wrestlers = Season.last.wrestlers.where(school_id: school.id).order('weight ASC')
         wrestler_array = [user, wrestlers]
         UserMailer.team_upload(wrestler_array).deliver
         redirect_to school_wrestlers_path(school, season_id: @season.id), notice: "Import successful!"

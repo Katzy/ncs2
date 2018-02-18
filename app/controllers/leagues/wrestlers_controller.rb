@@ -1,7 +1,7 @@
 module Leagues
   class WrestlersController < ApplicationController
     before_action :load_league, only: [:new, :create]
-    before_filter :authorize_user, :only => [:new, :create]
+    before_filter :authorize_user, :only => [:new, :create, :edit, :update]
     def index
       @season = Season.last
       @lg = League.find(params[:league_id])

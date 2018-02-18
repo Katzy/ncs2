@@ -1,6 +1,6 @@
 class WrestlersController < ApplicationController
   # before_action :load_league, only: [:new, :create]
-  # before_filter :authorize_user, :only => [:new, :create]
+  before_filter :authorize_user, :only => [:new, :create, :edit, :update]
   def index
      @wrestlers = Season.last.wrestlers.where(tourney_team: true).where.not(league_place: "").order('weight ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
     # @wrestlers = Wrestler.order('weight ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
