@@ -290,30 +290,7 @@ class WrestlersController < ApplicationController
       # wrestlers = @wrestlers 
       # Wrestler.where("weight = #{wt}").order('weight ASC, seed ASC, wins DESC')  # for csv format
       @tourney_results = []
-      @wrestlers.each do |wrestler|
-        wrestler.bouts.each do |bout| 
-          if bout.tourney_place && bout.tourney_place > 0 
-            unless @tourney_results.include?([bout.tourney_name, bout.tourney_place]) 
-               @tourney_results << [bout.tourney_name, bout.tourney_place] 
-            end 
-          end 
-        end 
-        if wrestler.t1_name != "" && wrestler.t1_name != nil && wrestler.t1_name != " " 
-          @tourney_results << [ wrestler.t1_name, wrestler.t1_place] 
-        end 
-        if wrestler.t2_name != "" && wrestler.t2_name != nil && wrestler.t2_name != " " 
-          @tourney_results << [ wrestler.t2_name, wrestler.t2_place] 
-        end 
-        if wrestler.t3_name != "" && wrestler.t3_name != nil && wrestler.t3_name != " " 
-          @tourney_results << [ wrestler.t3_name, wrestler.t3_place] 
-        end 
-        if wrestler.t4_name != "" && wrestler.t4_name != nil && wrestler.t4_name != " " 
-          @tourney_results << [ wrestler.t4_name, wrestler.t4_place] 
-        end 
-        if wrestler.t5_name != "" && wrestler.t5_name != nil && wrestler.t5_name != " " 
-          @tourney_results << [ wrestler.t5_name, wrestler.t5_place] 
-        end 
-      end
+      
       @count2 = @wrestlers.count
       @wins = []
       @losses = []
