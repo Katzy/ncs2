@@ -2,7 +2,7 @@ class WrestlersController < ApplicationController
   # before_action :load_league, only: [:new, :create]
   before_filter :authorize_user, :only => [:new, :create, :edit, :update]
   def index
-     @wrestlers = Season.last.wrestlers.where(tourney_team: true).where.not(league_place: "").order('weight ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
+     @wrestlers = Season.last.wrestlers.where(tourney_team: true).where.not(league_place: "").order('weight ASC, state_place ASC, section_place ASC, seed ASC, win_tally DESC')
     # @wrestlers = Wrestler.order('weight ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
     wrestlers = @wrestlers
 
@@ -286,11 +286,11 @@ class WrestlersController < ApplicationController
       @season = Season.last
       @w = @season.wrestlers.where(weight: wt, tourney_team: true).where.not(league_place: "")
       # @wrestlers = @w.where("league_place = ? OR league_place = ? OR league_place = ? OR league_place = ? OR league_place = ? OR alternate = ?", *params).order('weight ASC, seed ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
-      @wrestlers = @w.order('weight ASC, seed ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
+      @wrestlers = @w.order('weight ASC, seed ASC, state_place ASC, section_place ASC, win_tally DESC')
       # wrestlers = @wrestlers 
       # Wrestler.where("weight = #{wt}").order('weight ASC, seed ASC, wins DESC')  # for csv format
       @tourney_results = []
-      
+
       @count2 = @wrestlers.count
       @wins = []
       @losses = []
