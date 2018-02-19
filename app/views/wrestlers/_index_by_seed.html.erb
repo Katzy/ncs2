@@ -110,7 +110,11 @@
                 <td><%= wrestler.school.name %><br>(<%= wrestler.school.league.name %>)</td>
                 <td><%= wrestler.first_name + " " + wrestler.last_name %></td>
                 <td><%= wrestler.grade %></td>
-                <td><%= wrestler.wins %>-<%= wrestler.losses %></td>
+                <% if wrestler.bouts.where(win_loss: "W").count && (wrestler.wins >= 0 if wrestler.wins != nil) %>
+                <td><%= wrestler.bouts.where(win_loss: "W").count + wrestler.wins %>-<%= wrestler.bouts.where(win_loss: "L").count + wrestler.losses %></td>
+                <% else %>
+                  <td><%= wrestler.wins %>-<%= wrestler.losses %></td>
+                <% end %>
 
 
 

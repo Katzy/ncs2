@@ -78,7 +78,7 @@ class Wrestler < ActiveRecord::Base
         row[1] = school
         row[2] = row[2].downcase.capitalize
         row[3] = row[3].downcase.capitalize
-        p row
+       
         School.find(school.id).wrestlers.create! row.to_hash
           SeasonWrestler.create({season_id: Season.last.id, wrestler_id: Wrestler.last.id, wrestler_school_id: Wrestler.last.school.id})
       end
@@ -139,10 +139,10 @@ class Wrestler < ActiveRecord::Base
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
-      csv << ["weight", "first name", "last name", "league", "school", "abbreviation", "grade", "wins", "losses", "SEED", "LEAGUE PL", "SEC", "ST"]
+      csv << ["weight", "first name", "last name", "league", "school", "abbreviation", "grade", "wins", "losses", "SEED", "AT LARGE", "LEAGUE PL", "SEC", "ST"]
 
       all.each do |wrestler|
-       csv << [wrestler.weight, wrestler.first_name, wrestler.last_name, wrestler.school.league.name, wrestler.school.name, wrestler.school.abbreviation, wrestler.grade, wrestler.wins, wrestler.losses, wrestler.seed, wrestler.league_place, wrestler.section_place, wrestler.state_place]
+       csv << [wrestler.weight, wrestler.first_name, wrestler.last_name, wrestler.school.league.name, wrestler.school.name, wrestler.school.abbreviation, wrestler.grade, (wrestler.wins + wrestler.bouts.where(win_loss: "W").count), (wrestler.losses + wrestler.bouts.where(win_loss: "L").count), wrestler.seed, (wrestler.alternate if wrestler.alternate == true), wrestler.league_place, wrestler.section_place, wrestler.state_place]
       end
     end
   end
