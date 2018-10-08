@@ -17,10 +17,10 @@
         </div>
       <% end %>
       <div class="fields">
-         <div class="two wide field">
+        <!--  <div class="two wide field">
          <%= f.label :tourney_team, "Varsity LEAGUE Team" %><br>
          <%= f.check_box :tourney_team %><br>
-         </div>
+         </div> -->
         <div class="three wide field">
           <%= f.label :weight, "Weight **" %><br>
            <% if current_user.admin? || current_user.league_id  %>
@@ -53,7 +53,7 @@
 
       </div>
 
-      <div class="fields">
+    <!--   <div class="fields">
             
             <% if current_user.admin?  %>
         <div class="two wide field">
@@ -116,10 +116,11 @@
         <div class="three wide field">
           <%= f.label :state_place, "2017 STATE PLACE" %><br><br>
           <%= f.collection_select :state_place, ['1', '2', '3', '4', '5', '6', '7', '8'], :to_s, :to_s, :include_blank => true %>
-        </div>
+        </div> -->
        <!--  --> 
 
       </div>
+  <!--     
              <h4> WINS & LOSSES:  If you add a match result to your wrestler from the wrestler profile page, wins and losses update automatically! </h4> 
             <h2 class="ui center aligned header">SEEDING INFORMATION</h2>
       <h3 class="ui center aligned dividing header">TOURNAMENT PLACES</h3>
@@ -201,7 +202,7 @@
 
           </div>
 
-      </div>
+      </div> -->
     <!--   <h3 class="ui center aligned dividing header">HEAD TO HEAD RESULTS</h3>
       <h5 class="ui center aligned header">EXAMPLES:<br>Williams (DLS)  W 9-2</h5>
       <h4 class="ui center aligned header"></h4>
@@ -259,11 +260,12 @@
             <%= f.text_field :h2h_r5 %>
           </div>
            </div> -->
+       <!-- 
           <div class=" seven wide field">
             <%= f.label :comments %><br>
             <%= f.text_area :comments, :placeholder => "KEEP IT BRIEF!" %>
           </div>
-     
+      -->
        <div class="actions">
         <div class="ui red botton" id="btn-modal-1">
           <%= f.submit "UPDATE" %>

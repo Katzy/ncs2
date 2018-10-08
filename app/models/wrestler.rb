@@ -11,9 +11,9 @@ class Wrestler < ActiveRecord::Base
   validates :last_name, presence: true, null: false
   validates :weight, presence: true, null: false
   validates :school_id, presence: true, null: false
-  validates :wins, presence: true, null: false
-  validates :losses, presence: true, null: false
-  validates_uniqueness_of :tourney_team, scope: [:school_id, :weight], if: 'tourney_team == true', :message => ":  You already designated a wrestler at this weight to be on your tournament team.  Only 1 is allowed per weight!"
+  # validates :wins, presence: true, null: false
+  # validates :losses, presence: true, null: false
+  # validates_uniqueness_of :tourney_team, scope: [:school_id, :weight], if: 'tourney_team == true', :message => ":  You already designated a wrestler at this weight to be on your tournament team.  Only 1 is allowed per weight!"
 
 
   def self.present_all
