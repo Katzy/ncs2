@@ -59,11 +59,15 @@
             <% end %>
             <td><%= @wrestler.first_name + " " + @wrestler.last_name %></td>
             <td><%= @wrestler.grade %></td>
-             <% if @wrestler.bouts.where(win_loss: "W").count && (@wrestler.wins >= 0 if @wrestler.wins != nil) %>
-            <td><%= @wrestler.bouts.where(win_loss: "W").count + @wrestler.wins %>-<%= @wrestler.bouts.where(win_loss: "L").count + @wrestler.losses %></td>
+             
+ <% if (@wrestler.bouts.where(win_loss: "W").count || @wrestler.bouts.where(win_loss: "L").count) && (@wrestler.wins >= 0 if @wrestler.wins != nil) %>
+    <td><%= @wrestler.bouts.where(win_loss: "W").count + @wrestler.wins %>-<%= @wrestler.bouts.where(win_loss: "L").count + @wrestler.losses %></td>
+  <% elsif (@wrestler.bouts.where(win_loss: "W").count || @wrestler.bouts.where(win_loss: "L").count) && (@wrestler.wins == nil) %>
+    <td><%= @wrestler.bouts.where(win_loss: "W").count  %>-<%= @wrestler.bouts.where(win_loss: "L").count %></td>
   <% else %>
     <td><%= @wrestler.wins %>-<%= @wrestler.losses %></td>
   <% end %>
+             
 
    
 <% if Season.find(SeasonWrestler.where(wrestler_id: @wrestler.id)[0].season_id).start_date > 2016 %>
