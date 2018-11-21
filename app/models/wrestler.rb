@@ -194,7 +194,7 @@ class Wrestler < ActiveRecord::Base
         #   wins = wrestler.wins
         #   losses = wrestler.losses 
         # end 
-        csv << [wrestler.weight, wrestler.school.name, wrestler.first_name, wrestler.last_name, wrestler.grade, (wrestler.bouts.where(win_loss: "W").count + wrestler.wins), (wrestler.bouts.where(win_loss: "L").count + wrestler.losses), wrestler.section_place, wrestler.state_place, tourney_array[0][0], tourney_array[0][1], tourney_array[1][0], tourney_array[1][1], tourney_array[2][0], tourney_array[2][1], tourney_array[3][0], tourney_array[3][1], tourney_array[4][0], tourney_array[4][1]]
+        csv << [wrestler.weight, wrestler.school.name, wrestler.first_name, wrestler.last_name, wrestler.grade, (wrestler.bouts.where(win_loss: "W").count), (wrestler.bouts.where(win_loss: "L").count), wrestler.section_place, wrestler.state_place, tourney_array[0][0], tourney_array[0][1], tourney_array[1][0], tourney_array[1][1], tourney_array[2][0], tourney_array[2][1], tourney_array[3][0], tourney_array[3][1], tourney_array[4][0], tourney_array[4][1]]
       end
     end
   end
