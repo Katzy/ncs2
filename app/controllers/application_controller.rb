@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
 
   def authorize_user
 
-    redirect_to root_path, alert: 'Access Denied' unless (user_signed_in? && (current_user.admin? || (current_user.league_rep == true) ))
+    redirect_to root_path, alert: 'Access Denied' unless (user_signed_in? && (current_user.admin? || (current_user.league_rep == true) || (current_user.coach == true)))
   end
 
   def require_admin!
