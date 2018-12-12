@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :wrestlers
+      resources :seasons
+      resources :leagues
+      resources :schools
+      resources :bouts
+      resources :users
+    end
+  end
   get 'wrestlers/weight_106' => 'wrestlers#weight_106'
 
   get 'wrestlers/weight_113' => 'wrestlers#weight_113'
