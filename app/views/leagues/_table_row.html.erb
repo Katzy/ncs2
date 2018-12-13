@@ -1,7 +1,7 @@
 <tr>
   <td><%= link_to "#{lg.name}", league_path(lg) %></td>
   <td><%= lg.schools.count %></td>
-  <td><%= lg.league_rep %> 
+  <td><%= lg.league_rep %> </td>
         
 
     <td><%= link_to "Wrestlers (#{lg.wrestlers.where(tourney_team: true).count})", league_wrestlers_path(lg) %></td>
