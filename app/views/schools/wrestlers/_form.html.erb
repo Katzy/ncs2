@@ -50,7 +50,10 @@
         <%= f.label :last_name, "Last **" %><br />
         <%= f.text_field :last_name %>
         </div>
-
+        <div class="two wide field">
+          <%= f.label :sex, "Gender" %><br>
+          <%= f.collection_select :gender, ['m', 'f'], :to_s, :to_s, :include_blank => true %>
+        </div>
       </div>
 
       <div class="fields">

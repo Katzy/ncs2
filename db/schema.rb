@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180218112112) do
+ActiveRecord::Schema.define(version: 20181217162504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -195,10 +195,10 @@ ActiveRecord::Schema.define(version: 20180218112112) do
     t.string   "fullname"
     t.boolean  "scratch"
     t.boolean  "tourney_team"
-    t.boolean  "sex"
     t.string   "league_1ya"
     t.integer  "losses_ncs"
     t.integer  "win_tally"
+    t.string   "gender"
   end
 
   add_index "wrestlers", ["league_id"], name: "index_wrestlers_on_league_id", using: :btree
