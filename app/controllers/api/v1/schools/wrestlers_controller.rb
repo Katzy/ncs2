@@ -2,6 +2,7 @@ module Api
   module V1
     module Schools
       class WrestlersController < ApplicationController
+        http_basic_authenticate_with name: "admin", password: "ncsteam"
         respond_to :json
 
         def index

@@ -1,6 +1,7 @@
 module Api
   module V1
     class SchoolsController < ApplicationController
+       http_basic_authenticate_with name: "admin", password: "ncsteam"
       respond_to :json
 
       def index
