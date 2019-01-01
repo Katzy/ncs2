@@ -41,6 +41,14 @@ class Wrestler < ActiveRecord::Base
   end
 
   def present
+    @tourney_results = []
+    self.bouts.each do |bout| 
+      if bout.tourney_place && bout.tourney_place > 0 
+        unless @tourney_results.include?([bout.tourney_name, bout.tourney_place]) 
+          @tourney_results << [bout.tourney_name, bout.tourney_place] 
+        end 
+      end 
+    end 
     { weight: weight,
       id: id,
       first_name: first_name,
@@ -54,18 +62,21 @@ class Wrestler < ActiveRecord::Base
       league_place: league_place,
       section_place: section_place,
       state_place: state_place,
-      t1_name: t1_name,
-      t1_place: t1_place,
-      t2_name: t2_name,
-      t2_place: t2_place,
-      t3_name: t3_name,
-      t3_place: t3_place,
-      t4_name: t4_name,
-      t4_place: t4_place,
-      t5_name: t5_name,
-      t5_place: t5_place
+      t1_name: @tourney_results[0] != nil ? @tourney_results[0][0] : nil,
+      t1_place: @tourney_results[0] != nil ? @tourney_results[0][1] : nil,
+      t2_name: @tourney_results[1] != nil ? @tourney_results[1][0] : nil,
+      t2_place: @tourney_results[1] != nil ? @tourney_results[1][1] : nil,
+      t3_name: @tourney_results[2] != nil ? @tourney_results[2][0] : nil,
+      t3_place: @tourney_results[2] != nil ? @tourney_results[2][1] : nil,
+      t4_name: @tourney_results[3] != nil ? @tourney_results[3][0] : nil,
+      t4_place: @tourney_results[3] != nil ? @tourney_results[3][1] : nil,
+      t5_name: @tourney_results[4] != nil ? @tourney_results[4][0] : nil,
+      t5_place: @tourney_results[4] != nil ? @tourney_results[4][1] : nil
     }
   end
+
+
+   
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
