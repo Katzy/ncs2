@@ -48,12 +48,22 @@ class Wrestler < ActiveRecord::Base
       school_id: school_id,
       league_id: league_id,
       grade: grade,
-      wins: wins,
-      losses: losses,
+      wins: self.bouts.where(win_loss: "W").count,
+      losses: self.bouts.where(win_loss: "L").count,
       seed: seed,
       league_place: league_place,
       section_place: section_place,
-      state_place: state_place
+      state_place: state_place,
+      t1_name: t1_name,
+      t1_place: t1_place,
+      t2_name: t2_name,
+      t2_place: t2_place,
+      t3_name: t3_name,
+      t3_place: t3_place,
+      t4_name: t4_name,
+      t4_place: t4_place,
+      t5_name: t5_name,
+      t5_place: t5_place
     }
   end
 

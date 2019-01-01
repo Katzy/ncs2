@@ -4,7 +4,10 @@ Rails.application.routes.draw do
       resources :wrestlers
       resources :seasons
       resources :leagues
-      resources :schools
+      resources :schools do
+        resources :wrestlers, controller: "schools/wrestlers"
+      end
+
       resources :bouts
       resources :users
     end
