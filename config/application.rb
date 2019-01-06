@@ -10,6 +10,7 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "csv"
 require "sprockets/railtie"
+require 'rack-cors'
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
