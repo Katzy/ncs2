@@ -53,7 +53,7 @@ gem 'doorkeeper'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'rack-cors'
+gem 'rack-cors', :require => 'rack/cors'
 
 group :production do
   gem 'rails_12factor'
