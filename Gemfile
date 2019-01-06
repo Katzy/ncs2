@@ -53,6 +53,8 @@ gem 'doorkeeper'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'rack-cors'
+
 group :production do
   gem 'rails_12factor'
 end
