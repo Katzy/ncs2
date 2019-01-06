@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
+  use_doorkeeper
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
-      resources :wrestlers
-      resources :seasons
-      resources :leagues
-      resources :schools do
-        resources :wrestlers, controller: "schools/wrestlers"
-      end
+      
+      resources :schools 
 
       resources :bouts
       resources :users

@@ -46,7 +46,7 @@ gem 'sms-easy'
 gem "less-rails", :git => 'https://github.com/suzan2go/less-rails.git', :branch => 'fix-nomethoderror-for-sprockets3'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'doorkeeper'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

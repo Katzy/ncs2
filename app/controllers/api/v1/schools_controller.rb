@@ -1,12 +1,16 @@
 module Api
   module V1
     class SchoolsController < ApplicationController
-       http_basic_authenticate_with name: "admin", password: "ncsteam"
+      before_action -> { doorkeeper_authorize! :admin }, only: :index
+      before_action only: [:create, :update, :destroy] do
+        doorkeeper_authorize! :admin, :write
+      end
       respond_to :json
 
-      def index
-        respond_with Season.last.wrestlers.where(school_id: params[:id]).present_all
-      end
+      # def show
+      #   user = User.find(doorkeeper_token.resource_owner_id)
+      #   respond_with Season.last.wrestlers.where(school_id: user.school_id).present_all
+      # end
 
       def show
         respond_with Season.last.wrestlers.where(school_id: params[:id]).present_all
