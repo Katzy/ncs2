@@ -1,10 +1,10 @@
 module Api
   module V1
     class SchoolsController < ApplicationController
-      before_action -> { doorkeeper_authorize! :public }, only: :index
-      before_action only: [:create, :update, :destroy] do
-        doorkeeper_authorize! :admin, :write
-      end
+      # before_action -> { doorkeeper_authorize! :public }, only: :index
+      # before_action only: [:create, :update, :destroy] do
+      #   doorkeeper_authorize! :admin, :write
+      # end
       respond_to :json
 
       # def show
