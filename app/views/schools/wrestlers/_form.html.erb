@@ -17,10 +17,10 @@
         </div>
       <% end %>
       <div class="fields">
-        <!--  <div class="two wide field">
-         <%= f.label :tourney_team, "Varsity LEAGUE Team" %><br>
+          <div class="three wide field">
+         <%= f.label :tourney_team, "***TOURNAMENT TEAM ***" %><br>
          <%= f.check_box :tourney_team %><br>
-         </div> -->
+         </div>
         <div class="three wide field">
           <%= f.label :weight, "Weight **" %><br>
            <% if current_user.admin? || current_user.league_id  %>
@@ -123,11 +123,13 @@
        <!--  --> 
 
       </div>
+
+      <h5>*** Tournament team is your Varsity team.  Wrestlers with this designation will show up in ALL CAPS and can, with 1 click, be imported to other tournament websites (MSJ Invitational, Puma-Classic, Chris-Snowden, Redwood Rumble, etc..).</h5>
   <!--     
              <h4> WINS & LOSSES:  If you add a match result to your wrestler from the wrestler profile page, wins and losses update automatically! </h4> 
             <h2 class="ui center aligned header">SEEDING INFORMATION</h2>
       <h3 class="ui center aligned dividing header">TOURNAMENT PLACES</h3>
-
+  
       <div class="fields">
 
           <div class="three wide field">
