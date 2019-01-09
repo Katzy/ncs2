@@ -1,11 +1,25 @@
 <tr>
   <td><%= link_to "#{school.name}", school_path(school) %></td>
-  <td><%= school.head_coach %></td>
+  <td><% if User.where(school_id: school.id) %>
+        <% User.where(school_id: school.id).each do |u| %>
+          <%= u.name %><br>
+        <% end %>
+      <% end %>
+  </td>
   <td><%= link_to "Wrestlers (#{Season.last.wrestlers.where(school_id: school.id).count})", school_wrestlers_path(school, season_id: @season_id) %>
   <% if user_signed_in? && current_user.admin? %>
   
-  <td><%= User.find_by_school_id(school.id) ? User.find_by_school_id(school.id).email : "" %></td> 
-  <td><%= User.find_by_school_id(school.id) ? User.find_by_school_id(school.id).cell : "" %></td>
+  <td><% if User.where(school_id: school.id) %>
+        <% User.where(school_id: school.id).each do |u| %>
+          <%= u.email %><br>
+        <% end %>
+      <% end %>
+  </td> 
+  <td><% if User.where(school_id: school.id) %>
+        <% User.where(school_id: school.id).each do |u| %>
+          <%= u.cell %><br>
+        <% end %>
+      <% end %></td>
    
  
   <td><%= link_to 'Edit', edit_school_path(school) %></td>
