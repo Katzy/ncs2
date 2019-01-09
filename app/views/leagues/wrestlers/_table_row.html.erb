@@ -13,11 +13,16 @@
         <% end %>
   <td><%= link_to "#{wrestler.first_name + ' ' + wrestler.last_name}", wrestler_path(wrestler, season_id: @season.id) %></td>
   <td><%= wrestler.grade %></td>
-  <% if wrestler.bouts.where(win_loss: "W").count && (wrestler.wins >= 0 if wrestler.wins != nil) %>
+  
+<% if (wrestler.bouts.where(win_loss: "W").count || wrestler.bouts.where(win_loss: "L").count) && (wrestler.wins >= 0 if wrestler.wins != nil) %>
     <td><%= wrestler.bouts.where(win_loss: "W").count + wrestler.wins %>-<%= wrestler.bouts.where(win_loss: "L").count + wrestler.losses %></td>
+  <% elsif (wrestler.bouts.where(win_loss: "W").count || wrestler.bouts.where(win_loss: "L").count) && (wrestler.wins == nil) %>
+    <td><%= wrestler.bouts.where(win_loss: "W").count  %>-<%= wrestler.bouts.where(win_loss: "L").count %></td>
   <% else %>
     <td><%= wrestler.wins %>-<%= wrestler.losses %></td>
   <% end %>
+
+  
 
               <% wrestler.bouts.each do |bout| %>
                 <% if bout.tourney_place && bout.tourney_place > 0 %>
@@ -83,9 +88,8 @@
     <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
     
     <td><%= link_to 'Delete', wrestler, method: "delete", :data => {:confirm => 'Are you sure?'} %> </td>
-    <% if (wrestler.league_place != nil && wrestler.league_place != "") || wrestler.alternate %>
     <td><%= link_to wrestler_path(wrestler, format: "pdf") do %><i class="file pdf outline icon"></i>
-         <% end %></td>
+         </td>
          <% end %>
   <% end %>
 </tr>
