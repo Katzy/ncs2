@@ -85,6 +85,7 @@ class Wrestler < ActiveRecord::Base
       else
         Wrestler.create! row.to_hash
         SeasonWrestler.create({season_id: Season.last.id, wrestler_id: Wrestler.last.id, wrestler_school_id: Wrestler.last.school.id})
+        Wrestler.last.update_attribute(:season_id, Season.last.id)
       end
     end
   end
