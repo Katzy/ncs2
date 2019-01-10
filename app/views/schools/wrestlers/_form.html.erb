@@ -55,7 +55,7 @@
           <%= f.collection_select :gender, ['m', 'f'], :to_s, :to_s, :include_blank => true %>
         </div>
 
-        <%= f.hidden_field: :season_id, :value => Season.last.id %>
+        <%= f.hidden_field :season_id, :value => Season.last.id %>
       </div>
 
       <div class="fields">
