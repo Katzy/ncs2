@@ -85,7 +85,7 @@ module Schools
        @wrestler.league = @league.name
       @tournaments = Tournament.order('name ASC')
       @wrestler.league = @league.name
-      @wrestler.season_id = Season.last.id
+      # @wrestler.season_id = Season.last.id
       user = current_user
       wrestler = @wrestler
       wrestler_array = [user, wrestler]

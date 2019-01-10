@@ -31,7 +31,7 @@ class WrestlersController < ApplicationController
     # @wrestler.alternate == 0 ? @wrestler.alternate = false : @wrestler.alternate
     @league = League.find(@school.league_id)
     @wrestler.league_id = @league.id
-    @wrestler.season_id = Season.last.id
+    # @wrestler.season_id = Season.last.id
     # @tournaments = Tournament.order('name ASC')
     user = current_user
     wrestler = @wrestler
