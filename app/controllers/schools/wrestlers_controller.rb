@@ -11,7 +11,7 @@ module Schools
       @seasons = Season.all.order('id DESC')
        @season = Season.find(params[:season_id])
         if SeasonWrestler.where(season_id: @season.id, wrestler_school_id: @school.id).count > 0 
-          @wrestlers = @season.wrestlers.where(school_id: @school.id).order('tourney_team DESC, weight ASC')
+          @wrestlers = @season.wrestlers.where(school_id: @school.id).order('tourney_team ASC, weight ASC')
         else
           @wrestlers = []
         end
