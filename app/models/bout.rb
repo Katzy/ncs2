@@ -5,7 +5,7 @@ class Bout < ActiveRecord::Base
   # belongs_to :season_wrestler
   
   validates :weight, presence: true, null: false
-  validates :dual_or_tourney, presence: true, null: false
+  # validates :dual_or_tourney, presence: true, null: false
   validates :date, presence: true
   validates :opponent_name, presence: true, null: false
   validates :win_loss, presence: true, null: false
@@ -16,10 +16,11 @@ class Bout < ActiveRecord::Base
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-     
-      puts row
+      if Bout.exists?(weight: row[2], date: row[1], opponent_name: row[4], opponent_team: row[5])
+       row
+      else
        Bout.create! row.to_hash
-      
+     end
     end
   end
 
