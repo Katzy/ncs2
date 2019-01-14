@@ -228,11 +228,12 @@
       </div>
 
       <% end %>
-      <% if user_signed_in? && ((@user.coach == true) && @user.league_rep == false) %>
+      <% if user_signed_in? && ((@user.coach == true) && @user.league_rep == nil) %>
          <div class="ui item">
         <%= link_to "MY TEAM", school_wrestlers_path(@user.school, season_id: Season.last.id) %>
         </div>
         <% end %>
+
       <div class="ui toggle4 item"><i class="sidebar icon"></i>WRESTLERS
 
       </div>
