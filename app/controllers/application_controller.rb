@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     @leagues2 = @leagues[6..11]
     # @users = User.where.not(league: nil)
     @user = current_user
-    @schools = School.order('abbreviation ASC')
+    @schools = School.where('league_id IS NOT null').order('abbreviation ASC')
     count = @schools.count
     half = count / 2
     @tournaments = Tournament.all
