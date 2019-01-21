@@ -17,7 +17,7 @@ class Wrestler < ActiveRecord::Base
 
 
   def self.present_all
-    self.where(tourney_team: true).order('weight ASC').map { |item| item.present }
+    self.order('weight ASC').map { |item| item.present }
   end
 
   def self.present_name_weight_school
@@ -62,6 +62,7 @@ class Wrestler < ActiveRecord::Base
       league_place: league_place,
       section_place: section_place,
       state_place: state_place,
+      tourney_team: tourney_team,
       t1_name: @tourney_results[0] != nil ? @tourney_results[0][0] : nil,
       t1_place: @tourney_results[0] != nil ? @tourney_results[0][1] : nil,
       t2_name: @tourney_results[1] != nil ? @tourney_results[1][0] : nil,
