@@ -108,24 +108,28 @@
   </div>
 </div>
     <% if SeasonWrestler.where(wrestler_id: @wrestler.id)[0].season_id == Season.last.id %>
-      <% if user_signed_in? &&  (current_user.admin? || (current_user.league.name == @wrestler.school.league.name) || current_user.school_id == @wrestler.school_id ) %>
-        <div class="sixteen wide center aligned column">
+      <% if user_signed_in? &&  (current_user.admin? || (current_user.league_rep == true && current_user.league.name == @wrestler.school.league.name) || current_user.school_id == @wrestler.school_id ) %>
+        <div class="eight wide center aligned column">
           <i class="add user icon"></i><%= link_to 'ADD MATCH RESULT', new_wrestler_bout_path(@wrestler) %>
-        </div><br>
+        </div>
+      <!--   <div class="eight wide center aligned column">
+          <i class="add user icon"></i><%= link_to 'ADD TOURNAMENT RESULT', new_tourney_wrestler_bouts_path(@wrestler) %>
+        </div><br> -->
         <div class="ui animated help button">
            <a href="/wrestlers/<%= @wrestler.id %>/bouts/help"> 
             <div class="visible content">UPLOAD MATCH RESULTS INSTRUCTIONS</div>
             <div class="hidden content download">Click for Instructions! READ ME!</div>
            </a>   
         </div>
-      <%= form_tag import_wrestler_bouts_path(@wrestler), multipart: true do %>
+
+<!--       <%= form_tag import_wrestler_bouts_path(@wrestler), multipart: true do %>
         <%= file_field_tag :file %>
         <%= submit_tag "Import Bouts from CSV" %>
       <% end %> 
-      <% end %>
+ -->      <% end %>
     <% end %>
     </div>
-    <%= render partial: 'wrestlers/match_table', locals: { bouts: @bouts } %>
+    <%= render partial: 'wrestlers/match_table', locals: { bouts: @bouts,  } %>
 
   </div>
 </div>
