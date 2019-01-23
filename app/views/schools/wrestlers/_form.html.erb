@@ -23,7 +23,7 @@
          </div>
         <div class="three wide field">
           <%= f.label :weight, "Weight **" %><br>
-           <% if current_user.admin? || current_user.league_id  %>
+           <% if current_user.admin? || current_user.school_id  %>
           <%= f.collection_select :weight, ['106', '113', '120', '126', '132', '138', '145', '152', '160', '170', '182', '195', '220', '285'], :to_s, :to_s, :include_blank => true %>
           <% else %>
            <%= f.text_field :weight, :readonly=>true %>
