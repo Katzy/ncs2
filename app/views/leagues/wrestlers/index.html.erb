@@ -23,7 +23,7 @@
         <th rowspan="2">YR</th>
         <th rowspan="2">RECORD</th>
         <th rowspan="2">TOURNAMENTS<br>RESULTS</th>
-        <th rowspan="2">2018 LEAGUE PLACE</th>
+        <th rowspan="2"><%= Season.last.end_date %> LEAGUE PLACE</th>
         <th colspan="3"><%= Season.last.start_date %></th>
          <% if user_signed_in? && (current_user.admin? || (current_user.league_id == @lg.id && current_user.league_rep == true ) || current_user.coach == true ) %>
         <th rowspan="2">Edit</th>
@@ -68,7 +68,7 @@
         <th rowspan="2">YR</th>
         <th rowspan="2">RECORD</th>
         <th rowspan="2">TOURNAMENTS<br>RESULTS</th>
-        <th rowspan="2">2018 LEAGUE PLACE</th>
+        <th rowspan="2"><%= Season.last.end_date %> LEAGUE PLACE</th>
         <th colspan="3"><%= Season.last.start_date %></th>
          <% if user_signed_in? && (current_user.admin? || (current_user.league_id == @lg.id && current_user.league_rep == true ) || current_user.coach == true ) %>
         <th rowspan="2">Edit</th>
@@ -134,7 +134,7 @@
     </div>
     <div class="column">
     <u>SCHOOLS</u><br>
-        <% @schools.each do |school| %>
+        <% @schools.order('name ASC').each do |school| %>
             <div class="segment"><b><%= school.name %></b></div>
           <% end %>
 
