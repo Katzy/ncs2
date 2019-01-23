@@ -1,0 +1,111 @@
+<div class="ui raised segment">
+  
+  <h2>ENTER MATCH RESULT for <%= @wrestler.first_name %> <%= @wrestler.last_name %> (** required field)</h2>
+  
+  <div class="ui tourney form bout">
+    <%= form_for [@wrestler] do |f| %>
+      <%= f.fields_for :wr_bouts do |s| %>
+       
+
+        <div class="fields">
+          <div class="three wide field">
+            <%= s.label :date, "Date" %><br>
+            <%= s.text_field :date, :placeholder => 'MM/DD/YY' %>
+
+          </div>
+          <div class="two wide field">
+            <%= s.label :weight, "Weight **" %><br>
+            <%= s.collection_select :weight, ['106', '113', '120', '126', '132', '138', '145', '152', '160', '170', '182', '195', '220', '285'], :to_s, :to_s, :include_blank => true %>
+          </div>
+          <!-- <div class="three wide field">
+            <%= s.label :dual_or_tourney, "Event" %><br />
+            <%= s.collection_select :dual_or_tourney, ['Dual', 'Tournament'], :to_s, :to_s, :include_blank => true %>
+          </div> -->
+        
+          <div class="four wide field">
+            <%= s.label :tourney_name, 'Tournament' %><br>
+              <%= s.text_field :tourney_name %>
+            <div class="ui search tourney">
+              <div class="ui icon input">
+                  <input class="prompt" name="tourney_name" type="text" placeholder="Enter Tourney">        
+                <!-- <input class="prompt" name="tourney_name" type="text" placeholder="Tournament Name..."> -->
+              </div>
+            </div>
+          </div>
+
+        
+           <div class="two wide field">
+            <%= s.label :tourney_place, "Place" %><br>
+             <%= s.collection_select :tourney_place, ['1', '2', '3', '4', '5', '6', '7', '8'], :to_s, :to_s, :include_blank => true %>
+          </div>
+        </div>
+        <div class="fields">
+          <div class="four wide field">
+            <%= s.label :opponent_name, "Opponent **" %><br>
+              <%= s.text_field :opponent_name %>
+              <div class="ui search wrestler">
+                <div class="ui icon input">
+                  <input class="prompt" name="opponent_name" type="text" placeholder="Enter Wrestler">
+                </div> 
+              </div>
+          </div>
+          <div class="four wide field">
+            <%= s.label :opponent_team, "School **" %><br>
+              <%= s.text_field :opponent_team %>
+          </div>
+         
+          <!-- <div class="four wide field">
+            <%= s.label :opponent_team, "Opponent School **" %><br>
+            <%= s.text_field :opponent_team %>
+            <div class="ui search school">
+              <div class="ui icon input">
+                <input class="prompt" name="opponent_team" type="text" placeholder="Enter School">
+              </div> 
+            </div>
+          </div> -->
+
+         
+        
+          <div class="two wide field">
+            <%= s.label :win_loss, "W/L **" %><br>
+            <%= s.collection_select :win_loss, ['W', 'L'], :to_s, :to_s, :include_blank => true %>
+          </div>
+          <div class="two wide field">
+            <%= s.label :result_type, "Result **" %><br>
+             <%= s.collection_select :result_type, ['D', 'MD', 'TF', 'F', 'FORFEIT'], :to_s, :to_s, :include_blank => true %>
+          </div>
+
+          <div class="three wide field">
+            <%= s.label :score_time, "Score/Time **" %><br>
+            <%= s.text_field :score_time %>
+          </div>
+
+         
+
+          <div class="hidden field">
+            
+            <%= s.hidden_field :wrestler_id, :value => @wrestler.id %>
+          </div>
+
+
+        </div>
+       
+          <h4>For FORFEITS or Injury Forfeits... enter Forfeit or FF in the fields as follows:</h4>
+          Opponent:  FF<br>
+          School: FF<br>
+          W/L:  W<br>
+          Result: FORFEIT<br>   
+          Score:  FF<br><br>
+
+          
+
+        <div class="actions">
+          <div class="ui red botton center aligned" id="btn-modal-1">
+            <%= f.submit "Create" %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+

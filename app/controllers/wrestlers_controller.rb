@@ -75,73 +75,87 @@ class WrestlersController < ApplicationController
   end
 
   def weight_106
+    @wt = 106
     @tourney_results = []
-    select_wrestlers(106)
+    select_wrestlers(@wt)
   end
 
   def weight_113
+    @wt = 113
     @tourney_results = []
-    select_wrestlers(113)
+    select_wrestlers(@wt)
   end
 
   def weight_120
+    @wt = 120
     @tourney_results = []
-    select_wrestlers(120)
+    select_wrestlers(@wt)
   end
 
   def weight_126
+    @wt = 126
     @tourney_results = []
-    select_wrestlers(126)
+    select_wrestlers(@wt)
   end
 
   def weight_132
+    @wt = 132
     @tourney_results = []
-    select_wrestlers(132)
+    select_wrestlers(@wt)
   end
 
   def weight_138
+    @wt = 138
     @tourney_results = []
-    select_wrestlers(138)
+    select_wrestlers(@wt)
   end
 
   def weight_145
+    @wt = 145
     @tourney_results = []
-    select_wrestlers(145)
+    select_wrestlers(@wt)
   end
 
   def weight_152
+    @wt = 152
     @tourney_results = []
-    select_wrestlers(152)
+    select_wrestlers(@wt)
   end
 
   def weight_160
+    @wt = 160
     @tourney_results = []
-    select_wrestlers(160)
+    select_wrestlers(@wt)
   end
 
   def weight_170
+    @wt = 170
     @tourney_results = []
-    select_wrestlers(170)
+    select_wrestlers(@wt)
   end
 
   def weight_182
+    @wt = 182
     @tourney_results = []
-    select_wrestlers(182)
+    select_wrestlers(@wt)
   end
 
   def weight_195
+    @wt = 195
     @tourney_results = []
-    select_wrestlers(195)
+    select_wrestlers(@wt)
   end
 
   def weight_220
+    @wt = 220
     @tourney_results = []
-    select_wrestlers(220)
+    select_wrestlers(@wt)
   end
 
   def weight_285
+    @wt = 285
     @tourney_results = []
-    select_wrestlers(285)
+    select_wrestlers(@wt)
   end
 
   def alternates
@@ -149,7 +163,8 @@ class WrestlersController < ApplicationController
   end
 
   def compare
-    @wrestlers = params[:wrestlers]
+    @wrestlers = Season.last.wrestlers.where(weight: params[:weight])
+    @tourney_results = []
   end
 
   def show
@@ -285,9 +300,10 @@ class WrestlersController < ApplicationController
   def select_wrestlers(wt)
       params = ["1","2","3","4","5", true]
       @season = Season.last
-      @w = @season.wrestlers.where(weight: wt, tourney_team: true).where.not(league_place: "")
+      @w = @season.wrestlers.where(weight: wt, tourney_team: true)
+      # @w = @season.wrestlers.where(weight: wt, tourney_team: true).where.not(league_place: "")
       # @wrestlers = @w.where("league_place = ? OR league_place = ? OR league_place = ? OR league_place = ? OR league_place = ? OR alternate = ?", *params).order('weight ASC, seed ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
-      @wrestlers = @w.order('weight ASC, seed ASC, state_place ASC, section_place ASC, win_tally DESC')
+      @wrestlers = @w.order('seed ASC, state_place ASC, section_place ASC, win_tally DESC')
       # wrestlers = @wrestlers 
       # Wrestler.where("weight = #{wt}").order('weight ASC, seed ASC, wins DESC')  # for csv format
       @tourney_results = []

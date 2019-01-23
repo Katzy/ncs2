@@ -1,0 +1,131 @@
+<div class="ui raised segment">
+  
+  <h2>ENTER MATCH RESULT for <%= @wrestler.first_name %> <%= @wrestler.last_name %> (** required field)</h2>
+  
+  <div class="ui tourney form bout">
+    <%= form_for [@wrestler] do |f| %>
+      <%= f.fields_for :bouts do |s| %>
+        <!-- 
+        <% if @bout.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@bout.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+            <ul>
+              <% @bout.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %> -->
+
+        <div class="fields">
+          <div class="three wide field">
+            <%= f.label :date, "Date" %><br>
+            <%= f.text_field :date, :placeholder => 'MM/DD/YY' %>
+
+          </div>
+          <div class="two wide field">
+            <%= f.label :weight, "Weight **" %><br>
+            <%= f.collection_select :weight, ['106', '113', '120', '126', '132', '138', '145', '152', '160', '170', '182', '195', '220', '285'], :to_s, :to_s, :include_blank => true %>
+          </div>
+          <!-- <div class="three wide field">
+            <%= f.label :dual_or_tourney, "Event" %><br />
+            <%= f.collection_select :dual_or_tourney, ['Dual', 'Tournament'], :to_s, :to_s, :include_blank => true %>
+          </div> -->
+        
+          <div class="four wide field">
+            <%= f.label :tourney_name, 'Tournament' %><br>
+            <% if bout.tourney_name != nil && bout.tourney_name != "" %>
+              <%= f.text_field :tourney_name %>
+            <% else %>
+            <div class="ui search tourney">
+              <div class="ui icon input">
+                  <input class="prompt" name="tourney_name" type="text" placeholder="Enter Tourney">        
+                <!-- <input class="prompt" name="tourney_name" type="text" placeholder="Tournament Name..."> -->
+              </div>
+            </div>
+            <% end %>
+          </div>
+
+        
+           <div class="two wide field">
+            <%= f.label :tourney_place, "Place" %><br>
+             <%= f.collection_select :tourney_place, ['1', '2', '3', '4', '5', '6', '7', '8'], :to_s, :to_s, :include_blank => true %>
+          </div>
+        </div>
+        <div class="fields">
+          <div class="four wide field">
+            <%= f.label :opponent_name, "Opponent **" %><br>
+            <% if bout.opponent_name %>
+              <%= f.text_field :opponent_name %>
+            <% else %>
+              <div class="ui search wrestler">
+                <div class="ui icon input">
+                  <input class="prompt" name="opponent_name" type="text" placeholder="Enter Wrestler">
+                </div> 
+              </div>
+            <% end %>
+          </div>
+          <div class="four wide field">
+            <%= f.label :opponent_team, "School **" %><br>
+              <%= f.text_field :opponent_team %>
+          </div>
+         
+          <!-- <div class="four wide field">
+            <%= f.label :opponent_team, "Opponent School **" %><br>
+            <% if bout.opponent_team %>
+            <%= f.text_field :opponent_team %>
+            <% else %>
+            <div class="ui search school">
+              <div class="ui icon input">
+                <input class="prompt" name="opponent_team" type="text" placeholder="Enter School">
+              </div> 
+            </div>
+            <% end %>
+          </div> -->
+
+         
+        
+          <div class="two wide field">
+            <%= f.label :win_loss, "W/L **" %><br>
+            <%= f.collection_select :win_loss, ['W', 'L'], :to_s, :to_s, :include_blank => true %>
+          </div>
+          <div class="two wide field">
+            <%= f.label :result_type, "Result **" %><br>
+             <%= f.collection_select :result_type, ['D', 'MD', 'TF', 'F', 'FORFEIT'], :to_s, :to_s, :include_blank => true %>
+          </div>
+
+          <div class="three wide field">
+            <%= f.label :score_time, "Score/Time **" %><br>
+            <%= f.text_field :score_time %>
+          </div>
+
+         
+
+          <div class="hidden field">
+            
+            <%= f.hidden_field :wrestler_id, :value => @wrestler.id %>
+          </div>
+
+
+        </div>
+       
+          <h4>For FORFEITS or Injury Forfeits... enter Forfeit or FF in the fields as follows:</h4>
+          Opponent:  FF<br>
+          School: FF<br>
+          W/L:  W<br>
+          Result: FORFEIT<br>   
+          Score:  FF<br><br>
+
+          
+
+        <div class="actions">
+          <div class="ui red botton center aligned" id="btn-modal-1">
+            <%= f.submit "Create" %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+

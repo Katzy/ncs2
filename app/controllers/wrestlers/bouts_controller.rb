@@ -18,6 +18,21 @@ module Wrestlers
       @match_number = 1
     end
 
+    def new_tourney
+       @season = Season.last
+      @tournaments = []
+      @tourney_results = []
+      Tournament.all.each{ |t| @tournaments << t.name }
+      @tournament = Tournament.new
+       @match_number = 1
+      @wrestler = Wrestler.find(params[:wrestler_id])
+      @wr_bouts = []
+      @bouts = @wrestler.bouts.order("id ASC")
+      8.times do
+        @wr_bouts << @wrestler.bouts.new
+      end
+    end
+
      def download
       wrestler = Wrestler.find(params[:wrestler_id])
       respond_to do |format|

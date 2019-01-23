@@ -26,7 +26,7 @@
     </thead>
     <tbody>
       <% @wrestlers.each do |wrestler, user| %>
-
+            
               <% wrestler.bouts.each do |bout| %>
                 <% if bout.tourney_place && bout.tourney_place > 0 %>
                   <% unless @tourney_results.include?([bout.tourney_name, bout.tourney_place]) %>

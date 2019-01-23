@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190102151751) do
+ActiveRecord::Schema.define(version: 20190121190048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 20190102151751) do
     t.string   "address"
     t.integer  "auth_users",   default: 3, null: false
     t.integer  "league_id"
+    t.string   "section"
   end
 
   add_index "schools", ["league_id"], name: "index_schools_on_league_id", using: :btree
@@ -241,6 +242,7 @@ ActiveRecord::Schema.define(version: 20190102151751) do
     t.integer  "losses_ncs"
     t.integer  "win_tally"
     t.string   "gender"
+    t.integer  "season_id"
   end
 
   add_index "wrestlers", ["league_id"], name: "index_wrestlers_on_league_id", using: :btree

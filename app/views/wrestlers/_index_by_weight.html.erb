@@ -1,3 +1,12 @@
+<div class="ui center aligned segment">
+     <% if user_signed_in? && current_user.admin? %>
+        
+        <div class="compare">
+          <%= link_to "COMPARE WRESTLERS", compare_wrestlers_path(weight: @wt) %>
+            
+        </div>
+        <% end %>
+    </div>
 <div class="ui center aligned grid">
   
     <div class="mobile only tablet only row">

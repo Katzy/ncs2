@@ -55,6 +55,31 @@ $('.ui.form.bout')
   })
 ;
 
+$('.ui.tourney.form.bout')
+  .form({
+    fields: {
+      tournament_name: {
+        identifier  : 'tournament_name',
+        rules: [
+          {
+            prompt : 'Enter Tournament'
+          }
+        ]
+      },
+      opponent_team: {
+        identifier  : 'opponent_team',
+        rules: [
+          {
+            prompt  : 'Enter School'
+          }
+        ]
+      },
+      dual_or_tourney: {
+        identifier  : 'dual_or_tourney'
+      }
+    }
+  })
+;
 // var standardHeader = $.fn.search.settings.templates.message;
 
 // var newHeader = function (message, type) {
