@@ -163,8 +163,35 @@ class WrestlersController < ApplicationController
   end
 
   def compare
-    @wrestlers = Season.last.wrestlers.where(weight: params[:weight])
+    @wrestlers = Season.last.wrestlers.where(weight: params[:weight]).where('league_id IS NOT null')
     @tourney_results = []
+    respond_to do |format|
+      format.html { render :compare }
+      # format.js 
+    end
+  end
+
+  def compare_selected
+    @wrestlers = []
+    if params["wrestlers"]
+      params["wrestlers"].each do |w|
+       p w
+        if w["checked"] 
+         @wrestlers << Wrestler.find(w)  
+         
+          
+        end
+      end
+      @count = @wrestlers.count
+      @weight = params[:weight]
+      # if @wrestlers.count > 0
+      #   redirect_to user_wrestlers_path(User.find(params[:user_id])), notice: "Import successful!"
+      #   UserMailer.team_imported(@user, @wrestlers).deliver
+      # else
+      #   redirect_to user_wrestlers_path(User.find(params[:user_id])), notice: "Import did not happen!  Did you forget to check off wrestlers?"  
+      # end
+      
+    end
   end
 
   def show
@@ -320,7 +347,7 @@ class WrestlersController < ApplicationController
   end
 
   def wrestler_params
-    params.require(:wrestler).permit(:first_name, :abbreviation, :school, :league_id, :league, :last_name, :weight, :grade, :wins, :losses, :tourney_wins, :league_place, :section_place, :state_place, :seed, :comments, :school_id, :t1_name, :t1_place, :t2_name, :t2_place, :t3_name, :t3_place, :t4_name, :t4_place, :t5_name, :t5_place, :t6_name, :t6_place, :h2h_1, :h2h_r1, :h2h_2, :h2h_r2, :h2h_3, :h2h_r3, :h2h_4, :h2h_r4, :h2h_5, :h2h_r5, :alternate, :fullname, :scratch, :tourney_team, :league_1ya, :losses_ncs, :gender, :season_id)
+    params.require(:wrestler).permit(:first_name, :abbreviation, :school, :league_id, :league, :last_name, :weight, :grade, :wins, :losses, :tourney_wins, :league_place, :section_place, :state_place, :seed, :comments, :school_id, :t1_name, :t1_place, :t2_name, :t2_place, :t3_name, :t3_place, :t4_name, :t4_place, :t5_name, :t5_place, :t6_name, :t6_place, :h2h_1, :h2h_r1, :h2h_2, :h2h_r2, :h2h_3, :h2h_r3, :h2h_4, :h2h_r4, :h2h_5, :h2h_r5, :alternate, :fullname, :scratch, :tourney_team, :league_1ya, :losses_ncs, :gender, :season_id, :checked)
   end
 
 end

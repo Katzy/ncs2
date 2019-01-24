@@ -1,4 +1,5 @@
 class Wrestler < ActiveRecord::Base
+  attr_accessor :checked
   acts_as_xlsx
 
   belongs_to :league
@@ -30,7 +31,10 @@ class Wrestler < ActiveRecord::Base
   #   exists.where(school_id: school_id).where(weight: weight).where(tourney_team: true)
   # end
     
- 
+  def checked
+
+  end
+
 
   def name_weight_school
     { 

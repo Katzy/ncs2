@@ -1,0 +1,9 @@
+// $(document).ready(function(){
+//  $('#compare').click(function(){
+//  $('#compare_wrestlers').append('<p>yo</p>');
+//    });
+//   });
+
+var d1 = document.getElementById('compare_wrestlers');
+
+d1.insertAdjacentHTML('beforeend', '<div id="two"><%= @wrestlers %></div>');

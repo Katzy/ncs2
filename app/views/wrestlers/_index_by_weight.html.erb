@@ -1,5 +1,5 @@
 <div class="ui center aligned segment">
-     <% if user_signed_in? && current_user.admin? %>
+     <% if user_signed_in? %>
         
         <div class="compare">
           <%= link_to "COMPARE WRESTLERS", compare_wrestlers_path(weight: @wt) %>
