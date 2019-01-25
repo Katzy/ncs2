@@ -170,24 +170,24 @@ class WrestlersController < ApplicationController
       @wrestler.first_name = w["first_name"]
       @wrestler.last_name = w["last_name"]
       @wrestler.weight = w["weight"]
-      @wrestler.wins = w["wins"]
-      @wrestler.losses = w["losses"]
+      # @wrestler.wins = w["wins"]
+      # @wrestler.losses = w["losses"]
       @wrestler.grade = w["grade"]
-      @wrestler.league_place = w["league_place"]
-      @wrestler.section_place = w["section_place"]
-      @wrestler.state_place = w["state_place"]
+      # @wrestler.league_place = w["league_place"]
+      # @wrestler.section_place = w["section_place"]
+      # @wrestler.state_place = w["state_place"]
       @wrestler.school_id = w["school_id"]
-      @wrestler.season_id = w["season_id"]
-      @wrestler.t1_name = w["t1_name"]
-      @wrestler.t1_place = w["t1_place"]
-      @wrestler.t2_name = w["t2_name"]
-      @wrestler.t2_place = w["t2_place"]
-      @wrestler.t3_name = w["t3_name"]
-      @wrestler.t3_place = w["t3_place"]
-      @wrestler.t4_name = w["t4_name"]
-      @wrestler.t4_place = w["t4_place"]
-      @wrestler.t5_name = w["t5_name"]
-      @wrestler.t5_place = w["t5_place"]
+      # @wrestler.season_id = w["season_id"]
+      # @wrestler.t1_name = w["t1_name"]
+      # @wrestler.t1_place = w["t1_place"]
+      # @wrestler.t2_name = w["t2_name"]
+      # @wrestler.t2_place = w["t2_place"]
+      # @wrestler.t3_name = w["t3_name"]
+      # @wrestler.t3_place = w["t3_place"]
+      # @wrestler.t4_name = w["t4_name"]
+      # @wrestler.t4_place = w["t4_place"]
+      # @wrestler.t5_name = w["t5_name"]
+      # @wrestler.t5_place = w["t5_place"]
       @wrestlers << @wrestler
     end
     respond_to do |format|
@@ -198,6 +198,7 @@ class WrestlersController < ApplicationController
 
   def compare_selected
     @wr = params[:wrestlers]
+    p @wr
     @wrestlers = []
     @wr.each do |w|
       @tourney_results = []
@@ -381,7 +382,7 @@ class WrestlersController < ApplicationController
     end
   end
   def wrestlers_params
-    params.require(:wrestlers).permit({:id => [:checked, :weight, :id]})
+    params.permit({:wrestler[:id] => [:checked, :weight, :id]})
   end
 
   def wrestler_params

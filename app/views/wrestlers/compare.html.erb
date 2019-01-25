@@ -14,9 +14,9 @@
            <th rowspan="2">SCHOOL</th>
            <th rowspan="2">NAME </th>
            <th rowspan="2">YR</th>
-           <th rowspan="2">RECORD</th>
-           <th rowspan="2">2018 LEAGUE PLACE</th>
-           <th colspan="3">2017 PLACES</th>
+           <!-- <th rowspan="2">RECORD</th> -->
+           <th rowspan="2"><%= Season.last.end_date %> LEAGUE PLACE</th>
+           <th colspan="3"><%= Season.last.start_date %> PLACES</th>
          </tr>
          <tr>
            <th rowspan="">LEAGUE</th>
@@ -27,7 +27,7 @@
        <tbody>
          <% @wrestlers.each do |wrestler| %>
                 <%= fields_for "wrestlers[]", wrestler do |f| %>  
-                  <% wrestler.bouts.each do |bout| %>
+                <!--   <% wrestler.bouts.each do |bout| %>
                     <% if bout.tourney_place && bout.tourney_place > 0 %>
                       <% unless @tourney_results.include?([bout.tourney_name, bout.tourney_place]) %>
                         <% @tourney_results << [bout.tourney_name, bout.tourney_place] %>
@@ -48,7 +48,7 @@
                  <% end %>
                  <% if wrestler.t5_name != "" && wrestler.t5_name != nil && wrestler.t5_name != " " %>
                    <% @tourney_results << [ wrestler.t5_name, wrestler.t5_place] %>
-                 <% end %>
+                 <% end %> -->
                 
                <tr>
                 <td>
@@ -71,7 +71,7 @@
               <td><%= wrestler.school.name %> </td>
             <td><%= wrestler.first_name + " " + wrestler.last_name %></td>
             <td><%= wrestler.grade %></td>
-    <% if (wrestler.bouts.where(win_loss: "W").count || wrestler.bouts.where(win_loss: "L").count) && (wrestler.wins >= 0 if wrestler.wins != nil) %>
+   <!--  <% if (wrestler.bouts.where(win_loss: "W").count || wrestler.bouts.where(win_loss: "L").count) && (wrestler.wins >= 0 if wrestler.wins != nil) %>
         <td><%= wrestler.bouts.where(win_loss: "W").count + wrestler.wins %>-<%= wrestler.bouts.where(win_loss: "L").count + wrestler.losses %></td>
       <% elsif (wrestler.bouts.where(win_loss: "W").count || wrestler.bouts.where(win_loss: "L").count) && (wrestler.wins == nil) %>
         <td><%= wrestler.bouts.where(win_loss: "W").count  %>-<%= wrestler.bouts.where(win_loss: "L").count %></td>
@@ -79,7 +79,7 @@
         <td><%= wrestler.wins %>-<%= wrestler.losses %></td>
       <% end %>
 
-
+ -->
       
                 <td><%= wrestler.league_place %></td>
                 <td><%= wrestler.league_1ya %></td>
