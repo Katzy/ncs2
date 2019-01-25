@@ -198,24 +198,22 @@ class WrestlersController < ApplicationController
   end
 
   def compare_selected
-    @wrestlers = []
+    @wr = []
       @tourney_results = []
 
     if params[:wrestlers]
       params[:wrestlers].each do |k,v|
       
         if v["checked"] == "1"
-          @wrestlers << Wrestler.where(first_name: v["first_name"], last_name: v["last_name"], weight: v["weight"], school_id: v["school_id"])[0] 
+          @wr << Wrestler.where(first_name: v["first_name"], last_name: v["last_name"], weight: v["weight"], school_id: v["school_id"])[0] 
           @weight = v["weight"] 
         end
       end
     end
     params.delete :wrestlers
-    @count = @wrestlers.count
+    @count = @wr.count
 
-      if @wrestlers.count > 0
-        redirect_to show_compared_wrestlers_path(wrestlers: @wrestlers)
-      end
+        redirect_to show_compared_wrestlers_path(wrestlers: @wr)
       # if @wrestlers.count > 0
       #   redirect_to user_wrestlers_path(User.find(params[:user_id])), notice: "Import successful!"
       #   UserMailer.team_imported(@user, @wrestlers).deliver

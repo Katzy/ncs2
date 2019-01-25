@@ -174,7 +174,7 @@ Rails.application.routes.draw do
     collection do 
       get :autocomplete 
       get :compare
-      get :compare_selected
+      post :compare_selected
       get :show_compared
     end
     resources :bouts, controller: "wrestlers/bouts" do
