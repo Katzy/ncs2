@@ -191,27 +191,31 @@ class WrestlersController < ApplicationController
       # @wrestlers << @wrestler
       # @wrestlers << w
     # end
-    respond_to do |format|
-      format.html { render :compare }
+    # respond_to do |format|
+    #   format.html { render :compare }
       # format.js 
-    end
+    # end
   end
 
   def compare_selected
-    @wr = params[:wrestlers]
-    
     @wrestlers = []
-    @wr.each do |w, v|
       @tourney_results = []
-      if v["checked"] == "1"
-        @wrestlers << Wrestler.where(first_name: v["first_name"], last_name: v["last_name"], weight: v["weight"], school_id: v["school_id"])[0] 
-        @weight = v["weight"] 
-     end
+
+    if params[:wrestlers]
+      params[:wrestlers].each do |k,v|
+      
+        if v["checked"] == "1"
+          @wrestlers << Wrestler.where(first_name: v["first_name"], last_name: v["last_name"], weight: v["weight"], school_id: v["school_id"])[0] 
+          @weight = v["weight"] 
+        end
+      end
     end
+    params.delete :wrestlers
     @count = @wrestlers.count
-      # if @wrestlers.count > 0
-      #   redirect_to show_compared_wrestlers_path(wrestlers: @wrestlers)
-      # end
+
+      if @wrestlers.count > 0
+        redirect_to show_compared_wrestlers_path(wrestlers: @wrestlers)
+      end
       # if @wrestlers.count > 0
       #   redirect_to user_wrestlers_path(User.find(params[:user_id])), notice: "Import successful!"
       #   UserMailer.team_imported(@user, @wrestlers).deliver
