@@ -206,7 +206,9 @@ class WrestlersController < ApplicationController
         @weight = w["weight"] 
      end
     end
-      @count = @wrestlers.count
+      if @wrestlers.count > 0
+        show_compared(@wrestlers)
+      end
       # if @wrestlers.count > 0
       #   redirect_to user_wrestlers_path(User.find(params[:user_id])), notice: "Import successful!"
       #   UserMailer.team_imported(@user, @wrestlers).deliver
@@ -214,6 +216,16 @@ class WrestlersController < ApplicationController
       #   redirect_to user_wrestlers_path(User.find(params[:user_id])), notice: "Import did not happen!  Did you forget to check off wrestlers?"  
       # end
       
+  end
+
+  def show_compared(wrestlers)
+    @w = wrestlers
+    @wrestlers = []
+    @count = @w.count
+    @w.each do |wr|
+      @wrestlers << Wrestler.find(wr)
+    end
+    render { :compare_selected }
   end
 
   def show
