@@ -11,8 +11,8 @@
         <th rowspan="2">YR</th>
         <th rowspan="2">RECORD</th>
         <th rowspan="2">TOURNAMENT<br>RESULTS</th>
-        <th rowspan="2">2018 LEAGUE PLACE</th>
-        <th colspan="3">2017 PLACES</th>
+        <th rowspan="2"><%= Season.last.end_date %> LEAGUE PLACE</th>
+        <th colspan="3"><%= Season.last.start_date %> PLACES</th>
         <% if user_signed_in? && (current_user.admin? || current_user.league || current_user.coach) %>
         <th rowspan="2">Edit</th>
         <th rowspan="2">Delete</th>
@@ -26,7 +26,7 @@
     </thead>
     <tbody>
       <% @wrestlers.each do |wrestler, user| %>
-            
+
               <% wrestler.bouts.each do |bout| %>
                 <% if bout.tourney_place && bout.tourney_place > 0 %>
                   <% unless @tourney_results.include?([bout.tourney_name, bout.tourney_place]) %>

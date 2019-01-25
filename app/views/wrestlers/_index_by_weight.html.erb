@@ -2,8 +2,9 @@
      <% if user_signed_in? %>
         
         <div class="compare">
+          <% if @wrestlers.count > 0 %>
           <%= link_to "COMPARE WRESTLERS", compare_wrestlers_path(weight: @wt) %>
-            
+           <% end %> 
         </div>
         <% end %>
     </div>

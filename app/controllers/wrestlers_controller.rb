@@ -163,8 +163,33 @@ class WrestlersController < ApplicationController
   end
 
   def compare
-    @wrestlers = Season.last.wrestlers.where(weight: params[:weight]).where('league_id IS NOT null')
-    @tourney_results = []
+    @wrestlers = []
+    @wr = Season.last.wrestlers.where(weight: params[:weight]).where('league_id IS NOT null')
+    @wr.each do |w|
+      @wrestler = Wrestler.new
+      @wrestler.first_name = w["first_name"]
+      @wrestler.last_name = w["last_name"]
+      @wrestler.weight = w["weight"]
+      @wrestler.wins = w["wins"]
+      @wrestler.losses = w["losses"]
+      @wrestler.grade = w["grade"]
+      @wrestler.league_place = w["league_place"]
+      @wrestler.section_place = w["section_place"]
+      @wrestler.state_place = w["state_place"]
+      @wrestler.school_id = w["school_id"]
+      @wrestler.season_id = w["season_id"]
+      @wrestler.t1_name = w["t1_name"]
+      @wrestler.t1_place = w["t1_place"]
+      @wrestler.t2_name = w["t2_name"]
+      @wrestler.t2_place = w["t2_place"]
+      @wrestler.t3_name = w["t3_name"]
+      @wrestler.t3_place = w["t3_place"]
+      @wrestler.t4_name = w["t4_name"]
+      @wrestler.t4_place = w["t4_place"]
+      @wrestler.t5_name = w["t5_name"]
+      @wrestler.t5_place = w["t5_place"]
+      @wrestlers << @wrestler
+    end
     respond_to do |format|
       format.html { render :compare }
       # format.js 
@@ -172,18 +197,16 @@ class WrestlersController < ApplicationController
   end
 
   def compare_selected
+    @wr = params[:wrestlers]
     @wrestlers = []
-    if params["wrestlers"]
-      params["wrestlers"].each do |w|
-       p w
-        if w["checked"] 
-         @wrestlers << Wrestler.find(w)  
-         
-          
-        end
-      end
+    @wr.each do |w|
+      @tourney_results = []
+      if w["checked"] == "1"
+        @wrestlers << Wrestler.where(first_name: w["first_name"], last_name: w["last_name"], weight: w["weight"], school_id: w["school_id"])[0] 
+        @weight = w["weight"] 
+     end
+    end
       @count = @wrestlers.count
-      @weight = params[:weight]
       # if @wrestlers.count > 0
       #   redirect_to user_wrestlers_path(User.find(params[:user_id])), notice: "Import successful!"
       #   UserMailer.team_imported(@user, @wrestlers).deliver
@@ -191,7 +214,6 @@ class WrestlersController < ApplicationController
       #   redirect_to user_wrestlers_path(User.find(params[:user_id])), notice: "Import did not happen!  Did you forget to check off wrestlers?"  
       # end
       
-    end
   end
 
   def show
@@ -344,6 +366,9 @@ class WrestlersController < ApplicationController
       format.xls { send_data wrestlers.to_csv2({col_sep: "\t"})}
 
     end
+  end
+  def wrestlers_params
+    params.require(:wrestlers).permit({:id => [:checked, :weight, :id]})
   end
 
   def wrestler_params

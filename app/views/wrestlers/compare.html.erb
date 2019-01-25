@@ -15,7 +15,6 @@
            <th rowspan="2">NAME </th>
            <th rowspan="2">YR</th>
            <th rowspan="2">RECORD</th>
-           <th rowspan="2">TOURNAMENT<br>RESULTS</th>
            <th rowspan="2">2018 LEAGUE PLACE</th>
            <th colspan="3">2017 PLACES</th>
          </tr>
@@ -56,7 +55,11 @@
                   <div class="field">
                 <%= f.check_box :checked %>
               </div>
+                <%= f.hidden_field :school_id, :value => wrestler.school_id %>
+                <%= f.hidden_field :first_name, :value => wrestler.first_name %>
+                <%= f.hidden_field :last_name, :value => wrestler.last_name %>
                 <%= f.hidden_field :weight, :value => wrestler.weight %>
+                <%= f.hidden_field :id, :value => wrestler.id %>
                 </td>
                 <td><%= wrestler.weight %>
                       <% if wrestler.seed %>
@@ -65,12 +68,8 @@
                   </td>
                 
              
-            <% if wrestler.school.league %>
-              <td><%= wrestler.school.name %> (<%= wrestler.school.league.name %>)</td>
-            <% else %>
               <td><%= wrestler.school.name %> </td>
-            <% end %>
-            <td><%= link_to wrestler.first_name + " " + wrestler.last_name, wrestler_path(wrestler) %></td>
+            <td><%= wrestler.first_name + " " + wrestler.last_name %></td>
             <td><%= wrestler.grade %></td>
     <% if (wrestler.bouts.where(win_loss: "W").count || wrestler.bouts.where(win_loss: "L").count) && (wrestler.wins >= 0 if wrestler.wins != nil) %>
         <td><%= wrestler.bouts.where(win_loss: "W").count + wrestler.wins %>-<%= wrestler.bouts.where(win_loss: "L").count + wrestler.losses %></td>
@@ -82,31 +81,6 @@
 
 
       
-             <% if Season.find(SeasonWrestler.where(wrestler_id: wrestler.id)[0].season_id).start_date > 2016 %>
-        <td>
-           <% @tourney_results.each do |t| %>
-              <%= t[0] %> - <%= t[1] %><br>
-            <% end %> 
-        </td>
-        <% else %>
-        <td><% if wrestler.t1_name != "" && wrestler.t1_name != nil %>
-            <%= wrestler.t1_name %> <%= wrestler.t1_place %><br>
-            <% end %>
-            <% if wrestler.t2_name != "" && wrestler.t2_name != nil %>
-            <%= wrestler.t2_name %> <%= wrestler.t2_place %><br>
-            <% end %>
-            <% if wrestler.t3_name != "" && wrestler.t3_name != nil %>
-            <%= wrestler.t3_name %> <%= wrestler.t3_place %><br>
-            <% end %>
-            <% if wrestler.t4_name != "" && wrestler.t4_name != nil %>
-            <%= wrestler.t4_name %> <%= wrestler.t4_place %><br>
-            <% end %>
-            <% if wrestler.t5_name != "" && wrestler.t5_name != nil%>
-            <%= wrestler.t5_name %> <%= wrestler.t5_place %><br>
-            <% end %>
-        </td>
-      
-      <% end %>
                 <td><%= wrestler.league_place %></td>
                 <td><%= wrestler.league_1ya %></td>
                 <td><%= wrestler.section_place %></td>
