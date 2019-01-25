@@ -207,7 +207,7 @@ class WrestlersController < ApplicationController
      end
     end
       if @wrestlers.count > 0
-        show_compared(@wrestlers)
+        redirect_to show_compared_wrestlers_path(wrestlers: @wrestlers)
       end
       # if @wrestlers.count > 0
       #   redirect_to user_wrestlers_path(User.find(params[:user_id])), notice: "Import successful!"
@@ -218,14 +218,15 @@ class WrestlersController < ApplicationController
       
   end
 
-  def show_compared(wrestlers)
-    @w = wrestlers
+  def show_compared
+    @wr = params[:wrestlers]
     @wrestlers = []
-    @count = @w.count
-    @w.each do |wr|
-      @wrestlers << Wrestler.find(wr)
+    @wr.each do |w|
+      @wrestlers << Wrestler.find(w)
     end
-    render { :compare_selected }
+    @count = @wr.count
+    @tourney_results = []
+    @weight = @wrestlers[0].weight    
   end
 
   def show
