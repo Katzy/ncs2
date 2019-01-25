@@ -163,33 +163,34 @@ class WrestlersController < ApplicationController
   end
 
   def compare
-    @wrestlers = []
-    @wr = Season.last.wrestlers.where(weight: params[:weight]).where('league_id IS NOT null')
-    @wr.each do |w|
-      @wrestler = Wrestler.new
-      @wrestler.first_name = w["first_name"]
-      @wrestler.last_name = w["last_name"]
-      @wrestler.weight = w["weight"]
-      # @wrestler.wins = w["wins"]
-      # @wrestler.losses = w["losses"]
-      @wrestler.grade = w["grade"]
-      # @wrestler.league_place = w["league_place"]
-      # @wrestler.section_place = w["section_place"]
-      # @wrestler.state_place = w["state_place"]
-      @wrestler.school_id = w["school_id"]
-      # @wrestler.season_id = w["season_id"]
-      # @wrestler.t1_name = w["t1_name"]
-      # @wrestler.t1_place = w["t1_place"]
-      # @wrestler.t2_name = w["t2_name"]
-      # @wrestler.t2_place = w["t2_place"]
-      # @wrestler.t3_name = w["t3_name"]
-      # @wrestler.t3_place = w["t3_place"]
-      # @wrestler.t4_name = w["t4_name"]
-      # @wrestler.t4_place = w["t4_place"]
-      # @wrestler.t5_name = w["t5_name"]
-      # @wrestler.t5_place = w["t5_place"]
-      @wrestlers << @wrestler
-    end
+    # @wrestlers = []
+    @wrestlers = Season.last.wrestlers.where(weight: params[:weight]).where('league_id IS NOT null')
+    # @wr.each do |w|
+      # @wrestler = Wrestler.new
+      # @wrestler.first_name = w["first_name"]
+      # @wrestler.last_name = w["last_name"]
+      # @wrestler.weight = w["weight"]
+      # # @wrestler.wins = w["wins"]
+      # # @wrestler.losses = w["losses"]
+      # @wrestler.grade = w["grade"]
+      # # @wrestler.league_place = w["league_place"]
+      # # @wrestler.section_place = w["section_place"]
+      # # @wrestler.state_place = w["state_place"]
+      # @wrestler.school_id = w["school_id"]
+      # # @wrestler.season_id = w["season_id"]
+      # # @wrestler.t1_name = w["t1_name"]
+      # # @wrestler.t1_place = w["t1_place"]
+      # # @wrestler.t2_name = w["t2_name"]
+      # # @wrestler.t2_place = w["t2_place"]
+      # # @wrestler.t3_name = w["t3_name"]
+      # # @wrestler.t3_place = w["t3_place"]
+      # # @wrestler.t4_name = w["t4_name"]
+      # # @wrestler.t4_place = w["t4_place"]
+      # # @wrestler.t5_name = w["t5_name"]
+      # # @wrestler.t5_place = w["t5_place"]
+      # @wrestlers << @wrestler
+      # @wrestlers << w
+    # end
     respond_to do |format|
       format.html { render :compare }
       # format.js 
@@ -198,18 +199,19 @@ class WrestlersController < ApplicationController
 
   def compare_selected
     @wr = params[:wrestlers]
-    p @wr
+    
     @wrestlers = []
-    @wr.each do |w|
+    @wr.each do |w, v|
       @tourney_results = []
-      if w["checked"] == "1"
-        @wrestlers << Wrestler.where(first_name: w["first_name"], last_name: w["last_name"], weight: w["weight"], school_id: w["school_id"])[0] 
-        @weight = w["weight"] 
+      if v["checked"] == "1"
+        @wrestlers << Wrestler.where(first_name: v["first_name"], last_name: v["last_name"], weight: v["weight"], school_id: v["school_id"])[0] 
+        @weight = v["weight"] 
      end
     end
-      if @wrestlers.count > 0
-        redirect_to show_compared_wrestlers_path(wrestlers: @wrestlers)
-      end
+    @count = @wrestlers.count
+      # if @wrestlers.count > 0
+      #   redirect_to show_compared_wrestlers_path(wrestlers: @wrestlers)
+      # end
       # if @wrestlers.count > 0
       #   redirect_to user_wrestlers_path(User.find(params[:user_id])), notice: "Import successful!"
       #   UserMailer.team_imported(@user, @wrestlers).deliver
