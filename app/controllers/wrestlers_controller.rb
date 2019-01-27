@@ -205,7 +205,7 @@ class WrestlersController < ApplicationController
       params[:wrestlers].each do |k,v|
       
         if v["checked"] == "1"
-          @wr << Wrestler.where(first_name: v["first_name"], last_name: v["last_name"], weight: v["weight"], school_id: v["school_id"])[0] 
+          @wr << Wrestler.where(first_name: v["first_name"], last_name: v["last_name"], weight: v["weight"], school_id: v["school_id"], season_id: Season.last.id)[0] 
           @weight = v["weight"] 
         end
       end
