@@ -164,7 +164,7 @@ class WrestlersController < ApplicationController
 
   def compare
     # @wrestlers = []
-    @wrestlers = Wrestlers.where(weight: params[:weight], season_id: Season.last.id).where('league_id IS NOT null')
+    @wrestlers = Wrestler.where(weight: params[:weight], season_id: Season.last.id).where('league_id IS NOT null')
     # @wr.each do |w|
       # @wrestler = Wrestler.new
       # @wrestler.first_name = w["first_name"]
