@@ -3,9 +3,11 @@
     <thead>
       <tr>
         <th rowspan="2">WEIGHT</th>
-        
+        <% if user_signed_in? && current_user.admin? %>
         <th rowspan="2">AT LARGE</th>
+        
         <th rowspan="2">SCRATCH</th>
+        <% end %>
         <th rowspan="2">SCHOOL</th>
         <th rowspan="2">NAME </th>
         <th rowspan="2">YR</th>

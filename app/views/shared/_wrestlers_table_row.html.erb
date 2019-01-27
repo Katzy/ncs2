@@ -4,7 +4,7 @@
                   <br>(<%= wrestler.seed %>)
                   <% end %>
               </td>
-            
+            <% if user_signed_in? && current_user.admin? %>
             <td><% if wrestler.alternate == true %>
                   X
                 <% end %>
@@ -13,6 +13,7 @@
                   X
                 <% end %> 
                 </td>
+                <% end %>
         <% if wrestler.school.league %>
           <td><%= wrestler.school.name %> (<%= wrestler.school.league.name %>)</td>
         <% else %>

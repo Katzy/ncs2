@@ -1,4 +1,4 @@
-<div class="container">
+
   <% if @wrestlers.count > 0 && @comparing == false %>
 <div class="ui center aligned segment">
      <% if user_signed_in? %>
@@ -22,7 +22,6 @@
     
        <%= render partial: 'shared/wrestlers_table', locals: { tourney_results: @tourney_results } %>
     </div>
-</div>
 </div>
 
 
