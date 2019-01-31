@@ -27,12 +27,7 @@
 
   
          <% if Season.find(SeasonWrestler.where(wrestler_id: wrestler.id)[0].season_id).start_date > 2016 %>
-    <td>
-       <% @tourney_results.each do |t| %>
-          <%= t[0] %> - <%= t[1] %><br>
-        <% end %> 
-    </td>
-    <% else %>
+ 
     <td><% if wrestler.t1_name != "" && wrestler.t1_name != nil %>
         <%= wrestler.t1_name %> <%= wrestler.t1_place %><br>
         <% end %>
@@ -47,6 +42,12 @@
         <% end %>
         <% if wrestler.t5_name != "" && wrestler.t5_name != nil%>
         <%= wrestler.t5_name %> <%= wrestler.t5_place %><br>
+        <% if wrestler.t6_name != "" && wrestler.t6_name != nil%>
+        <%= wrestler.t6_name %> <%= wrestler.t6_place %><br>
+        <% if wrestler.t7_name != "" && wrestler.t7_name != nil%>
+        <%= wrestler.t7_name %> <%= wrestler.t7_place %><br>
+        <% if wrestler.t8_name != "" && wrestler.t8_name != nil%>
+        <%= wrestler.t8_name %> <%= wrestler.t8_place %><br>
         <% end %>
     </td>
   
