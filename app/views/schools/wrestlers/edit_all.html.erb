@@ -73,21 +73,18 @@
           </td>
           
           <td>
-            <div class="field">
+            <div class="field">LEAGUE PLACE
               <% if wrestler.league_place  %>
               <%= wrestler.league_place %>
-              <% else %>
-              <% if user_signed_in? && (current_user.admin? || (current_user.league_rep == true)) %>
-                <%= f.label :league_place, "#{Season.last.end_date}"  %><br>
-                <%= f.collection_select :league_place, ['1', '2', '3', '4', '5', '6', 'ALT_1', 'ALT_2', 'ALT_3', 'ALT_4','DNP'], :to_s, :to_s, :include_blank => true %><br>
-                <%= f.label :league_place, "LEAGUE PLACE"  %><br>
-                <% end %>
+              
               <% end %>
             </div>
           </td>
           <td>
-            <div class="field">SECTION<br>
-              <%= f.collection_select :section_place, ['1', '2', '3', '4', '5', '6', '7', '8'], :to_s, :to_s, :include_blank => true %>
+            <div class="field"><br>
+              <% if wrestler.section_place %>
+              <%= wrestler.section_place %>
+              <% end %>
             </div>
           </td>
           <td>

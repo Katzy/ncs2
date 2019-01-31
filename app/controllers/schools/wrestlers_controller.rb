@@ -129,7 +129,8 @@ module Schools
     end
    
     def update_all
-      Wrestler.update(params[:wrestlers].keys, params[:wrestlers].values)
+      @wrestlers = Wrestler.update(params[:wrestlers].keys, params[:wrestlers].values)
+      UserMailer.edit_all(current_user, @wrestlers).deliver
       redirect_to school_wrestlers_path(School.find(params[:school_id]))
 
     end

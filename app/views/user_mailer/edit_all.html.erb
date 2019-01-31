@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-type' />
+  </head>
+  <body>
+    <h1> <%= @user.name %> edited all</h1><br>
+      <% @wrestlers.each do |wrestler| %>
+    <p>
+
+      <h2>Weight: <%= wrestler.weight %> lbs</h2>
+      <h2>Wrestler: <b><%= wrestler.first_name %> <%= wrestler.last_name %></b></h2>
+       <h2>Fields changed: </h2>
+          <% wrestler.previous_changes().each_with_index do |(k,v), index| %>
+            <h3><%= "#{k} :  #{v[0]}  changed to #{v[1]}" %></h3>
+          <% end %>
+      <h3>Change made by: <%= @user.name %></h3><br>
+
+
+    </p>
+  </body>
+</html>
