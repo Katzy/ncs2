@@ -26,6 +26,7 @@ class UserMailer < ActionMailer::Base
   def edit_all(user, wrestlers)
     @user = user
     @wrestlers = wrestlers
+    mail(to: "scottalankatz@gmail.com", subject: "Team Edited All")
   end
 
   def bout_entered(user,wrestler, bout)
