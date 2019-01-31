@@ -120,7 +120,7 @@ module Schools
        @league = League.find_by_id(params[:league_id])
 
     end
-
+    
     def edit_all
       @wrestlers = Season.last.wrestlers.where(school_id: params[:school_id]).order('tourney_team DESC, weight ASC')
       @school = School.find(params[:school_id])
