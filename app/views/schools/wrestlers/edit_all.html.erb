@@ -16,14 +16,14 @@
         <th rowspan="2">RECORD</th>
         <th rowspan="2">TOURNAMENTS<br>RESULTS</th>
         <th rowspan="2"><%= Season.find(@season.id).end_date %><br>LEAGUE</th>        
-          <th colspan="2"><%= Season.find(@season.id).start_date %></th>
+          <!-- <th colspan="2"><%= Season.find(@season.id).start_date %></th> -->
           <th rowspan="2">COMMENTS</th>
         
       </tr>
-      <tr>
+      <!-- <tr>
         <th rowspan="1">NCS</th>
         <th rowspan="1">STATE</th>
-      </tr>
+      </tr> -->
 
         </thead>
         <tbody>
@@ -73,14 +73,14 @@
           </td>
           
           <td>
-            <div class="field">LEAGUE PLACE
+            <div class="field">
               <% if wrestler.league_place  %>
               <%= wrestler.league_place %>
               
               <% end %>
             </div>
           </td>
-          <td>
+          <!-- <td>
             <div class="field"><br>
               <% if wrestler.section_place %>
               <%= wrestler.section_place %>
@@ -93,7 +93,7 @@
              <%= wrestler.state_place %>
              <% end %>
             </div>
-          </td>
+          </td> -->
         <td>
           <div class="field"><br>
             <%= f.text_area :comments, :placeholder => "Keep very brief" %>

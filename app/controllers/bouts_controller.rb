@@ -27,7 +27,7 @@ class BoutsController < ApplicationController
       respond_to do |format|
         if @bout.save
           if !Tournament.exists?(name: @bout.tourney_name)
-            Tournament.create(name: @bout.tourney_name)
+            Tournament.create(name: @bout.tourney_nam)
           end
           increment_wrestler_record(@bout, @wrestler)
           UserMailer.bout_entered(current_user, @wrestler, @bout).deliver
@@ -98,6 +98,7 @@ class BoutsController < ApplicationController
       @bout = Bout.find(params[:id])
       @wrestler = Wrestler.find(@bout.wrestler_id)
       @bout.destroy
+      UserMailer.bout_deleted(current_user, @wrestler, @bout).delier
       update_wrestler_record(@bout, @wrestler)
       redirect_to wrestler_path(@wrestler)
       # @user = current_user
