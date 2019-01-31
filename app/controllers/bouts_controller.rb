@@ -26,6 +26,9 @@ class BoutsController < ApplicationController
       # @bout.opponent_team = params[:opponent_team]
       respond_to do |format|
         if @bout.save
+          if !Tournament.exists?(name: @bout.tourney_name)
+            Tournament.create(name: @bout.tourney_name)
+          end
           increment_wrestler_record(@bout, @wrestler)
           UserMailer.bout_entered(current_user, @wrestler, @bout).deliver
           format.html { redirect_to wrestler_path(@wrestler), notice: 'bout was successfully created.' }

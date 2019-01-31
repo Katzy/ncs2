@@ -200,42 +200,42 @@ ts = ["Battle by the Beach",
         end
       end
     end
+    if @tourney_results != nil
     if @tourney_results[0]
-    w.t1_name = @tourney_results[0][0] ? @tourney_results[0][0] : w.t1_name
-    w.t1_place = @tourney_results[0][1] ? @tourney_results[0][1] : w.t1_place 
-  end
-  if @tourney_results[1]  
-    w.t2_name = @tourney_results[1][0] ? @tourney_results[1][0] : w.t2_name
-    w.t2_place = @tourney_results[1][1] ? @tourney_results[1][1] : w.t2_place 
+      w.t1_name = @tourney_results[0][0] 
+      w.t1_place = @tourney_results[0][1] 
     end
+    if @tourney_results[1]  
+      w.t2_name = @tourney_results[1][0] 
+      w.t2_place = @tourney_results[1][1] 
+      end
     if @tourney_results[2]
-    w.t3_name = @tourney_results[2][0] ? @tourney_results[2][0] : w.t3_name
-    w.t3_place = @tourney_results[2][1] ? @tourney_results[2][1] : w.t3_place 
+      w.t3_name = @tourney_results[2][0] 
+      w.t3_place = @tourney_results[2][1] 
     end
     if @tourney_results[3]
-    w.t4_name = @tourney_results[3][0] ? @tourney_results[3][0] : w.t4_name
-    w.t4_place = @tourney_results[3][1] ? @tourney_results[3][1] : w.t4_place 
+      w.t4_name = @tourney_results[3][0] 
+      w.t4_place = @tourney_results[3][1] 
     end
     if @tourney_results[4]
-    w.t5_name = @tourney_results[4][0] ? @tourney_results[4][0] : w.t5_name
-    w.t5_place = @tourney_results[4][1] ? @tourney_results[4][1] : w.t5_place 
+      w.t5_name = @tourney_results[4][0] 
+      w.t5_place = @tourney_results[4][1] 
     end
     if @tourney_results[5]
-    w.t6_name = @tourney_results[5][0] ? @tourney_results[5][0] : w.t6_name
-    w.t6_place = @tourney_results[5][1] ? @tourney_results[5][1] : w.t6_place 
+      w.t6_name = @tourney_results[5][0] 
+      w.t6_place = @tourney_results[5][1] 
     end
     if @tourney_results[6]
-    w.t7_name = @tourney_results[6][0] ? @tourney_results[6][0] : w.t7_name
-    w.t7_place = @tourney_results[6][1] ? @tourney_results[6][1] : w.t7_place 
-  end
-  end
-  if @tourney_results[7]
-    w.t8_name = @tourney_results[7][0] ? @tourney_results[7][0] : w.t8_name
-    w.t8_place = @tourney_results[7][1] ? @tourney_results[7][1] : w.t8_place 
+      w.t7_name = @tourney_results[6][0] 
+      w.t7_place = @tourney_results[6][1] 
+    end
+    if @tourney_results[7]
+      w.t8_name = @tourney_results[7][0] 
+      w.t8_place = @tourney_results[7][1] 
+    end
   end
     w.save
     @tourney_results = []
-  end
   end
 
 
