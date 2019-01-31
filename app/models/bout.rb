@@ -1,5 +1,8 @@
 class Bout < ActiveRecord::Base
+  after_update :update_wrestler_record, :if => :win_loss_changed?
+
   acts_as_xlsx
+
 
   belongs_to :wrestler
   # belongs_to :season_wrestler
@@ -13,6 +16,18 @@ class Bout < ActiveRecord::Base
   validates :score_time, presence: true, null: false
   validates :opponent_team, presence: true, null: false
 
+  def update_wrestler_record
+    @b = Bout.find(self.id)
+    @w = Wrestler.find(@b.wrestler_id)
+    if self.win_loss == "W"
+      @w.wins += 1
+      @w.losses -= 1
+    else
+      @w.wins -= 1
+      @w.losses += 1
+    end
+    @w.save
+  end
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|

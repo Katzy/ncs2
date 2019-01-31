@@ -61,6 +61,7 @@ module Wrestlers
       @season = Season.last
       respond_to do |format|
         if @bout.save
+          update_wrestler_record(@bout, @wrestler)
           format.html { redirect_to wrestler_path(@wrestler, season: @season), notice: 'bout was successfully created.' }
           format.json { render action: 'wrestlers/show', status: :created, location: @wrestler }
           # added:
@@ -108,7 +109,17 @@ module Wrestlers
     end
 
     private
- 
+
+    def update_wrestler_record(bout, wrestler)
+      @w = wrestler
+      if bout.win_loss == "W"
+          @w.wins += 1
+      else
+          @w.losses += 1
+      end
+      @w.save
+    end
+
     def bout_params
       params.require(:bout).permit(:date, :weight, :dual_or_tourney, :tourney_name, :tourney_seed, :opponent_name, :opponent_team, :win_loss, :result_type, :score_time, :tourney_place, :wrestler_id)
     end

@@ -9,7 +9,11 @@ module Schools
         @lg = League.find(@school.league_id)
       end
       @seasons = Season.all.order('id DESC')
+      if params[:season_id]
        @season = Season.find(params[:season_id])
+      else
+        @season = Season.last
+      end
         if SeasonWrestler.where(season_id: @season.id, wrestler_school_id: @school.id).count > 0 
           @wrestlers = @season.wrestlers.where(school_id: @school.id).order('tourney_team DESC, weight ASC')
         else
@@ -117,7 +121,18 @@ module Schools
 
     end
 
+    def edit_all
+      @wrestlers = Season.last.wrestlers.where(school_id: params[:school_id]).order('tourney_team DESC, weight ASC')
+      @school = School.find(params[:school_id])
+      @tournaments = Tournament.all.order('name ASC')
+      @tourney_results = []
+    end
    
+    def update_all
+      Wrestler.update(params[:wrestlers].keys, params[:wrestlers].values)
+      redirect_to school_wrestlers_path(School.find(params[:school_id]))
+
+    end
 
     def weight_106
       select_wrestlers(106)

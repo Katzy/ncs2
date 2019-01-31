@@ -23,6 +23,13 @@ class UserMailer < ActionMailer::Base
     mail(to: "scottalankatz@gmail.com", subject: "Team Info Updated")
   end
 
+  def bout_entered(user,wrestler, bout)
+    @user = user
+    @wrestler = wrestler
+    @bout = bout
+    mail(to: "scottalankatz@gmail.com", subject: "Bout entered")
+  end
+
   def msg_to_coaches(msg_arr)
     @user = msg_arr[0]
     @subject = msg_arr[1]

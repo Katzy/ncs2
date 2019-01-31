@@ -144,6 +144,8 @@ Rails.application.routes.draw do
        get :help
        get :download
        get :tourney_team
+       get :edit_all
+       post :update_all
      end
     end
   end

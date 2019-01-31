@@ -89,6 +89,13 @@
       <table class="ui celled center aligned structured stackable table">
         <thead>
         <h3><%= @season.name %> ROSTER</h3> <!-- (tournament team upper case) -->
+        <% if user_signed_in? && (current_user.admin? || current_user.school.name == @school.name || (current_user.league_id == @school.league_id) && current_user.league_rep == true ) %>
+        <div class="ui button">
+          <a href="/schools/<%= @school.id %>/wrestlers/edit_all">
+            <div class="visible content">EDIT ALL WRESTLERS</div>
+          </a>
+        </div>
+        <% end %>
            <tr>
         <th rowspan="2">WEIGHT</th>
         

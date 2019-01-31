@@ -28,7 +28,14 @@
        
       <table class="ui celled right aligned structured stackable table" style="padding:5em;">
         <thead>
-        <h3><%= @season.name %> TEAM ROSTER </h3>  
+        <h3><%= @season.name %> TEAM ROSTER </h3> 
+         <% if user_signed_in? && (current_user.admin? || current_user.school.name == @school.name || (current_user.league_id == @school.league_id) && current_user.league_rep == true ) %>
+        <div class="ui button">
+          <a href="/schools/<%= @school.id %>/wrestlers/edit_all">
+            <div class="visible content">EDIT ALL WRESTLERS</div>
+          </a>
+        </div>
+        <% end %> 
         <!-- (tournament team upper case) -->
              <tr>
         <th rowspan="2">WEIGHT</th>
@@ -72,6 +79,15 @@
         <thead>
         <h3><%= @season.name %> TEAM ROSTER </h3> 
         <!-- (tournament team upper case) -->
+        <% if @season.id == Season.last.id %>
+         <% if user_signed_in? && (current_user.admin? || current_user.school.name == @school.name || (current_user.league_id == @school.league_id) && current_user.league_rep == true ) %>
+        <div class="ui button">
+          <a href="/schools/<%= @school.id %>/wrestlers/edit_all">
+            <div class="visible content">EDIT ALL WRESTLERS</div>
+          </a>
+        </div>
+        <% end %>
+        <% end %>
            <tr>
         <th rowspan="2">WEIGHT</th>
         
@@ -133,7 +149,15 @@
              <% if wrestler.t5_name != "" && wrestler.t5_name != nil && wrestler.t5_name != " " %>
                <% @tourney_results << [ wrestler.t5_name, wrestler.t5_place] %>
              <% end %>
-            
+              <% if wrestler.t6_name != "" && wrestler.t6_name != nil && wrestler.t6_name != " " %>
+               <% @tourney_results << [ wrestler.t6_name, wrestler.t6_place] %>
+             <% end %>
+             <% if wrestler.t7_name != "" && wrestler.t7_name != nil && wrestler.t7_name != " " %>
+               <% @tourney_results << [ wrestler.t7_name, wrestler.t7_place] %>
+             <% end %>
+             <% if wrestler.t8_name != "" && wrestler.t8_name != nil && wrestler.t8_name != " " %>
+               <% @tourney_results << [ wrestler.t8_name, wrestler.t8_place] %>
+             <% end %>
             <%= render partial: 'schools/wrestlers/table_row', locals: { wrestler: wrestler, tourney_results: @tourney_results, wins: @wins, losses: @losses } %>
            
             <% @tourney_results = [] %>

@@ -15,10 +15,8 @@
           <th rowspan="2">D/MD/TF/Fall</th>
           <th rowspan="2">Score/Time</th>
           <th rowspan="2">Tourney Place</th>
-          <% if user_signed_in? && (current_user.admin? || current_user.school_id == @wrestler.school.id) %>
+          <% if user_signed_in? && (current_user.admin? || (current_user.school_id == @wrestler.school.id) && @season.id == Season.last.id) %>
           <th rowspan="2">EDIT</th>
-          <% end %>
-          <% if user_signed_in? && (current_user.admin? || current_user.school_id == @wrestler.school.id) %>
           <th rowspan="2">DELETE</th>
           <% end %>
         </tr>

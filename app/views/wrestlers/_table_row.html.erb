@@ -19,12 +19,7 @@
   <td><%= wrestler.state_place %></td>
      <% if Season.find(SeasonWrestler.where(wrestler_id: wrestler.id)[0].season_id).start_date > 2016 %>
     <td>
-       <% @tourney_results.each do |t| %>
-          <%= t[0] %> - <%= t[1] %><br>
-        <% end %> 
-    </td>
-    <% else %>
-    <td><% if wrestler.t1_name != "" && wrestler.t1_name != nil %>
+      <% if wrestler.t1_name != "" && wrestler.t1_name != nil %>
         <%= wrestler.t1_name %> <%= wrestler.t1_place %><br>
         <% end %>
         <% if wrestler.t2_name != "" && wrestler.t2_name != nil %>
@@ -60,10 +55,8 @@
   </td>
  -->
 
-  <% if user_signed_in? &&  (current_user.admin? ) %>
+  <% if user_signed_in? && (current_user.admin?) %>
     <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
-     <% end %>
-    <% if user_signed_in? && (current_user.admin?) %>
     <td><%= link_to 'Delete', wrestler, method: "delete", :data => {:confirm => 'Are you sure?'} %> </td>
   <% end %>
 

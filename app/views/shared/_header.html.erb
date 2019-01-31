@@ -228,7 +228,7 @@
       </div>
 
       <% end %>
-      <% if user_signed_in? && ((@user.coach == true) && @user.league_rep == nil) %>
+      <% if user_signed_in? && ((@user.coach == true) && (@user.league_rep == nil || @user.league_rep == false)) %>
          <div class="ui item">
         <%= link_to "MY TEAM", school_wrestlers_path(@user.school, season_id: Season.last.id) %>
         </div>

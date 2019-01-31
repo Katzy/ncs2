@@ -11,6 +11,8 @@ class BoutsController < ApplicationController
       @bouts = @wrestler.bouts.all
     end
 
+  
+
     def create
       @wrestler = Wrestler.find(bout_params[:wrestler_id])
       @bout = @wrestler.bouts.new(bout_params)
@@ -24,6 +26,8 @@ class BoutsController < ApplicationController
       # @bout.opponent_team = params[:opponent_team]
       respond_to do |format|
         if @bout.save
+          increment_wrestler_record(@bout, @wrestler)
+          UserMailer.bout_entered(current_user, @wrestler, @bout).deliver
           format.html { redirect_to wrestler_path(@wrestler), notice: 'bout was successfully created.' }
           format.json { render action: 'wrestlers/show', status: :created, location: @wrestler }
           # added:
@@ -66,11 +70,15 @@ class BoutsController < ApplicationController
       @bout = Bout.find(params[:id])
       @wrestler = Wrestler.find(@bout.wrestler_id)
       @bouts = @wrestler.bouts.order("date ASC")
+      @tourney_results = []
       @match_number = 1 
       @bout.tourney_name = params[:tourney_name]
       @bout.opponent_name = params[:opponent_name]
       @bout.opponent_team = params[:opponent_team]      
+     
       if @bout.update(bout_params)
+        
+        
       #   if current_user.admin?
       #     redirect_to league_path(@league)
       #   else
@@ -87,6 +95,7 @@ class BoutsController < ApplicationController
       @bout = Bout.find(params[:id])
       @wrestler = Wrestler.find(@bout.wrestler_id)
       @bout.destroy
+      update_wrestler_record(@bout, @wrestler)
       redirect_to wrestler_path(@wrestler)
       # @user = current_user
       # @school = School.find(params[:id])
@@ -95,7 +104,39 @@ class BoutsController < ApplicationController
     end
 
     private
-    
+
+    def change_wrestler_record(bout, w)
+      if bout.win_loss == "W"
+        w.wins += 1
+        w.losses -= 1
+      else
+        w.wins -= 1
+        w.losses += 1
+      end
+      w.save
+    end
+
+    def increment_wrestler_record(bout, wrestler)
+      @w = wrestler
+      if bout.win_loss == "W"
+          @w.wins += 1
+      else
+          @w.losses += 1
+      end
+      @w.save
+    end
+
+    def update_wrestler_record(bout, w)
+      if bout.win_loss == "W"
+        w.wins -= 1
+      else
+        w.losses -= 1
+      end
+      w.save
+    end
+
+
+
     def create_tourney
       if params[:dual_or_tourney] == "Tournament"
       if Tournament.exists?(:name => params[:tourney_name]) == false

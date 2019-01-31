@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-type' />
+  </head>
+  <body>
+    <h1> <%= @user.name %> (<%= @user.school.name %>) </h1>
+   
+    <p><ul>
+      <li>Wrestler: <%= @wrestler.first_name %> <%= @wrestler.last_name %></li>
+      <li>Match Result: <%= @bout.win_loss %> <%= @bout.opponent_name %>: <%= @bout.score_time %></li>
+      </ul>
+    </p>
+  </body>
+</html>
