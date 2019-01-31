@@ -36,6 +36,13 @@ class UserMailer < ActionMailer::Base
     mail(to: "scottalankatz@gmail.com", subject: "Bout entered")
   end
 
+  def bout_edited(user,wrestler, bout)
+    @user = user
+    @wrestler = wrestler
+    @bout = bout
+    mail(to: "scottalankatz@gmail.com", subject: "Bout edited")
+  end
+
   def bout_deleted(user,wrestler,bout)
     @user = user
     @wrestler = wrestler

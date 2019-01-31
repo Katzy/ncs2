@@ -80,7 +80,7 @@ class BoutsController < ApplicationController
       @bout.opponent_team = params[:opponent_team]      
      
       if @bout.update(bout_params)
-        
+        UserMailer.bout_edited(current_user, @wrestler, @bout).deliver
         
       #   if current_user.admin?
       #     redirect_to league_path(@league)
