@@ -97,17 +97,24 @@
 </div>
     <% if SeasonWrestler.where(wrestler_id: @wrestler.id)[0].season_id == Season.last.id %>
       <% if user_signed_in? &&  (current_user.admin? ||  current_user.school_id == @wrestler.school_id ) %>
-        <div class="eight wide center aligned column">
-          <i class="add user icon"></i><%= link_to 'ADD MATCH RESULT', new_wrestler_bout_path(@wrestler) %>
-        </div>
-     
+        <div class="sixteen wide center aligned column">
+          <!-- <i class="add user icon"></i><%= link_to 'ADD MATCH RESULT', new_wrestler_bout_path(@wrestler) %> -->
+           <div class="ui animated help button">
+           <a href="/wrestlers/<%= @wrestler.id %>/bouts/new"> 
+            <div class="visible content">ADD MATCH RESULT</div>
+            <div class="hidden content download">ONE AT A TIME</div>
+           </a>   
+        </div><br><br>
         <div class="ui animated help button">
-           <a href="/wrestlers/<%= @wrestler.id %>/bouts/help"> 
-            <div class="visible content">UPLOAD MATCH RESULTS INSTRUCTIONS</div>
-            <div class="hidden content download">Click for Instructions! READ ME!</div>
+           <a href=""> 
+            <div class="visible content">ADD TOURNAMENT RESULTS</div>
+            <div class="hidden content download">Multiple Match Entry<br>COMING SOON!<br></div>
            </a>   
         </div>
-
+        <br><br>
+     
+        
+      </div>
 <!--       <%= form_tag import_wrestler_bouts_path(@wrestler), multipart: true do %>
         <%= file_field_tag :file %>
         <%= submit_tag "Import Bouts from CSV" %>

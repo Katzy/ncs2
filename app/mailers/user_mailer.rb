@@ -10,7 +10,7 @@ class UserMailer < ActionMailer::Base
 
   def generic_message(user)
     @user = user
-    mail(to: @user.email, subject: "IMPORTANT NCS WEBSITE INFORMATION")
+    mail(to: @user.email, subject: "NCS WEBSITE / Update Rosters for League Tournaments")
   end
 
   def new_user_added(user)

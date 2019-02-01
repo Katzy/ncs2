@@ -10,8 +10,9 @@
      
            <tr>
         <th rowspan="2">WEIGHT</th>
-        
+        <th rowspan="2">VARSITY</th>
         <th rowspan="2">NAME </th>
+
         <th rowspan="2">GRADE</th>
         <th rowspan="2">RECORD</th>
         <th rowspan="2">TOURNAMENTS<br>RESULTS</th>
@@ -29,16 +30,32 @@
         <tbody>
           <% @wrestlers.each do |wrestler| %>
             <%= fields_for "wrestlers[]", wrestler do |f|%>
-                
+            <% if wrestler.errors.any? %>
+              <div id="error_explanation">
+          <h2><%= pluralize(wrestler.errors.count, "error") %> prohibited this wrestler from being saved:</h2>
+
+          <ul>
+            <% wrestler.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
             <td>
           <div class="field">
           <%= f.collection_select :weight, ['106', '113', '120', '126', '132', '138', '145', '152', '160', '170', '182', '195', '220', '285'], :to_s, :to_s, :include_blank => true %>
           </div>
         </td>
+        <td>
+          <div class="field">
+          <%= f.check_box :tourney_team %>
+          </div>
+        </td>
         
           <td>
             <div class="field">
-          <%= f.text_field :first_name, :readonly=>true %><br> <%= f.text_field :last_name, :readonly=>true %>
+              <%= "#{wrestler.first_name + ' ' + wrestler.last_name}" %>
+          </div>
           </td>
           <td>
             <div class="field">
@@ -50,11 +67,11 @@
 
           <div class="field">
              <%= f.label :wins, "W" %>
-          <%= f.collection_select :wins, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50'], :to_s, :to_s, :include_blank => true %>
+          <%= f.collection_select :wins, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50'], :to_s, :to_s, :include_blank => false %>
           </div>
             <div class="field">
             <%= f.label :losses, "L" %>
-           <%= f.collection_select :losses, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50'], :to_s, :to_s, :include_blank => true %>
+           <%= f.collection_select :losses, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50'], :to_s, :to_s, :include_blank => false %>
           </div>
         </td>
                      

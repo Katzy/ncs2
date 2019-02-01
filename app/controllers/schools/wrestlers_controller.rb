@@ -120,7 +120,7 @@ module Schools
        @league = League.find_by_id(params[:league_id])
 
     end
-    
+
     def edit_all
       @wrestlers = Season.last.wrestlers.where(school_id: params[:school_id]).order('tourney_team DESC, weight ASC')
       @school = School.find(params[:school_id])
@@ -129,10 +129,17 @@ module Schools
     end
    
     def update_all
+      @school = School.find(params[:school_id])
+      @tournaments = Tournament.all.order('name ASC')
+      @tourney_results = []
       @wrestlers = Wrestler.update(params[:wrestlers].keys, params[:wrestlers].values)
-      UserMailer.edit_all(current_user, @wrestlers).deliver
-      redirect_to school_wrestlers_path(School.find(params[:school_id]))
-
+      @wrestlers.reject! { |p| p.errors.empty? }
+      if @wrestlers.empty?
+        UserMailer.edit_all(current_user, Wrestler.find(params[:wrestlers].keys)).deliver
+        redirect_to school_wrestlers_path(School.find(params[:school_id]))
+      else
+        render "edit_all"
+      end
     end
 
     def weight_106
