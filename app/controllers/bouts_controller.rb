@@ -98,8 +98,8 @@ class BoutsController < ApplicationController
       @bout = Bout.find(params[:id])
       @wrestler = Wrestler.find(@bout.wrestler_id)
       @bout.destroy
-      UserMailer.bout_deleted(current_user, @wrestler, @bout).delier
       update_wrestler_record(@bout, @wrestler)
+      UserMailer.bout_deleted(current_user, @wrestler, @bout).deliver
       redirect_to wrestler_path(@wrestler)
       # @user = current_user
       # @school = School.find(params[:id])
