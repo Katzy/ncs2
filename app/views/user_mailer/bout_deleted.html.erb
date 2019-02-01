@@ -1,3 +1,4 @@
+
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-type' />
@@ -5,13 +6,10 @@
   <body>
     <h1> <%= @user.name %> (<%= @wrestler.school.name %>) </h1>
    
-    <p>
-      Wrestler: <%= @wrestler.first_name %> <%= @wrestler.last_name %><br>
-      Match Result:<br>
-      <%= @bout.win_loss %><br>
-      <%= @bout.opponent_name %> <%= #bout.opponent_team %><br>
-      <%= @bout.score_time %>
-      
+    <p><ul>
+      <li>Wrestler: <%= @wrestler.first_name %> <%= @wrestler.last_name %></li>
+      <li>Match Result: <%= @bout.win_loss %> <%= @bout.opponent_name %>: <%= @bout.score_time %></li>
+      </ul>
     </p>
   </body>
 </html>
