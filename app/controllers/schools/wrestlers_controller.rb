@@ -95,6 +95,7 @@ module Schools
       wrestler_array = [user, wrestler]
       respond_to do |format|
         if @wrestler.save
+          create_tourney(@wrestler)
          UserMailer.wrestler_added(wrestler_array).deliver
           format.html { redirect_to league_path(@league), notice: 'wrestler was successfully created.' }
            format.json { render json: @wrestler.errors, status: :unprocessable_entity }
@@ -118,6 +119,7 @@ module Schools
       uid = @wrestler.school_id
       @school = School.find(@wrestler.school_id)
        @league = League.find_by_id(params[:league_id])
+       @tournaments = Tournament.order('name ASC')
 
     end
 
@@ -133,6 +135,9 @@ module Schools
       @tournaments = Tournament.all.order('name ASC')
       @tourney_results = []
       @wrestlers = Wrestler.update(params[:wrestlers].keys, params[:wrestlers].values)
+      @wrestlers.each do |w|
+        create_tourney(w)
+      end
       @wrestlers.reject! { |p| p.errors.empty? }
       if @wrestlers.empty?
         UserMailer.edit_all(current_user, Wrestler.find(params[:wrestlers].keys)).deliver
@@ -199,7 +204,7 @@ module Schools
     end
 
     def show
-      @wrestler = Wrestler.find(params[:id])
+      @wrestlers = Wrestler.find(params[:id])
     end
 
     def update
@@ -212,6 +217,7 @@ module Schools
       @league = @school.league_id
       wrestler_array = [user, wrestler]
       if @wrestler.update(wrestler_params)
+        create_tourney(@wrestler)
          UserMailer.wrestler_updated(wrestler_array).deliver
         if current_user.admin?
           if weight == 106
@@ -283,6 +289,32 @@ module Schools
         end
       end
 
+    def create_tourney(wrestler)
+        if !Tournament.exists?(name: wrestler.t1_name )
+          Tournament.create({name: wrestler.t1_name})
+        end
+        if !Tournament.exists?(name: wrestler.t2_name )
+          Tournament.create({name: wrestler.t2_name})
+        end
+        if !Tournament.exists?(name: wrestler.t3_name )
+          Tournament.create({name: wrestler.t3_name})
+        end
+        if !Tournament.exists?(name: wrestler.t4_name )
+          Tournament.create({name: wrestler.t4_name})
+        end
+        if !Tournament.exists?(name: wrestler.t5_name )
+          Tournament.create({name: wrestler.t5_name})
+        end
+        if !Tournament.exists?(name: wrestler.t6_name )
+          Tournament.create({name: wrestler.t6_name})
+        end
+        if !Tournament.exists?(name: wrestler.t7_name )
+          Tournament.create({name: wrestler.t7_name})
+        end
+        if !Tournament.exists?(name: wrestler.t8_name )
+          Tournament.create({name: wrestler.t8_name})
+        end
+    end
 
     def select_wrestlers(wt)
         @season = Season.last

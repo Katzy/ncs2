@@ -18,7 +18,7 @@
       <% end %>
       <div class="fields">
           <div class="three wide field">
-         <%= f.label :tourney_team, "***TOURNAMENT TEAM ***" %><br>
+         <%= f.label :tourney_team, "***VARSITY TEAM ***" %><br>
          <%= f.check_box :tourney_team %><br>
          </div>
         <div class="three wide field">
@@ -127,7 +127,7 @@
 
       </div>
 
-      <h5>*** Tournament team is your Varsity team.  Wrestlers with this designation will show up in ALL CAPS and will be wrestling in your NCS qualifying tournament!).</h5>
+      <h5>*** If you check VARSITY TEAM, wrestlers will show up in ALL CAPS and will be wrestling in your NCS qualifying tournament!).</h5>
       
              <h4> WINS & LOSSES:  If you add a match result to your wrestler from the wrestler profile page, wins and losses update automatically! </h4> 
             <h2 class="ui center aligned header">SEEDING INFORMATION</h2>
@@ -137,57 +137,33 @@
 
           <div class="two wide field" style="font-size:0.7em">
           <%= f.label :t1_name, "TOURNAMENT 1" %><br>
-          <% if :t1_name != nil && :t1_name != "" %>
-
-           <%= f.text_field :t1_name %>
-            <% else %>
+         
             <%= f.collection_select :t1_name, @tournaments, :name, :name, {:include_blank => true} %>
-           <% end %>
           </div>
 
 
            <div class="two wide field" style="font-size:0.7em">
           <%= f.label :t2_name, "TOURNAMENT 2" %><br>
-          <% if :t2_name != nil && :t2_name != "" %>
-            <%= f.text_field :t2_name %>
-            <% else %>
           <%= f.collection_select :t2_name, @tournaments, :name, :name, {:include_blank => true} %>
-          <% end %>
           </div>
 
 
            <div class="two wide field" style="font-size:0.7em">
           <%= f.label :t3_name, "TOURNAMENT 3" %><br>
-          <% if :t3_name != nil && :t3_name != "" %>
-           <%= f.text_field :t3_name %>
-            <% else %>
            <%= f.collection_select :t3_name, @tournaments, :name, :name, {:include_blank => true} %>
-          <% end %>
           </div>
            <div class="two wide field" style="font-size:0.7em">
           <%= f.label :t4_name, "TOURNAMENT 4" %><br>
-          <% if :t4_name != nil && :t4_name != "" %>
-           <%= f.text_field :t4_name %>
-            <% else %>
           <%= f.collection_select :t4_name, @tournaments, :name, :name, {:include_blank => true} %>
-          <% end %>
           </div>
              
           <div class="two wide field" style="font-size:0.7em">
             <%= f.label :t5_name, "TOURNAMENT 5" %><br>
-          <% if :t5_name != nil && :t5_name != "" %>
-           <%= f.text_field :t5_name %>
-            <% else %>
             <%= f.collection_select :t5_name, @tournaments, :name, :name, {:include_blank => true} %>
-          <% end %>
           </div>
            <div class="two wide field" style="font-size:0.7em">
             <%= f.label :t6_name, "TOURNAMENT 6" %><br>
-          <% if :t6_name != nil && :t6_name != "" %>
-           <%= f.text_field :t6_name %>
-            <% else %>
             <%= f.collection_select :t6_name, @tournaments, :name, :name, {:include_blank => true} %>
-          <% end %>
           </div>
            <div class="two wide field" style="font-size:0.7em">
             <%= f.label :t7_name, "TOURNAMENT 7" %><br>
