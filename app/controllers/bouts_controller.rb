@@ -131,10 +131,11 @@ class BoutsController < ApplicationController
     end
 
     def update_wrestler_record(bout, w)
-      if bout.win_loss == "W"
+      if bout.win_loss == "W" && w.wins > 0
         w.wins -= 1
-      else
-        w.losses -= 1
+      end
+      if bout.win_loss == "L" && w.losses > 0 
+          w.losses -= 1
       end
       w.save
     end
