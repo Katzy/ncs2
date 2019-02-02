@@ -22,8 +22,8 @@ class LeaguesController < ApplicationController
         @lg = League.find(params[:id])
         @schools = School.where("league_id = #{params[:id]}").order('name ASC')
         @school_ids = @schools.map { |school| school.id }
-        @wrestlers = Wrestler.where("league = '#{@lg.name}' OR league_id = '#{@lg.id}'").order('weight ASC, state_place DESC, section_place DESC, seed ASC, wins DESC')
-
+        # @wrestlers = Wrestler.where("league = '#{@lg.name}' OR league_id = '#{@lg.id}'").order('weight ASC, state_place DESC, section_place DESC, seed ASC, wins DESC')
+        @wrestlers = Season.last.wrestlers(league_id: params[:id], tourney_team: true)
       end
 
       def create
