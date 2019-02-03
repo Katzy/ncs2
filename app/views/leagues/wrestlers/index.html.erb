@@ -11,6 +11,14 @@
      <div class="sixteen wide column">
       <b><%= @lg.name %></b><br>(<%= @lg.wrestlers.where(tourney_team: true, season_id: Season.last.id).count %>)
     </div>
+    <% if user_signed_in? && (current_user.admin? ||  (current_user.league_id == @lg.id && current_user.league_rep == true )) %>
+        <div class="ui animated large button">
+          <a href="/leagues/<%= @lg.id %>/wrestlers/edit_all">
+            <div class="visible content">EDIT ALL WRESTLERS</div>
+            <div class="hidden content download">UPDATE LEAGUE PLACERS</div>
+          </a>
+        </div>
+        <% end %>
     <div class="ui center aligned segment">
     
       <table class="ui celled center aligned structured stackable table">
@@ -55,6 +63,14 @@
        Download:
             <%= link_to "CSV", league_wrestlers_path(format: "csv") %> <br><br>
     </div><br>
+      <% if user_signed_in? && (current_user.admin? ||  (current_user.league_id == @lg.id && current_user.league_rep == true )) %>
+        <div class="ui animated large button">
+          <a href="/leagues/<%= @lg.id %>/wrestlers/edit_all">
+            <div class="visible content">EDIT ALL WRESTLERS</div>
+            <div class="hidden content download">UPDATE LEAGUE PLACERS</div>
+          </a>
+        </div>
+        <% end %>
 
     <div class="ui center aligned segment">
     

@@ -98,11 +98,26 @@ module Leagues
 
     def edit
       @wrestler = Wrestler.find(params[:id])
-
       uid = @wrestler.school_id
       @school = School.find(@wrestler.school_id)
        @league = League.find_by_id(params[:league_id])
+    end
 
+    def edit_all
+      @wrestlers = Season.last.wrestlers.where(league_id: params[:league_id], tourney_team: true).order('weight ASC')
+      @lg = League.find(params[:league_id])
+
+    end
+
+    def update_all
+      @wrestlers = Wrestler.update(params[:wrestlers].keys, params[:wrestlers].values)
+      @wrestlers.reject! { |p| p.errors.empty? }
+      if @wrestlers.empty?
+        # UserMailer.edit_all(current_user, Wrestler.find(params[:wrestlers].keys)).deliver
+        redirect_to league_wrestlers_path(League.find(params[:league_id]))
+      else
+        render "edit_all"
+      end
     end
 
     def show

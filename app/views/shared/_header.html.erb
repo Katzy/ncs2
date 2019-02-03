@@ -54,7 +54,8 @@
      <% if user_signed_in? && (@user.league_rep == true) %>
     <div class="ui item">
         <%= link_to "MY TEAM", school_wrestlers_path(@user.school, season_id: Season.last.id) %>
-        <%= link_to "VIEW LEAGUES", leagues_path %>
+        <%= link_to "MY LEAGUE (#{@user.league.name})", league_wrestlers_path(@user.league) %>
+        <%= link_to "LEAGUE REPS", leagues_path %>
         </div>
         <% end %>
      <a class="weight item"><b>LEAGUES</b></a>

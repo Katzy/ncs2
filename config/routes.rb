@@ -130,10 +130,13 @@ Rails.application.routes.draw do
       post :add_school_create
     end
     resources :schools, controller: "leagues/schools"
-    resources :wrestlers, controller: "leagues/wrestlers"
-      member do
+    resources :wrestlers, controller: "leagues/wrestlers" do
+      collection do
+        get :edit_all
+        post :update_all
         delete :delete_wrestler
       end
+    end
   end
 
   resources :schools do
