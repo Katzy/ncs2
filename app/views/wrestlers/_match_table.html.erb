@@ -22,12 +22,12 @@
         </tr>
       </thead>
       <tbody>
-        
+          <% if @bouts %>
           <% @bouts.order('date ASC').each do |bout| %>
             <%= render partial: 'bouts/table_row', locals: { bout: bout } %>
             <% @match_number += 1 %>
           <% end %>
-        
+         <% end %>
       </tbody>
     </table>
     <br><br>
