@@ -19,11 +19,8 @@
             League: <%= wrestler.league.name %><br>
             _____________________________________________<br>
             <b>SEEDING INFORMATION</b><br><br>
-            <% if wrestler.bouts.where(win_loss: "W").count  %>
-              Overall Record: &emsp;&emsp;<%= wrestler.bouts.where(win_loss: "W").count %>-<%= wrestler.bouts.where(win_loss: "L").count %> (incl forfeit)<br>
-                <% else %>
+          
                 Overall Record: &emsp;&emsp;<%= wrestler.wins %>-<%= wrestler.losses %> (incl. forfeit)<br>
-              <% end %>
               2018 NCS Place: &emsp;&emsp;&emsp;&nbsp;<%= wrestler.section_place %> (wt:___)<br>
               2018 STATE Place: &emsp;&emsp;<%= wrestler.state_place %> (wt:___)<br><br>
               <!-- NCS Losses: &emsp;&emsp;&emsp;&nbsp;<%= wrestler.losses_ncs %><br><br> -->
