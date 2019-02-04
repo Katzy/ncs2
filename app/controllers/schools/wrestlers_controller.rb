@@ -135,12 +135,13 @@ module Schools
       @tournaments = Tournament.all.order('name ASC')
       @tourney_results = []
       @wrestlers = Wrestler.update(params[:wrestlers].keys, params[:wrestlers].values)
+        UserMailer.edit_all(current_user, @wrestlers).deliver
+
       @wrestlers.each do |w|
         create_tourney(w)
       end
       @wrestlers.reject! { |p| p.errors.empty? }
       if @wrestlers.empty?
-        UserMailer.edit_all(current_user, Wrestler.find(params[:wrestlers].keys)).deliver
         redirect_to school_wrestlers_path(School.find(params[:school_id]))
       else
         render "edit_all"
