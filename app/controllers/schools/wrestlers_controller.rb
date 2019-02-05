@@ -319,7 +319,7 @@ module Schools
 
     def select_wrestlers(wt)
         @season = Season.last
-        @wrestlers = @season.wrestlers.where(weight: wt).order('weight ASC, wins DESC')
+        @wrestlers = @season.wrestlers.where(weight: wt).order('seed ASC, wins DESC')
         wrestlers = @season.wrestlers.where(weight: wt).order('seed ASC, wins DESC')  # for csv format
 
         @count2 = @wrestlers.count

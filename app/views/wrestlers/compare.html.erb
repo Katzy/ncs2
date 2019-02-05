@@ -14,7 +14,7 @@
            <th rowspan="2">SCHOOL</th>
            <th rowspan="2">NAME </th>
            <th rowspan="2">YR</th>
-           <!-- <th rowspan="2">RECORD</th> -->
+           <th rowspan="2">RECORD</th>
            <th rowspan="2"><%= Season.last.end_date %> LEAGUE PLACE</th>
            <th colspan="2"><%= Season.last.start_date %> PLACES</th>
          </tr>
@@ -48,18 +48,20 @@
               <td><%= wrestler.school.name %> </td>
             <td><%= wrestler.first_name + " " + wrestler.last_name %></td>
             <td><%= wrestler.grade %></td>
-   <!--  <% if (wrestler.bouts.where(win_loss: "W").count || wrestler.bouts.where(win_loss: "L").count) && (wrestler.wins >= 0 if wrestler.wins != nil) %>
-        <td><%= wrestler.bouts.where(win_loss: "W").count + wrestler.wins %>-<%= wrestler.bouts.where(win_loss: "L").count + wrestler.losses %></td>
-      <% elsif (wrestler.bouts.where(win_loss: "W").count || wrestler.bouts.where(win_loss: "L").count) && (wrestler.wins == nil) %>
-        <td><%= wrestler.bouts.where(win_loss: "W").count  %>-<%= wrestler.bouts.where(win_loss: "L").count %></td>
-      <% else %>
         <td><%= wrestler.wins %>-<%= wrestler.losses %></td>
-      <% end %>
 
- -->
       
                 <td><%= wrestler.league_place %></td>
-                <td><%= wrestler.section_place %></td>
+                <td><%= wrestler.section_place %><br>
+                  <% if wrestler.season_id != nil  %>
+              <% if Wrestler.where(first_name: wrestler.first_name, grade: wrestler.grade-1, last_name: wrestler.last_name, school_id: wrestler.school.id, season_id: (wrestler.season_id-1))[0] %>
+               <div style="font-size: 0.65em">
+               (<%= Wrestler.where(first_name: wrestler.first_name, last_name: wrestler.last_name, school_id: wrestler.school.id, season_id: (wrestler.season_id-1))[0].weight %>)
+               </div>
+               <% end %>
+               <% end %>
+                </td>
+
                 <td><%= wrestler.state_place %></td>
       <tr>
 

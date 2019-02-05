@@ -29,34 +29,10 @@
     <tbody>
       <% @wrestlers.each do |wrestler, user| %>
 
-              <% wrestler.bouts.each do |bout| %>
-                <% if bout.tourney_place && bout.tourney_place > 0 %>
-                  <% unless @tourney_results.include?([bout.tourney_name, bout.tourney_place]) %>
-                    <% @tourney_results << [bout.tourney_name, bout.tourney_place] %>
-                  <% end %>
-                <% end %>
-              <% end %>
-              <% if wrestler.t1_name != "" && wrestler.t1_name != nil && wrestler.t1_name != " " %>
-               <% @tourney_results << [ wrestler.t1_name, wrestler.t1_place] %>
-             <% end %>
-             <% if wrestler.t2_name != "" && wrestler.t2_name != nil && wrestler.t2_name != " " %>
-               <% @tourney_results << [ wrestler.t2_name, wrestler.t2_place] %>
-             <% end %>
-             <% if wrestler.t3_name != "" && wrestler.t3_name != nil && wrestler.t3_name != " " %>
-               <% @tourney_results << [ wrestler.t3_name, wrestler.t3_place] %>
-             <% end %>
-             <% if wrestler.t4_name != "" && wrestler.t4_name != nil && wrestler.t4_name != " " %>
-               <% @tourney_results << [ wrestler.t4_name, wrestler.t4_place] %>
-             <% end %>
-             <% if wrestler.t5_name != "" && wrestler.t5_name != nil && wrestler.t5_name != " " %>
-               <% @tourney_results << [ wrestler.t5_name, wrestler.t5_place] %>
-             <% end %>
-            
            
            
 
              <%= render partial: 'shared/wrestlers_table_row', locals: { tourney_results: @tourney_results, wrestler: wrestler }%>      
-             <% @tourney_results = [] %>
              
            <% if user_signed_in? && (current_user.admin? || current_user.school.name == wrestler.school.name || ((current_user.league_rep == true) && (current_user.league_id == wrestler.league_id ))) %>
               <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
