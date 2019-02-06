@@ -16,8 +16,12 @@
       <% end %>
     </div>
      <div class="ten wide column">
-       <b><%= @lg.name %></b><br>(<%= Season.find(@season.id).name %> season)<br>(<%= @lg.wrestlers.where(tourney_team: true, season_id: @season.id).count %>)<br><br>
-    
+       <% if @season != 1 %>
+         <b><%= @lg.name %></b><br>(<%= Season.find(@season.id).name %> season)<br>(<%= @lg.wrestlers.where(tourney_team: true, season_id: @season.id).count %>)<br><br>
+       <% else %>
+         <b><%= @lg.name %></b><br>(<%= Season.find(@season.id).name %> season)<br>(<%= @lg.wrestlers.where(season_id: @season.id).count %>)<br><br>
+       <% end %>
+
     <% if user_signed_in? && (current_user.admin? ||  (current_user.league_id == @lg.id && current_user.league_rep == true )) %>
         <div class="ui animated large button">
           <a href="/leagues/<%= @lg.id %>/wrestlers/edit_all">
