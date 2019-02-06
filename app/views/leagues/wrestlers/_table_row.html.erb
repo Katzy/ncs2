@@ -90,7 +90,7 @@
   
 
 
-           <% if user_signed_in? && (current_user.admin? || (current_user.league_id == @lg.id && current_user.league_rep == true) || current_user.school.name == wrestler.school.name ) && @restler.season_id == Season.last.id %>
+           <% if user_signed_in? && (current_user.admin? || (current_user.league_id == @lg.id && current_user.league_rep == true) || current_user.school.name == wrestler.school.name ) && wrestler.season_id == Season.last.id %>
     
     <td><%= link_to 'Edit', edit_wrestler_path(wrestler) %></td>
     
