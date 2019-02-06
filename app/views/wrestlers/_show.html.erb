@@ -113,15 +113,13 @@
             <div class="hidden content download">ONE AT A TIME</div>
            </a>   
         </div><br><br>
+        
         <div class="ui animated help button">
-           <a href=""> 
-            <div class="visible content">ADD TOURNAMENT RESULTS</div>
-            <div class="hidden content download">Multiple Match Entry<br>COMING SOON!<br></div>
+           <a href="/wrestlers/<%= @wrestler.id %>/bouts/help"> 
+            <div class="visible content">UPLOAD MATCH RESULTS INSTRUCTIONS</div>
+            <div class="hidden content download">Click for Instructions! READ ME!</div>
            </a>   
         </div>
-        <br><br>
-     
-        
       </div>
 <!--       <%= form_tag import_wrestler_bouts_path(@wrestler), multipart: true do %>
         <%= file_field_tag :file %>
