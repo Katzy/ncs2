@@ -3,7 +3,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-type' />
   </head>
   <body>
-    <h1> <%= @user.name %> edited all</h1><br>
+    <h1> <%= @user.name %> (<%= @user.school.name %>) edited all</h1><br>
       <% @wrestlers.each do |wrestler| %>
     <p>
 
