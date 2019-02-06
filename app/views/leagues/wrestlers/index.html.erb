@@ -113,7 +113,7 @@
         <% end %>
         <th rowspan="2"><%= Season.last.end_date %> LEAGUE PLACE</th>
         <th colspan="3"><%= Season.last.start_date %></th>
-         <% if user_signed_in? && (current_user.admin? || (current_user.league_id == @lg.id && current_user.league_rep == true ) || current_user.coach == true ) && @season.id = Season.last.id %>
+         <% if user_signed_in? && (current_user.admin? || (current_user.league_id == @lg.id && current_user.league_rep == true ) || current_user.coach == true ) && params[:season_id] == Season.last.id %>
         <th rowspan="2">Edit</th>
         <th rowspan="2">Delete</th>
         

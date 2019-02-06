@@ -3,7 +3,6 @@ module Leagues
     before_action :load_league, only: [:new, :create]
     before_filter :authorize_user, :only => [:new, :create, :edit, :update]
     def index
-      @season = Season.last
       @lg = League.find(params[:league_id])
        @schools = School.where("league_id = #{params[:league_id]}")
         @school_ids = @schools.map { |school| school.id }
@@ -22,8 +21,6 @@ module Leagues
        # @wrestlers = Wrestler.where("league = '#{@lg.name}'").order('weight ASC, seed ASC, wins DESC')
          wrestlers = @wrestlers
 
-     @wrestlers_nbl = Season.last.wrestlers.where(tourney_team: true, league_id: 10).order('weight ASC, state_place ASC, section_place ASC, wins DESC')
-      wrestlers_nbl = @wrestlers_nbl
       teams = School.where(league_id: 10).order('name ASC')
       @user = current_user
       @count = @wrestlers.count
