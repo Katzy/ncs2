@@ -13,7 +13,11 @@ module Leagues
         else
           @season = Season.last
         end
-        @wrestlers = Season.find(@season.id).wrestlers.where(league_id: @lg.id, tourney_team: true).order('weight ASC, seed ASC, league_place ASC, state_place ASC, section_place ASC, win_tally DESC')
+        if @season.id != 1
+          @wrestlers = Season.find(@season.id).wrestlers.where(league_id: @lg.id, tourney_team: true).order('weight ASC, seed ASC, league_place ASC, state_place ASC, section_place ASC, win_tally DESC')
+        else
+          @wrestlers = Season.find(@season.id).wrestlers.where(league_id: @lg.id).order('weight ASC, seed ASC, league_place ASC, state_place ASC, section_place ASC, win_tally DESC')
+        end
         # @wrestlers = @lg.wrestlers.order('weight ASC, seed ASC, league_place ASC, state_place ASC, section_place ASC, wins DESC')
        # @wrestlers = Wrestler.where("league = '#{@lg.name}'").order('weight ASC, seed ASC, wins DESC')
          wrestlers = @wrestlers
