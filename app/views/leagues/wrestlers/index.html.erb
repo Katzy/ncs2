@@ -78,7 +78,11 @@
       <% end %>
     </div>
     <div class="ten wide column">
-      <b><%= @lg.name %></b><br>(<%= Season.find(@season.id).name %> season)<br>(<%= @lg.wrestlers.where(tourney_team: true, season_id: @season.id).count %>)<br><br>
+       <% if @season != 1 %>
+         <b><%= @lg.name %></b><br>(<%= Season.find(@season.id).name %> season)<br>(<%= @lg.wrestlers.where(tourney_team: true, season_id: @season.id).count %>)<br><br>
+       <% else %>
+         <b><%= @lg.name %></b><br>(<%= Season.find(@season.id).name %> season)<br>(<%= @lg.wrestlers.where(season_id: @season.id).count %>)<br><br>
+       <% end %>
        Download:
             <%= link_to "CSV", league_wrestlers_path(format: "csv") %> <br><br>
     
