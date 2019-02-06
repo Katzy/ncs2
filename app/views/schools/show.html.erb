@@ -8,7 +8,14 @@
 
 
   <div class="ui mobile only row">
-     <div class="sixteen wide column">
+    <div class="two wide left aligned column">
+    <h3>Season</h3>
+      <% @seasons.each do |season| %>
+        <div class="season">
+          <%= link_to "#{season.name}", school_wrestlers_path(@school, season_id: season.id) %></div>
+      <% end %>
+    </div>
+     <div class="ten wide column">
       <b><%= @school.name %></b>
     </div>
     <div class="ui center aligned segment">
@@ -49,7 +56,7 @@
   </div>
   <div class="ui computer only tablet only row">
     <div class="two wide left aligned column">
-    <h3>Season</h4>
+    <h3>Season</h3>
       <% @seasons.each do |season| %>
         <div class="season">
           <%= link_to "#{season.name}", school_wrestlers_path(@school, season_id: season.id) %></div>

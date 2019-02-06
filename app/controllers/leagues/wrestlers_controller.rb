@@ -8,9 +8,13 @@ module Leagues
        @schools = School.where("league_id = #{params[:league_id]}")
         @school_ids = @schools.map { |school| school.id }
         # @wrestlers = Season.find(@season.id).wrestlers.where(league_id: @lg.id, tourney_team: true).order('weight ASC, seed ASC, league_place ASC, state_place ASC, section_place ASC, win_tally DESC')
+        if params[:season_id]
+          @season = Season.find(params[:season_id])
+        else
+          @season = Season.last
+        end
         @wrestlers = Season.find(@season.id).wrestlers.where(league_id: @lg.id, tourney_team: true).order('weight ASC, seed ASC, league_place ASC, state_place ASC, section_place ASC, win_tally DESC')
         # @wrestlers = @lg.wrestlers.order('weight ASC, seed ASC, league_place ASC, state_place ASC, section_place ASC, wins DESC')
-
        # @wrestlers = Wrestler.where("league = '#{@lg.name}'").order('weight ASC, seed ASC, wins DESC')
          wrestlers = @wrestlers
 
