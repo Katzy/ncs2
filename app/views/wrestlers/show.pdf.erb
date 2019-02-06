@@ -23,16 +23,21 @@
                 Overall Record: &emsp;&emsp;<%= wrestler.wins %>-<%= wrestler.losses %> (incl. forfeit)<br>
               2018 NCS Place: &emsp;&emsp;&emsp;&nbsp;<%= wrestler.section_place %> (wt:
               <% if wrestler.season_id != nil  %>
-              <% if Wrestler.where(first_name: wrestler.first_name, grade: wrestler.grade-1, last_name: wrestler.last_name, school_id: wrestler.school.id, season_id: (wrestler.season_id-1))[0] && wrestler.section_place != nil%>
-               (<%= Wrestler.where(first_name: wrestler.first_name, last_name: wrestler.last_name, school_id: wrestler.school.id, season_id: (wrestler.season_id-1))[0].weight %>)
+                <% if Wrestler.where(first_name: wrestler.first_name, grade: wrestler.grade-1, last_name: wrestler.last_name, school_id: wrestler.school.id, season_id: (wrestler.season_id-1))[0] && wrestler.section_place != nil%>
+                 (<%= Wrestler.where(first_name: wrestler.first_name, last_name: wrestler.last_name, school_id: wrestler.school.id, season_id: (wrestler.season_id-1))[0].weight %>)
+                 <% else %>
+                  ___
+                 <% end %>
+               
                <% end %>)<br>
-               <% end %>
               2018 STATE Place: &emsp;&emsp;<%= wrestler.state_place %> (wt:
               <% if wrestler.season_id != nil  %>
               <% if Wrestler.where(first_name: wrestler.first_name, grade: wrestler.grade-1, last_name: wrestler.last_name, school_id: wrestler.school.id, season_id: (wrestler.season_id-1))[0] && wrestler.state_place != nil%>
                (<%= Wrestler.where(first_name: wrestler.first_name, last_name: wrestler.last_name, school_id: wrestler.school.id, season_id: (wrestler.season_id-1))[0].weight %>)
-               <% end %>)<br><br>
+               <% else %>
+               ___
                <% end %>
+               <% end %>)<br><br>
               <!-- NCS Losses: &emsp;&emsp;&emsp;&nbsp;<%= wrestler.losses_ncs %><br><br> -->
 
               <b>My athlete is eligible under all CIF, NCS, NFHS rules.</b><br><br>
