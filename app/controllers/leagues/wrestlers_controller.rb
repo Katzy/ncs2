@@ -17,7 +17,7 @@ module Leagues
         else
           @wrestlers = Season.find(@season.id).wrestlers.where(league_id: @lg.id).order('weight ASC, seed ASC, league_place ASC, state_place ASC, section_place ASC, win_tally DESC')
         end
-        @league_placers = Season.last.wrestlers.where(league_id: @lg.id, tourney_team: true).where.not(league_place: nil).order('weight ASC, league_place ASC')
+        @league_placers = Season.last.wrestlers.where(league_id: @lg.id, tourney_team: true).where.not(league_place: nil, league_place: "").order('weight ASC, league_place ASC')
         # @wrestlers = @lg.wrestlers.order('weight ASC, seed ASC, league_place ASC, state_place ASC, section_place ASC, wins DESC')
        # @wrestlers = Wrestler.where("league = '#{@lg.name}'").order('weight ASC, seed ASC, wins DESC')
          wrestlers = @wrestlers
@@ -53,7 +53,7 @@ module Leagues
         render pdf: "#{@lg.name}_wrestler_weight_cards.pdf",
                layout: "wrestler_pdf", 
                template: "leagues/wrestlers/index.pdf.erb",
-               locals: { :wrestlers => @wrestlers },
+               locals: { :wrestlers => @league_placers },
                orientation: "Landscape"
         end
       end

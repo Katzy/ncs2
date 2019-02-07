@@ -22,14 +22,15 @@
          <b><%= @lg.name %></b><br>(<%= Season.find(@season.id).name %> season)<br>(<%= @wrestlers.count %>)<br><br>
        <% end %>
 
-      <% if user_signed_in? && (current_user.admin? ||  (current_user.league_id == @lg.id && current_user.league_rep == true )) %>
+      <% if user_signed_in? && (current_user.admin? ||  (current_user.league_id == @lg.id && current_user.league_rep == true )) && @season == Season.last %>
           <div class="ui animated large button">
             <a href="/leagues/<%= @lg.id %>/wrestlers/edit_all">
               <div class="visible content">EDIT ALL WRESTLERS</div>
               <div class="hidden content download">UPDATE LEAGUE PLACERS</div>
             </a>
-          </div><br>
-       
+          </div><br><br>
+        <td><%= link_to league_wrestlers_path(@lg, format: "pdf") do %>ALL WEIGHT CARDS ON ONE PDF FILE<i class="file pdf outline icon"></i>
+        <% end %>
       <% end %>
     </div>
     <div class="ui center aligned segment">
@@ -89,7 +90,7 @@
        Download:
             <%= link_to "CSV", league_wrestlers_path(format: "csv") %> <br><br>
     
-      <% if user_signed_in? && (current_user.admin? ||  (current_user.league_id == @lg.id && current_user.league_rep == true )) %>
+      <% if user_signed_in? && (current_user.admin? ||  (current_user.league_id == @lg.id && current_user.league_rep == true )) && @season == Season.last %>
         <div class="ui animated large button">
           <a href="/leagues/<%= @lg.id %>/wrestlers/edit_all">
             <div class="visible content">EDIT ALL WRESTLERS</div>
