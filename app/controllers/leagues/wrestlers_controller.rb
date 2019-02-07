@@ -17,6 +17,7 @@ module Leagues
         else
           @wrestlers = Season.find(@season.id).wrestlers.where(league_id: @lg.id).order('weight ASC, seed ASC, league_place ASC, state_place ASC, section_place ASC, win_tally DESC')
         end
+        @league_placers = Season.last.wrestlers.where(league_id: @lg.id, tourney_team: true).where.not(league_place: nil).order('weight ASC, league_place ASC')
         # @wrestlers = @lg.wrestlers.order('weight ASC, seed ASC, league_place ASC, state_place ASC, section_place ASC, wins DESC')
        # @wrestlers = Wrestler.where("league = '#{@lg.name}'").order('weight ASC, seed ASC, wins DESC')
          wrestlers = @wrestlers
@@ -48,20 +49,13 @@ module Leagues
             temp.unlink
           end
         }
-        # format.pdf do
-        #   pdfs = CombinePDF.new
-        #   @wrestlers.each do |wrestler|
-        #     if wrestler.league_place.in?(["1", "2", "3", "4", "5", "6", "ALT-1", "ALT-2", "ALT-3", "ALT-4", "ALT-5"]) 
-        #       html = render layout: "wrestler_pdf", 
-        #                     template: "wrestlers/show.pdf.erb",
-        #                     locals: { :wrestler => wrestler },
-        #                     disposition: 'attachment'
-        #       pdf = WickedPdf.new.pdf_from_string(html)
-        #       pdfs << CombinePDF.load(pdf)
-        #     end
-        #   end
-        #   pdfs.save "#{@lg.name}_placers.pdf"
-        # end
+        format.pdf do
+        render pdf: "#{@lg.name}_wrestler_weight_cards.pdf",
+               layout: "wrestler_pdf", 
+               template: "leagues/wrestlers/index.pdf.erb",
+               locals: { :wrestlers => @wrestlers },
+               orientation: "Landscape"
+        end
       end
     end
 

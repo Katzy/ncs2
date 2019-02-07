@@ -22,15 +22,16 @@
          <b><%= @lg.name %></b><br>(<%= Season.find(@season.id).name %> season)<br>(<%= @wrestlers.count %>)<br><br>
        <% end %>
 
-    <% if user_signed_in? && (current_user.admin? ||  (current_user.league_id == @lg.id && current_user.league_rep == true )) %>
-        <div class="ui animated large button">
-          <a href="/leagues/<%= @lg.id %>/wrestlers/edit_all">
-            <div class="visible content">EDIT ALL WRESTLERS</div>
-            <div class="hidden content download">UPDATE LEAGUE PLACERS</div>
-          </a>
-        </div>
-        <% end %>
-        </div>
+      <% if user_signed_in? && (current_user.admin? ||  (current_user.league_id == @lg.id && current_user.league_rep == true )) %>
+          <div class="ui animated large button">
+            <a href="/leagues/<%= @lg.id %>/wrestlers/edit_all">
+              <div class="visible content">EDIT ALL WRESTLERS</div>
+              <div class="hidden content download">UPDATE LEAGUE PLACERS</div>
+            </a>
+          </div><br>
+       
+      <% end %>
+    </div>
     <div class="ui center aligned segment">
     
       <table class="ui celled center aligned structured stackable table">
@@ -95,7 +96,12 @@
             <div class="hidden content download">UPDATE LEAGUE PLACERS</div>
           </a>
         </div>
+
+          <br><br>
+        
+        <td><%= link_to league_wrestlers_path(@lg, format: "pdf") do %>ALL WEIGHT CARDS ON ONE PDF FILE<i class="file pdf outline icon"></i>
         <% end %>
+      <% end %>
 </div><br>
     <div class="ui center aligned segment">
     
