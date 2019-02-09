@@ -2,7 +2,7 @@ class WrestlersController < ApplicationController
   # before_action :load_league, only: [:new, :create]
   before_filter :authorize_user, :only => [:new, :create, :edit, :update]
   def index
-     @wrestlers = Season.last.wrestlers.where(tourney_team: true).order('weight ASC, state_place ASC, section_place ASC, seed ASC, win_tally DESC')
+     @wrestlers = Season.last.wrestlers.where(tourney_team: true).where.not(school_id: 123).where.not(school_id: 125).where.not(school_id: 125).order('weight ASC, state_place ASC, section_place ASC, seed ASC, win_tally DESC')
     # @wrestlers = Wrestler.order('weight ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
     wrestlers = @wrestlers
     if params[:season_id]
