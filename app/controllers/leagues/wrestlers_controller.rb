@@ -35,29 +35,46 @@ module Leagues
         format.json { render json: @wrestlers }
          if user_signed_in? && @lg.id == 10 && (current_user.id == 265 || current_user.id == 206)
           format.csv { send_data wrestlers.to_csv3({}, teams, wrestlers), filename: @lg.name + 'TWT_wrestlers' + '.csv' }
-        else 
-          format.csv { send_data wrestlers.to_csv2, filename: @lg.name + '_wrestlers' + '.csv' }
-        end
-        format.xlsx{
-          xlsx_package = Wrestler.to_xlsx
-          begin 
-            temp = Tempfile.new(league_wrestlers_file) 
-            xlsx_package.serialize temp.path
-            send_file temp.path, :filename => league_wrestlers_file, :type => "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-          ensure
-            temp.close 
-            temp.unlink
+          else 
+            format.csv { send_data wrestlers.to_csv2, filename: @lg.name + '_wrestlers' + '.csv' }
           end
-        }
-        format.pdf do
-        render pdf: "#{@lg.name}_wrestler_weight_cards.pdf",
-               layout: "wrestler_pdf", 
-               template: "leagues/wrestlers/index.pdf.erb",
-               locals: { :wrestlers => @league_placers },
-               orientation: "Landscape"
+          format.xlsx{
+            xlsx_package = Wrestler.to_xlsx
+            begin 
+              temp = Tempfile.new(league_wrestlers_file) 
+              xlsx_package.serialize temp.path
+              send_file temp.path, :filename => league_wrestlers_file, :type => "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            ensure
+              temp.close 
+              temp.unlink
+            end
+          }
+
+          # format.pdf do
+          #   pdfs = CombinePDF.new
+          #   @wrestlers.each do |wrestler|
+          #       pdf = WickedPdf.new.pdf_from_string(render_to_string( {
+          #         layout: 'wrestler_pdf',
+          #         template: 'wrestlers/show.pdf.erb',
+          #         page_size: 'Letter',                  
+          #         orientation: 'Landscape',
+          #         locals: { :wrestler => wrestler }
+          #       }))
+          #       pdfs << CombinePDF.parse(pdf)
+          #   end
+          #   send_data pdfs.to_pdf, filename: "#{@lg.name}_wrestler_weight_cards"
+          #   # pdfs.save "#{@lg.name}_placers"
+          # end
+
+          format.pdf do
+          render pdf: "#{@lg.name}_wrestler_weight_cards",
+                 layout: "wrestler_pdf", 
+                 template: "leagues/wrestlers/index.pdf.erb",
+                 locals: { :wrestlers => @league_placers },
+                 orientation: "Landscape"
+          end
         end
       end
-    end
 
     def new
       @league = League.find_by_id(params[:league_id])
@@ -255,6 +272,8 @@ module Leagues
     end
 
     private
+
+
 
      def load_league
         #get product_type from session if it is blank

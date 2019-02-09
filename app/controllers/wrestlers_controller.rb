@@ -163,7 +163,11 @@ class WrestlersController < ApplicationController
   end
 
   def alternates
-    @wrestlers = Season.last.wrestlers.where('league_place LIKE ?', '%LT-%').order('weight ASC, league_place ASC')
+    if params[:weight]
+    @wrestlers = Season.last.wrestlers.where('league_place LIKE ?', '%LT-%').where(weight: params[:weight]).order('weight ASC, league_place ASC')
+    else
+      @wrestlers = Season.last.wrestlers.where('league_place LIKE ?', '%LT-%').order('weight ASC, league_place ASC')
+    end
   end
 
   def compare

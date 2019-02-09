@@ -181,6 +181,7 @@ Rails.application.routes.draw do
       get :compare
       post :compare_selected
       get :show_compared
+      get :generate_bracket
     end
     resources :bouts, controller: "wrestlers/bouts" do
       collection do
