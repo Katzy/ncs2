@@ -168,7 +168,7 @@ class WrestlersController < ApplicationController
 
   def compare
     # @wrestlers = []
-    @wrestlers = Wrestler.where(weight: params[:weight], tourney_team: true, season_id: Season.last.id).where.not(league_id: nil).order('last_name ASC')
+    @wrestlers = Wrestler.where(weight: params[:weight], tourney_team: true, season_id: Season.last.id).where.not(league_place: nil, league_place: "").order('last_name ASC')
     # @wr.each do |w|
       # @wrestler = Wrestler.new
       # @wrestler.first_name = w["first_name"]
@@ -281,7 +281,7 @@ class WrestlersController < ApplicationController
         render pdf: "#{@wrestler.first_name}_#{@wrestler.last_name}_#{@wrestler.weight}.pdf",
                layout: "wrestler_pdf", 
                template: "wrestlers/show.pdf.erb",
-               locals: { :wrestler => wrestler },
+               locals: { :wrestler => @wrestler },
                orientation: "Landscape"
       end
     end
@@ -356,28 +356,97 @@ class WrestlersController < ApplicationController
     redirect_to :back
   end
 
+  def generate_bracket
+    @bp = ["1 SEED-1", "3rd -2", "2nd -3", "4th or WC -4", "2nd -5", "2nd or 1 -6", "2nd -7", "3rd -8", "3rd or 2nd -9", "8 SEED -10", "5 SEED -11", "3rd -12", "2nd -13", "4th or WC -14", "1st or 2nd -15", "2nd or 1st -16", "2nd -17", "3rd -18", "3rd -19", "4 SEED -20", "3 SEED -21", "3rd -22", "2nd -23", "4th or WC -24", "1st or 2nd -25", "2nd or 1st -26", "2nd -27", "3rd -28", "3rd or 2nd -29", "6 SEED -30", "7 SEED -31", "3rd -32", "2nd -33", "4th or WC -34", "1st or 2nd -35", "2nd or 1st -36", "2nd -37", "3rd -38", "3rd -39", "2 SEED -40"]
+    puts @bp
+  end
+
   private
 
-   def load_league
-      #get product_type from session if it is blank
-      params[:league_id] ||= session[:league_id]
-      #save product_type to session for future requests
-      session[:league_id] = params[:league_id]
-      if params[:league_id]
-        @league = League.find(params[:league_id])
+  
+  # def check_bracket_validity(wrestlers)
+  #   temp_bracket = []
+  #     if wrestlers[0][0] == 1
+  #       temp_bracket[0] = wrestlers[0]
+  #       wrestlers.shift
+  #     end
+  #     if wrestlers[0][0] == 2
+  #       temp_bracket[39] = wrestlers[0]
+  #       wrestlers.shift
+  #     end
+  #     if wrestlers[0][0] == 3
+  #       temp_bracket[20] = wrestlers[0]
+  #       wrestlers.shift 
+  #     end
+  #     if wrestlers[0][0] == 4
+  #       temp_bracket[19] = wrestlers[0]
+  #       wrestlers.shift
+  #     end
+  #     if wrestlers[0][0] == 5
+  #       temp_bracket[10] = wrestlers[0]
+  #       wrestlers.shift
+  #     end
+  #     if wrestlers[0][0] == 6
+  #       temp_bracket[29] = wrestlers[0]
+  #       wrestlers.shift
+  #     end
+  #     if wrestlers[0][0] == 7
+  #       temp_bracket[30] = wrestlers[0]
+  #       wrestlers.shift 
+  #     end
+  #     if wrestlers[0][0] == 8
+  #       temp_bracket[9] = wrestlers[0]
+  #       wrestlers.shift
+  #     end
+  #     if wrestlers[0][0] == 9
+  #       temp_bracket[5] = wrestlers[0]
+  #       wrestlers.shift
+  #     end
+  #     if wrestlers[0][0] == 10
+  #       temp_bracket[34] = wrestlers[0]
+  #       wrestlers.shift
+  #     end
 
-      end
+
+
+  #     for i in 0..(wrestlers.size-1)
+  #       until wrestler[i][0] == nil 
+  #         if wrestler[i][0] == 1
+  #           temp_bracket[0] = wrestler[i]
+  #         end
+  #         if wrestler[i][0] == 2
+  #           temp_bracket[39] = wrestler[i]
+  #         end
+  #         if wrestler[i][0] == 3
+  #           temp_bracket[20] = wrestler[i]
+  #         end
+  #         if wrestler[i][0] == 4
+  #           temp
+
+  #     end
+  # end
+
+
+  def load_league
+    #get product_type from session if it is blank
+    params[:league_id] ||= session[:league_id]
+    #save product_type to session for future requests
+    session[:league_id] = params[:league_id]
+    if params[:league_id]
+      @league = League.find(params[:league_id])
+
     end
+  end
 
 
   def select_wrestlers(wt)
       @comparing = false
       params = ["1","2","3","4","5", true]
       @season = Season.last
-      @w = @season.wrestlers.where(weight: wt, tourney_team: true).where('league_id IS NOT null')
+      @w = @season.wrestlers.where(weight: wt).where.not(league_place: nil, league_place: "")
       # @w = @season.wrestlers.where(weight: wt, tourney_team: true).where.not(league_place: "")
       # @wrestlers = @w.where("league_place = ? OR league_place = ? OR league_place = ? OR league_place = ? OR league_place = ? OR alternate = ?", *params).order('weight ASC, seed ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
-      @wrestlers = @w.order('seed ASC, state_place ASC, section_place ASC, wins DESC')
+      @wrestlers = @w.order('seed ASC, state_place ASC, section_place ASC, league_place ASC, wins DESC')
       # wrestlers = @wrestlers 
       # Wrestler.where("weight = #{wt}").order('weight ASC, seed ASC, wins DESC')  # for csv format
       @tourney_results = []
