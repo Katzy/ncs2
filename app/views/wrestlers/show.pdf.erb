@@ -1,5 +1,5 @@
 <div class="wrestler">
-  <span style="text-align:left"><%= wrestler.league.name %></span>
+  <span style="text-align:left"><%= wrestler.league.id %>-<%= wrestler.league.name %></span>
   <h3 style="text-align:center">Wrestling Registration</h3>
   <% if wrestler.league_place.in?(["ALT-1", "ALT-2", "ALT-3", "ALT-4", "ALT-5"]) %>
     <h4 style="text-align:center">** ALTERNATE ** &emsp;&emsp;&emsp;&emsp; AT LARGE: ___</h4>
