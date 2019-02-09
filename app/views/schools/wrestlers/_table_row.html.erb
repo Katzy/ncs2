@@ -42,7 +42,7 @@
   <td><%= wrestler.league_place %></td>
   <td><%= wrestler.league_1ya %></td>
   <td><%= wrestler.section_place %><br>
-     <% if wrestler.season_id != nil  %>
+     <% if wrestler.season_id != nil && wrestler.grade != nil  %>
               <% if Wrestler.where(first_name: wrestler.first_name, grade: wrestler.grade-1, last_name: wrestler.last_name, school_id: wrestler.school.id, season_id: (wrestler.season_id-1))[0] && wrestler.section_place != nil%>
                <div style="font-size: 0.65em">
                (<%= Wrestler.where(first_name: wrestler.first_name, last_name: wrestler.last_name, school_id: wrestler.school.id, season_id: (wrestler.season_id-1))[0].weight %>)
