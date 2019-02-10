@@ -8,16 +8,12 @@
   <td><%= wrestler.first_name %></td>
   <td><%= wrestler.last_name %></td>
   <td><%= wrestler.grade %></td>
-  <% if wrestler.bouts.where(win_loss: "W").count && (wrestler.wins >= 0 if wrestler.wins != nil) %>
-    <td><%= wrestler.bouts.where(win_loss: "W").count + wrestler.wins %></td>
-    <td><%= wrestler.bouts.where(win_loss: "L").count + wrestler.losses %></td>
-  <% else %>
+ 
   <td><%= wrestler.wins %></td>
   <td><%= wrestler.losses %></td>
-  <% end %>
   <td><%= wrestler.section_place %></td>
   <td><%= wrestler.state_place %></td>
-     <% if Season.find(SeasonWrestler.where(wrestler_id: wrestler.id)[0].season_id).start_date > 2016 %>
+     
     <td>
       <% if wrestler.t1_name != "" && wrestler.t1_name != nil %>
         <%= wrestler.t1_name %> <%= wrestler.t1_place %><br>
@@ -36,7 +32,6 @@
         <% end %>
     </td>
   
-  <% end %>
  <!--  <td><% if wrestler.h2h_1 != "" && wrestler.h2h_1 != nil %>
       <%= wrestler.h2h_1 %> <%= wrestler.h2h_r1 %><br>
       <% end %>
