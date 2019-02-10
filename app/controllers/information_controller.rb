@@ -5,7 +5,7 @@ class InformationController < ApplicationController
 
   def seeds
     @wrestlers = Season.last.wrestlers.where("seed >0 AND seed<12")
-    wrestlers = Season.last.wrestlers.where("seed >0 AND seed<912")
+    wrestlers = Season.last.wrestlers.where("seed >0 AND seed<12")
     @count = @wrestlers.count
     @wrestlers = @wrestlers.order('weight ASC, seed ASC')
     if @wrestlers.count > 0
