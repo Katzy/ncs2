@@ -460,7 +460,7 @@ class WrestlersController < ApplicationController
       @losses = []
     respond_to do |format|
       format.html
-      format.csv { send_data wrestlers.to_csv2 }
+      format.csv { send_data @wrestlers.to_csv2 }
       format.xls { send_data wrestlers.to_csv2({col_sep: "\t"})}
 
     end
