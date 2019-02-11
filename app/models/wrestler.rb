@@ -169,7 +169,7 @@ class Wrestler < ActiveRecord::Base
       csv << ["weight", "first name", "last name", "league", "school", "abbreviation", "grade", "wins", "losses", "SEED", "AT LARGE", "LEAGUE PL", "SEC", "ST"]
 
       all.each do |wrestler|
-       csv << [wrestler.weight, wrestler.first_name, wrestler.last_name, wrestler.school.league.name, wrestler.school.name, wrestler.school.abbreviation, wrestler.grade, (wrestler.wins + wrestler.bouts.where(win_loss: "W").count), (wrestler.losses + wrestler.bouts.where(win_loss: "L").count), wrestler.seed, (wrestler.alternate if wrestler.alternate == true), wrestler.league_place, wrestler.section_place, wrestler.state_place]
+       csv << [wrestler.weight, wrestler.first_name, wrestler.last_name, wrestler.school.league.name, wrestler.school.name, wrestler.school.abbreviation, wrestler.grade, wrestler.wins, wrestler.losses, wrestler.seed, (wrestler.alternate if wrestler.alternate == true), wrestler.league_place, wrestler.section_place, wrestler.state_place]
       end
     end
   end
