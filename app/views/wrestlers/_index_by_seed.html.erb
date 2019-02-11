@@ -15,12 +15,10 @@
 
 
             <th rowspan="1">W/L</th>
+             <th rowspan="1">SEC Pl</th>
 
 
 
-
-            <th colspan="1">Tournament Places</th>
-            <th colspan="1">H2H</th>
 
 
 
@@ -43,21 +41,20 @@
                 <td><%= wrestler.first_name + " " + wrestler.last_name %></td>
                 <td><%= wrestler.grade %></td>
                 <td><%= wrestler.wins %>-<%= wrestler.losses %></td>
+                 <td><%= wrestler.section_place %><br>
+                <% if wrestler.season_id != nil && wrestler.grade != nil  %>
+                  <% if Wrestler.where(first_name: wrestler.first_name, grade: wrestler.grade-1, last_name: wrestler.last_name, school_id: wrestler.school.id, season_id: (wrestler.season_id-1))[0] && wrestler.section_place != nil%>
+                    <div style="font-size: 0.65em">
+                (<%= Wrestler.where(first_name: wrestler.first_name, last_name: wrestler.last_name, school_id: wrestler.school.id, season_id: (wrestler.season_id-1))[0].weight %>)
+               </div>
+               <% end %>
+               <% end %>
+                </td>
 
 
 
 
-
-                <td><%= wrestler.t1_name %>&emsp;<%= wrestler.t1_place %><br>
-                <%= wrestler.t2_name %>&emsp;<%=  wrestler.t2_place %><br>
-                <%= wrestler.t3_name %>&emsp;<%= wrestler.t3_place %><br>
-                <%= wrestler.t4_name %>&emsp;<%= wrestler.t4_place %><br>
-                <%= wrestler.t5_name %>&emsp;<%=  wrestler.t5_place %></td>
-                <td><%= wrestler.h2h_1 %>&emsp;<%= wrestler.h2h_r1 %><br>
-                <%= wrestler.h2h_2 %>&emsp;<%= wrestler.h2h_r2 %><br>
-                <%= wrestler.h2h_3 %>&emsp;<%= wrestler.h2h_r3 %><br>
-                <%= wrestler.h2h_4 %>&emsp;<%= wrestler.h2h_r4 %><br>
-                <%= wrestler.h2h_5 %>&emsp;<%= wrestler.h2h_r5 %></td>
+               
 
               </tr>
           <% end %>
@@ -115,7 +112,15 @@
 
 
 
-                <td><%= wrestler.section_place %></td>
+                <td><%= wrestler.section_place %><br>
+                <% if wrestler.season_id != nil && wrestler.grade != nil  %>
+                  <% if Wrestler.where(first_name: wrestler.first_name, grade: wrestler.grade-1, last_name: wrestler.last_name, school_id: wrestler.school.id, season_id: (wrestler.season_id-1))[0] && wrestler.section_place != nil%>
+                    <div style="font-size: 0.65em">
+                (<%= Wrestler.where(first_name: wrestler.first_name, last_name: wrestler.last_name, school_id: wrestler.school.id, season_id: (wrestler.season_id-1))[0].weight %>)
+               </div>
+               <% end %>
+               <% end %>
+                </td>
                 <td><%= wrestler.state_place %></td>
 
 
