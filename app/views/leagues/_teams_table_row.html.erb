@@ -1,5 +1,5 @@
 <tr>
-  <td><%= link_to "#{school.name}", school_path(school) %></td>
+  <td><%= link_to "#{school.name}", school_path(school) %><br><div style="font-size: 0.7em">(<%= school.abbreviation %>)</div></td>
   <td><% if User.where(school_id: school.id) %>
         <% User.where(school_id: school.id).each do |u| %>
           <%= u.name %><br>

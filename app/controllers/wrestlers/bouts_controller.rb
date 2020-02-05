@@ -1,6 +1,7 @@
 module Wrestlers
   class BoutsController < ApplicationController
 
+
     def index
       @wrestler = Wrestler.find(params[:wrestler_id])
       @matches = @wrestler.matches.order('date ASC')
@@ -47,8 +48,18 @@ module Wrestlers
 
     def import
       if params[:file] != nil
-        Wrestler.find(params[:wrestler_id]).bouts.import(params[:file])
-        redirect_to wrestler_path(Wrestler.find(params[:wrestler_id])), notice: "Import successful"
+        CSV.foreach(params[:file].path, headers: true) do |row|
+          if Bout.exists?(wrestler_id: row[0], weight: row[2], date: row[1], opponent_name: row[4], opponent_team: row[5])
+           row
+          else
+           Bout.create! row.to_hash
+           update_wrestler_record(Bout.last, Wrestler.find(row[0]))
+           
+         end
+        end
+       redirect_to wrestler_path(Wrestler.find(params[:wrestler_id])), notice: "Import successful"
+      #   Wrestler.find(params[:wrestler_id]).bouts.import(params[:file])
+      #   redirect_to wrestler_path(Wrestler.find(params[:wrestler_id])), notice: "Import successful"
       else
         redirect_to wrestler_path(Wrestler.find(params[:wrestler_id])), alert: "Choose file to import"
       end
