@@ -90,12 +90,25 @@
           </td>
           
           <td>
-            <div class="field">
-              <% if wrestler.league_place  %>
-              <%= wrestler.league_place %>
-              
-              <% end %>
-            </div>
+            <%  if wrestler.tourney_team == true && (user_signed_in? && (current_user.admin? || ((current_user.league_id == @school.league_id) && current_user.league_rep == true ))) %>
+              <div class="three wide field">
+               <%= f.label :league_place, "#{Season.last.end_date} LEAGUE PLACE" %><br><br>
+                <% if League.find(wrestler.school.league_id).entries == 2 %>
+                <%= f.collection_select :league_place, ['1', '2', 'ALT-1', 'ALT-2', 'ALT-3'], :to_s, :to_s, :include_blank => true %>
+                <% elsif League.find(wrestler.school.league_id).entries == 3 %>
+                <%= f.collection_select :league_place, ['1', '2', '3', 'ALT-1', 'ALT-2', 'ALT-3'], :to_s, :to_s, :include_blank => true %>
+                <% else %>
+                <%= f.collection_select :league_place, ['1', '2', '3', '4', '5', 'ALT-1', 'ALT-2', 'ALT-3'], :to_s, :to_s, :include_blank => true %>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="field">
+                <% if wrestler.league_place  %>
+                <%= wrestler.league_place %>
+                
+                <% end %>
+              </div>
+            <% end %>
           </td>
           <!-- <td>
             <div class="field"><br>
