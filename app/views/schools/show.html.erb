@@ -83,7 +83,7 @@
        
 
        <!--    <%= link_to "Export Tournament Team", tourney_team_school_wrestlers_path(@school, season_id: @season.id, format: "csv") %> <br>  -->
-          <%= link_to "Export #{Season.last.end_date} Roster", school_wrestlers_path(@school, season_id: @season.id, format: "csv") %>
+          <%= link_to "Download #{Season.last.end_date} Roster", school_wrestlers_path(@school, season_id: @season.id, format: "csv") %>
       <% end %>
       
     <% end %>
