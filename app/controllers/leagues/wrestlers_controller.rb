@@ -3,6 +3,7 @@ module Leagues
     before_action :load_league, only: [:new, :create]
     before_filter :authorize_user, :only => [:new, :create, :edit, :update]
     def index
+      @leagues = league_names
       @lg = League.find(params[:league_id])
        @schools = School.where("league_id = #{params[:league_id]}")
         @school_ids = @schools.map { |school| school.id }
@@ -78,6 +79,7 @@ module Leagues
       end
 
     def alternates
+      @leagues = league_names
       @lg = League.find(params[:league_id])
        @schools = School.where("league_id = #{params[:league_id]}")
         @school_ids = @schools.map { |school| school.id }
@@ -310,7 +312,9 @@ module Leagues
 
     private
 
-
+    def league_names
+      {"BVAL"=>1, "CMC"=>2, "DAL"=>3, "EBAL"=>4, "HDNL"=>5, "MCAL"=>6, "MVAL"=>7, "NBL"=>8, "TCAL"=>9, "VVAL"=>10, "WACC"=>11}
+    end
 
      def load_league
         #get product_type from session if it is blank

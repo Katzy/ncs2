@@ -1,5 +1,5 @@
 <div class="wrestler">
-  <span style="text-align:left;font-size:0.7em"><%= wrestler.league.name %></span>
+  <span style="text-align:left;font-size:1.2em"><%= @leagues[wrestler.league.name] %></span>
   <h4 style="text-align:center">Wrestling Registration</h4>
   <% if wrestler.league_place.in?(["ALT-1", "ALT-2", "ALT-3", "ALT-4", "ALT-5"]) %>
     <h5 style="text-align:center">** ALTERNATE ** &emsp;&emsp;&emsp;&emsp; AT LARGE: ___</h5>
@@ -124,11 +124,7 @@
           
           
           </TABLE>
-          <TABLE>
-          <td style="width:50em;font-size:6px;">COMMENTS:</td>
           
-          <tr><td style="font-size:6px;"><%=wrestler.comments %></td></tr>
-          </TABLE>
 
   </TD>
   </TABLE>

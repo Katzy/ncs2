@@ -246,6 +246,7 @@ class WrestlersController < ApplicationController
 
   def show
     # @season = Season.find(params[:season_id])
+    @leagues = league_names
     @wrestler = Wrestler.find(params[:id])
     @season_wrestler = SeasonWrestler.where(wrestler_id: params[:id])
     # @wrestler = @season.wrestlers.find(params[:id])
@@ -367,6 +368,9 @@ class WrestlersController < ApplicationController
 
   private
 
+ def league_names
+      {"BVAL"=>1, "CMC"=>2, "DAL"=>3, "EBAL"=>4, "HDNL"=>5, "MCAL"=>6, "MVAL"=>7, "NBL"=>8, "TCAL"=>9, "VVAL"=>10, "WACC"=>11}
+    end
   
   # def check_bracket_validity(wrestlers)
   #   temp_bracket = []
