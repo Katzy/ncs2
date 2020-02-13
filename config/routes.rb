@@ -132,6 +132,7 @@ Rails.application.routes.draw do
     resources :schools, controller: "leagues/schools"
     resources :wrestlers, controller: "leagues/wrestlers" do
       collection do
+        get :alternates
         get :edit_all
         post :update_all
         delete :delete_wrestler

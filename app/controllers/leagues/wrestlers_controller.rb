@@ -17,14 +17,15 @@ module Leagues
         else
           @wrestlers = Season.find(@season.id).wrestlers.where(league_id: @lg.id).order('weight ASC, seed ASC, league_place ASC, state_place ASC, section_place ASC, win_tally DESC')
         end
-        @league_placers = Season.last.wrestlers.where(league_id: @lg.id, tourney_team: true).where.not(league_place: nil, league_place: "").order('weight ASC, league_place ASC')
+        # @league_placers = Season.last.wrestlers.where(league_id: @lg.id, tourney_team: true).where.not(league_place: nil, league_place: "").order('weight ASC, league_place ASC')
+        @league_placers = Season.last.wrestlers.where(league_id: @lg.id, tourney_team: true).where('league_place in (?)', ["1", "2", "3", "4", "5"]).order('weight ASC, league_place ASC')
         # @wrestlers = @lg.wrestlers.order('weight ASC, seed ASC, league_place ASC, state_place ASC, section_place ASC, wins DESC')
        # @wrestlers = Wrestler.where("league = '#{@lg.name}'").order('weight ASC, seed ASC, wins DESC')
          wrestlers = @wrestlers
 
       teams = School.where(league_id: 10).order('name ASC')
       @user = current_user
-      @count = @wrestlers.count
+      @count = 1
       @wins = []
       @losses = []
       @tourneys = []
@@ -75,6 +76,42 @@ module Leagues
           end
         end
       end
+
+    def alternates
+      @lg = League.find(params[:league_id])
+       @schools = School.where("league_id = #{params[:league_id]}")
+        @school_ids = @schools.map { |school| school.id }
+        # @wrestlers = Season.find(@season.id).wrestlers.where(league_id: @lg.id, tourney_team: true).order('weight ASC, seed ASC, league_place ASC, state_place ASC, section_place ASC, win_tally DESC')
+        if params[:season_id]
+          @season = Season.find(params[:season_id])
+        else
+          @season = Season.last
+        end
+        if @season.id != 1
+          @wrestlers = Season.find(@season.id).wrestlers.where(league_id: @lg.id, tourney_team: true).order('weight ASC, seed ASC, league_place ASC, state_place ASC, section_place ASC, win_tally DESC')
+        else
+          @wrestlers = Season.find(@season.id).wrestlers.where(league_id: @lg.id).order('weight ASC, seed ASC, league_place ASC, state_place ASC, section_place ASC, win_tally DESC')
+        end
+        @league_placers = Season.last.wrestlers.where(league_id: @lg.id, tourney_team: true).where('league_place in (?)', ["ALT-1", "ALT-2", "ALT-3", "ALT-4", "ALT-5"])
+          # ["ALT-1", "ALT-2", "ALT-3", "ALT-4", "ALT-5"])
+
+        # wrestler.league_place.in?(["ALT-1", "ALT-2", "ALT-3", "ALT-4", "ALT-5"])
+        # @wrestlers = @lg.wrestlers.order('weight ASC, seed ASC, league_place ASC, state_place ASC, section_place ASC, wins DESC')
+       # @wrestlers = Wrestler.where("league = '#{@lg.name}'").order('weight ASC, seed ASC, wins DESC')
+         wrestlers = @wrestlers
+
+      @user = current_user
+      @count = 1
+      respond_to do |format|
+         format.pdf do
+          render pdf: "#{@lg.name}_alternate_weight_cards",
+                 layout: "wrestler_pdf", 
+                 template: "leagues/wrestlers/index.pdf.erb",
+                 locals: { :wrestlers => @league_placers },
+                 orientation: "Landscape"
+          end
+        end
+    end
 
     def new
       @league = League.find_by_id(params[:league_id])

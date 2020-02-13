@@ -1,5 +1,5 @@
 <div class="wrestler">
-  <span style="text-align:left"><%= wrestler.league.id %>-<%= wrestler.league.name %></span>
+  <span style="text-align:left;font-size:0.8em"><%= wrestler.league.name %></span>
   <h3 style="text-align:center">Wrestling Registration</h3>
   <% if wrestler.league_place.in?(["ALT-1", "ALT-2", "ALT-3", "ALT-4", "ALT-5"]) %>
     <h4 style="text-align:center">** ALTERNATE ** &emsp;&emsp;&emsp;&emsp; AT LARGE: ___</h4>
@@ -17,7 +17,7 @@
       <b>SEEDING INFORMATION</b><br><br>
     
           Overall Record: &emsp;&emsp;<%= wrestler.wins %>-<%= wrestler.losses %> (incl. forfeit)<br>
-        2018 NCS Place: &emsp;&emsp;&emsp;&nbsp;<%= wrestler.section_place %> (wt:
+        <%= Season.find(wrestler.season_id).start_date %> NCS Place: &emsp;&emsp;&emsp;&nbsp;<%= wrestler.section_place %> (wt:
         <% if wrestler.season_id != nil  %>
           <% if Wrestler.where(first_name: wrestler.first_name, grade: wrestler.grade-1, last_name: wrestler.last_name, school_id: wrestler.school.id, season_id: (wrestler.season_id-1))[0] && wrestler.section_place != nil%>
            <%= Wrestler.where(first_name: wrestler.first_name, last_name: wrestler.last_name, school_id: wrestler.school.id, season_id: (wrestler.season_id-1))[0].weight %>
@@ -26,7 +26,7 @@
            <% end %>
          
          <% end %>)<br>
-        2018 STATE Place: &emsp;&emsp;<%= wrestler.state_place %> (wt:
+        <%= Season.find(wrestler.season_id).start_date %> STATE Place: &emsp;&emsp;<%= wrestler.state_place %> (wt:
         <% if wrestler.season_id != nil  %>
         <% if Wrestler.where(first_name: wrestler.first_name, grade: wrestler.grade-1, last_name: wrestler.last_name, school_id: wrestler.school.id, season_id: (wrestler.season_id-1))[0] && wrestler.state_place != nil%>
          <%= Wrestler.where(first_name: wrestler.first_name, last_name: wrestler.last_name, school_id: wrestler.school.id, season_id: (wrestler.season_id-1))[0].weight %>

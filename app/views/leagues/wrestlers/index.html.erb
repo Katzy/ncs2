@@ -29,9 +29,13 @@
               <div class="hidden content download">UPDATE LEAGUE PLACERS</div>
             </a>
           </div><br><br>
-        <td><%= link_to league_wrestlers_path(@lg, format: "pdf") do %>ALL WEIGHT CARDS ON ONE PDF FILE<i class="file pdf outline icon"></i>
-        <% end %><br>
-                (File will be empty until you update league place winners)
+        <br><br>
+             WEIGHT CARDS (ON ONE PDF FILE)<br>
+        <td><%= link_to league_wrestlers_path(@lg, format: "pdf") do %>LEAGUE PLACE WINNERS <i class="file pdf outline icon"></i></td>
+          <% end %><br>
+          <td><%= link_to alternates_league_wrestlers_path(@lg, format: "pdf") do %>ALTERNATES<i class="file pdf outline icon"></i></td>
+        <% end %><br><br> 
+        (File will be empty until you update league place winners)
       <% end %>
     </div>
     <div class="ui center aligned segment">
@@ -100,12 +104,17 @@
         </div>
 
           <br><br>
-        
-        <td><%= link_to league_wrestlers_path(@lg, format: "pdf") do %>ALL WEIGHT CARDS ON ONE PDF FILE<i class="file pdf outline icon"></i>
-        <% end %><br>
+             WEIGHT CARDS (ON ONE PDF FILE)<br>
+        <td><%= link_to league_wrestlers_path(@lg, format: "pdf") do %>LEAGUE PLACE WINNERS <i class="file pdf outline icon"></i></td>
+          <% end %><br>
+          <td><%= link_to alternates_league_wrestlers_path(@lg, format: "pdf") do %>ALTERNATES<i class="file pdf outline icon"></i></td>
+        <% end %><br><br> 
         (File will be empty until you update league place winners)
       <% end %>
 </div><br>
+ <div class="ui center aligned sement">
+    
+    </div>
     <div class="ui center aligned segment">
     
       <table class="ui celled center aligned structured stackable table">
