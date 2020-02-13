@@ -55,17 +55,17 @@
   
            
            <% if wrestler.bouts && wrestler.bouts.count > 0 %>
-            <TD style="font-size:9px">#</TD>
-           <TD style="font-size:9px">W/L</TD>
-           <TD style="font-size:9px">DATE</TD>
-           <TD style="font-size:9px">WT</TD>
-           <TD style="font-size:9px">D/T</TD>
-           <TD style="font-size:9px">TOURNEY</TD>
-           <TD style="font-size:9px">OPPONENT</TD>
-           <TD style="font-size:9px">SCHOOL</TD>
-           <TD style="font-size:9px">TYPE</TD>
-           <TD style="font-size:9px">SCORE</TD>
-           <TD style="font-size:9px">PLACE</TD>
+            <TD>#</TD>
+           <TD>W/L</TD>
+           <TD>DATE</TD>
+           <TD>WT</TD>
+           <TD>D/T</TD>
+           <TD>TOURNEY</TD>
+           <TD>OPPONENT</TD>
+           <TD>SCHOOL</TD>
+           <TD>TYPE</TD>
+           <TD>SCORE</TD>
+           <TD>PLACE</TD>
             <% wrestler.bouts.order('date ASC').each do |bout| %>
 
               <tr>
