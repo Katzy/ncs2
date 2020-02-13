@@ -1,8 +1,8 @@
 <div class="wrestler">
   <span style="text-align:left;font-size:0.8em"><%= wrestler.league.name %></span>
-  <h3 style="text-align:center">Wrestling Registration</h3>
+  <h4 style="text-align:center">Wrestling Registration</h4>
   <% if wrestler.league_place.in?(["ALT-1", "ALT-2", "ALT-3", "ALT-4", "ALT-5"]) %>
-    <h4 style="text-align:center">** ALTERNATE ** &emsp;&emsp;&emsp;&emsp; AT LARGE: ___</h4>
+    <h5 style="text-align:center">** ALTERNATE ** &emsp;&emsp;&emsp;&emsp; AT LARGE: ___</h5>
   <% end %>
   <TABLE BORDER="1" CELLPADDING="5" CELLSPACING="0">
     <TD style="width:35%font-size:13px;">
@@ -124,8 +124,8 @@
           
           
           </TABLE>
-          <TABLE><br>
-          <td style="width:50em;font-size:10px;">COMMENTS:</td>
+          <TABLE>
+          <td style="width:50em;font-size:9px;">COMMENTS:</td>
           
           <tr><td style="font-size:8px;"><%=wrestler.comments %></td></tr>
           </TABLE>
