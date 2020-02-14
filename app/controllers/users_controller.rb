@@ -78,7 +78,7 @@ class UsersController < ApplicationController
       # @team.school = @user.school
       # @team.user_id = @user.id
       # @team = Team.create(team_params)
-       # UserMailer.new_user(@user).deliver
+       UserMailer.new_user(@user).deliver
        UserMailer.new_user_added(@user).deliver
       redirect_to root_url, notice: "User was successfully created"
     else

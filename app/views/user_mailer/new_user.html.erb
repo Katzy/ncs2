@@ -5,48 +5,20 @@
   <body>
     <h1> Welcome <%= (@user.name).split(" ").first %></h1>
       <p>
-        The NCS seeding meeting is next Sunday and League tournaments are getting underway this week.  We are instituting a new system this year to simplify the entry of wrestler names and seeding information for the NCS tournament.  It is our hope and expectation that this will save considerable time and help you avoid a lot of last minute work.
+        The NCS seeding meeting is next Sunday and League tournaments are getting underway this week.  
+      If you are the coach, you can access your team entry page by clicking "MY TEAM" in the header or by scrolling down to the team section under the WRESTLERS menu tabs on the tournament website, www.ncswrestling.com.  You can view all wrestlers from all teams but you can only make entries for your team.
       </p><br>
-
-      <p>
-      Every league rep has been contacted with a request to supply us with a contact email for every coach in the league.  Each coach has a login authorization which allows them to enter the names of all wrestlers expected to participate in this week’s league tournament.  If you are the coach, you can access your team entry page by clicking "MY TEAM" in the header or by scrolling down to the team section under the WRESTLERS menu tabs on the tournament website, www.ncswrestling.com.  You can view all wrestlers from all teams but you can only make entries for your team.
-      </p>
       <p>
        visit  <%= link_to "NCS Wrestling Championships Website", "http://www.ncswrestling.com"  %> (www.ncswrestling.com)
       </p><br>
 
       <p>
           <ul>YOUR USERNAME:  <b><%= @user.email %></b> </ul>
-          <ul> YOUR PASSWORD:  <b>12345678</b></ul>
+          <ul> YOUR PASSWORD:  <b>12345678</b></ul>(this can be changed)
       </p><br>
+      
       <p>
-        Once you get to your team page you have the choice of entering each wrestler one at a time or uploading from a spreadsheet.  Instructions are provided on the entry page.
-      </p><br>
-
-      <p>
-         <b>The entry information for all wrestlers must include:</b><br>
-            Total season record including all wins and losses including out of section losses.
-            Wrestler’s age and school year.<br>
-            If you have NOT had wrestle offs in a weight, you can enter both wrestlers and delete the one who does not wrestle in League/NCS.<br><br>
-            <b>In addition, for seedable wrestlers you must list</b><br>
-                Tournament Places<br>
-                Significant head to head wins against ranked opponents (just results, no commentary)<br>
-              Prior year section and state places
-      </p><br>
-
-      <p>
-        The deadline for entering the names is Tuesday 7:00 PM.  After the deadline, all changes must be made by the league rep.
-      </p><br>
-
-      <p>
-        When the tournament results are determined, the league rep will designate each league’s placing wrestlers and alternates. 
-      </p><br>
-
-      <p>
-      And the best part is that if your data is entered completely, you will be able to have it printed directly onto the weigh-in form. 
-      </p>
-      <p>
-        Thank you for your cooperation.  With your help we can get the brackets produced and published as quickly as possible.  Contact Larry Katz @ 510-656-8766 with questions about the tournament or Scott Katz @ 323-317-5900 with questions or issues with the website.
+        Thank you for your cooperation.  Contact your league rep with questions about the tournament or Scott Katz @ 323-317-5900 with questions or issues with the website.
       </p><br>
 
       <p>
