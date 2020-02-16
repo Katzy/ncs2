@@ -454,7 +454,7 @@ class WrestlersController < ApplicationController
       @w = @season.wrestlers.where(weight: wt).where.not(league_place: nil, league_place: "")
       # @w = @season.wrestlers.where(weight: wt, tourney_team: true).where.not(league_place: "")
       # @wrestlers = @w.where("league_place = ? OR league_place = ? OR league_place = ? OR league_place = ? OR league_place = ? OR alternate = ?", *params).order('weight ASC, seed ASC, state_place ASC, section_place ASC, seed ASC, wins DESC')
-      @wrestlers = @w.order('seed ASC, state_place ASC, section_place ASC, league_place ASC, wins DESC')
+      @wrestlers = @w.order('seed ASC, state_place ASC, section_place ASC, wins DESC, league_place ASC')
       # wrestlers = @wrestlers 
       # Wrestler.where("weight = #{wt}").order('weight ASC, seed ASC, wins DESC')  # for csv format
       @tourney_results = []
