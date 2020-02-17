@@ -55,7 +55,11 @@
     </td>
   
   <% end %>
-            <td><%= wrestler.league_place %></td>
+            <td><%= wrestler.league_place %><br>
+              <% if wrestler.alternate == true %>
+              (At Large Qualifier)
+              <% end %> 
+            </td>
             <td><%= wrestler.league_1ya %>
               
             </td>
